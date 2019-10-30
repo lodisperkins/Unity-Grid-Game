@@ -6,10 +6,10 @@ namespace Lodis.GamePlay
 {
     public class GridBehaviour : MonoBehaviour
     {
-        [SerializeField] private PlayerMovementBehaviour P1PanelsRef;
+        [SerializeField] private PlayerMovementBehaviour _p1PanelsRef;
 
         [SerializeField]
-        private PlayerMovementBehaviour  _psPanelsRef;
+        private PlayerMovementBehaviour  _p2PanelsRef;
         [SerializeField] private  PanelList P1Panels;
         [SerializeField] private PanelList P2Panels;
         [SerializeField]
@@ -32,6 +32,8 @@ namespace Lodis.GamePlay
         // Use this for initialization
         void Start()
         {
+            P1AssignLists();
+            P2AssignLists();
         }
 
         private void Awake()
@@ -41,13 +43,11 @@ namespace Lodis.GamePlay
 
         public void P1AssignLists()
         {
-            P1Panels.Init(P1PanelsRef.Panels.Panels,"Player1");
             AssignPanelMaterials();
             P1Panels.updateOwners();
         }
         public void P2AssignLists()
         {
-            P2Panels.Init(_psPanelsRef.Panels.Panels,"Player2");
             AssignPanelMaterials();
             P2Panels.updateOwners();
         }

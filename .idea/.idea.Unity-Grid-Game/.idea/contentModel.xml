@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\s188043\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\s188043\.Rider2019.2\system\resharper-host\Local\Transient\ReSharperHost\v192\SolutionCaches\_Unity-Grid-Game.-344829271.00" t="ExcludeRecursive" />
+    <e p="C:\Users\s188043\Documents\GitHub\Unity-Grid-Game" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="DoesNothingBehaviour.cs" t="Include" />
+        <e p="Materials" t="Include">
+          <e p="UI-Default-No-Alpha.shader" t="Include" />
+        </e>
+        <e p="RobotSphere" t="Include">
+          <e p="Assets" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="robotAnimScript.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Emmanuel" t="Include">
+            <e p="GameObjectBehaviour.cs" t="Include" />
+            <e p="GameObjectList.cs" t="Include" />
+            <e p="UIHandlerBehaviour.cs" t="Include" />
+          </e>
+          <e p="Lodis" t="Include">
+            <e p="Event System" t="Include">
+              <e p="Event.cs" t="Include" />
+              <e p="GameEventListener.cs" t="Include" />
+              <e p="IListener.cs" t="Include" />
+            </e>
+            <e p="GamePlay" t="Include">
+              <e p="BlockBehaviour.cs" t="Include" />
+              <e p="BulletBehaviour.cs" t="Include" />
+              <e p="DeletionBlockBehaviour.cs" t="Include" />
+              <e p="DisplayBehaviour.cs" t="Include" />
+              <e p="GridBehaviour.cs" t="Include" />
+              <e p="GunBehaviour.cs" t="Include" />
+              <e p="HealthBehaviour.cs" t="Include" />
+              <e p="MaterialBlockBehaviour.cs" t="Include" />
+              <e p="PanelBehaviour.cs" t="Include" />
+              <e p="PanelList.cs" t="Include" />
+              <e p="PauseMenuBehaviour.cs" t="Include" />
+              <e p="PlayerAnimationBehaviour.cs" t="Include" />
+              <e p="PlayerSpawnBehaviour.cs" t="Include" />
+              <e p="RoutineBehaviour.cs" t="Include" />
+              <e p="TextBehaviour.cs" t="Include" />
+            </e>
+            <e p="Input" t="Include">
+              <e p="InputAxisBehaviour.cs" t="Include" />
+              <e p="InputButtonBehaviour.cs" t="Include" />
+            </e>
+            <e p="Movement" t="Include">
+              <e p="PlayerMovementBehaviour.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Steffan" t="Include">
+            <e p="PlayerHPTextBehaviour.cs" t="Include" />
+          </e>
+          <e p="VariableScripts" t="Include">
+            <e p="BlockVariable.cs" t="Include" />
+            <e p="InputVariable.cs" t="Include" />
+            <e p="IntVariable.cs" t="Include" />
+            <e p="Vector2Variable.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="MyFirstShader.shader" t="Include" />
+          <e p="SecondShader.shader" t="Include" />
+          <e p="Third Shader.shader" t="Include" />
+        </e>
+        <e p="Textures and Sprites" t="Include">
+          <e p="SF UI" t="Include">
+            <e p="Background" t="Include">
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="VolumetricLines" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Utils" t="Include">
+              <e p="TransformExtensionMethods.cs" t="Include" />
+            </e>
+            <e p="VolumetricLineBehavior.cs" t="Include" />
+            <e p="VolumetricLineSettings.cs" t="Include" />
+            <e p="VolumetricLineStripBehavior.cs" t="Include" />
+            <e p="VolumetricLineVertexData.cs" t="Include" />
+            <e p="VolumetricMultiLineBehavior.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="_SimpleShader.cginc" t="Include" />
+            <e p="_StripShader.cginc" t="Include" />
+            <e p="Additive.shader" t="Include" />
+            <e p="AlphaBlended.shader" t="Include" />
+            <e p="Fast-Additive.shader" t="Include" />
+            <e p="Fast-AlphaBlended.shader" t="Include" />
+            <e p="Strip-Additive.shader" t="Include" />
+            <e p="Strip-AlphaBlended.shader" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Unity-Grid-Game.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

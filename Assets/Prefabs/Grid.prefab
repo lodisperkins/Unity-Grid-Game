@@ -4553,8 +4553,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
-  OnObjectDeath: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
   ps: {fileID: 0}
 --- !u!114 &114415655196724626
 MonoBehaviour:
@@ -4865,10 +4863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edd9e78012199f4cacf9b1bc10af92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P1PanelsRef: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-    type: 2}
-  _psPanelsRef: {fileID: 114649712960447932, guid: 53af400b8fabd664bbd19ef088780851,
-    type: 2}
+  _p1PanelsRef: {fileID: 0}
+  _p2PanelsRef: {fileID: 0}
   P1Panels: {fileID: 11400000, guid: dce9da33097f9cb43b5f47a2d9632a31, type: 2}
   P2Panels: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
   P1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
