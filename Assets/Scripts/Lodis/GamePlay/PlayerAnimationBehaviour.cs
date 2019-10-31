@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationBehaviour : MonoBehaviour
 {
-
+	//the animator attached to this gameobject
 	[SerializeField] private Animator _animator;
 	
 	public void EnableMoveAnimation()

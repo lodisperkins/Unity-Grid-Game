@@ -6,21 +6,26 @@ namespace Lodis
 {
     public class BulletBehaviour : MonoBehaviour
     {
+        //The player that shot this bullet
         public string Owner;
+        //the amount of damage this bullet does 
         public int DamageVal;
+        //Temporary gameobject used to delete the bullet without deleting the prefab
         private GameObject TempObject;
+        //The laser model attached to this bullet
         [SerializeField]
         private GameObject _laser;
-        
+        //the particle system to be played when a bullet hits an obstacle
         [SerializeField] private ParticleSystem ps;
+        //Event used to play the sound of a bullet being shot
         [SerializeField] private Event OnBulletSpawn;
         private void Start()
         {
-            
             TempObject = gameObject;
+            
             ChangeColor();
         }
-        
+        //(not working) meant to change the bulle5ts color based on the owner
         private void ChangeColor()
         {
             if (Owner == "Player1")
@@ -53,6 +58,7 @@ namespace Lodis
                 Destroy(TempObject);
             }
         }
+        //plays the particle system after a bullet hits an object
         public void playDeathParticleSystems(float duration)
         {
             var tempPs = Instantiate(ps,transform.position,transform.rotation);

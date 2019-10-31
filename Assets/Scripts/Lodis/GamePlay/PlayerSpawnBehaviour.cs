@@ -192,8 +192,8 @@ namespace Lodis
             {
                 var position = new Vector3(panels_in_range["Behind"].transform.position.x, transform.position.y, panels_in_range["Behind"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
-                BlockCopy.GetComponent<BlockBehaviour>().CurrentPanel = panels_in_range["Behind"];
-                BlockCopy.GetComponentInChildren<BlockBehaviour>().Owner = gameObject;
+                BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Behind"];
+                BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Behind"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Behind"].GetComponent<PanelBehaviour>().Selected = false;
                 BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
@@ -221,8 +221,8 @@ namespace Lodis
             {
                 var position = new Vector3(panels_in_range["Forward"].transform.position.x, transform.position.y, panels_in_range["Forward"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
-                BlockCopy.GetComponent<BlockBehaviour>().CurrentPanel = panels_in_range["Forward"];
-                BlockCopy.GetComponentInChildren<BlockBehaviour>().Owner = gameObject;
+                BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Forward"];
+                BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Forward"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Forward"].GetComponent<PanelBehaviour>().Selected = false;
                 BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
@@ -251,8 +251,8 @@ namespace Lodis
 
                 var position = new Vector3(panels_in_range["Above"].transform.position.x, transform.position.y, panels_in_range["Above"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
-                BlockCopy.GetComponent<BlockBehaviour>().CurrentPanel = panels_in_range["Above"];
-                BlockCopy.GetComponentInChildren<BlockBehaviour>().Owner = gameObject;
+                BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Above"];
+                BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Above"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Above"].GetComponent<PanelBehaviour>().Selected = false;
                 BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
@@ -281,8 +281,8 @@ namespace Lodis
             {
                 var position = new Vector3(panels_in_range["Below"].transform.position.x, transform.position.y, panels_in_range["Below"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
-                BlockCopy.GetComponent<BlockBehaviour>().CurrentPanel = panels_in_range["Below"];
-                BlockCopy.GetComponentInChildren<BlockBehaviour>().Owner = gameObject;
+                BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Below"];
+                BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Below"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Below"].GetComponent<PanelBehaviour>().Selected = false;
                 BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
