@@ -21,9 +21,19 @@ namespace Lodis
         private Material _player1Mat;
         private Material _player2Mat;
         private bool _attackHighlight;
+        private float timer;
+        private bool TimerSet;
+        private Material _panelMat;
         private void Start()
         {
             CurrentColor = new Color();
+            
+            TimerSet = false;
+        }
+
+        private void Awake()
+        {
+            
         }
 
         public bool Selected
@@ -68,30 +78,46 @@ namespace Lodis
         {
             if (isSelected)
             {
-                GetComponent<MeshRenderer>().material.color = SelectionColor;
+                _panelMat.color = SelectionColor;
                 return;
             }
             UpdateColor();
         }
 
+        private void RevertToOwnerColor(float RevertTime)
+        {
+            if (_attackHighlight && TimerSet == false)
+            {
+                timer = Time.time + RevertTime;
+                TimerSet = true;
+                return;
+            }
+            else if (Time.time >= timer && _attackHighlight)
+            {
+                UpdateColor();
+                _attackHighlight = false;
+                TimerSet = false;
+            }
+        }
+        
         public void UpdateColor()
         {
+            _panelMat = GetComponent<MeshRenderer>().material;
             if(_attackHighlight)
              {
-                 GetComponent<MeshRenderer>().material.color = Color.yellow;
+                 _panelMat.color = Color.yellow;
                  CurrentColor = Color.yellow;
              }
             else if (Owner == "Player1")
             {
-                
                 if (_player1Mat == null)
                 {
-                    GetComponent<MeshRenderer>().material.color = Color.black;
+                    _panelMat.color = Color.black;
                     CurrentColor = Color.red;
                 }
                 else
                 {
-                    GetComponent<MeshRenderer>().material.color = _player1Mat.color;
+                    _panelMat.color = _player1Mat.color;
                     CurrentColor = _player1Mat.color;
                 }
             }
@@ -99,12 +125,12 @@ namespace Lodis
             {
                 if (_player2Mat == null)
                 {
-                    GetComponent<MeshRenderer>().material.color = Color.black;
+                    _panelMat.color = Color.black;
                     CurrentColor = Color.cyan;
                 }
                 else
                 {
-                    GetComponent<MeshRenderer>().material.color = _player2Mat.color;
+                    _panelMat.color = _player2Mat.color;
                     CurrentColor = _player2Mat.color;
                 }
             }
@@ -119,8 +145,16 @@ namespace Lodis
             }
             else
             {
+                RevertToOwnerColor(.2f);
                 UpdateColor();
             }
         }
+
+        private void Update()
+        {
+            RevertToOwnerColor(1f);
+            
+        }
     }
+    
 }

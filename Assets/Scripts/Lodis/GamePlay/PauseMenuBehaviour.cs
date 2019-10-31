@@ -19,7 +19,7 @@ namespace Lodis.GamePlay
     	{
 	        if (isPaused)
 	        {
-		        if (Input.GetButtonDown("Delete1") || Input.GetButtonDown("Delete1"))
+		        if (Input.GetButtonDown("Delete1") || Input.GetButtonDown("Delete2"))
 		        {
 			        Application.Quit();
 		        }

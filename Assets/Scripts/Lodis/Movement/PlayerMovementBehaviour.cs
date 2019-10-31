@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis
@@ -49,11 +50,16 @@ namespace Lodis
         void Start()
         {
             Destination = Position;
-            Panels.Init(startingPanels, name);
             canMove = true;
             panelStealActive = false;
             _currentPanel = Panels[0];
         }
+
+        private void Awake()
+        {
+            Panels.Init(startingPanels, name);
+        }
+
         public void EnablePanelSteal()
         {
             if (panelStealActive == false)

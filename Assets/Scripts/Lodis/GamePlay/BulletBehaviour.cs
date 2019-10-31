@@ -9,16 +9,33 @@ namespace Lodis
         public string Owner;
         public int DamageVal;
         private GameObject TempObject;
+        [SerializeField]
+        private GameObject _laser;
+        
         [SerializeField] private ParticleSystem ps;
         [SerializeField] private Event OnBulletSpawn;
         private void Start()
         {
-           
+            
             TempObject = gameObject;
+            ChangeColor();
         }
-
+        
+        private void ChangeColor()
+        {
+            if (Owner == "Player1")
+            {
+                _laser.GetComponent<Light>().color = Color.red;
+            }
+            else
+            {
+                _laser.GetComponent<Light>().color = Color.blue;
+            }
+        }
+        
         private void Awake()
         {
+            ChangeColor();
             OnBulletSpawn.Raise();
         }
 
