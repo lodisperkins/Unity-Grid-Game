@@ -268,7 +268,7 @@ MonoBehaviour:
   outOfAmmo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114964812879654380}
+      - m_Target: {fileID: 114782364321774370}
         m_MethodName: DestroyBlock
         m_Mode: 4
         m_Arguments:

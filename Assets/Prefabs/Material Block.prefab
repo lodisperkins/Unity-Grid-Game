@@ -203,17 +203,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
   owner: 
-  bulletForceScale: 0
-  bulletDelay: 0
-  bulletCount: 0
+  bulletForceScale: 1000
+  bulletDelay: 1
+  bulletCount: 5
   outOfAmmo:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114857136097773770}
+        m_MethodName: DestroyBlock
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  damageVal: 0
+  damageVal: 1
 --- !u!114 &114226563568811040
 MonoBehaviour:
   m_ObjectHideFlags: 1
