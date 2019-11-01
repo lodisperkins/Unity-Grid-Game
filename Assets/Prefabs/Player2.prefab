@@ -2209,8 +2209,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   newInput: {fileID: 0}
-  inputBuffer: 0.2
+  inputBuffer: 0
 --- !u!114 &114928660566369492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2228,6 +2230,7 @@ MonoBehaviour:
   - {fileID: 1172816898836844, guid: 2feecdbaddeb9224aaff6b5b68870b5e, type: 2}
   - {fileID: 1172816898836844, guid: e62e261ba5097a2449205b7e136f59a0, type: 2}
   direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
+  _rotdirection: {fileID: 0}
   player: {fileID: 114649712960447932}
   rotation_val: 0
   materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}

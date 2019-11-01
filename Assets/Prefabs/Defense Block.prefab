@@ -217,8 +217,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
-  OnObjectDeath: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
 --- !u!114 &114283060990558652
 MonoBehaviour:
@@ -231,12 +229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
-  Owner: 
-  Bullet_Force_Scale: 1000
-  Bullet_Delay: 1
-  Bullet_Count: 10
-  OutOfAmmo:
+  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
+  owner: 
+  bulletForceScale: 1000
+  bulletDelay: 1
+  bulletCount: 5
+  outOfAmmo:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114884981294859076}
@@ -250,20 +248,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114109388835544152}
-        m_MethodName: playDeathParticleSystems
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DamageVal: 0
+  damageVal: 1
 --- !u!114 &114427125017568984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,12 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a97f3e889eb4d4c97355e8c6416263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPanel: {fileID: 0}
-  Owner: {fileID: 0}
+  currentPanel: {fileID: 0}
+  owner: {fileID: 0}
   cost: 15
   canUpgrade: 0
-  OnUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
-  OnBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
+  onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
+  onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
 --- !u!114 &114915944556742216
 MonoBehaviour:
   m_ObjectHideFlags: 1
