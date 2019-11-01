@@ -8,7 +8,9 @@ namespace Lodis.GamePlay
     [CreateAssetMenu(menuName = "PanelList")]
     public class PanelList : ScriptableObject
     {
+        //raised when the a panel is somehow null
         [SerializeField] private Event OnPanelAssignmentFailed;
+        //the list of panels tthis object holds
         [SerializeField]
         private List<GameObject> panels;
         public List<GameObject> Panels
@@ -18,15 +20,18 @@ namespace Lodis.GamePlay
                 return panels;
             }
         }
-    
+        //a list of panels meant to be in the players possesion only temporarily
         public List<GameObject> tempPanels;
+        //the owner of the list of panels
         public string Owner;
+        //initializes this panel list to have a populated list and an owner
         public void Init(List<GameObject> startPanels, string playername)
         {
             panels = startPanels;
             Owner = playername;
             updateOwners();
         }
+        //creates an instance of this scriptable object
         public static PanelList CreateInstance(List<GameObject> startpanels, string playername)
         {
             var data = ScriptableObject.CreateInstance<PanelList>();
@@ -39,6 +44,7 @@ namespace Lodis.GamePlay
         {
             panels.Add(panel);
         }
+        //changes the owner of each panel in the list
         public void updateOwners()
         {
             int counter = 0;
@@ -114,6 +120,7 @@ namespace Lodis.GamePlay
                 return panels[index];
             }
         }
+        //returns the index of a panel at the given coordinates
         public bool FindIndex(Vector2 position, out int index)
         {
             for(int i = 0; i < panels.Count; i++)

@@ -2,31 +2,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace Lodis.GamePlay
 {
     public class GridBehaviour : MonoBehaviour
     {
-        [SerializeField] private PlayerMovementBehaviour _p1PanelsRef;
-
-        [SerializeField]
-        private PlayerMovementBehaviour  _p2PanelsRef;
-        [SerializeField] private  PanelList P1Panels;
-        [SerializeField] private PanelList P2Panels;
-        [SerializeField]
-        private Vector2Variable P1Position;
-        [SerializeField]
-        private Vector2Variable P2Position;
-        [SerializeField]
-        private Lodis.Event OnPanelsSwapped;
-        [SerializeField]
-        private IntVariable P1Materials;
-        [SerializeField]
-        private IntVariable P2Materials;
-        [SerializeField]
-        private Vector2Variable P1Direction;
-        [SerializeField]
-        private Vector2Variable P2Direction;
-
+       //The reference to player 1's panels
+        [FormerlySerializedAs("P1Panels")] [SerializeField] private  PanelList p1Panels;
+        //The reference to player 2's panels
+        [FormerlySerializedAs("P2Panels")] [SerializeField] private PanelList p2Panels;
+        // player 1's current position on the grid
+        [FormerlySerializedAs("P1Position")] [SerializeField]
+        private Vector2Variable p1Position;
+        // player 2's current position on the grid
+        [FormerlySerializedAs("P2Position")] [SerializeField]
+        private Vector2Variable p2Position;
+        [FormerlySerializedAs("OnPanelsSwapped")] [SerializeField]
+        private Lodis.Event onPanelsSwapped;
+        //The amount of materials the players curretly have
+        [FormerlySerializedAs("P1Materials")] [SerializeField]
+        private IntVariable p1Materials;
+        [FormerlySerializedAs("P2Materials")] [SerializeField]
+        private IntVariable p2Materials;
+        //the direction both players are facing
+        [FormerlySerializedAs("P1Direction")] [SerializeField]
+        private Vector2Variable p1Direction;
+        [FormerlySerializedAs("P2Direction")] [SerializeField]
+        private Vector2Variable p2Direction;
+//The amount of materials the players have
         [SerializeField] private Material _p1Material;
         [SerializeField] private Material _p2Material;
         // Use this for initialization
@@ -40,34 +44,36 @@ namespace Lodis.GamePlay
         {
             
         }
-
+        //Sets player1 panels to the appropriate material and sets their owner to be player 1
         public void P1AssignLists()
         {
             AssignPanelMaterials();
-            P1Panels.updateOwners();
+            p1Panels.updateOwners();
         }
+        //Sets player2 panels to the appropriate material and sets their owner to be player 2
         public void P2AssignLists()
         {
             AssignPanelMaterials();
-            P2Panels.updateOwners();
+            p2Panels.updateOwners();
         }
-    
+        //Removes an entire row from player1 and gives it to player2
         public void surrenderRowP1()
         {
-            P1Panels.SurrenderRow(P2Panels);
-            P1Panels.updateOwners();
-            P2Panels.updateOwners();
+            p1Panels.SurrenderRow(p2Panels);
+            p1Panels.updateOwners();
+            p2Panels.updateOwners();
         }
+        //Removes an entire row from player2 and gives it to player1
         public void surrenderRowP2()
         {
-            P2Panels.SurrenderRow(P1Panels);
-            P1Panels.updateOwners();
-            P2Panels.updateOwners();
+            p2Panels.SurrenderRow(p1Panels);
+            p1Panels.updateOwners();
+            p2Panels.updateOwners();
         }
-
+        //Sets both players materials to either their red or blue variants
         public void AssignPanelMaterials()
         {
-            foreach (GameObject panel in P1Panels)
+            foreach (GameObject panel in p1Panels)
             {
                 int counter = 0;
                 if (panel == null)
@@ -79,7 +85,7 @@ namespace Lodis.GamePlay
                 panel.GetComponent<PanelBehaviour>().Init(_p1Material,_p2Material);
                 counter++;
             }
-            foreach (GameObject panel in P2Panels)
+            foreach (GameObject panel in p2Panels)
             {
                 int counter = 0;
                 if (panel == null)
@@ -92,133 +98,138 @@ namespace Lodis.GamePlay
                 counter++;
             }
         }
-        
+        //Takes one panel from player two and gives it player one
         public void StealPanelP1()
         {
-            Vector2 panelPosition = new Vector2(P1Position.Val.x + P1Direction.X, P1Position.Val.y+ P1Direction.Y);
+            Vector2 panelPosition = new Vector2(p1Position.Val.x + p1Direction.X, p1Position.Val.y+ p1Direction.Y);
             int index = 0;
-            if (P2Panels.FindIndex(panelPosition, out index))
+            if (p2Panels.FindIndex(panelPosition, out index))
             {
-                if (P1Materials.Val < 100)
+                if (p1Materials.Val < 100)
                 {
-                    OnPanelsSwapped.Raise();
+                    onPanelsSwapped.Raise();
                     UnHighlightPanelsP1();
                     return;
                 }
-                P1Materials.Val -= 100;
-                P2Panels.TransferPanel(P1Panels, index);
+                p1Materials.Val -= 100;
+                p2Panels.TransferPanel(p1Panels, index);
                 UnHighlightPanelsP1();
-                P1Panels.updateOwners();
-                P2Panels.updateOwners();
-                OnPanelsSwapped.Raise();
+                p1Panels.updateOwners();
+                p2Panels.updateOwners();
+                onPanelsSwapped.Raise();
                 
             }
         }
+        //takes one panel from player 1 and gives it to player two
         public void StealPanelP2()
         {
-            Vector2 panelPosition = new Vector2(P2Position.Val.x + P2Direction.X, P2Position.Val.y + P2Direction.Y);
+            Vector2 panelPosition = new Vector2(p2Position.Val.x + p2Direction.X, p2Position.Val.y + p2Direction.Y);
             int index = 0;
-            if (P1Panels.FindIndex(panelPosition, out index))
+            if (p1Panels.FindIndex(panelPosition, out index))
             {
-                if (P2Materials.Val < 100)
+                if (p2Materials.Val < 100)
                 {
-                    OnPanelsSwapped.Raise();
+                    onPanelsSwapped.Raise();
                     UnHighlightPanelsP2();
                     return;
                 }
-                P2Materials.Val -= 100;
-                P1Panels.TransferPanel(P2Panels, index);
+                p2Materials.Val -= 100;
+                p1Panels.TransferPanel(p2Panels, index);
                 UnHighlightPanelsP2();
-                P2Panels.updateOwners();
-                P1Panels.updateOwners();
-                OnPanelsSwapped.Raise();
+                p2Panels.updateOwners();
+                p1Panels.updateOwners();
+                onPanelsSwapped.Raise();
             }
         }
+        //finds and highlights all nearby panels in player 2's list for player1
         public void FindNeighborsP1()
         {
             //Used to find the position the block can be placed
             Vector2 DisplacementX = new Vector2(1, 0);
             Vector2 DisplacementY = new Vector2(0, 1);
-            P1Panels.tempPanels = new List<GameObject>();
+            p1Panels.tempPanels = new List<GameObject>();
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in P2Panels)
+            foreach (GameObject panel in p2Panels)
             {
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
-                if ((P1Position.Val + DisplacementX) == coordinate)
+                if ((p1Position.Val + DisplacementX) == coordinate)
                 {
-                    P1Panels.tempPanels.Add(panel);
+                    p1Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
-                else if ((P1Position.Val - DisplacementX) == coordinate)
+                else if ((p1Position.Val - DisplacementX) == coordinate)
                 {
-                    P1Panels.tempPanels.Add(panel);
+                    p1Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
-                else if ((P1Position.Val + DisplacementY) == coordinate)
+                else if ((p1Position.Val + DisplacementY) == coordinate)
                 {
-                    P1Panels.tempPanels.Add(panel);
+                    p1Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
-                else if ((P1Position.Val - DisplacementY) == coordinate)
+                else if ((p1Position.Val - DisplacementY) == coordinate)
                 {
-                    P1Panels.tempPanels.Add(panel);
+                    p1Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
             }
         }
+        //unhighlights all previously highlighted panels for player1
         public void UnHighlightPanelsP1()
         {
-            foreach (GameObject panel in P1Panels.tempPanels)
+            foreach (GameObject panel in p1Panels.tempPanels)
             {
                 panel.GetComponent<PanelBehaviour>().SelectionColor = Color.green;
                 panel.GetComponent<PanelBehaviour>().Selected = false;
             }
         }
+        //unhighlights all previously highlighted panels for player1
         public void UnHighlightPanelsP2()
         {
-            foreach (GameObject panel in P2Panels.tempPanels)
+            foreach (GameObject panel in p2Panels.tempPanels)
             {
                 panel.GetComponent<PanelBehaviour>().SelectionColor = Color.green;
                 panel.GetComponent<PanelBehaviour>().Selected = false;
             }
         }
+        //finds and highlights all nearby panels in player 2's list for player1
         public void FindNeighborsP2()
         {
             //Used to find the position the block can be placed
             Vector2 DisplacementX = new Vector2(1, 0);
             Vector2 DisplacementY = new Vector2(0, 1);
-            P2Panels.tempPanels = new List<GameObject>();
+            p2Panels.tempPanels = new List<GameObject>();
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in P1Panels)
+            foreach (GameObject panel in p1Panels)
             {
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
-                if ((P2Position.Val + DisplacementX) == coordinate)
+                if ((p2Position.Val + DisplacementX) == coordinate)
                 {
-                    P2Panels.tempPanels.Add(panel);
+                    p2Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
-                else if ((P2Position.Val - DisplacementX) == coordinate)
+                else if ((p2Position.Val - DisplacementX) == coordinate)
                 {
-                    P2Panels.tempPanels.Add(panel);
+                    p2Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
-                else if ((P2Position.Val + DisplacementY) == coordinate)
+                else if ((p2Position.Val + DisplacementY) == coordinate)
                 {
-                    P2Panels.tempPanels.Add(panel);
+                    p2Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
-                else if ((P2Position.Val - DisplacementY) == coordinate)
+                else if ((p2Position.Val - DisplacementY) == coordinate)
                 {
-                    P2Panels.tempPanels.Add(panel);
+                    p2Panels.tempPanels.Add(panel);
                     panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }

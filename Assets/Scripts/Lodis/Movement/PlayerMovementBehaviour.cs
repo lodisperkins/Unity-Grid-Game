@@ -59,7 +59,7 @@ namespace Lodis
         {
             Panels.Init(startingPanels, name);
         }
-
+        //Allows the player to steal panels
         public void EnablePanelSteal()
         {
             if (panelStealActive == false)
@@ -69,6 +69,7 @@ namespace Lodis
                 OnPanelStealEnabled.Raise(gameObject);
             }
         }
+        //disables the ability to steal panels
         public void DisablePanelSteal()
         {
             if(panelStealActive)
@@ -78,6 +79,7 @@ namespace Lodis
                 OnPanelStealDisabled.Raise(gameObject);
             }
         }
+        //Raises the event to steal a panel form the other panel
         public void StealPanel()
         {
             if (panelStealActive)
@@ -85,10 +87,12 @@ namespace Lodis
                 OnPanelSteal.Raise(gameObject);
             }       
         }
+        //enables the players movement
         public void EnableMovement()
         {
             canMove = true;
         }
+        //disables the players movement
         public void DisableMovement()
         {
             canMove = false;
@@ -129,6 +133,7 @@ namespace Lodis
             ReturnPanel = null;
             return false;
         }
+        //Checks to see if a panel is accessible
         public bool CheckPanels(Vector2 PanelPosition)
         {
             foreach (GameObject panel in Panels.Panels)
@@ -141,6 +146,7 @@ namespace Lodis
             }
             return false;
         }
+        
         public void MoveRight()
         {
             if(canMove == false)

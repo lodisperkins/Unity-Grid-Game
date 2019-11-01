@@ -7,10 +7,13 @@ namespace Lodis
     delegate void Actions();
     public class GameEventListener:MonoBehaviour,IListener
     {
+        //Delegate containing all functions to used when the event is invoked
         [SerializeField]
         UnityEvent actions;
+        //the event the gameobject should be listening for
         [SerializeField]
         Lodis.Event Event;
+        //The sender the gameobject is waiting for the event to be raiased by
         [SerializeField]
         GameObject intendedSender;
         // Use this for initialization
@@ -18,7 +21,7 @@ namespace Lodis
         {
             Event.AddListener(this);
         }
-
+        //Invokes the actions delegate
         public void Invoke(Object Sender)
         {
             if(intendedSender == null)

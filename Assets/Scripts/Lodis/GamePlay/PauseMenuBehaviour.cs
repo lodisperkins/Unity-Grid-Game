@@ -9,11 +9,13 @@ namespace Lodis.GamePlay
 {
 	public class PauseMenuBehaviour : MonoBehaviour
 	{
+		//raised when the game is paused
 		[SerializeField]
 		private Event OnPause;
+		//raised when the game is unpaused
 		[SerializeField]
 		private Event OnUnPause;
-
+		//true if the game is poused
 		private bool isPaused;
     	private void Update()
     	{

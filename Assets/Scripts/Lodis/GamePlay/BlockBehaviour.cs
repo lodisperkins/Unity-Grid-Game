@@ -2,117 +2,132 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace Lodis
 {
     public class BlockBehaviour : MonoBehaviour
     {
-        public GameObject CurrentPanel;
-        public GameObject Owner;
+        //The current panel thye block is on
+        [FormerlySerializedAs("CurrentPanel")] public GameObject currentPanel;
+        //The player that owns the block
+        [FormerlySerializedAs("Owner")] public GameObject owner;
+        //the cost of materials to build this block
         public int cost;
-        GunBehaviour Gun;
-        HealthBehaviour Armor;
-        MaterialBlockBehaviour MaterialMine;
-        PanelBehaviour panel;
+        //The gun script attached to the bullet emitter
+        GunBehaviour _gun;
+        //he helath behaviour script attached to this block
+        HealthBehaviour _armor;
+        //The material block behaviour script attached to this block
+        MaterialBlockBehaviour _materialMine;
+        //The script of the panel this block is currently on
+        PanelBehaviour _panel;
+        //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
 
-        [SerializeField] private Event OnUpgrade;
-        [SerializeField] private Event OnBlockSpawn;
+        [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
+        [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
         // Use this for initialization
         void Start()
         {
-            Gun = GetComponentInChildren<GunBehaviour>();
-            Armor = GetComponent<HealthBehaviour>();
-            MaterialMine = GetComponent<MaterialBlockBehaviour>();
-            panel = CurrentPanel.GetComponent<PanelBehaviour>();
+            //initialzes local variables to be gameobjects components
+            _gun = GetComponentInChildren<GunBehaviour>();
+            _armor = GetComponent<HealthBehaviour>();
+            _materialMine = GetComponent<MaterialBlockBehaviour>();
+            _panel = currentPanel.GetComponent<PanelBehaviour>();
             canUpgrade = false;
-            if (Gun != null)
+            if (_gun != null)
             {
-                Gun.Owner = Owner.name;
+                _gun.owner = owner.name;
             }
         }
 
         private void Awake()
         {
-            OnBlockSpawn.Raise();
+            //raises the event signaling the block has been spawned
+            onBlockSpawn.Raise();
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            //If the player cannot upgrade yet do nothing 
             if (!canUpgrade)
             {
                 return;
             }
+            //otherwise check the name of the block and upgrade
             if (other.name == "Attack Block(Clone)")
             {
                 UpgradeAttack();
-                OnUpgrade.Raise();
+                onUpgrade.Raise();
             }
             else if (other.name == "Defense Block(Clone)")
             {
                 UpgradeDefense();
-                OnUpgrade.Raise();
+                onUpgrade.Raise();
             }
             else if (other.name == "Material Block(Clone)")
             {
                 UpgradeMaterial();
-                OnUpgrade.Raise();
+                onUpgrade.Raise();
             }
+            //Destroys the block placed on top after the upgrade to free up space
             BlockBehaviour block;
             block = other.GetComponent<BlockBehaviour>();
             var destroyblock = other.GetComponent<DeletionBlockBehaviour>();
             if (block != null && destroyblock == null)
             {
                 block.DestroyBlock();
-                CurrentPanel.GetComponent<PanelBehaviour>().Occupied = true;
+                currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
             }
 
         }
+        //stes the can upgrade boolean to true
         public void enableUpgrades()
         {
             canUpgrade = true;
         }
+        //Destroys this block instantly
         public void DestroyBlock()
         {
-            panel.Occupied = false;
+            _panel.Occupied = false;
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
+        //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
-            panel.Occupied = false;
+            _panel.Occupied = false;
             GameObject TempGameObject = gameObject;
             Destroy(TempGameObject,time);
         }
+        //increases attack power and bullet count
         public void UpgradeAttack()
         {
-            Gun.enabled = true;
-            Gun.DamageVal += 1;
-            Gun.Bullet_Count += 15;
+            _gun.enabled = true;
+            _gun.damageVal += 1;
+            _gun.bulletCount += 15;
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .5f, 1);
         }
+        //Increases health value 
         public void UpgradeDefense()
         {
-            if (Armor != null)
+            if (_armor != null)
             {
-                Armor.enabled = true;
-                Armor.Health.Val += 5;
+                _armor.enabled = true;
+                _armor.Health.Val += 5;
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
             }
         }
+        //increases the materials gained 
         public void UpgradeMaterial()
         {
-            if (MaterialMine != null)
+            if (_materialMine != null)
             {
-                MaterialMine.enabled = true;
-                MaterialMine.MaterialAmount += 10;
+                _materialMine.enabled = true;
+                _materialMine.MaterialAmount += 10;
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

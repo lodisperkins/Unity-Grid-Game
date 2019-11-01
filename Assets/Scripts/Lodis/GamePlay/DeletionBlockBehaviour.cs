@@ -5,13 +5,16 @@ namespace Lodis
 {
     public class DeletionBlockBehaviour : MonoBehaviour
     {
+        //temporary gameobject used to delete the deletion block without deleting the prefab
         private GameObject TempObject;
+        //particles to be played when a block is deleted
         [SerializeField] private ParticleSystem ps;
         private void Start()
         {
             TempObject = gameObject;
             GetComponent<BlockBehaviour>().DestroyBlock(.5f);
         }
+        //plays the particles when a block is deleted for a spcified duration
         public void playDeathParticleSystems(float duration)
         {
             var tempPs = Instantiate(ps,transform.position,transform.rotation);

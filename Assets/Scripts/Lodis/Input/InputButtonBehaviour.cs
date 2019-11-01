@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 public class InputButtonBehaviour : MonoBehaviour {
+    //list of inputs the player has
     [SerializeField]
     private List<InputVariable> inputs;
-    [SerializeField]
-    InputVariable newInput;
+    //reference to the last input added
+    [SerializeField] private InputVariable newInput;
     public float inputBuffer;
     private bool canMove;
+    //used for input buffer
     private float timer;
 
     // Use this for initialization
@@ -16,7 +18,7 @@ public class InputButtonBehaviour : MonoBehaviour {
     {
         canMove = true;
     }
-    
+    //checks the list to see if any of the button are down
     public void CheckButton()
     {
         foreach (var input in inputs)
@@ -41,11 +43,13 @@ public class InputButtonBehaviour : MonoBehaviour {
             }
         }
     }
+    //adds an input to the list
     public void AddInput(string Axis,string message1,string message2,string message3, object Arg)
     {
         newInput = InputVariable.CreateInstance(Axis, message1,message2,message3, Arg,inputBuffer);
         inputs.Add(newInput);
     }
+    //clears the entire input list
     public void Clear()
     {
         inputs.Clear();

@@ -14,15 +14,22 @@ namespace Lodis
         public string Owner;
         //Is true if a gameobjects position has been set to be the same as the panels
         public bool Occupied;
+        //the color the panel is set to by default in the editor
         private Color DefaultColor;
+        //the current color the panel is being set to
         private Color CurrentColor;
+        //the color the panel should be highlighted when selected
         public Color SelectionColor;
+        //whether or not the panel is currently being selected
         private bool _selected;
+        //the reference tho the players material
         private Material _player1Mat;
         private Material _player2Mat;
+        
         private bool _attackHighlight;
         private float timer;
         private bool TimerSet;
+        //the current material on the panel
         private Material _panelMat;
         private void Start()
         {
@@ -35,7 +42,7 @@ namespace Lodis
         {
             
         }
-
+        //one set calls the highlight panel fucntion with current status of the _selected variable
         public bool Selected
         {
             get
@@ -53,6 +60,7 @@ namespace Lodis
 
         private void OnTriggerEnter(Collider other)
         {
+            //highlights the panel if a bullet passes through it 
             if (other.CompareTag("Projectile"))
             {
                 _attackHighlight = true;
@@ -66,14 +74,14 @@ namespace Lodis
             _attackHighlight = false;
             UpdateColor();
         }
-
+        //initializes the panel with the players materials and colors itself accordingly
         public void Init(Material player1Mat, Material player2Mat)
         {
             _player1Mat = player1Mat;
             _player2Mat = player2Mat;
             UpdateColor();
         }
-        
+        //Highlights the panel if the value passed in is true
         private void HighlightPanel(bool isSelected)
         {
             if (isSelected)
@@ -83,7 +91,7 @@ namespace Lodis
             }
             UpdateColor();
         }
-
+        //(not working)changes the panel back to the owners color after a certain amount of time
         private void RevertToOwnerColor(float RevertTime)
         {
             if (_attackHighlight && TimerSet == false)
@@ -99,7 +107,7 @@ namespace Lodis
                 TimerSet = false;
             }
         }
-        
+        //Updates the coor of the panel to be that of its current owner
         public void UpdateColor()
         {
             _panelMat = GetComponent<MeshRenderer>().material;
@@ -136,6 +144,7 @@ namespace Lodis
             }
              
         }
+        //changes the current owner of the panel to be the name of the item passsed in
         public void UpdateOwner(string newOwner)
         {
             Owner = newOwner;
