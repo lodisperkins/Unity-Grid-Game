@@ -1,8 +1,35 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f86dcd8-592b-4c4e-8e58-1f2f91a08aec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Lodis/GamePlay/GridBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Lodis/GamePlay/GridBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Grid Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Grid Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations/Sorceress@Attack1.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations/Sorceress@Attack1.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations/Sorceress@Idle.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations/Sorceress@Idle.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations/Sorceress@Run.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Animations/Sorceress@Run.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Characters.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Characters/Sorceress-Hair.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Characters/Sorceress-Hair.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Characters/Sorceress.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Characters/Sorceress.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Materials/Sorceress.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Materials/Sorceress.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Prefabs/Sorceress Warrior Animation Controller.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Prefabs/Sorceress Warrior Animation Controller.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Prefabs/Sorceress Warrior.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Prefabs/Sorceress Warrior.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Textures/Sorceress.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/Sorceress Warrior Mecanim Animation Pack Free/Textures/Sorceress.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/WarriorPackBundle1FREEReadMe.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Warrior Pack Bundle 1 FREE/WarriorPackBundle1FREEReadMe.pdf.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,6 +41,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Lodis/Movement/PlayerMovementBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Lodis/GamePlay/PanelBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Lodis/GamePlay/GridBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -77,6 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572386101535</updated>
       <workItem from="1572386105129" duration="1409000" />
+      <workItem from="1572644223487" duration="712000" />
     </task>
     <servers />
   </component>
@@ -90,7 +119,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
