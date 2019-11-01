@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 namespace Lodis
 {
@@ -21,6 +23,9 @@ namespace Lodis
         //The direction the player is inputting. Used to determine where the object will spawn
         [SerializeField]
         private Vector2Variable direction;
+        //The rotation direction the player is inputting. Used to determine blocks rotation
+        [SerializeField]
+        private Vector2Variable _rotdirection;
         //used to get access to the list of available panels
         [SerializeField]
         private PlayerMovementBehaviour player;
@@ -28,6 +33,7 @@ namespace Lodis
         public Dictionary<string, GameObject> panels_in_range;
         //Used to store the blocks current rotation
         private Quaternion block_rotation;
+        private int block_rotation_degrees;
         //The angle at which the block is being rotated
         [SerializeField]
         private float rotation_val;
@@ -46,12 +52,16 @@ namespace Lodis
         private Event OnDeleteEnabled;
         [SerializeField]
         private Event OnDeleteDisabled;
+
+        private Vector3 BlockForward;
         private bool DeleteEnabled;
         // Use this for initialization
         void Start()
         {
             panels_in_range = new Dictionary<string, GameObject>();
             block_rotation = transform.rotation;
+            block_rotation_degrees = 90;
+            BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;
             materials.Val = 100;
@@ -295,13 +305,26 @@ namespace Lodis
             }
             UnHighlightPanels();
         }
-        //Rotates the block -90 degrees
-        public void RotateBlock()
+        //Rotates the block so that it faces right 
+        public void RotateBlockRight()
         {
-            rotation_val -= 90;
-            block_rotation = Quaternion.Euler(0, rotation_val, 0);
+            block_rotation_degrees = 0;
         }
-        
+        //Rotates the block so that it faces left 
+        public void RotateBlockLeft()
+        {
+            block_rotation_degrees = 180;
+        }
+        //Rotates the block so that it faces left 
+        public void RotateBlockUp()
+        {
+            block_rotation_degrees = -90;
+        }
+        //Rotates the block so that it faces left 
+        public void RotateBlockDown()
+        {
+            block_rotation_degrees = 90;
+        }
         // Update is called once per frame
         void Update()
         {
@@ -310,6 +333,7 @@ namespace Lodis
                 AddMaterials(15);
                 material_regen_time = Time.time + material_regen_rate;
             }
+            block_rotation = Quaternion.Euler(0, block_rotation_degrees,0);
         }
 
     }

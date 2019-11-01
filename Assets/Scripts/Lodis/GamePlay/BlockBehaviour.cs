@@ -115,7 +115,7 @@ namespace Lodis
             if (_armor != null)
             {
                 _armor.enabled = true;
-                _armor.Health.Val += 5;
+                _armor.Health.Val += 20;
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
             }
         }
