@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a97f3e889eb4d4c97355e8c6416263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPanel: {fileID: 0}
-  Owner: {fileID: 0}
+  currentPanel: {fileID: 0}
+  owner: {fileID: 0}
   cost: 0
   canUpgrade: 0
-  OnUpgrade: {fileID: 0}
-  OnBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
+  onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
+  onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
 --- !u!114 &114616023834657678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,4 +119,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 19800000, guid: 6746092d79f3e4fe1bfa983603238e26, type: 2}
-  OnBlockDeleted: {fileID: 11400000, guid: df594010b75c6e348bd83c3c6d6ec670, type: 2}
