@@ -10249,6 +10249,21 @@ Prefab:
       propertyPath: m_Name
       value: Text Left Scoreboard middle
       objectReference: {fileID: 0}
+    - target: {fileID: 114204669464161176, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204669464161176, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114944119001927768, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5, type: 2}
   m_IsPrefabAsset: 0
@@ -11622,18 +11637,6 @@ Prefab:
       propertyPath: intendedSender
       value: 
       objectReference: {fileID: 2142911582}
-    - target: {fileID: 114804898863985258, guid: 3c61a511821b873468c4c066ef68dc65,
-        type: 2}
-      propertyPath: _p1PanelsRef
-      value: 
-      objectReference: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-    - target: {fileID: 114804898863985258, guid: 3c61a511821b873468c4c066ef68dc65,
-        type: 2}
-      propertyPath: _p2PanelsRef
-      value: 
-      objectReference: {fileID: 114649712960447932, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
   m_IsPrefabAsset: 0

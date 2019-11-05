@@ -4524,7 +4524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health_Ref: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
-  Health: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
+  Health: {fileID: 11400000, guid: 72aaaf3be9edd484b81a43a5a3df1748, type: 2}
   IsAlive: 0
   OnDeath:
     m_PersistentCalls:
@@ -4863,17 +4863,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edd9e78012199f4cacf9b1bc10af92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _p1PanelsRef: {fileID: 0}
-  _p2PanelsRef: {fileID: 0}
-  P1Panels: {fileID: 11400000, guid: dce9da33097f9cb43b5f47a2d9632a31, type: 2}
-  P2Panels: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
-  P1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
-  P2Position: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
-  OnPanelsSwapped: {fileID: 11400000, guid: be2e3e124c3623947a79697a94633a28, type: 2}
-  P1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
-  P2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
-  P1Direction: {fileID: 11400000, guid: e20c7f439e26aab40ac7c4c3e2e1538f, type: 2}
-  P2Direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
+  p1Panels: {fileID: 11400000, guid: dce9da33097f9cb43b5f47a2d9632a31, type: 2}
+  p2Panels: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
+  p1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
+  p2Position: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
+  onPanelsSwapped: {fileID: 11400000, guid: be2e3e124c3623947a79697a94633a28, type: 2}
+  p1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
+  p2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
+  p1Direction: {fileID: 11400000, guid: e20c7f439e26aab40ac7c4c3e2e1538f, type: 2}
+  p2Direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
   _p1Material: {fileID: 2100000, guid: b0311fdddf517894cbb510cf31c09b72, type: 2}
   _p2Material: {fileID: 2100000, guid: 7d67433f2c41a274d9c0d2617e94584f, type: 2}
 --- !u!114 &114825470100298312
