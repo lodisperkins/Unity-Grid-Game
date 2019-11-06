@@ -9,6 +9,8 @@ namespace Lodis
         //the reference of what the objects health should start as
         [SerializeField]
         private IntVariable Health_Ref;
+
+        public int DisplayHealth;
         //the current health of the object
         public IntVariable Health;
         //whether or not the object is alive
@@ -22,7 +24,7 @@ namespace Lodis
         // Use this for initialization
         public void Start()
         {
-            Health.Val = Health_Ref.Val;
+            Health = IntVariable.CreateInstance(Health_Ref.Val);
             IsAlive = true;
         }
         //decrements the objects health by the damge amount given

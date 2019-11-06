@@ -188,7 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health_Ref: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
-  Health: {fileID: 11400000, guid: b45218432712cc5439574807e5056e5b, type: 2}
+  DisplayHealth: 0
+  Health: {fileID: 0}
   IsAlive: 0
   OnDeath:
     m_PersistentCalls:
