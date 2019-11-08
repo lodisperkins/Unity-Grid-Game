@@ -43,6 +43,7 @@
               <e p="PauseMenuBehaviour.cs" t="Include" />
               <e p="PlayerAnimationBehaviour.cs" t="Include" />
               <e p="PlayerSpawnBehaviour.cs" t="Include" />
+              <e p="RobotSpecialBehaviour.cs" t="Include" />
               <e p="RoutineBehaviour.cs" t="Include" />
               <e p="TextBehaviour.cs" t="Include" />
             </e>

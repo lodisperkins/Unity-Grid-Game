@@ -31,7 +31,7 @@ namespace Lodis
         [SerializeField]
         public Event OnPanelStealEnabled;
         //the current panel the player is on
-        private GameObject _currentPanel;
+        public GameObject _currentPanel;
         public GameObject CurrentPanel
         {
             get
@@ -52,7 +52,7 @@ namespace Lodis
             Destination = Position;
             canMove = true;
             panelStealActive = false;
-            _currentPanel = Panels[0];
+            _currentPanel = Panels[17];
         }
 
         private void Awake()
@@ -87,6 +87,12 @@ namespace Lodis
                 OnPanelSteal.Raise(gameObject);
             }       
         }
+
+        public void resetPositionToCurrentPanel()
+        {
+            transform.position = new Vector3(CurrentPanel.transform.position.x, transform.position.y, CurrentPanel.transform.position.z);
+        }
+        
         //enables the players movement
         public void EnableMovement()
         {
