@@ -17,7 +17,7 @@ namespace Lodis
         //the color the panel is set to by default in the editor
         private Color DefaultColor;
         //the current color the panel is being set to
-        private Color CurrentColor;
+        private Color _currentColor;
         //the color the panel should be highlighted when selected
         public Color SelectionColor;
         //whether or not the panel is currently being selected
@@ -33,7 +33,7 @@ namespace Lodis
         private Material _panelMat;
         private void Start()
         {
-            CurrentColor = new Color();
+            _currentColor = new Color();
             
             TimerSet = false;
         }
@@ -102,9 +102,9 @@ namespace Lodis
             }
             else if (Time.time >= timer && _attackHighlight)
             {
-                UpdateColor();
                 _attackHighlight = false;
                 TimerSet = false;
+                UpdateColor();
             }
         }
         //Updates the coor of the panel to be that of its current owner
@@ -114,19 +114,19 @@ namespace Lodis
             if(_attackHighlight)
              {
                  _panelMat.color = Color.yellow;
-                 CurrentColor = Color.yellow;
+                 _currentColor = Color.yellow;
              }
             else if (Owner == "Player1")
             {
                 if (_player1Mat == null)
                 {
                     _panelMat.color = Color.black;
-                    CurrentColor = Color.red;
+                    _currentColor = Color.red;
                 }
                 else
                 {
                     _panelMat.color = _player1Mat.color;
-                    CurrentColor = _player1Mat.color;
+                    _currentColor = _player1Mat.color;
                 }
             }
             else if (Owner == "Player2")
@@ -134,12 +134,12 @@ namespace Lodis
                 if (_player2Mat == null)
                 {
                     _panelMat.color = Color.black;
-                    CurrentColor = Color.cyan;
+                    _currentColor = Color.cyan;
                 }
                 else
                 {
                     _panelMat.color = _player2Mat.color;
-                    CurrentColor = _player2Mat.color;
+                    _currentColor = _player2Mat.color;
                 }
             }
              
@@ -161,7 +161,6 @@ namespace Lodis
 
         private void Update()
         {
-            RevertToOwnerColor(1f);
             
         }
     }

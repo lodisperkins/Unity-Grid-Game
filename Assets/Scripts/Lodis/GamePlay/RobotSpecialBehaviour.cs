@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis;
+using Lodis.Gameplay;
 using UnityEngine;
 
 namespace Lodis.GamePlay
@@ -11,18 +12,31 @@ namespace Lodis.GamePlay
     	private Rigidbody RobotBody;
         public Event OnSpecialAbilityActivated;
         public Event OnSpecialAbilityDeactivated;
+       
+        public bool SpecialAbilityReady;
+        [SerializeField] private TeleportBeamBehaviour _teleportBeam;
     	public float tackleForce;
     	// Use this for initialization
     	void Start ()
     	{
     		RobotBody = GetComponent<Rigidbody>();
-    	}
+            SpecialAbilityReady = false;
+        }
+
+        public void ToggleSpecialAbility()
+        {
+	        SpecialAbilityReady = !SpecialAbilityReady;
+        }
         
     	public void RollAttack()
     	{
-	        RobotBody.AddForce(0,0,tackleForce);
-	        SendMessage("EnableMoveAnimation");
-	        OnSpecialAbilityActivated.Raise(gameObject);
+	        if (SpecialAbilityReady)
+	        {
+		        RobotBody.AddForce(0,0,tackleForce);
+		        Debug.Log("try tackle");
+		        OnSpecialAbilityActivated.Raise(gameObject);
+	        }
+	        
     	}
     
     	public void RollRecoil()
@@ -33,25 +47,25 @@ namespace Lodis.GamePlay
     	private void OnTriggerEnter(Collider other)
     	{
     		var health = other.GetComponent<HealthBehaviour>();
-    		if (other.CompareTag("Projectile"))
-    		{
-    			health.DestroyBlock(2);
-    		}
-    		else if (other.CompareTag("Player"))
-    		{
-    			health.takeDamage(20);
-                OnSpecialAbilityDeactivated.Raise(gameObject);
-    		}
-            
+            if(health != null)
+            {   
+	            if (other.CompareTag("Block"))
+    			{
+    				other.SendMessage("DestroyBlock",2);
+                    health.playDeathParticleSystems(2);
+    			}
+    			else if (other.CompareTag("Player") || other.CompareTag("Core")) 
+    			{
+    				health.takeDamage(20);
+	                OnSpecialAbilityDeactivated.Raise(gameObject);
+	                _teleportBeam.ascending = true;
+    			}
+            }
     	}
     
     	private void OnCollisionEnter(Collision other)
     	{
-    		if (other.gameObject.CompareTag("Player"))
-    		{
-    			SendMessage("resetPositionToCurrentPanel");
-                SendMessage("DisableMoveAnimation");
-    		}
+	      
     		
     	}
     	// Update is called once per frame

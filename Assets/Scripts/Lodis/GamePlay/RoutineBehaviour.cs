@@ -28,6 +28,12 @@ namespace Lodis.GamePlay
             _isOnActionsCompletedNotNull = onActionsCompleted != null;
             StartCoroutine(PerformActions());
         }
+
+        public void ResetActions()
+        {
+            StopCoroutine(PerformActions());
+            StartCoroutine(PerformActions());
+        }
         private IEnumerator PerformActions()
         {
             for (var i = 0; i < actionLimit; i++)
