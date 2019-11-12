@@ -31,7 +31,7 @@ namespace Lodis.GamePlay
 
         public void ResetActions()
         {
-            StopCoroutine(PerformActions());
+            StopAllCoroutines();
             StartCoroutine(PerformActions());
         }
         private IEnumerator PerformActions()

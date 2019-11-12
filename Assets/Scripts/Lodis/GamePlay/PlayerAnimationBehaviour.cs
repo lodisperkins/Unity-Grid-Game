@@ -18,4 +18,11 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 		if(_animator != null)
 			_animator.SetBool("IsMoving",false);
 	}
+
+	public void EnableAttackAnimation()
+	{
+		if(_animator != null)
+			_animator.SetTrigger("Attack1Trigger");
+	}
+	
 }
