@@ -18135,17 +18135,17 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01377584c22b84f819ecac7f4047c921, type: 2}
+      objectReference: {fileID: 2100000, guid: fab3fe7f6e5a1ca449b9907c17526fdc, type: 2}
     - target: {fileID: 23825787368756530, guid: e7965cb5f3b6b49439772edd4131b2b0,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9f2645559b8b14773b709fbd9bd6e2ff, type: 2}
+      objectReference: {fileID: 2100000, guid: fab3fe7f6e5a1ca449b9907c17526fdc, type: 2}
     - target: {fileID: 23064141111040578, guid: e7965cb5f3b6b49439772edd4131b2b0,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9f2645559b8b14773b709fbd9bd6e2ff, type: 2}
+      objectReference: {fileID: 2100000, guid: fab3fe7f6e5a1ca449b9907c17526fdc, type: 2}
     - target: {fileID: 23750710694979992, guid: e7965cb5f3b6b49439772edd4131b2b0,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -18155,12 +18155,17 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7d67433f2c41a274d9c0d2617e94584f, type: 2}
+      objectReference: {fileID: 2100000, guid: 9e52c53a0d29f2c49adf71e8cc6ca46f, type: 2}
     - target: {fileID: 23953999079417186, guid: e7965cb5f3b6b49439772edd4131b2b0,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f5da68cd484f44ced9e11ab1ad6a9c1a, type: 2}
+      objectReference: {fileID: 2100000, guid: c8dfbb59b2b6bf643a87072f155a01de, type: 2}
+    - target: {fileID: 23398414639640764, guid: e7965cb5f3b6b49439772edd4131b2b0,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b1a016856447204289da1fec2ee17e7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7965cb5f3b6b49439772edd4131b2b0, type: 2}
   m_IsPrefabAsset: 0
