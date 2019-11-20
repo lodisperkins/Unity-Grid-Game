@@ -60,7 +60,6 @@ namespace Lodis
         {
             panels_in_range = new Dictionary<string, GameObject>();
             block_rotation = transform.rotation;
-            block_rotation_degrees = 90;
             BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;

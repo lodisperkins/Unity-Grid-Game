@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,11 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 	
 	public void EnableMoveAnimation()
 	{
-		if(_animator != null)
+		if (_animator != null)
+		{
 			_animator.SetBool("IsMoving",true);
+		}
+			
 	}
 
 	public void DisableMoveAnimation()
@@ -24,5 +28,16 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 		if(_animator != null)
 			_animator.SetTrigger("Attack1Trigger");
 	}
-	
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if(_animator != null && _animator.GetBool("Squat")==false)
+			_animator.SetBool("Squat",true);
+		
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		_animator.SetBool("Squat",false);
+	}
 }
