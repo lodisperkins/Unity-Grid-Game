@@ -125,7 +125,7 @@ namespace Lodis
             if (_materialMine != null)
             {
                 _materialMine.enabled = true;
-                _materialMine.MaterialAmount += 10;
+                _materialMine.MaterialAmount += 2;
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
             }
         }

@@ -105,13 +105,13 @@ namespace Lodis.GamePlay
             int index = 0;
             if (p2Panels.FindIndex(panelPosition, out index))
             {
-                if (p1Materials.Val < 100)
+                if (p1Materials.Val < 60)
                 {
                     onPanelsSwapped.Raise();
                     UnHighlightPanelsP1();
                     return;
                 }
-                p1Materials.Val -= 100;
+                p1Materials.Val -= 60;
                 p2Panels.TransferPanel(p1Panels, index);
                 UnHighlightPanelsP1();
                 p1Panels.updateOwners();
@@ -127,13 +127,13 @@ namespace Lodis.GamePlay
             int index = 0;
             if (p1Panels.FindIndex(panelPosition, out index))
             {
-                if (p2Materials.Val < 100)
+                if (p2Materials.Val < 60)
                 {
                     onPanelsSwapped.Raise();
                     UnHighlightPanelsP2();
                     return;
                 }
-                p2Materials.Val -= 100;
+                p2Materials.Val -= 60;
                 p1Panels.TransferPanel(p2Panels, index);
                 UnHighlightPanelsP2();
                 p2Panels.updateOwners();

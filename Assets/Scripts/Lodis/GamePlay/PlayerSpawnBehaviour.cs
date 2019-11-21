@@ -53,6 +53,8 @@ namespace Lodis
         [SerializeField]
         private Event OnDeleteDisabled;
 
+        [SerializeField] private int _materialsRegenVal;
+        [SerializeField] private int _materialCap;
         private Vector3 BlockForward;
         private bool DeleteEnabled;
         // Use this for initialization
@@ -63,7 +65,7 @@ namespace Lodis
             BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;
-            materials.Val = 100;
+            materials.Val = 10;
             material_regen_time = Time.time + material_regen_rate;
         }
         /// <summary>
@@ -327,9 +329,9 @@ namespace Lodis
         // Update is called once per frame
         void Update()
         {
-            if (Time.time >= material_regen_time)
+            if (Time.time >= material_regen_time && materials.Val < _materialCap)
             {
-                AddMaterials(15);
+                AddMaterials(_materialsRegenVal);
                 material_regen_time = Time.time + material_regen_rate;
             }
             block_rotation = Quaternion.Euler(0, block_rotation_degrees,0);
