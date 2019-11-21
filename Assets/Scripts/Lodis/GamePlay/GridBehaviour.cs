@@ -156,25 +156,25 @@ namespace Lodis.GamePlay
                 if ((p1Position.Val + DisplacementX) == coordinate)
                 {
                     p1Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
                 else if ((p1Position.Val - DisplacementX) == coordinate)
                 {
                     p1Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
                 else if ((p1Position.Val + DisplacementY) == coordinate)
                 {
                     p1Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
                 else if ((p1Position.Val - DisplacementY) == coordinate)
                 {
                     p1Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
             }
@@ -212,25 +212,25 @@ namespace Lodis.GamePlay
                 if ((p2Position.Val + DisplacementX) == coordinate)
                 {
                     p2Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
                 else if ((p2Position.Val - DisplacementX) == coordinate)
                 {
                     p2Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
                 else if ((p2Position.Val + DisplacementY) == coordinate)
                 {
                     p2Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
                 else if ((p2Position.Val - DisplacementY) == coordinate)
                 {
                     p2Panels.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.yellow;
+                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
             }
