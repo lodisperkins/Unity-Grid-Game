@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,7 +39,6 @@ namespace Lodis
         void Start()
         {
             StartCoroutine(Fire());
-            
         }
         //fires a bullet with a specified interval of time
         private IEnumerator Fire()
@@ -56,6 +56,12 @@ namespace Lodis
             }
             outOfAmmo.Invoke();
         }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
         // Update is called once per frame
         void Update()
         {

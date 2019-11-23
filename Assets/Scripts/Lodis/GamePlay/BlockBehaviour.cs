@@ -22,9 +22,18 @@ namespace Lodis
         MaterialBlockBehaviour _materialMine;
         //The script of the panel this block is currently on
         PanelBehaviour _panel;
+
+        [SerializeField] private Material _sleepingMateral;
+        [SerializeField]
+        private Material _defaultMaterial;
+
+        private bool _awake;
+        private GameObject _parent;
+        private GameObject _child;
+        private Material _currentMaterial;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
-
+        public bool sleeping;
         [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
         // Use this for initialization
@@ -35,7 +44,9 @@ namespace Lodis
             _armor = GetComponent<HealthBehaviour>();
             _materialMine = GetComponent<MaterialBlockBehaviour>();
             _panel = currentPanel.GetComponent<PanelBehaviour>();
+            _currentMaterial = GetComponent<Renderer>().material;
             canUpgrade = false;
+            _awake = true;
             if (_gun != null)
             {
                 _gun.owner = owner.name;
@@ -46,6 +57,7 @@ namespace Lodis
         {
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
+            _awake = true;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -77,7 +89,9 @@ namespace Lodis
             var destroyblock = other.GetComponent<DeletionBlockBehaviour>();
             if (block != null && destroyblock == null)
             {
-                block.DestroyBlock();
+                _child = other.gameObject;
+                block._parent = this.gameObject;
+                block.MakeBlockSleep(transform.position);
                 currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
             }
 
@@ -94,6 +108,54 @@ namespace Lodis
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
+        public void MakeBlockSleep(Vector3 parentPosition)
+        {
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Renderer>().material = _sleepingMateral;
+            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+            sleeping = true;
+            transform.localScale-= new Vector3(.5f,.5f,.5f);
+            transform.Translate(Vector3.up);
+            if (name == "Attack Block(Clone)")
+            {
+                GetComponentInChildren<GunBehaviour>().enabled = false;
+            }
+            
+            foreach (MonoBehaviour component in components)
+            {
+                if (component is BlockBehaviour)
+                {
+                    continue;
+                }
+                component.enabled = false;
+            }
+
+            _awake = false;
+        }
+
+        public void WakeBlock()
+        {
+            GetComponent<Rigidbody>().useGravity = true;
+            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+            sleeping = false;
+            transform.localScale+= new Vector3(.5f,.5f,.5f);
+            if (name == "Attack Block(Clone)")
+            {
+                GetComponentInChildren<GunBehaviour>().enabled = true;
+            }
+            
+            foreach (MonoBehaviour component in components)
+            {
+                if (component is BlockBehaviour)
+                {
+                    continue;
+                }
+                component.enabled = true;
+            }
+
+            _awake = true;
+        }
+        
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
@@ -127,6 +189,18 @@ namespace Lodis
                 _materialMine.enabled = true;
                 _materialMine.MaterialAmount += 2;
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
+            }
+        }
+
+        private void Update()
+        {
+            if (_parent != null)
+            {
+                transform.Rotate(0,1,0);
+            }
+            else if(_awake == false)
+            {
+                WakeBlock();
             }
         }
     }
