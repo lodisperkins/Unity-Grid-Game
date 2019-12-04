@@ -33,6 +33,8 @@ namespace Lodis
         private Transform _tempTransform;
         //temporary rigidbody for the bullet
         private Rigidbody _tempRigidBody;
+
+        [SerializeField] private Event _onShotFired;
         // the amount of damge the bullet should deal
         [FormerlySerializedAs("DamageVal")] public int damageVal;
         // Use this for initialization
@@ -52,6 +54,7 @@ namespace Lodis
                 _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
                 _bulletForce = transform.forward * bulletForceScale;
                 _tempRigidBody.AddForce(_bulletForce);
+                _onShotFired.Raise(gameObject);
                 yield return new WaitForSeconds(bulletDelay);
             }
             outOfAmmo.Invoke();

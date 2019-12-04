@@ -90,7 +90,7 @@ namespace Lodis.GamePlay
             GameObject temp  = panels[panel_Index];
             if (RemovePanel(panels[panel_Index]))
             {
-                opponent_Panel_List.Add(temp);
+                opponent_Panel_List.panels.Insert(0,temp);
             }
         }
         /// <summary>

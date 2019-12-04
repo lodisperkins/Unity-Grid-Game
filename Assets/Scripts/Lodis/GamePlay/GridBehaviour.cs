@@ -70,6 +70,38 @@ namespace Lodis.GamePlay
             p1Panels.updateOwners();
             p2Panels.updateOwners();
         }
+
+        public GameObject getPanelFromP1List(int index)
+        {
+            return p1Panels[index];
+        }
+
+        public int getIndexFromP1List(Vector2 position)
+        {
+            int index = -1;
+            p1Panels.FindIndex(position, out index);
+            return index;
+        }
+
+        public int CountP1
+        {
+            get { return p1Panels.Count; }
+        }
+        public int CountP2
+        {
+            get { return p2Panels.Count; }
+        }
+        public GameObject getPanelFromP2List(int index)
+        {
+            return p2Panels[index];
+        }
+
+        public int getIndexFromP2List(Vector2 position)
+        {
+            int index = -1;
+            p2Panels.FindIndex(position, out index);
+            return index;
+        }
         //Sets both players materials to either their red or blue variants
         public void AssignPanelMaterials()
         {

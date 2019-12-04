@@ -56,7 +56,7 @@ namespace Lodis.GamePlay
     			}
     			else if (other.CompareTag("Player") || other.CompareTag("Core")) 
     			{
-    				health.takeDamage(20);
+    				health.takeDamage(0);
 	                OnSpecialAbilityDeactivated.Raise(gameObject);
 	                _teleportBeam.ascending = true;
     			}

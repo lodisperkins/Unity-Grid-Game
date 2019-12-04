@@ -28,8 +28,6 @@ namespace Lodis
         private Material _defaultMaterial;
 
         private bool _awake;
-        private GameObject _parent;
-        private GameObject _child;
         private Material _currentMaterial;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
@@ -89,9 +87,7 @@ namespace Lodis
             var destroyblock = other.GetComponent<DeletionBlockBehaviour>();
             if (block != null && destroyblock == null)
             {
-                _child = other.gameObject;
-                block._parent = this.gameObject;
-                block.MakeBlockSleep(transform.position);
+                block.DestroyBlock();
                 currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
             }
 
@@ -115,7 +111,7 @@ namespace Lodis
             MonoBehaviour[] components = GetComponents<MonoBehaviour>();
             sleeping = true;
             transform.localScale-= new Vector3(.5f,.5f,.5f);
-            transform.Translate(Vector3.up);
+            transform.position = parentPosition+Vector3.up;
             if (name == "Attack Block(Clone)")
             {
                 GetComponentInChildren<GunBehaviour>().enabled = false;
@@ -136,6 +132,7 @@ namespace Lodis
         public void WakeBlock()
         {
             GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().isKinematic = false;
             MonoBehaviour[] components = GetComponents<MonoBehaviour>();
             sleeping = false;
             transform.localScale+= new Vector3(.5f,.5f,.5f);
@@ -168,7 +165,7 @@ namespace Lodis
         {
             _gun.enabled = true;
             _gun.damageVal += 1;
-            _gun.bulletCount += 15;
+            _gun.bulletCount += 5;
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .5f, 1);
         }
         //Increases health value 
@@ -194,14 +191,7 @@ namespace Lodis
 
         private void Update()
         {
-            if (_parent != null)
-            {
-                transform.Rotate(0,1,0);
-            }
-            else if(_awake == false)
-            {
-                WakeBlock();
-            }
+            
         }
     }
 }

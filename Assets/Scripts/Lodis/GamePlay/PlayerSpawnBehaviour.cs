@@ -65,7 +65,7 @@ namespace Lodis
             BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;
-            materials.Val = 10;
+            materials.Val = 1000000;
             material_regen_time = Time.time + material_regen_rate;
         }
         /// <summary>
@@ -96,6 +96,11 @@ namespace Lodis
         public void AddMaterials(int Amount)
         {
             materials.Val += Amount;
+            if (materials.Val > _materialCap)
+            {
+                materials.Val = _materialCap;
+            }
+            
         }
         public void EnableDeletion()
         {
@@ -201,7 +206,7 @@ namespace Lodis
             }
             else if (CheckMaterial(blockRef.Cost))
             {
-                var position = new Vector3(panels_in_range["Behind"].transform.position.x, transform.position.y, panels_in_range["Behind"].transform.position.z);
+                var position = new Vector3(panels_in_range["Behind"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Behind"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Behind"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
@@ -230,7 +235,7 @@ namespace Lodis
             }
             else if (CheckMaterial(blockRef.Cost))
             {
-                var position = new Vector3(panels_in_range["Forward"].transform.position.x, transform.position.y, panels_in_range["Forward"].transform.position.z);
+                var position = new Vector3(panels_in_range["Forward"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Forward"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Forward"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
@@ -260,7 +265,7 @@ namespace Lodis
             else if (CheckMaterial(blockRef.Cost))
             {
 
-                var position = new Vector3(panels_in_range["Above"].transform.position.x, transform.position.y, panels_in_range["Above"].transform.position.z);
+                var position = new Vector3(panels_in_range["Above"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Above"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Above"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
@@ -290,7 +295,7 @@ namespace Lodis
             }
             else if (CheckMaterial(blockRef.Cost))
             {
-                var position = new Vector3(panels_in_range["Below"].transform.position.x, transform.position.y, panels_in_range["Below"].transform.position.z);
+                var position = new Vector3(panels_in_range["Below"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Below"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Below"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
@@ -334,7 +339,7 @@ namespace Lodis
                 AddMaterials(_materialsRegenVal);
                 material_regen_time = Time.time + material_regen_rate;
             }
-            block_rotation = Quaternion.Euler(0, block_rotation_degrees,0);
+            block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees, blocks[current_index].transform.rotation.z);
         }
 
     }
