@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.1
+  actionDelay: 1
   actionLimit: 1
   hasLimit: 0
 --- !u!114 &114782364321774370
@@ -340,6 +340,7 @@ MonoBehaviour:
   cost: 10
   _sleepingMateral: {fileID: 2100000, guid: 076dec6e98a51b44b83db6d3af79e422, type: 2}
   _defaultMaterial: {fileID: 2100000, guid: 49072dbdbbad6f14a8be532a51dca450, type: 2}
+  BlockWeightVal: 1
   canUpgrade: 1
   sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}

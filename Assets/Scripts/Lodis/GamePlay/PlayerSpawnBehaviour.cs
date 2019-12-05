@@ -57,6 +57,8 @@ namespace Lodis
         [SerializeField] private int _materialCap;
         private Vector3 BlockForward;
         private bool DeleteEnabled;
+
+        private PanelBehaviour _panel;
         // Use this for initialization
         void Start()
         {
@@ -131,30 +133,47 @@ namespace Lodis
             //player current position combined with x or y displacement
             foreach (GameObject panel in player.Panels)
             {
+                _panel = panel .GetComponent<PanelBehaviour>();
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
+                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    {
+                        continue;
+                    }
                     panels_in_range.Add("Forward", panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = SelectionColor;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    _panel.SelectionColor = SelectionColor;
+                    _panel.Selected = true;
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
+                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    {
+                        continue;
+                    }
                     panels_in_range.Add("Behind", panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = SelectionColor;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    _panel.SelectionColor = SelectionColor;
+                    _panel.Selected = true;;
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
+                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    {
+                        continue;
+                    }
                     panels_in_range.Add("Above", panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = SelectionColor;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    _panel.SelectionColor = SelectionColor;
+                    _panel.Selected = true;
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
+                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    {
+                        continue;
+                    }
                     panels_in_range.Add("Below", panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = SelectionColor;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    _panel.SelectionColor = SelectionColor;
+                    _panel.Selected = true;
                 }
             }
         }

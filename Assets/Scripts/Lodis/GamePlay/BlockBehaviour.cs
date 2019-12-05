@@ -27,6 +27,7 @@ namespace Lodis
         [SerializeField]
         private Material _defaultMaterial;
 
+        public int BlockWeightVal;
         private bool _awake;
         private Material _currentMaterial;
         //If true, the player may upgrade this block, otherwise they must wait until it is
@@ -42,6 +43,7 @@ namespace Lodis
             _armor = GetComponent<HealthBehaviour>();
             _materialMine = GetComponent<MaterialBlockBehaviour>();
             _panel = currentPanel.GetComponent<PanelBehaviour>();
+            _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
             canUpgrade = false;
             _awake = true;
@@ -55,6 +57,7 @@ namespace Lodis
         {
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
+            
             _awake = true;
         }
 
@@ -157,6 +160,7 @@ namespace Lodis
         public void DestroyBlock(float time)
         {
             _panel.Occupied = false;
+            _panel.blockCounter = 0;
             GameObject TempGameObject = gameObject;
             Destroy(TempGameObject,time);
         }

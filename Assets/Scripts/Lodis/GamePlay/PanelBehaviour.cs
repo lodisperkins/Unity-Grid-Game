@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace Lodis
 {
     public class PanelBehaviour : MonoBehaviour
@@ -25,7 +27,16 @@ namespace Lodis
         //the reference tho the players material
         private Material _player1Mat;
         private Material _player2Mat;
-        
+        [SerializeField]
+        private int _blockLimit;
+
+        [FormerlySerializedAs("_blockCounter")] public int blockCounter;
+        public int BlockLimit
+        {
+            get { return _blockLimit; }
+        }
+
+        [FormerlySerializedAs("_BlockCapacityReached")] public bool BlockCapacityReached;
         private bool _attackHighlight;
         private float timer;
         private bool TimerSet;
@@ -34,8 +45,9 @@ namespace Lodis
         private void Start()
         {
             _currentColor = new Color();
-            
+            _blockLimit = 3;
             TimerSet = false;
+            _panelMat = GetComponent<MeshRenderer>().material;
         }
 
         private void Awake()
@@ -61,14 +73,19 @@ namespace Lodis
         private void OnTriggerEnter(Collider other)
         {
             //highlights the panel if a bullet passes through it 
+            
+            
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
             if (other.CompareTag("Projectile"))
             {
                 _attackHighlight = true;
                 UpdateColor();
             }
-            
         }
-
+        
         private void OnTriggerExit(Collider other)
         {
             _attackHighlight = false;
@@ -110,7 +127,7 @@ namespace Lodis
         //Updates the coor of the panel to be that of its current owner
         public void UpdateColor()
         {
-            _panelMat = GetComponent<MeshRenderer>().material;
+            
             if(_attackHighlight)
              {
                  _panelMat.color = Color.yellow;
@@ -161,7 +178,15 @@ namespace Lodis
 
         private void Update()
         {
-            
+            if (blockCounter == _blockLimit)
+            {
+                BlockCapacityReached = true;
+            }
+            else
+            {
+                BlockCapacityReached = false;
+            }
+            UpdateOwner(Owner);
         }
     }
     

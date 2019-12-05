@@ -374,6 +374,7 @@ MonoBehaviour:
   cost: 30
   _sleepingMateral: {fileID: 0}
   _defaultMaterial: {fileID: 0}
+  BlockWeightVal: 1
   canUpgrade: 0
   sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}

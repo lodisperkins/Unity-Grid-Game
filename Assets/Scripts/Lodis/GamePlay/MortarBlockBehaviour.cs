@@ -31,7 +31,7 @@ public class MortarBlockBehaviour : MonoBehaviour
 	{
 		
 	}
-	
+	//needs to be cleaned up
 	public void AimAtOpponentPanel()
 	{
 		_yPosition = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.y;
@@ -58,8 +58,17 @@ public class MortarBlockBehaviour : MonoBehaviour
 		{
 			tp = 9;
 		}
+		else if(tp < 0)
+		{
+			tp = 0;
+		}
 		
 		int target= _grid.getIndexFromP2List(new Vector2(tp, yPos));
+		if (target == -1)
+		{
+			target = 0;
+		}
+		
 		_targetPanel = _grid.getPanelFromP2List(target);
 		_targetPosition = _targetPanel.transform.position + _bulletEmitterPosition;
 	}
