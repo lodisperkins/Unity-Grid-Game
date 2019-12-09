@@ -44,24 +44,24 @@ namespace Lodis.GamePlay
     		RobotBody.AddForce(0,0,-tackleForce/2);
     	}
     
-    	private void OnTriggerEnter(Collider other)
-    	{
-    		var health = other.GetComponent<HealthBehaviour>();
-            if(health != null)
-            {   
-	            if (other.CompareTag("Block"))
-    			{
-    				other.SendMessage("DestroyBlock",2);
-                    health.playDeathParticleSystems(2);
-    			}
-    			else if (other.CompareTag("Player") || other.CompareTag("Core")) 
-    			{
-    				health.takeDamage(0);
-	                OnSpecialAbilityDeactivated.Raise(gameObject);
-	                _teleportBeam.ascending = true;
-    			}
-            }
-    	}
+//    	private void OnTriggerEnter(Collider other)
+//    	{
+//    		var health = other.GetComponent<HealthBehaviour>();
+//            if(health != null)
+//            {   
+//	            if (other.CompareTag("Block"))
+//    			{
+//    				other.SendMessage("DestroyBlock",2);
+//                    health.playDeathParticleSystems(2);
+//    			}
+//    			else if (other.CompareTag("Player") || other.CompareTag("Core")) 
+//    			{
+//    				health.takeDamage(0);
+//	                OnSpecialAbilityDeactivated.Raise(gameObject);
+//	                _teleportBeam.ascending = true;
+//    			}
+//            }
+//    	}
     
     	private void OnCollisionEnter(Collision other)
     	{

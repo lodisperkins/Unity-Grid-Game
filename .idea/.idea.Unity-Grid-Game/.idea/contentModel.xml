@@ -66,6 +66,7 @@
               <e p="IListener.cs" t="Include" />
             </e>
             <e p="GamePlay" t="Include">
+              <e p="ArrowBehaviour.cs" t="Include" />
               <e p="BlockBehaviour.cs" t="Include" />
               <e p="BulletBehaviour.cs" t="Include" />
               <e p="DeletionBlockBehaviour.cs" t="Include" />
@@ -74,11 +75,13 @@
               <e p="GunBehaviour.cs" t="Include" />
               <e p="HealthBehaviour.cs" t="Include" />
               <e p="MaterialBlockBehaviour.cs" t="Include" />
+              <e p="MeleeWeaponBehaviour.cs" t="Include" />
               <e p="MortarBlockBehaviour.cs" t="Include" />
               <e p="PanelBehaviour.cs" t="Include" />
               <e p="PanelList.cs" t="Include" />
               <e p="PauseMenuBehaviour.cs" t="Include" />
               <e p="PlayerAnimationBehaviour.cs" t="Include" />
+              <e p="PlayerAttackBehaviour.cs" t="Include" />
               <e p="PlayerSpawnBehaviour.cs" t="Include" />
               <e p="RobotSpecialBehaviour.cs" t="Include" />
               <e p="RoutineBehaviour.cs" t="Include" />

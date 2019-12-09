@@ -50,9 +50,14 @@ namespace Lodis
             _panelMat = GetComponent<MeshRenderer>().material;
         }
 
+        private void OnEnable()
+        {
+            _panelMat = GetComponent<MeshRenderer>().material;
+        }
+
         private void Awake()
         {
-            
+            _panelMat = GetComponent<MeshRenderer>().material;
         }
         //one set calls the highlight panel fucntion with current status of the _selected variable
         public bool Selected
@@ -127,7 +132,7 @@ namespace Lodis
         //Updates the coor of the panel to be that of its current owner
         public void UpdateColor()
         {
-            
+            _panelMat = GetComponent<MeshRenderer>().material;
             if(_attackHighlight)
              {
                  _panelMat.color = Color.yellow;

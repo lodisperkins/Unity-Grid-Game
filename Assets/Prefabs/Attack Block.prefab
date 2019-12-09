@@ -294,6 +294,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1
 --- !u!114 &114439213264607044
@@ -321,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.7
+  actionDelay: 0.5
   actionLimit: 1
   hasLimit: 0
 --- !u!114 &114782364321774370
@@ -360,6 +361,9 @@ MonoBehaviour:
   DisplayHealth: 0
   Health: {fileID: 0}
   IsAlive: 0
+  canHeal: 0
+  _secondaryHealthSource: {fileID: 0}
+  conversionRate: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls:

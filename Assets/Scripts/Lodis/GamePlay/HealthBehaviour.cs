@@ -16,6 +16,12 @@ namespace Lodis
         //whether or not the object is alive
         [SerializeField]
         private bool IsAlive;
+
+        [SerializeField] private bool canHeal;
+
+        [SerializeField] private HealthBehaviour _secondaryHealthSource;
+
+        public int conversionRate;
         //unity event raised when the object dies
         [SerializeField]
         UnityEvent OnDeath;
@@ -49,7 +55,17 @@ namespace Lodis
             tempPs.Play();
             Destroy(tempPs, duration);
         }
-        
+
+        public void Heal()
+        {
+            Debug.Log("Tried Heal");
+            if (_secondaryHealthSource == null || Health.Val == Health_Ref.Val)
+            {
+                return;
+            }
+            _secondaryHealthSource.Health.Val -= conversionRate;
+            Health.Val += 1;
+        }
         // Update is called once per frame
         void Update()
         {

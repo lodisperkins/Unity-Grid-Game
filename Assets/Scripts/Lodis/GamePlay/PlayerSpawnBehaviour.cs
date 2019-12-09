@@ -23,9 +23,7 @@ namespace Lodis
         //The direction the player is inputting. Used to determine where the object will spawn
         [SerializeField]
         private Vector2Variable direction;
-        //The rotation direction the player is inputting. Used to determine blocks rotation
-        [SerializeField]
-        private Vector2Variable _rotdirection;
+      
         //used to get access to the list of available panels
         [SerializeField]
         private PlayerMovementBehaviour player;
@@ -33,6 +31,7 @@ namespace Lodis
         public Dictionary<string, GameObject> panels_in_range;
         //Used to store the blocks current rotation
         private Quaternion block_rotation;
+        [SerializeField]
         private int block_rotation_degrees;
         //The angle at which the block is being rotated
         [SerializeField]
@@ -57,8 +56,10 @@ namespace Lodis
         [SerializeField] private int _materialCap;
         private Vector3 BlockForward;
         private bool DeleteEnabled;
-
+        private bool _buildStateEnabled;
         private PanelBehaviour _panel;
+
+        [SerializeField] private ArrowBehaviour _arrow;
         // Use this for initialization
         void Start()
         {
@@ -67,7 +68,7 @@ namespace Lodis
             BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;
-            materials.Val = 1000000;
+            materials.Val = 10000000;
             material_regen_time = Time.time + material_regen_rate;
         }
         /// <summary>
@@ -137,7 +138,7 @@ namespace Lodis
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    if (_panel.BlockCapacityReached && _buildStateEnabled)
                     {
                         continue;
                     }
@@ -147,7 +148,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    if (_panel.BlockCapacityReached && _buildStateEnabled)
                     {
                         continue;
                     }
@@ -157,7 +158,7 @@ namespace Lodis
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    if (_panel.BlockCapacityReached && _buildStateEnabled)
                     {
                         continue;
                     }
@@ -167,7 +168,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && SelectionColor == Color.green)
+                    if (_panel.BlockCapacityReached && _buildStateEnabled)
                     {
                         continue;
                     }
@@ -194,27 +195,26 @@ namespace Lodis
         //Sets the current block to the next block in the list
         public void NextBlock()
         {
-            current_index++;
+            /*current_index++;
             if (current_index > blocks.Count - 1)
             {
                 current_index = 0;
             }
-            blockRef.Block = blocks[current_index];
+            blockRef.Block = blocks[current_index];*/
         }
         //Sets the current block to the next block in the list
         public void PreviousBlock()
         {
-            current_index--;
+            /*current_index--;
             if (current_index < 0)
             {
                 current_index = blocks.Count - 1;
             }
-            blockRef.Block = blocks[current_index];
+            blockRef.Block = blocks[current_index];*/
         }
         //Places the current block to the left of the player
         public void PlaceBlockLeft()
         {
-            Debug.Log("Tried to place left");
             //The desired direction the block will be placed
             direction.Val = new Vector2(-1, 0);
             //Checks to see if the panel exists in the list and the players movement is frozen
@@ -330,25 +330,79 @@ namespace Lodis
             }
             UnHighlightPanels();
         }
+
+        public void SelectBlock0()
+        {
+            if (_buildStateEnabled)
+            {
+                Debug.Log("tried switch");
+                blockRef.Block = blocks[0];
+                current_index = 0;
+            }
+        }
+        public void SelectBlock1()
+        {
+            if (_buildStateEnabled)
+            {
+                Debug.Log("tried switch");
+                blockRef.Block = blocks[1];
+                current_index = 1;
+            }
+        }
+        public void SelectBlock2()
+        {
+            
+            if (_buildStateEnabled)
+            {
+                Debug.Log("tried switch");
+                blockRef.Block = blocks[2];
+                current_index = 2;
+            }
+        }
+        public void SelectBlock3()
+        {
+            
+            if (_buildStateEnabled)
+            {
+                Debug.Log("tried switch");
+                blockRef.Block = blocks[3];
+                current_index = 3;
+            }
+        }
         //Rotates the block so that it faces right 
         public void RotateBlockRight()
         {
             block_rotation_degrees = 0;
+            _arrow.ShowArrowTemporarily(0);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockLeft()
         {
             block_rotation_degrees = 180;
+            _arrow.ShowArrowTemporarily(180);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockUp()
         {
             block_rotation_degrees = -90;
+            _arrow.ShowArrowTemporarily(-90);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockDown()
         {
             block_rotation_degrees = 90;
+            _arrow.ShowArrowTemporarily(90);
+        }
+
+        private void UpdateArrow()
+        {
+            _arrow.RotateArrow(block_rotation_degrees);
+            if (_buildStateEnabled)
+            {
+                _arrow.ShowArrow();
+                return;
+            }
+            _arrow.HideArrow();
         }
         // Update is called once per frame
         void Update()
@@ -359,6 +413,8 @@ namespace Lodis
                 material_regen_time = Time.time + material_regen_rate;
             }
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees, blocks[current_index].transform.rotation.z);
+            UpdateArrow();
+            _buildStateEnabled = player.canMove == false && SelectionColor == Color.green;
         }
 
     }
