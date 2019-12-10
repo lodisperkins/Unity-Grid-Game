@@ -894,6 +894,7 @@ GameObject:
   - component: {fileID: 114994316191813334}
   - component: {fileID: 114363793525277190}
   - component: {fileID: 114086175624425954}
+  - component: {fileID: 114310844724626630}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -4384,8 +4385,10 @@ MonoBehaviour:
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}
   OnDeleteDisabled: {fileID: 11400000, guid: 3c921c183b437da4e92f02589f00a386, type: 2}
+  overdriveEnabled: 0
   _materialsRegenVal: 5
   _materialCap: 60
+  buildStateEnabled: 0
   _arrow: {fileID: 114913368708520014}
 --- !u!114 &114172036891939358
 MonoBehaviour:
@@ -4467,6 +4470,24 @@ MonoBehaviour:
   actionDelay: 5
   actionLimit: 1
   hasLimit: 0
+--- !u!114 &114310844724626630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd695a6b5890901409b485e528a5333d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 114099383312118654}
+  _health: {fileID: 114476793149227368}
+  _overdriveLength: 0
+  ps: {fileID: 198154296269654108}
+  _particles: {fileID: 1625940903939030}
+  _healVal: 0
+  used: 0
 --- !u!114 &114361469955308476
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -193,10 +193,6 @@ namespace Lodis
             }
         }
 
-        private void OnDestroy()
-        {
-            _panel.Occupied = false;
-        }
 
         private void Update()
         {

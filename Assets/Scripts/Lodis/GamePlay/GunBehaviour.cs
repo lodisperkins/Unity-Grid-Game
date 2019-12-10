@@ -60,6 +60,10 @@ namespace Lodis
         public void FireBullet(Vector3 position)
         {
             _tempBullet = Instantiate(bullet, position, transform.rotation);
+            if (owner == "")
+            {
+                owner = "Player1";
+            }
             _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
             _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
             _tempBullet.transform.Rotate(new Vector3(90, 0));

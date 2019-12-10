@@ -4,6 +4,8 @@ using System.IO;
 using System.Net;
 using System.Runtime.Remoting.Contexts;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace Lodis
 {
     /// <summary>
@@ -52,11 +54,12 @@ namespace Lodis
         [SerializeField]
         private Event OnDeleteDisabled;
 
+        [SerializeField] public bool overdriveEnabled;
         [SerializeField] private int _materialsRegenVal;
         [SerializeField] private int _materialCap;
         private Vector3 BlockForward;
         private bool DeleteEnabled;
-        private bool _buildStateEnabled;
+        [FormerlySerializedAs("_buildStateEnabled")] public bool buildStateEnabled;
         private PanelBehaviour _panel;
 
         [SerializeField] private ArrowBehaviour _arrow;
@@ -68,7 +71,7 @@ namespace Lodis
             BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;
-            materials.Val = 10000000;
+            materials.Val = 0;
             material_regen_time = Time.time + material_regen_rate;
         }
         /// <summary>
@@ -79,6 +82,10 @@ namespace Lodis
         /// <returns></returns>
         private bool CheckMaterial(int costOfItem)
         {
+            if (overdriveEnabled)
+            {
+                return true;
+            }
             if (materials.Val >= costOfItem)
             {
                 materials.Val -= costOfItem;
@@ -138,7 +145,7 @@ namespace Lodis
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && _buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled)
                     {
                         continue;
                     }
@@ -148,7 +155,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && _buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled)
                     {
                         continue;
                     }
@@ -158,7 +165,7 @@ namespace Lodis
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && _buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled)
                     {
                         continue;
                     }
@@ -168,7 +175,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && _buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled)
                     {
                         continue;
                     }
@@ -333,7 +340,7 @@ namespace Lodis
 
         public void SelectBlock0()
         {
-            if (_buildStateEnabled)
+            if (buildStateEnabled)
             {
                 Debug.Log("tried switch");
                 blockRef.Block = blocks[0];
@@ -342,7 +349,7 @@ namespace Lodis
         }
         public void SelectBlock1()
         {
-            if (_buildStateEnabled)
+            if (buildStateEnabled)
             {
                 Debug.Log("tried switch");
                 blockRef.Block = blocks[1];
@@ -352,7 +359,7 @@ namespace Lodis
         public void SelectBlock2()
         {
             
-            if (_buildStateEnabled)
+            if (buildStateEnabled)
             {
                 Debug.Log("tried switch");
                 blockRef.Block = blocks[2];
@@ -362,7 +369,7 @@ namespace Lodis
         public void SelectBlock3()
         {
             
-            if (_buildStateEnabled)
+            if (buildStateEnabled)
             {
                 Debug.Log("tried switch");
                 blockRef.Block = blocks[3];
@@ -397,7 +404,7 @@ namespace Lodis
         private void UpdateArrow()
         {
             _arrow.RotateArrow(block_rotation_degrees);
-            if (_buildStateEnabled)
+            if (buildStateEnabled)
             {
                 _arrow.ShowArrow();
                 return;
@@ -414,7 +421,7 @@ namespace Lodis
             }
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees, blocks[current_index].transform.rotation.z);
             UpdateArrow();
-            _buildStateEnabled = player.canMove == false && SelectionColor == Color.green;
+            buildStateEnabled = player.canMove == false && SelectionColor == Color.green;
         }
 
     }
