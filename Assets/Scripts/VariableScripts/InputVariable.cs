@@ -14,6 +14,8 @@ public class InputVariable : ScriptableObject
     private string buttonNegativeMessage;
     [SerializeField]
     private string axis;
+    public bool hasMultipleButtons;
+    [SerializeField] private List<string> _axisNames;
     [SerializeField]
     private float inputBuffer;
     private float timer;
@@ -24,6 +26,12 @@ public class InputVariable : ScriptableObject
             return axis;
         }
     }
+
+    public List<string> AxisNames
+    {
+        get { return _axisNames; }
+    }
+
     public float InputBuffer
     {
         get
@@ -75,7 +83,7 @@ public class InputVariable : ScriptableObject
         }
 
     }
-    private void Init(string axisName, string funcMessage1, string funcMessage2, string funcMessage3,object funcArg,float timer)
+    private void Init(string axisName, string funcMessage1, string funcMessage2, string funcMessage3,object funcArg,float timer,bool hasMultiInput,List<string>buttons)
     {
         axis = axisName;
         buttonDownMessage = funcMessage1;
@@ -83,11 +91,13 @@ public class InputVariable : ScriptableObject
         buttonNegativeMessage = funcMessage3;
         arg = funcArg;
         inputBuffer = timer;
+        hasMultipleButtons = hasMultiInput;
+        _axisNames = buttons;
     }
-    public static InputVariable CreateInstance(string axisName, string funcMessage1,string funcMessage2, string funcMessage3, object funcArg, float timer)
+    public static InputVariable CreateInstance(string axisName, string funcMessage1,string funcMessage2, string funcMessage3, object funcArg, float timer, bool hasMultiInput, List<string>buttons)
     {
         var data = CreateInstance<InputVariable>();
-        data.Init(axisName, funcMessage1,funcMessage2,funcMessage3, funcArg,timer);
+        data.Init(axisName, funcMessage1,funcMessage2,funcMessage3, funcArg,timer,hasMultiInput,buttons);
         return data;
     }
 }

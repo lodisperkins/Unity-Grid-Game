@@ -32,7 +32,8 @@ public class OverdriveBehaviour : MonoBehaviour
 	}
 	public void StopMaterialLoss()
 	{
-		if (_player.buildStateEnabled || used)
+		Debug.Log("active");
+		if ( used)
 		{
 			return;
 		}
@@ -41,15 +42,15 @@ public class OverdriveBehaviour : MonoBehaviour
 		
 		if (_health.Health.Val >= 75)
 		{
-			_overdriveLength = 5;
+			_overdriveLength = 10;
 		}
 		else if(_health.Health.Val >= 25 && _health.Health.Val < 75)
 		{
-			_overdriveLength = 10;
+			_overdriveLength = 20;
 		}
 		else
 		{
-			_overdriveLength = 15;
+			_overdriveLength = 30;
 		}
 		_particles.SetActive(true);
 		_time = Time.time + _overdriveLength;

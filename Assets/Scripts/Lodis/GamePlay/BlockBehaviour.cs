@@ -45,6 +45,7 @@ namespace Lodis
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
+            GetComponent<BlockBehaviour>().enabled = true;
             canUpgrade = false;
             _awake = true;
             if (_gun != null)
@@ -57,7 +58,6 @@ namespace Lodis
         {
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
-            
             _awake = true;
         }
 

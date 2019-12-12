@@ -4385,6 +4385,9 @@ MonoBehaviour:
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}
   OnDeleteDisabled: {fileID: 11400000, guid: 3c921c183b437da4e92f02589f00a386, type: 2}
+  _listOfTowerSelectionButtons:
+  - SelectBlock1(Y)
+  - SelectBlock1(X)
   overdriveEnabled: 0
   _materialsRegenVal: 5
   _materialCap: 60
@@ -4798,8 +4801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862b290c9ec05444a916b859d9713ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalAxis: Horizontal1
-  VerticalAxis: Vertical1
+  HorizontalAxis: BuildHorizontal1
+  VerticalAxis: BuildVertical1
   Direction: {fileID: 11400000, guid: e20c7f439e26aab40ac7c4c3e2e1538f, type: 2}
   isRawInput: 1
 --- !u!114 &114878015514341180
@@ -4813,6 +4816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762e77363e1126d4fbc39cdfe1dea80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hasMultipleButtons: 0
   inputs:
   - {fileID: 0}
   - {fileID: 0}
@@ -4829,8 +4833,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   newInput: {fileID: 0}
-  inputBuffer: 0.2
+  inputBuffer: 0.5
 --- !u!114 &114878949005375394
 MonoBehaviour:
   m_ObjectHideFlags: 1

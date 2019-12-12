@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
-  owner: 
+  owner: Player1
   bulletForceScale: 1000
   bulletDelay: 1
   bulletCount: 1
@@ -72,5 +72,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1

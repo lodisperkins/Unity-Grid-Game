@@ -110,7 +110,6 @@ namespace Lodis.GamePlay
                 int counter = 0;
                 if (panel == null)
                 {
-                    Debug.Log("The panel at the index of " + counter + "is null");
                     counter++;
                     continue;
                 }
@@ -122,7 +121,6 @@ namespace Lodis.GamePlay
                 int counter = 0;
                 if (panel == null)
                 {
-                    Debug.Log("The panel at the index of " + counter + "is null");
                     counter++;
                     continue;
                 }
@@ -135,15 +133,19 @@ namespace Lodis.GamePlay
         {
             Vector2 panelPosition = new Vector2(p1Position.Val.x + p1Direction.X, p1Position.Val.y+ p1Direction.Y);
             int index = 0;
+            if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
+            {
+                return;
+            }
             if (p2Panels.FindIndex(panelPosition, out index))
             {
-                if (p1Materials.Val < 60)
+                if (p1Materials.Val <30)
                 {
                     onPanelsSwapped.Raise();
                     UnHighlightPanelsP1();
                     return;
                 }
-                p1Materials.Val -= 60;
+                p1Materials.Val -= 30;
                 p2Panels.TransferPanel(p1Panels, index);
                 UnHighlightPanelsP1();
                 p1Panels.updateOwners();
@@ -156,16 +158,20 @@ namespace Lodis.GamePlay
         public void StealPanelP2()
         {
             Vector2 panelPosition = new Vector2(p2Position.Val.x + p2Direction.X, p2Position.Val.y + p2Direction.Y);
+            if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
+            {
+                return;
+            }
             int index = 0;
             if (p1Panels.FindIndex(panelPosition, out index))
             {
-                if (p2Materials.Val < 60)
+                if (p2Materials.Val < 30)
                 {
                     onPanelsSwapped.Raise();
                     UnHighlightPanelsP2();
                     return;
                 }
-                p2Materials.Val -= 60;
+                p2Materials.Val -= 30;
                 p1Panels.TransferPanel(p2Panels, index);
                 UnHighlightPanelsP2();
                 p2Panels.updateOwners();

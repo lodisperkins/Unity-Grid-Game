@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.5
+  actionDelay: 0.2
   actionLimit: 1
   hasLimit: 0
 --- !u!114 &114393595490149954
@@ -334,18 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114857136097773770}
-        m_MethodName: DestroyBlock
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: b2f3bf7b778901942828e67bad18efd8, type: 2}

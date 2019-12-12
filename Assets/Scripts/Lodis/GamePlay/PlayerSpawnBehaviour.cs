@@ -54,6 +54,7 @@ namespace Lodis
         [SerializeField]
         private Event OnDeleteDisabled;
 
+        [SerializeField] private List<string> _listOfTowerSelectionButtons;
         [SerializeField] public bool overdriveEnabled;
         [SerializeField] private int _materialsRegenVal;
         [SerializeField] private int _materialCap;
@@ -61,7 +62,8 @@ namespace Lodis
         private bool DeleteEnabled;
         [FormerlySerializedAs("_buildStateEnabled")] public bool buildStateEnabled;
         private PanelBehaviour _panel;
-
+        private bool _panelSelectionInputDown;
+        private bool _towerSelectionInputDown;
         [SerializeField] private ArrowBehaviour _arrow;
         // Use this for initialization
         void Start()
@@ -71,7 +73,7 @@ namespace Lodis
             BlockForward = transform.forward;
             blockRef.Block = blocks[0];
             current_index = 0;
-            materials.Val = 0;
+            materials.Val = 60;
             material_regen_time = Time.time + material_regen_rate;
         }
         /// <summary>
@@ -88,10 +90,19 @@ namespace Lodis
             }
             if (materials.Val >= costOfItem)
             {
-                materials.Val -= costOfItem;
                 return true;
             }
             return false;
+        }
+
+        private void BuyItem(int costOfItem)
+        {
+            if (overdriveEnabled)
+            {
+                return;
+            }
+
+            materials.Val -= costOfItem;
         }
         /// <summary>
         /// Returns the color of the current block 
@@ -145,7 +156,7 @@ namespace Lodis
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled && !DeleteEnabled)
                     {
                         continue;
                     }
@@ -155,7 +166,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled&& !DeleteEnabled)
                     {
                         continue;
                     }
@@ -165,7 +176,7 @@ namespace Lodis
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled&& !DeleteEnabled)
                     {
                         continue;
                     }
@@ -199,39 +210,85 @@ namespace Lodis
             panels_in_range = new Dictionary<string, GameObject>();
             player.canMove = true;
         }
-        //Sets the current block to the next block in the list
-        public void NextBlock()
+
+        public void PanelSelectionButtonDown()
         {
-            /*current_index++;
-            if (current_index > blocks.Count - 1)
-            {
-                current_index = 0;
-            }
-            blockRef.Block = blocks[current_index];*/
+            Debug.Log("stick down");
+            _panelSelectionInputDown = true;
+            buildStateEnabled = true;
+            PlaceBlock();
         }
-        //Sets the current block to the next block in the list
-        public void PreviousBlock()
+        public void PanelSelectionButtonUp()
         {
-            /*current_index--;
-            if (current_index < 0)
+           
+        }
+
+        public void CheckTowerButtonDown()
+        {
+            foreach (var button in _listOfTowerSelectionButtons)
             {
-                current_index = blocks.Count - 1;
+                if (Input.GetAxisRaw(button) == 1 || Input.GetAxisRaw(button) == -1)
+                {
+                    _towerSelectionInputDown = true;
+                    Debug.Log("button down");
+                    return;
+                }
             }
-            blockRef.Block = blocks[current_index];*/
+
+            buildStateEnabled = true;
+            _towerSelectionInputDown = false;
+        }
+
+        public void TowerButtonUp()
+        {
+            _towerSelectionInputDown = false;
+        }
+        public void PlaceBlock()
+        {
+            if ((_panelSelectionInputDown && _towerSelectionInputDown && buildStateEnabled) || DeleteEnabled)
+            { 
+                Debug.Log("tried place block");
+                FindNeighbors();
+                if (direction.Val == Vector2.left)
+                {
+                    PlaceBlockLeft();
+                    buildStateEnabled = false;
+                }
+                else if (direction.Val == Vector2.right)
+                {
+                    PlaceBlockRight();
+                    buildStateEnabled = false;
+                }
+                else if (direction.Val == Vector2.down)
+                {
+                    PlaceBlockBelow();
+                    buildStateEnabled = false;
+                }
+                else if (direction.Val == Vector2.up)
+                {
+                    PlaceBlockUp();
+                    buildStateEnabled = false;
+                }
+                
+            }
+
+           
         }
         //Places the current block to the left of the player
         public void PlaceBlockLeft()
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(-1, 0);
+            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
-            if (player.CheckPanels(direction.Val) == false || player.canMove)
+            if (player.CheckPanels(direction.Val) == false)
             {
                 UnHighlightPanels();
                 return;
             }
-            else if (CheckMaterial(blockRef.Cost))
+            else if (canPlace)
             {
+                BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Behind"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Behind"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Behind"];
@@ -253,14 +310,16 @@ namespace Lodis
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(1, 0);
+            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
-            if (player.CheckPanels(direction.Val) == false ||  player.canMove)
+            if (player.CheckPanels(direction.Val) == false )
             {
                 UnHighlightPanels();
                 return;
             }
-            else if (CheckMaterial(blockRef.Cost))
+            else if (canPlace)
             {
+                BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Forward"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Forward"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Forward"];
@@ -282,15 +341,16 @@ namespace Lodis
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(0, 1);
+            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
-            if (player.CheckPanels(direction.Val) == false || player.canMove)
+            if (player.CheckPanels(direction.Val) == false)
             {
                 UnHighlightPanels();
                 return;
             }
-            else if (CheckMaterial(blockRef.Cost))
+            else if (canPlace)
             {
-
+                BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Above"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Above"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Above"];
@@ -313,14 +373,16 @@ namespace Lodis
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(0, -1);
+            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
             if (player.CheckPanels(direction.Val) == false || player.canMove)
             {
                 UnHighlightPanels();
                 return;
             }
-            else if (CheckMaterial(blockRef.Cost))
+            else if (canPlace)
             {
+                BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Below"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Below"].transform.position.z);
                 GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Below"];
@@ -340,41 +402,40 @@ namespace Lodis
 
         public void SelectBlock0()
         {
-            if (buildStateEnabled)
-            {
-                Debug.Log("tried switch");
-                blockRef.Block = blocks[0];
-                current_index = 0;
-            }
+            _towerSelectionInputDown = true;
+            blockRef.Block = blocks[0];
+            current_index = 0;
+            block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
+            PlaceBlock();
         }
         public void SelectBlock1()
         {
-            if (buildStateEnabled)
-            {
-                Debug.Log("tried switch");
-                blockRef.Block = blocks[1];
-                current_index = 1;
-            }
+            _towerSelectionInputDown = true;
+            blockRef.Block = blocks[1];
+            current_index = 1;
+            block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
+            PlaceBlock();
         }
         public void SelectBlock2()
         {
-            
-            if (buildStateEnabled)
-            {
-                Debug.Log("tried switch");
-                blockRef.Block = blocks[2];
-                current_index = 2;
-            }
+            _towerSelectionInputDown = true;
+            blockRef.Block = blocks[2];
+            current_index = 2;
+            block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
+            PlaceBlock();
         }
         public void SelectBlock3()
         {
-            
-            if (buildStateEnabled)
-            {
-                Debug.Log("tried switch");
-                blockRef.Block = blocks[3];
-                current_index = 3;
-            }
+            _towerSelectionInputDown = true;
+            blockRef.Block = blocks[3];
+            current_index = 3;
+            block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
+
+            PlaceBlock();
         }
         //Rotates the block so that it faces right 
         public void RotateBlockRight()
@@ -404,11 +465,7 @@ namespace Lodis
         private void UpdateArrow()
         {
             _arrow.RotateArrow(block_rotation_degrees);
-            if (buildStateEnabled)
-            {
-                _arrow.ShowArrow();
-                return;
-            }
+            
             _arrow.HideArrow();
         }
         // Update is called once per frame
@@ -419,9 +476,9 @@ namespace Lodis
                 AddMaterials(_materialsRegenVal);
                 material_regen_time = Time.time + material_regen_rate;
             }
-            block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees, blocks[current_index].transform.rotation.z);
+            
             UpdateArrow();
-            buildStateEnabled = player.canMove == false && SelectionColor == Color.green;
+            CheckTowerButtonDown();
         }
 
     }

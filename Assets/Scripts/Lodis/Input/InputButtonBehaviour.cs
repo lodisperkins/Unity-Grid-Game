@@ -2,51 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-public class InputButtonBehaviour : MonoBehaviour {
+using UnityEngine.Experimental.PlayerLoop;
+
+public class InputButtonBehaviour : MonoBehaviour
+{
+    [SerializeField]
+    private bool _hasMultipleButtons; 
     //list of inputs the player has
     [SerializeField]
     private List<InputVariable> inputs;
     //reference to the last input added
     [SerializeField] private InputVariable newInput;
     public float inputBuffer;
+    
     private bool canMove;
     //used for input buffer
     private float timer;
-
+    
     // Use this for initialization
     void Start()
     {
         canMove = true;
     }
     //checks the list to see if any of the button are down
-    public void CheckButton()
+    public void CheckButton(InputVariable input)
+    {
+        if (Input.GetAxisRaw(input.Axis) == 1)
+        {
+            if(input.CheckTime())
+            {
+                SendMessage(input.ButtonDownMessage,input.Arg);
+            }
+        }
+        else if(Input.GetAxisRaw(input.Axis) == -1)
+        {
+            if (input.CheckTime())
+            {
+                SendMessage(input.ButtonNegativeMessage);
+            }
+        }
+        else if(input.ButtonUpMessage != "")
+        {
+            SendMessage(input.ButtonUpMessage);
+        }
+    }
+
+    public void CheckButtons(InputVariable input)
+    {
+        bool allPressed = true;
+        foreach (var button in input.AxisNames)
+        {
+            if (Input.GetAxisRaw(button) != 1 && Input.GetAxisRaw(button) != -1)
+            {
+                allPressed = false;
+                if(input.ButtonUpMessage != "")
+                {
+                    SendMessage(input.ButtonUpMessage);
+                }
+                break;
+            }
+        }
+        if (allPressed)
+        {
+             SendMessage(input.ButtonDownMessage);
+        }
+    }
+
+    public void CheckInputs()
     {
         foreach (var input in inputs)
         {
-            if (Input.GetAxisRaw(input.Axis) == 1)
+            if (input.hasMultipleButtons)
             {
-                if(input.CheckTime())
-                {
-                    SendMessage(input.ButtonDownMessage,input.Arg);
-                }
+                CheckButtons(input);
             }
-            else if(Input.GetAxisRaw(input.Axis) == -1)
+            else
             {
-                if (input.CheckTime())
-                {
-                    SendMessage(input.ButtonNegativeMessage);
-                }
-            }
-            else if(input.ButtonUpMessage != "")
-            {
-                SendMessage(input.ButtonUpMessage);
+                CheckButton(input);
             }
         }
     }
     //adds an input to the list
-    public void AddInput(string Axis,string message1,string message2,string message3, object Arg)
+    public void AddInput(string Axis,string message1,string message2,string message3, object Arg, bool hasMultiInput,List<string> buttons)
     {
-        newInput = InputVariable.CreateInstance(Axis, message1,message2,message3, Arg,inputBuffer);
+        newInput = InputVariable.CreateInstance(Axis, message1,message2,message3, Arg,inputBuffer,hasMultiInput,buttons);
         inputs.Add(newInput);
     }
     //clears the entire input list
@@ -56,7 +95,7 @@ public class InputButtonBehaviour : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        CheckButton();
+        CheckInputs();
     }
 }
 #if UNITY_EDITOR
@@ -64,6 +103,9 @@ public class InputButtonBehaviour : MonoBehaviour {
 public class InputButtonEditor : Editor
 {
     string button;
+    [SerializeField]
+    List<string> buttons;
+    private bool hasMultipleInputs;
     string message1;
     string message2;
     string message3;
@@ -79,14 +121,17 @@ public class InputButtonEditor : Editor
         message2 = EditorGUILayout.TextField("Button Up Func", message2);
         message3 = EditorGUILayout.TextField("Button Negative Func", message3);
         arg = EditorGUILayout.ObjectField("Argument",arg, typeof(object), true);
+        hasMultipleInputs = EditorGUILayout.Toggle("Has Multiple Inputs", hasMultipleInputs);
         if(GUILayout.Button("Add Input"))
         {
-            myscript.AddInput(button,message1,message2,message3,arg);
+            myscript.AddInput(button,message1,message2,message3,arg,hasMultipleInputs,buttons);
         }
         if(GUILayout.Button("Clear"))
         {
             myscript.Clear();
         }
+
     }
+    
 }
 #endif

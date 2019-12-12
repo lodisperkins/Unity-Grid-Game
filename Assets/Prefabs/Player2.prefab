@@ -1801,8 +1801,8 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_IsTrigger: 0
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 1.79}
@@ -1872,8 +1872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862b290c9ec05444a916b859d9713ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalAxis: Horizontal2
-  VerticalAxis: Vertical2
+  HorizontalAxis: BuildHorizontal2
+  VerticalAxis: BuildVertical2
   Direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
   isRawInput: 1
 --- !u!114 &114304271626423876
@@ -2119,6 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762e77363e1126d4fbc39cdfe1dea80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hasMultipleButtons: 0
   inputs:
   - {fileID: 0}
   - {fileID: 0}
@@ -2135,8 +2136,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   newInput: {fileID: 0}
-  inputBuffer: 0.2
+  inputBuffer: 0.5
 --- !u!114 &114874611140919194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2191,11 +2193,14 @@ MonoBehaviour:
   block_rotation_degrees: 180
   rotation_val: 0
   materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
-  material_regen_rate: 3
+  material_regen_rate: 1.5
   DeletionBlockObject: {fileID: 1293680906006954, guid: af47b0a34f5294c4186f4b90ce80965f,
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}
   OnDeleteDisabled: {fileID: 11400000, guid: 3c921c183b437da4e92f02589f00a386, type: 2}
+  _listOfTowerSelectionButtons:
+  - SelectBlock2(Y)
+  - SelectBlock2(X)
   overdriveEnabled: 0
   _materialsRegenVal: 5
   _materialCap: 60

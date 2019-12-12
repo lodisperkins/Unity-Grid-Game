@@ -29,7 +29,8 @@ public class MortarBlockBehaviour : MonoBehaviour
 
 	private void OnEnable()
 	{
-		
+//		_block = GetComponent<BlockBehaviour>();
+//		AimAtOpponentPanel();
 	}
 	//needs to be cleaned up
 	public void AimAtOpponentPanel()

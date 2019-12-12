@@ -280,6 +280,7 @@ MonoBehaviour:
   cost: 10
   _sleepingMateral: {fileID: 2100000, guid: 076dec6e98a51b44b83db6d3af79e422, type: 2}
   _defaultMaterial: {fileID: 2100000, guid: 49072dbdbbad6f14a8be532a51dca450, type: 2}
+  BlockWeightVal: 0
   canUpgrade: 1
   sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -299,6 +300,9 @@ MonoBehaviour:
   DisplayHealth: 0
   Health: {fileID: 0}
   IsAlive: 0
+  canHeal: 0
+  _secondaryHealthSource: {fileID: 0}
+  conversionRate: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -431,5 +435,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1

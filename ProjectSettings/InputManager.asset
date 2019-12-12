@@ -74,7 +74,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 4
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -86,27 +86,43 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Heal1
+    m_Name: Shoot1
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: joystick 1 button 0
-    positiveButton: joystick 1 button 1
+    negativeButton: 
+    positiveButton: joystick 1 button 5
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 1
-    snap: 0
+    snap: 1
     invert: 0
     type: 0
     axis: 8
     joyNum: 1
   - serializedVersion: 3
+    m_Name: Shoot2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 5
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 2
+  - serializedVersion: 3
     m_Name: Heal2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: joystick 2 button 0
-    positiveButton: joystick 2 button 1
+    negativeButton: 
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -182,20 +198,20 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: StealPanel1
+    m_Name: PanelAction1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 3
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
     dead: 0.001
-    sensitivity: 1000
-    snap: 0
+    sensitivity: 1.58
+    snap: 1
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 2
     joyNum: 1
   - serializedVersion: 3
     m_Name: SelectBlock2
@@ -214,27 +230,27 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: StealPanel2
+    m_Name: PanelAction2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 3
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
     dead: 0.001
-    sensitivity: 1000
-    snap: 0
+    sensitivity: 1.58
+    snap: 1
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 2
     joyNum: 2
   - serializedVersion: 3
     m_Name: Build2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 4
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -259,8 +275,40 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
+    axis: 3
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: BuildHorizontal1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.5
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
     axis: 0
     joyNum: 1
+  - serializedVersion: 3
+    m_Name: BuildHorizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.5
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: RotateVertical1
     descriptiveName: 
@@ -275,14 +323,46 @@ InputManager:
     snap: 0
     invert: 1
     type: 2
+    axis: 4
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: BuildVertical1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.5
+    sensitivity: 3
+    snap: 0
+    invert: 1
+    type: 2
     axis: 1
     joyNum: 1
+  - serializedVersion: 3
+    m_Name: BuildVertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.5
+    sensitivity: 3
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: RotateHorizontal2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 2
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -291,7 +371,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 0
+    axis: 3
     joyNum: 2
   - serializedVersion: 3
     m_Name: RotateVertical2
@@ -307,14 +387,14 @@ InputManager:
     snap: 0
     invert: 1
     type: 2
-    axis: 1
+    axis: 4
     joyNum: 2
   - serializedVersion: 3
     m_Name: Delete1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 5
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -322,15 +402,15 @@ InputManager:
     sensitivity: 0.1
     snap: 0
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 2
     joyNum: 1
   - serializedVersion: 3
     m_Name: Delete2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 5
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -410,7 +490,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 2
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -426,7 +506,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 2
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -438,11 +518,11 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Attack1
+    m_Name: Melee1
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: joystick 1 button 1
-    positiveButton: joystick 1 button 0
+    negativeButton: 
+    positiveButton: joystick 1 button 4
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -454,11 +534,27 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
+    m_Name: Melee2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 4
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
     m_Name: Attack2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: joystick 2 button 1
-    positiveButton: joystick 2 button 0
+    negativeButton: joystick 2 button 5
+    positiveButton: joystick 2 button 4
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
