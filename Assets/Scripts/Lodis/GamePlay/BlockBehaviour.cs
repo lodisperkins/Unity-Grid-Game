@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Lodis
 {
@@ -22,7 +23,8 @@ namespace Lodis
         MaterialBlockBehaviour _materialMine;
         //The script of the panel this block is currently on
         PanelBehaviour _panel;
-
+        [SerializeField] private Text _level;
+        private int _currentLevel;
         [SerializeField] private Material _sleepingMateral;
         [SerializeField]
         private Material _defaultMaterial;
@@ -48,6 +50,7 @@ namespace Lodis
             GetComponent<BlockBehaviour>().enabled = true;
             canUpgrade = false;
             _awake = true;
+            _currentLevel = 1;
             if (_gun != null)
             {
                 _gun.owner = owner.name;
@@ -72,16 +75,19 @@ namespace Lodis
             if (other.name == "Attack Block(Clone)")
             {
                 UpgradeAttack();
+                _currentLevel++;
                 onUpgrade.Raise();
             }
             else if (other.name == "Defense Block(Clone)")
             {
                 UpgradeDefense();
+                _currentLevel++;
                 onUpgrade.Raise();
             }
             else if (other.name == "Material Block(Clone)")
             {
                 UpgradeMaterial();
+                _currentLevel++;
                 onUpgrade.Raise();
             }
             //Destroys the block placed on top after the upgrade to free up space
@@ -196,7 +202,11 @@ namespace Lodis
 
         private void Update()
         {
-            
+            if (_level == null)
+            {
+                return;
+            }
+            _level.text = ""+_currentLevel;
         }
     }
 }

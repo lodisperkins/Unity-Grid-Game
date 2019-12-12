@@ -68,7 +68,9 @@
             <e p="GamePlay" t="Include">
               <e p="ArrowBehaviour.cs" t="Include" />
               <e p="BlockBehaviour.cs" t="Include" />
+              <e p="BlockUIBehaviour.cs" t="Include" />
               <e p="BulletBehaviour.cs" t="Include" />
+              <e p="CoreBehaviour.cs" t="Include" />
               <e p="DeletionBlockBehaviour.cs" t="Include" />
               <e p="DisplayBehaviour.cs" t="Include" />
               <e p="GridBehaviour.cs" t="Include" />

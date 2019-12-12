@@ -279,7 +279,7 @@ namespace Lodis
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(-1, 0);
-            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
+            bool canPlace = panels_in_range.ContainsKey("Behind")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
             if (player.CheckPanels(direction.Val) == false)
             {
@@ -310,7 +310,7 @@ namespace Lodis
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(1, 0);
-            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
+            bool canPlace = panels_in_range.ContainsKey("Forward")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
             if (player.CheckPanels(direction.Val) == false )
             {
@@ -341,7 +341,7 @@ namespace Lodis
         {
             //The desired direction the block will be placed
             direction.Val = new Vector2(0, 1);
-            bool canPlace = panels_in_range.ContainsKey("Below")&&CheckMaterial(blockRef.Cost);
+            bool canPlace = panels_in_range.ContainsKey("Above")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
             if (player.CheckPanels(direction.Val) == false)
             {
