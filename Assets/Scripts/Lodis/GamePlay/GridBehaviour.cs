@@ -131,7 +131,7 @@ namespace Lodis.GamePlay
         //Takes one panel from player two and gives it player one
         public void StealPanelP1()
         {
-            Vector2 panelPosition = new Vector2(p1Position.Val.x + p1Direction.X, p1Position.Val.y+ p1Direction.Y);
+            Vector2 panelPosition = new Vector2((int)p1Position.Val.x + (int)p1Direction.X, (int)p1Position.Val.y+ (int)p1Direction.Y);
             int index = 0;
             if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
             {
@@ -157,7 +157,7 @@ namespace Lodis.GamePlay
         //takes one panel from player 1 and gives it to player two
         public void StealPanelP2()
         {
-            Vector2 panelPosition = new Vector2(p2Position.Val.x + p2Direction.X, p2Position.Val.y + p2Direction.Y);
+            Vector2 panelPosition = new Vector2((int)p2Position.Val.x + (int)p2Direction.X, (int)p2Position.Val.y + (int)p2Direction.Y);
             if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
             {
                 return;

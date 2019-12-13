@@ -127,7 +127,7 @@ namespace Lodis
         {
             OnDeleteEnabled.Raise(gameObject);
             blockRef.Block = DeletionBlockObject;
-            SelectionColor = Color.red;
+            SelectionColor = Color.magenta;
             FindNeighbors();
             DeleteEnabled = true;
         }
@@ -172,7 +172,7 @@ namespace Lodis
                     }
                     panels_in_range.Add("Behind", panel);
                     _panel.SelectionColor = SelectionColor;
-                    _panel.Selected = true;;
+                    _panel.Selected = true;
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
@@ -234,7 +234,12 @@ namespace Lodis
                     return;
                 }
             }
-
+            UnHighlightPanels();
+            if (DeleteEnabled)
+            {
+                return;
+            }
+            player.canMove = true;
             buildStateEnabled = true;
             _towerSelectionInputDown = false;
         }
@@ -245,34 +250,31 @@ namespace Lodis
         }
         public void PlaceBlock()
         {
-            if ((_panelSelectionInputDown && _towerSelectionInputDown && buildStateEnabled) || DeleteEnabled)
+            if (_towerSelectionInputDown && buildStateEnabled || DeleteEnabled)
             { 
-                Debug.Log("tried place block");
+                Debug.Log(direction.Val);
                 FindNeighbors();
-                if (direction.Val == Vector2.left)
+                if ( direction.Val.x== -1)
                 {
                     PlaceBlockLeft();
-                    buildStateEnabled = false;
+                    buildStateEnabled = false;;
                 }
-                else if (direction.Val == Vector2.right)
+                else if (direction.Val.x== 1)
                 {
                     PlaceBlockRight();
-                    buildStateEnabled = false;
+                    buildStateEnabled = false;;
                 }
-                else if (direction.Val == Vector2.down)
+                else if (direction.Val.y== -1)
                 {
                     PlaceBlockBelow();
-                    buildStateEnabled = false;
+                    buildStateEnabled = false;;
                 }
-                else if (direction.Val == Vector2.up)
+                else if (direction.Val.y== 1)
                 {
                     PlaceBlockUp();
-                    buildStateEnabled = false;
+                    buildStateEnabled = false;;
                 }
-                
             }
-
-           
         }
         //Places the current block to the left of the player
         public void PlaceBlockLeft()
@@ -281,7 +283,7 @@ namespace Lodis
             direction.Val = new Vector2(-1, 0);
             bool canPlace = panels_in_range.ContainsKey("Behind")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
-            if (player.CheckPanels(direction.Val) == false)
+            if (player.CheckPanels(direction.Val) == false ||  player.canMove)
             {
                 UnHighlightPanels();
                 return;
@@ -312,7 +314,7 @@ namespace Lodis
             direction.Val = new Vector2(1, 0);
             bool canPlace = panels_in_range.ContainsKey("Forward")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
-            if (player.CheckPanels(direction.Val) == false )
+            if (player.CheckPanels(direction.Val) == false ||player.canMove)
             {
                 UnHighlightPanels();
                 return;
@@ -343,7 +345,7 @@ namespace Lodis
             direction.Val = new Vector2(0, 1);
             bool canPlace = panels_in_range.ContainsKey("Above")&&CheckMaterial(blockRef.Cost);
             //Checks to see if the panel exists in the list and the players movement is frozen
-            if (player.CheckPanels(direction.Val) == false)
+            if (player.CheckPanels(direction.Val) == false || player.canMove)
             {
                 UnHighlightPanels();
                 return;
@@ -402,7 +404,9 @@ namespace Lodis
 
         public void SelectBlock0()
         {
+            player.canMove = false;
             _towerSelectionInputDown = true;
+            SelectionColor = Color.red;
             blockRef.Block = blocks[0];
             current_index = 0;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
@@ -411,7 +415,9 @@ namespace Lodis
         }
         public void SelectBlock1()
         {
+            player.canMove = false;
             _towerSelectionInputDown = true;
+            SelectionColor = Color.green;
             blockRef.Block = blocks[1];
             current_index = 1;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
@@ -420,7 +426,9 @@ namespace Lodis
         }
         public void SelectBlock2()
         {
+            player.canMove = false;
             _towerSelectionInputDown = true;
+            SelectionColor = Color.yellow;
             blockRef.Block = blocks[2];
             current_index = 2;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
@@ -429,7 +437,9 @@ namespace Lodis
         }
         public void SelectBlock3()
         {
+            player.canMove = false;
             _towerSelectionInputDown = true;
+            SelectionColor = Color.white;
             blockRef.Block = blocks[3];
             current_index = 3;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
