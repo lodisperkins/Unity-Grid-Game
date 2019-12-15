@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ArrowBehaviour : MonoBehaviour
 {
-
+	
 	[SerializeField] private  SpriteRenderer _arrow;
 	private float _time;
 	[SerializeField]
 	private float _timeOffset;
-
+	
 	[SerializeField] private float _arrowRotationOffset;
 	private bool _showTemp;
 	// Use this for initialization

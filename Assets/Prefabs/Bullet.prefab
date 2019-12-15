@@ -186,7 +186,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.96055627, g: 1, b: 0, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -226,9 +226,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: Player1
   DamageVal: 1
-  _laser: {fileID: 1389156089746202}
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
+  _laser: {fileID: 114292300218229954}
 --- !u!114 &114292300218229954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,11 +241,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_templateMaterial: {fileID: 2100000, guid: f68f8c3a3d76fb74cbb880d372c81620, type: 2}
-  m_doNotOverwriteTemplateMaterialProperties: 1
+  m_doNotOverwriteTemplateMaterialProperties: 0
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
-  m_lineColor: {r: 0.034482718, g: 1, b: 0, a: 0}
-  m_lineWidth: 66
+  m_lineColor: {r: 1, g: 0.058819957, b: 0, a: 0}
+  m_lineWidth: 49.8
   m_lightSaberFactor: 0.747
 --- !u!136 &136426481344821992
 CapsuleCollider:

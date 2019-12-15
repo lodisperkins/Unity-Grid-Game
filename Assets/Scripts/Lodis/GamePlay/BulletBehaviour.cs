@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VolumetricLines;
+
 namespace Lodis
 {
     public class BulletBehaviour : MonoBehaviour
@@ -12,29 +14,28 @@ namespace Lodis
         public int DamageVal;
         //Temporary gameobject used to delete the bullet without deleting the prefab
         private GameObject TempObject;
-        //The laser model attached to this bullet
-        [SerializeField]
-        private GameObject _laser;
         //the particle system to be played when a bullet hits an obstacle
         [SerializeField] private ParticleSystem ps;
         //Event used to play the sound of a bullet being shot
         [SerializeField] private Event OnBulletSpawn;
+        //The laser model attached to this bullet
+        [SerializeField] private VolumetricLineBehavior _laser;
         private void Start()
         {
             TempObject = gameObject;
             
             ChangeColor();
         }
-        //(not working) meant to change the bulle5ts color based on the owner
+        //(not working) meant to change the bullets color based on the owner
         private void ChangeColor()
         {
             if (Owner == "Player1")
             {
-                _laser.GetComponent<Light>().color = Color.red;
+                _laser.LineColor = Color.red;
             }
             else
             {
-                _laser.GetComponent<Light>().color = Color.blue;
+                _laser.LineColor = Color.blue;
             }
         }
         

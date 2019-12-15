@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 223715372891672708}
   - component: {fileID: 114231337735569096}
   - component: {fileID: 114454987353926756}
+  - component: {fileID: 114927152189307844}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -788,6 +789,18 @@ MonoBehaviour:
   _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1
+--- !u!114 &114927152189307844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363749487107938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa3c317921e3cf4b9d8977a77d350f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _block: {fileID: 1447780760735818}
 --- !u!222 &222350144283304508
 CanvasRenderer:
   m_ObjectHideFlags: 1

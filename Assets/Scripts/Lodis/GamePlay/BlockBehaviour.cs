@@ -9,7 +9,7 @@ namespace Lodis
 {
     public class BlockBehaviour : MonoBehaviour
     {
-        //The current panel thye block is on
+        //The current panel the block is on
         [FormerlySerializedAs("CurrentPanel")] public GameObject currentPanel;
         //The player that owns the block
         [FormerlySerializedAs("Owner")] public GameObject owner;
@@ -17,7 +17,7 @@ namespace Lodis
         public int cost;
         //The gun script attached to the bullet emitter
         GunBehaviour _gun;
-        //he helath behaviour script attached to this block
+        //he health behaviour script attached to this block
         HealthBehaviour _armor;
         //The material block behaviour script attached to this block
         MaterialBlockBehaviour _materialMine;
@@ -28,7 +28,7 @@ namespace Lodis
         [SerializeField] private Material _sleepingMateral;
         [SerializeField]
         private Material _defaultMaterial;
-
+        //The weight of a block represents how much of it can be placed on a panel. Panels havea limit of 3;
         public int BlockWeightVal;
         private bool _awake;
         private Material _currentMaterial;
@@ -101,7 +101,6 @@ namespace Lodis
             }
 
         }
-        //stes the can upgrade boolean to true
         public void enableUpgrades()
         {
             canUpgrade = true;
@@ -113,6 +112,7 @@ namespace Lodis
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
+        //Not in game yet
         public void MakeBlockSleep(Vector3 parentPosition)
         {
             GetComponent<Rigidbody>().useGravity = false;
@@ -137,7 +137,7 @@ namespace Lodis
 
             _awake = false;
         }
-
+        //not in game yet
         public void WakeBlock()
         {
             GetComponent<Rigidbody>().useGravity = true;
