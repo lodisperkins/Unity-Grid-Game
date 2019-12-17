@@ -20,7 +20,7 @@ namespace Lodis
         //he health behaviour script attached to this block
         HealthBehaviour _armor;
         //The material block behaviour script attached to this block
-        MaterialBlockBehaviour _materialMine;
+        EnergyBlockBehaviour _energyMine;
         //The script of the panel this block is currently on
         PanelBehaviour _panel;
         [SerializeField] private Text _level;
@@ -43,7 +43,7 @@ namespace Lodis
             //initialzes local variables to be gameobjects components
             _gun = GetComponentInChildren<GunBehaviour>();
             _armor = GetComponent<HealthBehaviour>();
-            _materialMine = GetComponent<MaterialBlockBehaviour>();
+            _energyMine = GetComponent<EnergyBlockBehaviour>();
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
@@ -184,17 +184,17 @@ namespace Lodis
             if (_armor != null)
             {
                 _armor.enabled = true;
-                _armor.Health.Val += 20;
+                _armor.health.Val += 20;
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
             }
         }
         //increases the materials gained 
         public void UpgradeMaterial()
         {
-            if (_materialMine != null)
+            if (_energyMine != null)
             {
-                _materialMine.enabled = true;
-                _materialMine.MaterialAmount += 2;
+                _energyMine.enabled = true;
+                _energyMine.MaterialAmount += 2;
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
             }
         }

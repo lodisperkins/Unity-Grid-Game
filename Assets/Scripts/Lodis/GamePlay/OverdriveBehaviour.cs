@@ -15,7 +15,6 @@ public class OverdriveBehaviour : MonoBehaviour
 	private float _overdriveLength;
 	[SerializeField] private ParticleSystem ps;
 	[SerializeField] private GameObject _particles;
-	[SerializeField] private int _healVal;
 
 	[FormerlySerializedAs("_used")] public bool used;
 	// Use this for initialization
@@ -23,7 +22,7 @@ public class OverdriveBehaviour : MonoBehaviour
 	{
 		used = false;
 	}
-	public void playParticleSystems(float duration)
+	public void PlayParticleSystems(float duration)
 	{
 		var tempPs = Instantiate(ps,transform.position,transform.rotation);
 		tempPs.playbackSpeed = 2.5f;
@@ -32,7 +31,6 @@ public class OverdriveBehaviour : MonoBehaviour
 	}
 	public void StopMaterialLoss()
 	{
-		Debug.Log("active");
 		if ( used)
 		{
 			return;
@@ -40,11 +38,11 @@ public class OverdriveBehaviour : MonoBehaviour
 		_player.overdriveEnabled = true;
 		_player.AddMaterials(60);
 		
-		if (_health.Health.Val >= 75)
+		if (_health.health.Val >= 75)
 		{
 			_overdriveLength = 10;
 		}
-		else if(_health.Health.Val >= 25 && _health.Health.Val < 75)
+		else if(_health.health.Val >= 25 && _health.health.Val < 75)
 		{
 			_overdriveLength = 20;
 		}

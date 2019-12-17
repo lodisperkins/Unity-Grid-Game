@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
+
 namespace Lodis
 {
     public class HealthBehaviour : MonoBehaviour
     {
         //the reference of what the objects health should start as
-        [SerializeField]
-        private IntVariable Health_Ref;
+        [FormerlySerializedAs("Health_Ref")] [SerializeField]
+        private IntVariable healthRef;
 
-        public int DisplayHealth;
         //the current health of the object
-        public IntVariable Health;
+        [FormerlySerializedAs("Health")] public IntVariable health;
         //whether or not the object is alive
-        [SerializeField]
-        private bool IsAlive;
-
-        [SerializeField] private bool canHeal;
+        [FormerlySerializedAs("IsAlive")] [SerializeField]
+        private bool isAlive;
 
         [SerializeField] private HealthBehaviour _secondaryHealthSource;
 
@@ -30,16 +29,16 @@ namespace Lodis
         // Use this for initialization
         public void Start()
         {
-            Health = IntVariable.CreateInstance(Health_Ref.Val);
-            IsAlive = true;
+            health = IntVariable.CreateInstance(healthRef.Val);
+            isAlive = true;
         }
         //decrements the objects health by the damge amount given
         public void takeDamage(int damageVal)
         {
-            Health.Val -= damageVal;
-            if (Health.Val <= 0)
+            health.Val -= damageVal;
+            if (health.Val <= 0)
             {
-                IsAlive = false;
+                isAlive = false;
             }
         }
         //destroys the block within a given time
@@ -55,21 +54,21 @@ namespace Lodis
             tempPs.Play();
             Destroy(tempPs, duration);
         }
-
+        //(not used) Meant for the player to heal from some secondary health source like the core
         public void Heal()
         {
             Debug.Log("Tried Heal");
-            if (_secondaryHealthSource == null || Health.Val == Health_Ref.Val)
+            if (_secondaryHealthSource == null || health.Val == healthRef.Val)
             {
                 return;
             }
-            _secondaryHealthSource.Health.Val -= conversionRate;
-            Health.Val += 1;
+            _secondaryHealthSource.health.Val -= conversionRate;
+            health.Val += 1;
         }
         // Update is called once per frame
         void Update()
         {
-            if (IsAlive == false)
+            if (isAlive == false)
             {
                 OnDeath.Invoke();
             }

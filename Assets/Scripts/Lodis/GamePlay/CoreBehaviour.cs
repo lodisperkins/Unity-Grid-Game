@@ -7,13 +7,12 @@ public class CoreBehaviour : MonoBehaviour
 {
 
 	[SerializeField] private Material _coreMaterial;
-	private float _time;
 	private Color _materialColor;
 
-	private bool _isFlashing;
 	// Use this for initialization
 	void Start ()
 	{
+		_coreMaterial.color = Color.white;
 		_materialColor = Color.white;
 	}
 
@@ -21,9 +20,9 @@ public class CoreBehaviour : MonoBehaviour
 	{
 		StartCoroutine(Flash());
 	}
+	//This makes the core flash for a few seconds when hit
 	private IEnumerator Flash()
 	{
-		_isFlashing = false;
 		for (var i = 0; i < 5; i++)
         {
             _coreMaterial.color =Color.yellow;
@@ -31,13 +30,5 @@ public class CoreBehaviour : MonoBehaviour
             _coreMaterial.color =_materialColor;
             yield return new WaitForSeconds(.1f);
         }
-
-		
-		
-		
-	}
-	// Update is called once per frame
-	void Update ()
-	{
 	}
 }

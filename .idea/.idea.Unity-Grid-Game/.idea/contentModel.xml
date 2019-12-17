@@ -73,10 +73,10 @@
               <e p="CoreBehaviour.cs" t="Include" />
               <e p="DeletionBlockBehaviour.cs" t="Include" />
               <e p="DisplayBehaviour.cs" t="Include" />
+              <e p="EnergyBlockBehaviour.cs" t="Include" />
               <e p="GridBehaviour.cs" t="Include" />
               <e p="GunBehaviour.cs" t="Include" />
               <e p="HealthBehaviour.cs" t="Include" />
-              <e p="MaterialBlockBehaviour.cs" t="Include" />
               <e p="MeleeWeaponBehaviour.cs" t="Include" />
               <e p="MortarBlockBehaviour.cs" t="Include" />
               <e p="OverdriveBehaviour.cs" t="Include" />

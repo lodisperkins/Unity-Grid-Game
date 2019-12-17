@@ -20,7 +20,6 @@ public class OverdriveToggleBehaviour : MonoBehaviour
 	void Update () {
 		if (_enabled.used)
 		{
-			Debug.Log("did it");
 			_toggleOnImage.enabled = false;
 			_toggleOffImage.enabled = true;
 		}

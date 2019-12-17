@@ -265,9 +265,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: Player1
   DamageVal: 1
-  _laser: {fileID: 1213727949691478}
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
+  _laser: {fileID: 0}
 --- !u!136 &136473158945362498
 CapsuleCollider:
   m_ObjectHideFlags: 1

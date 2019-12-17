@@ -296,11 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_Ref: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
-  DisplayHealth: 0
-  Health: {fileID: 0}
-  IsAlive: 0
-  canHeal: 0
+  healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
+  health: {fileID: 0}
+  isAlive: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -577,11 +575,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114226563568811040}
+        m_MethodName: ResetActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: b2f3bf7b778901942828e67bad18efd8, type: 2}
-  intendedSender: {fileID: 0}
+  intendedSender: {fileID: 1172816898836844}
 --- !u!114 &114730317773684812
 MonoBehaviour:
   m_ObjectHideFlags: 1

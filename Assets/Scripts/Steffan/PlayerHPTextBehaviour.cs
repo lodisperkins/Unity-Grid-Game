@@ -15,7 +15,7 @@ namespace Assets.Scripts.Steffan
         // Update is called once per frame
         void Update()
         {
-            hpText.text = "HP: " + hp.Health.Val;
+            hpText.text = "HP: " + hp.health.Val;
         }
     }
 }

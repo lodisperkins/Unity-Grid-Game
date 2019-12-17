@@ -9,9 +9,9 @@ namespace Lodis
         //the current block that the player has
         [SerializeField]
         private BlockVariable playerBlock;
-        //whether pr not the Ui shoulld update itself
+        //whether or not the Ui shoulld update itself
         private bool canUpdate;
-//The image that the UI displays
+        //The image that the UI displays
        private RawImage _image;
         // Use this for initialization
         void Start()

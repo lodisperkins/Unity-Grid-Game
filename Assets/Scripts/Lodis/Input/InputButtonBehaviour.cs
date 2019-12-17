@@ -52,6 +52,7 @@ public class InputButtonBehaviour : MonoBehaviour
         bool allPressed = true;
         foreach (var button in input.AxisNames)
         {
+            
             if (Input.GetAxisRaw(button) != 1 && Input.GetAxisRaw(button) != -1)
             {
                 allPressed = false;
@@ -95,6 +96,7 @@ public class InputButtonBehaviour : MonoBehaviour
     }
 	// Update is called once per frame
 	void Update () {
+        
         CheckInputs();
     }
 }

@@ -39,11 +39,6 @@ namespace Lodis.GamePlay
             P1AssignLists();
             P2AssignLists();
         }
-
-        private void Awake()
-        {
-            
-        }
         //Sets player1 panels to the appropriate material and sets their owner to be player 1
         public void P1AssignLists()
         {
@@ -57,26 +52,26 @@ namespace Lodis.GamePlay
             p2Panels.updateOwners();
         }
         //Removes an entire row from player1 and gives it to player2
-        public void surrenderRowP1()
+        public void SurrenderRowP1()
         {
             p1Panels.SurrenderRow(p2Panels);
             p1Panels.updateOwners();
             p2Panels.updateOwners();
         }
         //Removes an entire row from player2 and gives it to player1
-        public void surrenderRowP2()
+        public void SurrenderRowP2()
         {
             p2Panels.SurrenderRow(p1Panels);
             p1Panels.updateOwners();
             p2Panels.updateOwners();
         }
 
-        public GameObject getPanelFromP1List(int index)
+        public GameObject GetPanelFromP1List(int index)
         {
             return p1Panels[index];
         }
 
-        public int getIndexFromP1List(Vector2 position)
+        public int GetIndexFromP1List(Vector2 position)
         {
             int index = -1;
             p1Panels.FindIndex(position, out index);
@@ -91,12 +86,12 @@ namespace Lodis.GamePlay
         {
             get { return p2Panels.Count; }
         }
-        public GameObject getPanelFromP2List(int index)
+        public GameObject GetPanelFromP2List(int index)
         {
             return p2Panels[index];
         }
 
-        public int getIndexFromP2List(Vector2 position)
+        public int GetIndexFromP2List(Vector2 position)
         {
             int index = -1;
             p2Panels.FindIndex(position, out index);
@@ -133,6 +128,7 @@ namespace Lodis.GamePlay
         {
             Vector2 panelPosition = new Vector2((int)p1Position.Val.x + (int)p1Direction.X, (int)p1Position.Val.y+ (int)p1Direction.Y);
             int index = 0;
+            //This checks for a diagnol input and returns if one is detected;
             if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
             {
                 return;
@@ -158,6 +154,7 @@ namespace Lodis.GamePlay
         public void StealPanelP2()
         {
             Vector2 panelPosition = new Vector2((int)p2Position.Val.x + (int)p2Direction.X, (int)p2Position.Val.y + (int)p2Direction.Y);
+            //This checks for a diagnol input and returns if one is detected;
             if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
             {
                 return;
@@ -272,10 +269,6 @@ namespace Lodis.GamePlay
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
             }
-        }
-        // Update is called once per frame
-        void Update()
-        {
         }
     }
 }

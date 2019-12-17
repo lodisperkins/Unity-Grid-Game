@@ -33,6 +33,7 @@ namespace Lodis
         private Transform _tempTransform;
         //temporary rigidbody for the bullet
         private Rigidbody _tempRigidBody;
+        //If this gun is turret it fires automatically, otherwise it waits for player input tp fire
         [SerializeField] private bool _isTurret;
         [SerializeField] private Event _onShotFired;
         // the amount of damge the bullet should deal
@@ -44,7 +45,6 @@ namespace Lodis
             {
                 StartCoroutine(Fire());
             }
-            
         }
         //fires a bullet with a specified interval of time
         private IEnumerator Fire()
@@ -60,10 +60,6 @@ namespace Lodis
         public void FireBullet(Vector3 position)
         {
             _tempBullet = Instantiate(bullet, position, transform.rotation);
-            if (owner == "")
-            {
-                owner = "Player1";
-            }
             _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
             _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
             _tempBullet.transform.Rotate(new Vector3(90, 0));
@@ -75,12 +71,6 @@ namespace Lodis
         private void OnDisable()
         {
             StopAllCoroutines();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

@@ -74,14 +74,7 @@ namespace Lodis
             }
 
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            //highlights the panel if a bullet passes through it 
-            
-            
-        }
-
+        //highlights the panel when a bullet passes through it
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Projectile"))

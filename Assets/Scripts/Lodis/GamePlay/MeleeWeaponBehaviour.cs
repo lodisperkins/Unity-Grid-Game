@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class MeleeWeaponBehaviour : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	[SerializeField] private ParticleSystem ps;
 	[SerializeField] private int _damageVal;
 	private void OnTriggerEnter(Collider other)
@@ -17,21 +13,17 @@ public class MeleeWeaponBehaviour : MonoBehaviour {
 		var health = other.GetComponent<HealthBehaviour>();
 		if (health != null)
 		{
-			playDeathParticleSystems(1);
+			PlayParticleSystems(1);
 			health.takeDamage(_damageVal);
 		}
 		
 	}
-	public void playDeathParticleSystems(float duration)
+	//Plays particle effect when hit
+	public void PlayParticleSystems(float duration)
 	{
 		var tempPs = Instantiate(ps,transform.position,transform.rotation);
 		tempPs.playbackSpeed = 2.5f;
 		tempPs.Play();
 		Destroy(tempPs, duration);
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

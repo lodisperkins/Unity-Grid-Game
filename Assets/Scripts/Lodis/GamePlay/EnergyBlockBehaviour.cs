@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis
 {
-    public class MaterialBlockBehaviour : MonoBehaviour
+    public class EnergyBlockBehaviour : MonoBehaviour
     {
         //the player the material block is responsible for
         private GameObject Player;

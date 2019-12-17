@@ -44,7 +44,7 @@ namespace Lodis
     	{
 	        if (isHealthBar)
 	        {
-		        _bar.value = hp.Health.Val;
+		        _bar.value = hp.health.Val;
 		        LerpHealthColor();
 	        }
 	        else
