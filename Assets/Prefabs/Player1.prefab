@@ -4385,6 +4385,7 @@ MonoBehaviour:
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}
   OnDeleteDisabled: {fileID: 11400000, guid: 3c921c183b437da4e92f02589f00a386, type: 2}
+  _blockSpawnBuffer: 0
   _listOfTowerSelectionButtons:
   - SelectBlock1(Y)
   - SelectBlock1(X)

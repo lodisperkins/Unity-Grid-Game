@@ -33,7 +33,6 @@ namespace Lodis.GamePlay
 
 		public void GoToNextOption()
 		{
-			Debug.Log("got here");
 			if (isPaused)
 			{
 				
@@ -119,7 +118,7 @@ namespace Lodis.GamePlay
 				PauseGame();
 			}
 
-			if ((Input.GetAxis("Vertical1") < .5 && Input.GetAxis("Vertical1") > -.5) && Input.GetAxis("Vertical1") > -.5&&(Input.GetAxis("Vertical1") < .5 && (Input.GetAxis("Vertical1") > -.5) && Input.GetAxis("Vertical1") > -.5))
+			if ((Input.GetAxis("Vertical1") < .5 && Input.GetAxis("Vertical1") > -.5) && Input.GetAxis("Vertical2") > -.5&&(Input.GetAxis("Vertical2") < .5 ))
 			{
 				if (_controlWindowUp == false) 
 				{

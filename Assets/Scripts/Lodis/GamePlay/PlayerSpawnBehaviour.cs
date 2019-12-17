@@ -53,7 +53,9 @@ namespace Lodis
         private Event OnDeleteEnabled;
         [SerializeField]
         private Event OnDeleteDisabled;
-
+        private float _time;
+        [FormerlySerializedAs("_towerSpawnBuffer")] [SerializeField]
+        private float _blockSpawnBuffer;
         [SerializeField] private List<string> _listOfTowerSelectionButtons;
         [SerializeField] public bool overdriveEnabled;
         [SerializeField] private int _materialsRegenVal;
@@ -75,6 +77,7 @@ namespace Lodis
             current_index = 0;
             materials.Val = 60;
             material_regen_time = Time.time + material_regen_rate;
+            buildStateEnabled = true;
         }
         /// <summary>
         /// Checks the amount of materials the player has 
@@ -121,22 +124,33 @@ namespace Lodis
             {
                 materials.Val = _materialCap;
             }
-            
         }
         public void EnableDeletion()
         {
             OnDeleteEnabled.Raise(gameObject);
             blockRef.Block = DeletionBlockObject;
             SelectionColor = Color.magenta;
-            FindNeighbors();
+           PlaceBlock();
             DeleteEnabled = true;
         }
         public void DisableDeletion()
         {
             OnDeleteDisabled.Raise(gameObject);
             blockRef.Block = blocks[current_index];
-            SelectionColor = Color.green;
             DeleteEnabled = false;
+        }
+
+        public bool CheckBlockSpawnTimer()
+        {
+            if (Time.time < _time)
+            {
+                return false;
+            }
+            else
+            {
+                _time = Time.time + _blockSpawnBuffer;
+                return true;
+            }
         }
         //Finds and highlights all neighboring panels in cardinal directions 
         public void FindNeighbors()
@@ -153,7 +167,7 @@ namespace Lodis
             foreach (GameObject panel in player.Panels)
             {
                 _panel = panel .GetComponent<PanelBehaviour>();
-                var coordinate = panel.GetComponent<PanelBehaviour>().Position;
+                var coordinate = _panel.Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
                     if (_panel.BlockCapacityReached && buildStateEnabled && !DeleteEnabled)
@@ -213,10 +227,10 @@ namespace Lodis
 
         public void PanelSelectionButtonDown()
         {
-            Debug.Log("stick down");
-            _panelSelectionInputDown = true;
-            buildStateEnabled = true;
-            PlaceBlock();
+//            Debug.Log("stick down");
+//            _panelSelectionInputDown = true;
+//            buildStateEnabled = true;
+//            PlaceBlock();
         }
         public void PanelSelectionButtonUp()
         {
@@ -229,18 +243,18 @@ namespace Lodis
             {
                 if (Input.GetAxisRaw(button) == 1 || Input.GetAxisRaw(button) == -1)
                 {
+                    PlaceBlock();
                     _towerSelectionInputDown = true;
                     Debug.Log("button down");
                     return;
                 }
             }
-            UnHighlightPanels();
             if (DeleteEnabled)
             {
                 return;
             }
             player.canMove = true;
-            buildStateEnabled = true;
+            UnHighlightPanels();
             _towerSelectionInputDown = false;
         }
 
@@ -250,10 +264,10 @@ namespace Lodis
         }
         public void PlaceBlock()
         {
-            if (_towerSelectionInputDown && buildStateEnabled || DeleteEnabled)
+           
+            FindNeighbors();
+            if(buildStateEnabled)
             { 
-                Debug.Log(direction.Val);
-                FindNeighbors();
                 if ( direction.Val.x== -1)
                 {
                     PlaceBlockLeft();
@@ -275,6 +289,7 @@ namespace Lodis
                     buildStateEnabled = false;;
                 }
             }
+            buildStateEnabled = InRange(direction.X,-.5f, .5f) && InRange(direction.Y,-.5f, .5f);
         }
         //Places the current block to the left of the player
         public void PlaceBlockLeft()
@@ -411,7 +426,7 @@ namespace Lodis
             current_index = 0;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
                 blocks[current_index].transform.rotation.z);
-            PlaceBlock();
+            
         }
         public void SelectBlock1()
         {
@@ -422,7 +437,6 @@ namespace Lodis
             current_index = 1;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
                 blocks[current_index].transform.rotation.z);
-            PlaceBlock();
         }
         public void SelectBlock2()
         {
@@ -433,7 +447,6 @@ namespace Lodis
             current_index = 2;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
                 blocks[current_index].transform.rotation.z);
-            PlaceBlock();
         }
         public void SelectBlock3()
         {
@@ -444,8 +457,6 @@ namespace Lodis
             current_index = 3;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
                 blocks[current_index].transform.rotation.z);
-
-            PlaceBlock();
         }
         //Rotates the block so that it faces right 
         public void RotateBlockRight()
@@ -478,6 +489,16 @@ namespace Lodis
             
             _arrow.HideArrow();
         }
+
+        public bool InRange(float val, float min, float max)
+        {
+            if (val >= min && val <= max)
+            {
+                return true;
+            }
+
+            return false;
+        }
         // Update is called once per frame
         void Update()
         {
@@ -486,7 +507,9 @@ namespace Lodis
                 AddMaterials(_materialsRegenVal);
                 material_regen_time = Time.time + material_regen_rate;
             }
+
             
+            Debug.Log(buildStateEnabled);
             UpdateArrow();
             CheckTowerButtonDown();
         }
