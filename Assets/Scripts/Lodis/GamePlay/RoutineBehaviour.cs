@@ -13,7 +13,7 @@ namespace Lodis.GamePlay
         private Lodis.Event onActionsCompleted;
         //Time it takes to invoke the actions event
         [FormerlySerializedAs("action_delay")] [SerializeField]
-        private float actionDelay;
+        public float actionDelay;
         //Number of times the actions event will be invoked
         [FormerlySerializedAs("action_limit")] [SerializeField]
         private int actionLimit;

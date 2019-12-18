@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lodis.GamePlay;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -174,7 +175,6 @@ namespace Lodis
         public void UpgradeAttack()
         {
             _gun.enabled = true;
-            _gun.damageVal += 1;
             _gun.bulletCount += 5;
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .5f, 1);
         }
@@ -194,7 +194,7 @@ namespace Lodis
             if (_energyMine != null)
             {
                 _energyMine.enabled = true;
-                _energyMine.MaterialAmount += 2;
+                _energyMine.MaterialAmount +=2;
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
             }
         }

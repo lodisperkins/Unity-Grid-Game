@@ -200,7 +200,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled)
+                    if (_panel.BlockCapacityReached && buildStateEnabled&& !DeleteEnabled)
                     {
                         continue;
                     }
@@ -271,25 +271,25 @@ namespace Lodis
                 if ( direction.Val.x== -1)
                 {
                     PlaceBlockLeft();
-                    buildStateEnabled = false;;
+                    buildStateEnabled = false;
                 }
                 else if (direction.Val.x== 1)
                 {
                     PlaceBlockRight();
-                    buildStateEnabled = false;;
+                    buildStateEnabled = false;
                 }
                 else if (direction.Val.y== -1)
                 {
                     PlaceBlockBelow();
-                    buildStateEnabled = false;;
+                    buildStateEnabled = false;
                 }
                 else if (direction.Val.y== 1)
                 {
                     PlaceBlockUp();
-                    buildStateEnabled = false;;
+                    buildStateEnabled = false;
                 }
             }
-            buildStateEnabled = InRange(direction.X,-.5f, .5f) && InRange(direction.Y,-.5f, .5f);
+            buildStateEnabled = InRange(direction.X,-.9f, .9f) && InRange(direction.Y,-.9f, .9f);
         }
         //Places the current block to the left of the player
         public void PlaceBlockLeft()

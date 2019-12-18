@@ -47,6 +47,13 @@ namespace Lodis
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("Projectile"))
+            {
+                if (Owner == other.GetComponent<BulletBehaviour>().Owner)
+                {
+                    return;
+                }
+            }
             if (other.name != Owner && other.CompareTag("Panel") == false)
             {
                 playDeathParticleSystems(1);
