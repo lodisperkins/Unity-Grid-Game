@@ -194,7 +194,8 @@ namespace Lodis
             if (_energyMine != null)
             {
                 _energyMine.enabled = true;
-                _energyMine.MaterialAmount +=2;
+                GetComponent<RoutineBehaviour>().actionDelay -= .5f;
+                _energyMine.MaterialAmount +=3;
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
             }
         }

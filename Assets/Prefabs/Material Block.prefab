@@ -377,7 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 11400000, guid: 4721e8847ea42404c85e512db7daf57a, type: 2}
   onActionsCompleted: {fileID: 11400000, guid: b2f3bf7b778901942828e67bad18efd8, type: 2}
-  actionDelay: 3
+  actionDelay: 5
   actionLimit: 60
   hasLimit: 0
 --- !u!114 &114295738289527486
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede83023ae3b0f4584efdb167208cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialAmount: 5
+  MaterialAmount: 4
 --- !u!114 &114787334888797988
 MonoBehaviour:
   m_ObjectHideFlags: 1
