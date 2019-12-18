@@ -24,6 +24,9 @@ namespace Lodis
         //unity event raised when the object dies
         [SerializeField]
         UnityEvent OnDeath;
+
+        private bool hasRaised;
+        [SerializeField] private Event OnObjectDeath;
         //the particles that should play on the objects death
         [SerializeField] private ParticleSystem ps;
         // Use this for initialization
@@ -31,6 +34,7 @@ namespace Lodis
         {
             health = IntVariable.CreateInstance(healthRef.Val);
             isAlive = true;
+            hasRaised = false;
         }
         //decrements the objects health by the damge amount given
         public void takeDamage(int damageVal)
@@ -71,6 +75,10 @@ namespace Lodis
             if (isAlive == false)
             {
                 OnDeath.Invoke();
+                if (OnObjectDeath != null)
+                {
+                    OnObjectDeath.Raise(gameObject);
+                }
             }
         }
     }

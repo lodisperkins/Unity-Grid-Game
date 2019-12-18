@@ -91,6 +91,7 @@
               <e p="RoutineBehaviour.cs" t="Include" />
               <e p="SliderBehaviour.cs" t="Include" />
               <e p="SorcererSpecialBehaviour.cs" t="Include" />
+              <e p="StartingUIBehaviour.cs" t="Include" />
               <e p="TeleportBeamBehaviour.cs" t="Include" />
               <e p="TextBehaviour.cs" t="Include" />
             </e>

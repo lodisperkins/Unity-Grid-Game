@@ -18,7 +18,7 @@ namespace Lodis.GamePlay
 		[SerializeField]
 		private Event OnUnPause;
 		//true if the game is poused
-		private bool isPaused;
+		public bool isPaused;
 		[SerializeField] private GameObject _controlsPanel;
 		[SerializeField] private List<Event> _actions;
 		[SerializeField] private List<Text> _displayOptions;
@@ -35,10 +35,9 @@ namespace Lodis.GamePlay
 		{
 			if (isPaused)
 			{
-				
 				_displayOptions[_currentIndex].color = Color.white;
 				_currentIndex++;
-				if (_currentIndex > 3)
+				if (_currentIndex > _displayOptions.Count -1)
 				{
 					_currentIndex = 0;
 				}
@@ -54,9 +53,8 @@ namespace Lodis.GamePlay
 				_currentIndex--;
 				if (_currentIndex < 0)
 				{
-					_currentIndex = 3;
+					_currentIndex = _displayOptions.Count -1;
 				}
-
 				_displayOptions[_currentIndex].color = Color.blue;
 			}
 		}
@@ -65,16 +63,15 @@ namespace Lodis.GamePlay
 		{
 			if (Time.timeScale == 1)
 			{
-				
 				Time.timeScale = 0;
 				isPaused = true;
-				OnPause.Raise();
+				OnPause.Raise(gameObject);
 			}
 			else
 			{
 				Time.timeScale = 1;
 				isPaused = false;
-				OnUnPause.Raise();
+				OnUnPause.Raise(gameObject);
 			}
 		}
 
@@ -107,7 +104,7 @@ namespace Lodis.GamePlay
 		{
 			if (isPaused)
 			{
-				_actions[_currentIndex].Raise();
+				_actions[_currentIndex].Raise(gameObject);
 			}
 		}
 
