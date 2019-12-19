@@ -172,6 +172,7 @@ namespace Lodis
                 {
                     if (_panel.BlockCapacityReached && buildStateEnabled && !DeleteEnabled)
                     {
+                        _panel.Selected = false;
                         continue;
                     }
                     panels_in_range.Add("Forward", panel);
@@ -245,7 +246,6 @@ namespace Lodis
                 {
                     PlaceBlock();
                     _towerSelectionInputDown = true;
-                    Debug.Log("button down");
                     return;
                 }
             }
@@ -507,9 +507,6 @@ namespace Lodis
                 AddMaterials(_materialsRegenVal);
                 material_regen_time = Time.time + material_regen_rate;
             }
-
-            
-            Debug.Log(buildStateEnabled);
             UpdateArrow();
             CheckTowerButtonDown();
         }

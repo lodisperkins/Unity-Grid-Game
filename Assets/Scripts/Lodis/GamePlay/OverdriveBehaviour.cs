@@ -56,6 +56,7 @@ public class OverdriveBehaviour : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log(_player.overdriveEnabled);
 		if (_player.overdriveEnabled)
 		{
 			used = true;

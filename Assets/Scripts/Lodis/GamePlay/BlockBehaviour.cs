@@ -207,7 +207,7 @@ namespace Lodis
             {
                 return;
             }
-            _level.text = ""+_currentLevel;
+            _level.text = "lvl. "+_currentLevel;
         }
     }
 }
