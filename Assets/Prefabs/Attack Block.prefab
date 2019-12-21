@@ -677,11 +677,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_Ref: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
-  DisplayHealth: 0
-  Health: {fileID: 0}
-  IsAlive: 0
-  canHeal: 0
+  healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
+  health: {fileID: 0}
+  isAlive: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -711,6 +709,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnObjectDeath: {fileID: 0}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
 --- !u!114 &114969970148039990
 MonoBehaviour:

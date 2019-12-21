@@ -100,6 +100,7 @@
               <e p="InputButtonBehaviour.cs" t="Include" />
             </e>
             <e p="Movement" t="Include">
+              <e p="PlayerLookBehaviour.cs" t="Include" />
               <e p="PlayerMovementBehaviour.cs" t="Include" />
             </e>
           </e>

@@ -74,4 +74,4 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
-  damageVal: 1
+  damageVal: 2
