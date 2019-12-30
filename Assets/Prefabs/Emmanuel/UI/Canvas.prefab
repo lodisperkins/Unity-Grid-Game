@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222489897600293472}
   - component: {fileID: 114825007053266976}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: P1TowerSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 222203197211069700}
   - component: {fileID: 114823374742866926}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: P2TowerSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3087,7 +3087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A-Defense Block(2)
+  m_Text: A-Defense Block
 --- !u!114 &114031868583889806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3974,7 +3974,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X-Mortar Block(3)
+  m_Text: X-Mortar Block
 --- !u!114 &114159918395994850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4272,7 +4272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 8934f7763af9e41ee8845ae14c5473f1, type: 2}
-  m_Color: {r: 0, g: 1, b: 0.86242104, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.8065431, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5241,7 +5241,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: B-Attack Block(1)
+  m_Text: B-Attack Block
 --- !u!114 &114403255710462170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5274,7 +5274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Y-Energy Block(3)
+  m_Text: Y-Energy Block
 --- !u!114 &114405173077379434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5770,7 +5770,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X-Tall Block(3)
+  m_Text: X-Tall Block
 --- !u!114 &114493513457058624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5946,7 +5946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: B-Attack Block(1)
+  m_Text: B-Attack Block
 --- !u!114 &114533987304097096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6302,7 +6302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A-Defense Block(2)
+  m_Text: A-Defense Block
 --- !u!114 &114590978834463578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6959,7 +6959,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Y-Energy Block(3)
+  m_Text: Y-Energy Block
 --- !u!114 &114716738408824704
 MonoBehaviour:
   m_ObjectHideFlags: 1

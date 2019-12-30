@@ -176,6 +176,7 @@ namespace Lodis
         {
             _gun.enabled = true;
             _gun.bulletCount += 5;
+            _gun.damageVal += 1;
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .5f, 1);
         }
         //Increases health value 
@@ -203,11 +204,11 @@ namespace Lodis
 
         private void Update()
         {
-            if (_level == null)
+            if (_level != null)
             {
-                return;
+                _level.text = "lvl. "+_currentLevel;
             }
-            _level.text = "lvl. "+_currentLevel;
+            
         }
     }
 }
