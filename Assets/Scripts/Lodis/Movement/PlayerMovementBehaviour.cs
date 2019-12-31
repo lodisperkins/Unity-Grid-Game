@@ -46,6 +46,8 @@ namespace Lodis
         [SerializeField]
         private List<GameObject> startingPanels;
         public GamePlay.PanelList Panels;
+
+        [SerializeField] private Event _onMove;
         // Use this for initialization
         void Start()
         {
@@ -79,7 +81,7 @@ namespace Lodis
                 OnPanelStealDisabled.Raise(gameObject);
             }
         }
-        //Raises the event to steal a panel form the other panel
+        //Raises the event to steal a panel from the other panelist
         public void StealPanel()
         {
             if (panelStealActive)
@@ -88,11 +90,17 @@ namespace Lodis
             }       
         }
 
-        public void resetPositionToCurrentPanel()
+        public void ResetPositionToCurrentPanel()
         {
             transform.position = new Vector3(CurrentPanel.transform.position.x, transform.position.y, CurrentPanel.transform.position.z);
         }
-        
+        public void ResetPositionToStartPanel()
+        {
+            transform.position = new Vector3(Panels[0].transform.position.x, transform.position.y, Panels[0].transform.position.z);
+            _currentPanel.GetComponent<PanelBehaviour>().Occupied = false;
+            _currentPanel = Panels[0];
+            Position = _currentPanel.GetComponent<PanelBehaviour>().Position;
+        }
         //enables the players movement
         public void EnableMovement()
         {
@@ -120,6 +128,7 @@ namespace Lodis
                 _currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
                 Position += Destination;
                 Destination = new Vector2(0, 0);
+                _onMove.Raise();
                 return;
             }
             Destination = new Vector2(0, 0);

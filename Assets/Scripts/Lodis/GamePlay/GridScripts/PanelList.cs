@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Lodis;
 using UnityEngine;
@@ -27,7 +28,11 @@ namespace Lodis.GamePlay
         //initializes this panel list to have a populated list and an owner
         public void Init(List<GameObject> startPanels, string playername)
         {
-            panels = startPanels;
+            panels = new List<GameObject>();
+            foreach (GameObject panel in startPanels)
+            {
+                panels.Add(panel);
+            }
             Owner = playername;
             updateOwners();
         }
@@ -61,6 +66,11 @@ namespace Lodis.GamePlay
                 counter++;
             }
         }
+
+        public bool Contains(GameObject panel)
+        {
+            return panels.Contains(panel);
+        }
         public IEnumerator GetEnumerator()
         {
             return panels.GetEnumerator();
@@ -91,6 +101,14 @@ namespace Lodis.GamePlay
             if (RemovePanel(panels[panel_Index]))
             {
                 opponent_Panel_List.panels.Insert(0,temp);
+            }
+        }
+        public void TransferPanel(PanelList opponent_Panel_List, int panel_Index,int insertionIndex)
+        {
+            GameObject temp  = panels[panel_Index];
+            if (RemovePanel(panels[panel_Index]))
+            {
+                opponent_Panel_List.panels.Insert(insertionIndex,temp);
             }
         }
         /// <summary>
@@ -134,6 +152,10 @@ namespace Lodis.GamePlay
             }
             index = -1;
             return false;
+        }
+        public int FindIndex(GameObject _panel)
+        {
+            return panels.IndexOf(_panel);
         }
     }
 

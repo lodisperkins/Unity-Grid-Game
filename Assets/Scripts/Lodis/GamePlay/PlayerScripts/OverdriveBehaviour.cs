@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Lodis;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Event = Lodis.Event;
 
 public class OverdriveBehaviour : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class OverdriveBehaviour : MonoBehaviour
 	private float _overdriveLength;
 	[SerializeField] private ParticleSystem ps;
 	[SerializeField] private GameObject _particles;
-
+	[SerializeField] private Event _onOverdriveEnabled;
 	[FormerlySerializedAs("_used")] public bool used;
 	// Use this for initialization
 	void Start ()
@@ -36,6 +37,7 @@ public class OverdriveBehaviour : MonoBehaviour
 			return;
 		}
 		_player.overdriveEnabled = true;
+		_onOverdriveEnabled.Raise(gameObject);
 		_player.AddMaterials(60);
 		
 		if (_health.health.Val >= 75)

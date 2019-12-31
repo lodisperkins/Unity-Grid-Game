@@ -23,6 +23,7 @@ namespace Lodis.Gameplay
 		[SerializeField]
 		private Event _onLanding ;
 		public bool ascending;
+		public bool landed;
 		private Rigidbody _body;
 		// Use this for initialization
 		void Start()
@@ -30,10 +31,11 @@ namespace Lodis.Gameplay
 			_body = GetComponent<Rigidbody>();
 			playerTransform = playerTransform.transform;
 			ascending = false;
+			landed = true;
 		}
 		void MoveBeamUpwards()
 		{
-			_onAscending.Raise();
+			_onAscending.Raise(gameObject);
 			_beamdestination = new Vector3(playerTransform.position.x,_beamHeight,playerTransform.position.z);
 			Vector3 seekforce = _beamdestination - transform.position;
 			seekforce = (seekforce.normalized*max_speed) - velocity;
@@ -44,7 +46,7 @@ namespace Lodis.Gameplay
 			transform.position += seekforce*Time.deltaTime;
 			if (transform.position.y >= _beamdestination.y)
 			{
-				player.SendMessage("resetPositionToCurrentPanel");
+				player.SendMessage("ResetPositionToStartPanel");
 				@ascending = false;
 			}
 			
@@ -58,16 +60,33 @@ namespace Lodis.Gameplay
 				velocity=velocity.normalized*max_speed;
 			}
 			transform.position += seekforce*Time.deltaTime;
-			if (transform.position.y < playerTransform.position.y && @ascending == false) 
+			if (transform.position.y < playerTransform.position.y && @ascending == false)
 			{
-				_onLanding.Raise();
+				landed = true;
+				_onLanding.Raise(gameObject);
 			}
 			
 		}
 
 		public void EnableAscending()
 		{
-			@ascending = true;
+			if (player.name == "Player1")
+			{
+				if (player.transform.position.z > 18)
+				{
+					ascending = true;
+					landed = false;
+				}
+			}
+			else if(player.name =="Player2")
+			{
+				if (player.transform.position.z < 18)
+				{
+					ascending = true;
+					landed = false;
+				}
+			}
+			
 		}
 		
 		// Update is called once per frame
@@ -78,7 +97,7 @@ namespace Lodis.Gameplay
 			{
 				MoveBeamUpwards();
 			}
-			else
+			else if (ascending == false && landed == false) 
 			{
 				MoveBeamDownwards();
 				

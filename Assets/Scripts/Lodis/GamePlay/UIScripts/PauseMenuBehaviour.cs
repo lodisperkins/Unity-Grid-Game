@@ -25,7 +25,7 @@ namespace Lodis.GamePlay
 		private int _currentIndex;
 		private bool _canPressButton;
 		private bool _controlWindowUp;
-
+		public bool gameWon;
 		private void Start()
 		{
 			_controlWindowUp = false;
@@ -33,7 +33,7 @@ namespace Lodis.GamePlay
 
 		public void GoToNextOption()
 		{
-			if (isPaused)
+			if (isPaused || gameWon)
 			{
 				_displayOptions[_currentIndex].color = Color.white;
 				_currentIndex++;
@@ -44,11 +44,15 @@ namespace Lodis.GamePlay
 				_displayOptions[_currentIndex].color = Color.blue;
 			}
 		}
+
+		public void ToggleGameWon()
+		{
+			gameWon = !gameWon;
+		}
 		public void GoToPreviousOption()
 		{
-			if (isPaused)
+			if (isPaused || gameWon)
 			{
-				
 				_displayOptions[_currentIndex].color = Color.white;
 				_currentIndex--;
 				if (_currentIndex < 0)
@@ -86,15 +90,17 @@ namespace Lodis.GamePlay
 		}
 		public void Restart()
 		{
-			if (isPaused)
+			if (isPaused || gameWon)
 			{
-				PauseGame();
+				Time.timeScale = 1;
+				isPaused = false;
+				OnUnPause.Raise(gameObject);
 				SceneManager.LoadScene(0);
 			}
 		}
 		public void Quit()
 		{
-			if (isPaused)
+			if (isPaused || gameWon)
 			{
 				Application.Quit();
 			}
@@ -102,7 +108,7 @@ namespace Lodis.GamePlay
 
 		public void DoCurrentAction()
 		{
-			if (isPaused)
+			if (isPaused || gameWon)
 			{
 				_actions[_currentIndex].Raise(gameObject);
 			}

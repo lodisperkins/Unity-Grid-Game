@@ -104,8 +104,10 @@ MonoBehaviour:
   currentPanel: {fileID: 0}
   owner: {fileID: 0}
   cost: 0
+  _level: {fileID: 0}
   _sleepingMateral: {fileID: 0}
   _defaultMaterial: {fileID: 0}
+  BlockWeightVal: 0
   canUpgrade: 0
   sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -121,4 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d08a8287fd4d54a9a26b932ad39b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onDelete: {fileID: 11400000, guid: df594010b75c6e348bd83c3c6d6ec670, type: 2}
   ps: {fileID: 19800000, guid: 6746092d79f3e4fe1bfa983603238e26, type: 2}

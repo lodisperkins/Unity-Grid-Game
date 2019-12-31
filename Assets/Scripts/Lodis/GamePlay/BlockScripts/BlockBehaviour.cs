@@ -208,6 +208,10 @@ namespace Lodis
             {
                 _level.text = "lvl. "+_currentLevel;
             }
+            if (_currentLevel >= 3)
+            {
+                _level.text = "MAX";
+            }
             
         }
     }

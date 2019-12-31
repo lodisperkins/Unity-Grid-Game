@@ -8,7 +8,7 @@ namespace Lodis
     public class DeletionBlockBehaviour : MonoBehaviour
     {
         private PlayerSpawnBehaviour _player;
-
+        [SerializeField] private Event _onDelete;
         private BlockBehaviour _deletionBlock;
         //particles to be played when a block is deleted
         [SerializeField] private ParticleSystem ps;
@@ -40,6 +40,7 @@ namespace Lodis
                 PlayParticleSystems(1.5f);
                 GetRefund(block);
                 block.DestroyBlock(1.0f);
+                _onDelete.Raise();
             }
         }
     }

@@ -27,6 +27,7 @@ namespace Lodis
 
         private bool hasRaised;
         [SerializeField] private Event OnObjectDeath;
+        [SerializeField] private Event OnHit;
         //the particles that should play on the objects death
         [SerializeField] private ParticleSystem ps;
         // Use this for initialization
@@ -40,6 +41,7 @@ namespace Lodis
         public void takeDamage(int damageVal)
         {
             health.Val -= damageVal;
+            OnHit.Raise();
             if (health.Val <= 0)
             {
                 isAlive = false;
@@ -61,7 +63,6 @@ namespace Lodis
         //(not used) Meant for the player to heal from some secondary health source like the core
         public void Heal()
         {
-            Debug.Log("Tried Heal");
             if (_secondaryHealthSource == null || health.Val == healthRef.Val)
             {
                 return;
@@ -75,8 +76,9 @@ namespace Lodis
             if (isAlive == false)
             {
                 OnDeath.Invoke();
-                if (OnObjectDeath != null)
+                if (OnObjectDeath != null && hasRaised == false)
                 {
+                    hasRaised = true;
                     OnObjectDeath.Raise(gameObject);
                 }
             }

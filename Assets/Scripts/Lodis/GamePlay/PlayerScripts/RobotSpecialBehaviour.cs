@@ -62,17 +62,6 @@ namespace Lodis.GamePlay
 //    			}
 //            }
 //    	}
-    
-    	private void OnCollisionEnter(Collision other)
-    	{
-	      
-    		
-    	}
-    	// Update is called once per frame
-    	
-    	void Update () {
-    		
-    	}
     }
 
 }
