@@ -6,7 +6,6 @@
     <e p="C:\Users\s188043\Documents\GitHub\Unity-Grid-Game" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="DoesNothingBehaviour.cs" t="Include" />
         <e p="Imported Assets" t="Include">
           <e p="RobotSphere" t="Include">
             <e p="Assets" t="Include">

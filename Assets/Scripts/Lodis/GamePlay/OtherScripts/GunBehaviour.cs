@@ -51,7 +51,7 @@ namespace Lodis
         {
             for (int i = 0; i < bulletCount; i++)
             {
-                FireBullet(transform.position);
+                FireBullet();
                 yield return new WaitForSeconds(bulletDelay);
             }
             outOfAmmo.Invoke();
@@ -59,7 +59,19 @@ namespace Lodis
 
         public void FireBullet(Vector3 position)
         {
+            Debug.Log("parent position: " + position);
             _tempBullet = Instantiate(bullet, position, transform.rotation);
+            _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
+            _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
+            _tempBullet.transform.Rotate(new Vector3(90, 0));
+            _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
+            _bulletForce = transform.forward * bulletForceScale;
+            _tempRigidBody.AddForce(_bulletForce);
+            _onShotFired.Raise(gameObject);
+        }
+        public void FireBullet()
+        {
+            _tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
             _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
             _tempBullet.transform.Rotate(new Vector3(90, 0));

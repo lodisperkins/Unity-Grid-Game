@@ -45,6 +45,7 @@ namespace Lodis
         private void Start()
         {
             _currentColor = new Color();
+            blockCounter = 0;
             _blockLimit = 3;
             TimerSet = false;
             _panelMat = GetComponent<MeshRenderer>().material;
@@ -58,6 +59,11 @@ namespace Lodis
         private void Awake()
         {
             _panelMat = GetComponent<MeshRenderer>().material;
+        }
+
+        public bool CheckPanelCapacity(BlockBehaviour block)
+        {
+            return blockCounter + block.BlockWeightVal > _blockLimit;
         }
         //one set calls the highlight panel fucntion with current status of the _selected variable
         public bool Selected

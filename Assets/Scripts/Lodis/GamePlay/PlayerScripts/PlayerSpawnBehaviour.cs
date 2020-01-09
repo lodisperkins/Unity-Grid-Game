@@ -25,7 +25,8 @@ namespace Lodis
         //The direction the player is inputting. Used to determine where the object will spawn
         [SerializeField]
         private Vector2Variable direction;
-      
+
+        private BlockBehaviour _currentBlock;
         //used to get access to the list of available panels
         [SerializeField]
         private PlayerMovementBehaviour player;
@@ -112,7 +113,7 @@ namespace Lodis
         /// the player has selected to update the temp ui
         /// </summary>
         /// <returns></returns>
-        public Color GetCurrentBlock()
+        public Color GetCurrentBlockColor()
         {
             return blockRef.Color;
         }
@@ -167,10 +168,11 @@ namespace Lodis
             foreach (GameObject panel in player.Panels)
             {
                 _panel = panel .GetComponent<PanelBehaviour>();
+                _currentBlock = blocks[current_index].GetComponent<BlockBehaviour>();
                 var coordinate = _panel.Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled && !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !DeleteEnabled)
                     {
                         _panel.Selected = false;
                         continue;
@@ -181,8 +183,9 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled&& !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled)
                     {
+                        _panel.Selected = false;
                         continue;
                     }
                     panels_in_range.Add("Behind", panel);
@@ -191,8 +194,9 @@ namespace Lodis
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled&& !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled)
                     {
+                        _panel.Selected = false;
                         continue;
                     }
                     panels_in_range.Add("Above", panel);
@@ -201,8 +205,9 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.BlockCapacityReached && buildStateEnabled&& !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled)
                     {
+                        _panel.Selected = false;
                         continue;
                     }
                     panels_in_range.Add("Below", panel);
@@ -426,7 +431,6 @@ namespace Lodis
             current_index = 0;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
                 blocks[current_index].transform.rotation.z);
-            
         }
         public void SelectBlock1()
         {

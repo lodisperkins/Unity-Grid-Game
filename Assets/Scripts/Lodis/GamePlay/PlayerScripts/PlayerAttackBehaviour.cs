@@ -35,7 +35,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
 	{
 		if (player.canMove)
 		{
-			_gun.FireBullet(transform.position);
+			_gun.FireBullet();
 		}
 		
 	}

@@ -38,6 +38,8 @@ namespace Lodis
         public bool sleeping;
         [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
+
+        private Color _currentMaterialColor;
         // Use this for initialization
         void Start()
         {
@@ -47,7 +49,8 @@ namespace Lodis
             _energyMine = GetComponent<EnergyBlockBehaviour>();
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
-            _currentMaterial = GetComponent<Renderer>().material;
+            _currentMaterial = GetComponent<MeshRenderer>().material;
+            _currentMaterialColor = _currentMaterial.color;
             GetComponent<BlockBehaviour>().enabled = true;
             canUpgrade = false;
             _awake = true;
@@ -162,13 +165,24 @@ namespace Lodis
 
             _awake = true;
         }
-        
+        private IEnumerator Flash()
+        {
+            for (var i = 0; i < 5; i++)
+            {
+                _currentMaterial.color =Color.yellow;
+                yield return new WaitForSeconds(.1f);
+                _currentMaterial.color =_currentMaterialColor;
+                yield return new WaitForSeconds(.1f);
+            }
+        }
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
             _panel.Occupied = false;
             _panel.blockCounter = 0;
+            canUpgrade = false;
             GameObject TempGameObject = gameObject;
+            StartCoroutine(Flash());
             Destroy(TempGameObject,time);
         }
         //increases attack power and bullet count
