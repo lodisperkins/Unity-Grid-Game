@@ -252,6 +252,7 @@ MonoBehaviour:
   _onAscending: {fileID: 11400000, guid: 0d885f0989823b84c8e532faf50f0ec5, type: 2}
   _onLanding: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
   ascending: 0
+  landed: 0
 --- !u!114 &114930422235514172
 MonoBehaviour:
   m_ObjectHideFlags: 1

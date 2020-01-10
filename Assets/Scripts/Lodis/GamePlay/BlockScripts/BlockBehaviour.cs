@@ -49,9 +49,10 @@ namespace Lodis
             _energyMine = GetComponent<EnergyBlockBehaviour>();
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
-            _currentMaterial = GetComponent<MeshRenderer>().material;
+            _currentMaterial = GetComponent<Renderer>().material;
             _currentMaterialColor = _currentMaterial.color;
             GetComponent<BlockBehaviour>().enabled = true;
+            _currentMaterial.SetColor("_EmissionColor",Color.black);
             canUpgrade = false;
             _awake = true;
             _currentLevel = 1;
@@ -169,16 +170,15 @@ namespace Lodis
         {
             for (var i = 0; i < 5; i++)
             {
-                _currentMaterial.color =Color.yellow;
+                _currentMaterial.SetColor("_EmissionColor",new Color(.7f,.5f,0.1f,1));
                 yield return new WaitForSeconds(.1f);
-                _currentMaterial.color =_currentMaterialColor;
+                _currentMaterial.SetColor("_EmissionColor",Color.black); 
                 yield return new WaitForSeconds(.1f);
             }
         }
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
-            _panel.Occupied = false;
             _panel.blockCounter = 0;
             canUpgrade = false;
             GameObject TempGameObject = gameObject;
@@ -203,6 +203,12 @@ namespace Lodis
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
             }
         }
+
+        private void OnDestroy()
+        {
+            _panel.Occupied = false;
+        }
+
         //increases the materials gained 
         public void UpgradeMaterial()
         {
@@ -226,7 +232,6 @@ namespace Lodis
             {
                 _level.text = "MAX";
             }
-            
         }
     }
 }
