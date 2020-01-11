@@ -4493,6 +4493,8 @@ MonoBehaviour:
   _particles: {fileID: 1625940903939030}
   _onOverdriveEnabled: {fileID: 11400000, guid: dd68728f066585c4d908df9a01916280,
     type: 2}
+  _onOverdriveDisabled: {fileID: 11400000, guid: 6e9c83498b37b8449bbbea59b9106503,
+    type: 2}
   used: 0
 --- !u!114 &114361469955308476
 MonoBehaviour:
@@ -4680,6 +4682,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  hasRaised: 0
   OnObjectDeath: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}

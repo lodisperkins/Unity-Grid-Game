@@ -7,13 +7,11 @@ public class OverdriveToggleBehaviour : MonoBehaviour
 {
 
 	[SerializeField] private Image _toggleOnImage;
-	[SerializeField] private Image _toggleOffImage;
-
+	[SerializeField] private GameObject _particles;
 	[SerializeField] private OverdriveBehaviour _enabled;
 	// Use this for initialization
 	void Start ()
 	{
-		_toggleOnImage = GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
@@ -21,7 +19,6 @@ public class OverdriveToggleBehaviour : MonoBehaviour
 		if (_enabled.used)
 		{
 			_toggleOnImage.enabled = false;
-			_toggleOffImage.enabled = true;
 		}
 	}
 }

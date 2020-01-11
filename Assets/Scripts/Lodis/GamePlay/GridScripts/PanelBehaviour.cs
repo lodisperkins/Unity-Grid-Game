@@ -186,6 +186,10 @@ namespace Lodis
             {
                 BlockCapacityReached = true;
             }
+            else if (blockCounter == 0)
+            {
+                Occupied = false;
+            }
             else
             {
                 BlockCapacityReached = false;

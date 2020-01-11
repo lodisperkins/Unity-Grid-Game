@@ -83,6 +83,7 @@
                 <e p="GunBehaviour.cs" t="Include" />
                 <e p="HealthBehaviour.cs" t="Include" />
                 <e p="RoutineBehaviour.cs" t="Include" />
+                <e p="ScreenShakeBehaviour.cs" t="Include" />
               </e>
               <e p="PlayerScripts" t="Include">
                 <e p="ArrowBehaviour.cs" t="Include" />
@@ -97,6 +98,7 @@
               </e>
               <e p="UIScripts" t="Include">
                 <e p="DisplayBehaviour.cs" t="Include" />
+                <e p="IconBehaviour.cs" t="Include" />
                 <e p="OverdriveToggleBehaviour.cs" t="Include" />
                 <e p="PauseMenuBehaviour.cs" t="Include" />
                 <e p="SliderBehaviour.cs" t="Include" />

@@ -16,7 +16,7 @@ namespace Lodis
     	void Start ()
     	{
     		_startingPosition = transform.position;
-    		_endPosition = new Vector3(_startingPosition.x + 3000,_startingPosition.y,_startingPosition.z);
+    		_endPosition = new Vector3(_startingPosition.x+50,_startingPosition.y,_startingPosition.z);
     	}
     	
     	// Update is called once per frame

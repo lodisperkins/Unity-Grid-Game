@@ -35,10 +35,10 @@ namespace Lodis
         private void OnTriggerEnter(Collider other)
         {
             var block = other.GetComponent<BlockBehaviour>();
-            if (block != null)
+            if (block != null && !block.deleting)
             {
+                block.deleting = true;
                 PlayParticleSystems(1.5f);
-                GetRefund(block);
                 block.DestroyBlock(1.0f);
                 _onDelete.Raise();
             }

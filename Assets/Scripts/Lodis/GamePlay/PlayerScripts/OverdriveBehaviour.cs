@@ -17,6 +17,7 @@ public class OverdriveBehaviour : MonoBehaviour
 	[SerializeField] private ParticleSystem ps;
 	[SerializeField] private GameObject _particles;
 	[SerializeField] private Event _onOverdriveEnabled;
+	[SerializeField] private Event _onOverdriveDisabled;
 	[FormerlySerializedAs("_used")] public bool used;
 	// Use this for initialization
 	void Start ()
@@ -64,6 +65,7 @@ public class OverdriveBehaviour : MonoBehaviour
 			if (Time.time >=_time )
 			{
 				_player.overdriveEnabled = false;
+				_onOverdriveDisabled.Raise(gameObject);
 				_particles.SetActive(false);
 				
 			}

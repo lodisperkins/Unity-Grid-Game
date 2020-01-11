@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,7 +26,7 @@ namespace Lodis
         [SerializeField]
         UnityEvent OnDeath;
 
-        private bool hasRaised;
+        public bool hasRaised;
         [SerializeField] private Event OnObjectDeath;
         [SerializeField] private Event OnHit;
         //the particles that should play on the objects death
@@ -50,6 +51,7 @@ namespace Lodis
         //destroys the block within a given time
         public void DestroyBlock(float time)
         {
+            playDeathParticleSystems(2);
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject,time);
         }
@@ -70,6 +72,17 @@ namespace Lodis
             _secondaryHealthSource.health.Val -= conversionRate;
             health.Val += 1;
         }
+
+        private void OnDestroy()
+        {
+            if (OnObjectDeath != null && hasRaised == false)
+            {
+                hasRaised = true;
+                OnObjectDeath.Raise(gameObject);
+            }
+            
+        }
+
         // Update is called once per frame
         void Update()
         {

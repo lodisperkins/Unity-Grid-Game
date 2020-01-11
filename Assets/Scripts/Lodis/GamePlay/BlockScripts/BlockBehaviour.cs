@@ -35,10 +35,11 @@ namespace Lodis
         private Material _currentMaterial;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
+        public bool deleting;
         public bool sleeping;
         [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
-
+        private HealthBehaviour _health;
         private Color _currentMaterialColor;
         // Use this for initialization
         void Start()
@@ -53,6 +54,7 @@ namespace Lodis
             _currentMaterialColor = _currentMaterial.color;
             GetComponent<BlockBehaviour>().enabled = true;
             _currentMaterial.SetColor("_EmissionColor",Color.black);
+            _health = GetComponent<HealthBehaviour>();
             canUpgrade = false;
             _awake = true;
             _currentLevel = 1;
@@ -113,7 +115,15 @@ namespace Lodis
         //Destroys this block instantly
         public void DestroyBlock()
         {
-            _panel.Occupied = false;
+            if (canUpgrade && _health != null)
+            {
+                _panel.Occupied = false;
+                _health.playDeathParticleSystems(2);
+            }
+            else if(!canUpgrade&& _health != null)
+            {
+                _health.hasRaised = true;
+            }
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
@@ -180,8 +190,19 @@ namespace Lodis
         public void DestroyBlock(float time)
         {
             _panel.blockCounter = 0;
+            if (canUpgrade && _health != null)
+            {
+                _panel.Occupied = false;
+                _health.playDeathParticleSystems(2);
+            }
+            else if(!canUpgrade&& _health != null)
+            {
+                _health.hasRaised = true;
+            }
             canUpgrade = false;
             GameObject TempGameObject = gameObject;
+            
+            
             StartCoroutine(Flash());
             Destroy(TempGameObject,time);
         }
@@ -202,11 +223,6 @@ namespace Lodis
                 _armor.health.Val += 20;
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
             }
-        }
-
-        private void OnDestroy()
-        {
-            _panel.Occupied = false;
         }
 
         //increases the materials gained 

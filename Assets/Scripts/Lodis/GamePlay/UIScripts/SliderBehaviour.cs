@@ -12,7 +12,9 @@ namespace Lodis
     
     	[SerializeField]
     	private HealthBehaviour hp;
-
+        [SerializeField]
+        private Color _overdriveColor;
+        [SerializeField] private Color _defaultColor;
         private float lerpVal;
         [SerializeField] private IntVariable value;
         [SerializeField] private Image _healthbarImage;
@@ -38,8 +40,18 @@ namespace Lodis
 	        }
 				
         }
+
+        public void ChangeToOverdriveColor()
+
+        {
+	        _healthbarImage.color = Color.yellow;
+        }
+
+        public void ChangeToDefaultColor()
+        {
+	        _healthbarImage.color = Color.cyan;
+        }
         
-    	// Update is called once per frame
     	void Update ()
     	{
 	        if (isHealthBar)
