@@ -867,7 +867,6 @@ GameObject:
   - component: {fileID: 114878015514341180}
   - component: {fileID: 114851877076358748}
   - component: {fileID: 114400500004974856}
-  - component: {fileID: 54000060702408138}
   - component: {fileID: 135261826898023762}
   - component: {fileID: 114960884885249620}
   - component: {fileID: 114635915937980974}
@@ -880,6 +879,7 @@ GameObject:
   - component: {fileID: 114086175624425954}
   - component: {fileID: 114310844724626630}
   - component: {fileID: 114574205524328418}
+  - component: {fileID: 54653529359297764}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -4119,21 +4119,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396787242072896}
   m_Mesh: {fileID: 4300070, guid: bff429107601444d59c67940e6ad78c4, type: 3}
---- !u!54 &54000060702408138
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1698780024816490}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
 --- !u!54 &54063870365431546
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -4146,6 +4131,21 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54653529359297764
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

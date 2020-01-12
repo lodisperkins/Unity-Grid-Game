@@ -35,13 +35,13 @@ namespace Lodis.GamePlay
 		{
 			if (isPaused || gameWon)
 			{
-				_displayOptions[_currentIndex].color = Color.white;
+				_displayOptions[_currentIndex].color = Color.cyan;
 				_currentIndex++;
 				if (_currentIndex > _displayOptions.Count -1)
 				{
 					_currentIndex = 0;
 				}
-				_displayOptions[_currentIndex].color = Color.blue;
+				_displayOptions[_currentIndex].color = Color.white;
 			}
 		}
 
@@ -53,13 +53,13 @@ namespace Lodis.GamePlay
 		{
 			if (isPaused || gameWon)
 			{
-				_displayOptions[_currentIndex].color = Color.white;
+				_displayOptions[_currentIndex].color = Color.cyan;
 				_currentIndex--;
 				if (_currentIndex < 0)
 				{
 					_currentIndex = _displayOptions.Count -1;
 				}
-				_displayOptions[_currentIndex].color = Color.blue;
+				_displayOptions[_currentIndex].color = Color.white;
 			}
 		}
 
