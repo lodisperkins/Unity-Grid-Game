@@ -111,6 +111,40 @@ namespace Lodis.GamePlay
                 opponent_Panel_List.panels.Insert(insertionIndex,temp);
             }
         }
+
+        public void SortPanelsP1()
+        {
+            int count = 0;
+            int index;
+            GameObject temp;
+            for (int i = 4; i >= 0; i--)
+            {
+                for (int j = 0; j <= 3; j++)
+                {
+                    FindIndex(new Vector2(i, j),out index);
+                    temp = panels[count];
+                    panels[count] = panels[index];
+                    panels[index] = temp;
+                }
+            }
+        }
+        
+        public void SortPanelsP2()
+        {
+            int count = 0;
+            int index;
+            GameObject temp;
+            for (int i = 5; i<= 9; i++)
+            {
+                for (int j = 0; j <= 3; j++)
+                {
+                    FindIndex(new Vector2(i, j),out index);
+                    temp = panels[count];
+                    panels[count] = panels[index];
+                    panels[index] = temp;
+                }
+            }
+        }
         /// <summary>
         /// Transfers the last row of panels from one player to another
         /// </summary>

@@ -62,10 +62,11 @@ namespace Lodis.GamePlay
             {
                 if (_originalP2Panels.Contains(p1PanelsRef[i]))
                 {
-                    p1PanelsRef.TransferPanel(p2PanelsRef,p1PanelsRef.FindIndex(p1PanelsRef[i]),_originalP2Panels.FindIndex(p1PanelsRef[i]));
+                    p1PanelsRef.TransferPanel(p2PanelsRef,p1PanelsRef.FindIndex(p1PanelsRef[i]));
                     i--;
                 }
             }
+            p2PanelsRef.SortPanelsP2();
             p1PanelsRef.updateOwners();
             p2PanelsRef.updateOwners();
         }
@@ -75,10 +76,11 @@ namespace Lodis.GamePlay
             {
                 if (_originalP1Panels.Contains(p2PanelsRef[i]))
                 {
-                    p2PanelsRef.TransferPanel(p1PanelsRef,p2PanelsRef.FindIndex(p2PanelsRef[i]),_originalP1Panels.FindIndex(p2PanelsRef[i]));
+                    p2PanelsRef.TransferPanel(p1PanelsRef,p2PanelsRef.FindIndex(p2PanelsRef[i]));
                     i--;
                 }
             }
+            p1PanelsRef.SortPanelsP1();
             p1PanelsRef.updateOwners();
             p2PanelsRef.updateOwners();
         }

@@ -73,40 +73,57 @@ namespace Lodis
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("Player"))
+            {
+                DestroyBlock();
+                return;
+            }
+            //otherwise check the name of the block and upgrade
+            Upgrade(other.gameObject);
+        }
+
+        public void Upgrade(GameObject block)
+        {
             //If the player cannot upgrade yet do nothing 
             if (!canUpgrade)
             {
                 return;
             }
-            //otherwise check the name of the block and upgrade
-            if (other.name == "Attack Block(Clone)")
+            switch (block.name)
             {
-                UpgradeAttack();
-                _currentLevel++;
-                onUpgrade.Raise();
-            }
-            else if (other.name == "Defense Block(Clone)")
-            {
-                UpgradeDefense();
-                _currentLevel++;
-                onUpgrade.Raise();
-            }
-            else if (other.name == "Material Block(Clone)")
-            {
-                UpgradeMaterial();
-                _currentLevel++;
-                onUpgrade.Raise();
+                case "Attack Block(Clone)":
+                {
+                    UpgradeAttack();
+                    _currentLevel++;
+                    onUpgrade.Raise();
+                    break;
+                }
+                case "Defense Block(Clone)":
+                {
+                    UpgradeDefense();
+                    _currentLevel++;
+                    onUpgrade.Raise();
+                    break;
+                }
+                case "Material Block(Clone)":
+                {
+                    UpgradeMaterial();
+                    _currentLevel++;
+                    onUpgrade.Raise();
+                    break;
+                }
+                default:
+                    return;
             }
             //Destroys the block placed on top after the upgrade to free up space
-            BlockBehaviour block;
-            block = other.GetComponent<BlockBehaviour>();
-            var destroyblock = other.GetComponent<DeletionBlockBehaviour>();
-            if (block != null && destroyblock == null)
+            BlockBehaviour blockScript;
+            blockScript = block.GetComponent<BlockBehaviour>();
+            var destroyblock = block.GetComponent<DeletionBlockBehaviour>();
+            if (blockScript != null && destroyblock == null)
             {
-                block.DestroyBlock();
+                blockScript.DestroyBlock();
                 currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
             }
-
         }
         public void enableUpgrades()
         {
