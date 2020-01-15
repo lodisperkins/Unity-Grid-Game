@@ -19,7 +19,9 @@ namespace Lodis
         //Event used to play the sound of a bullet being shot
         [SerializeField] private Event OnBulletSpawn;
         //The laser model attached to this bullet
-        [SerializeField] private VolumetricLineBehavior _laser;
+        [SerializeField] private Material _laserMatP1;
+        [SerializeField] private Material _laserMatP2;
+        [SerializeField] private GameObject laser;
         private void Start()
         {
             TempObject = gameObject;
@@ -31,11 +33,11 @@ namespace Lodis
         {
             if (Owner == "Player1")
             {
-                _laser.LineColor = Color.red;
+                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
             }
             else
             {
-                _laser.LineColor = Color.blue;
+                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
             }
         }
         

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: AttackBlcok
-  m_Shader: {fileID: 4800000, guid: 20cd99c5f14c0a244b51640d6bcc0bab, type: 3}
+  m_Shader: {fileID: 4800000, guid: 35c41cd263b50ad42abc4ff801604f44, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -20,6 +20,10 @@ Material:
     m_TexEnvs:
     - Texture2D_94AA6455:
         m_Texture: {fileID: 2800000, guid: 7ffdcaadd31ba044db26b4e1de0258cb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DF8309A5:
+        m_Texture: {fileID: 2800000, guid: 6116d130bcbe7884ebfded64a8dab3f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -63,7 +67,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_A1BB8320: 1
     - Vector1_AC172392: 0.1
+    - Vector1_C255F8DA: 0.1
+    - Vector1_EFD6DF01: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -86,9 +93,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_262603E3: {r: 0, g: 1, b: 0.8207519, a: 0}
     - Color_2B4C8CF9: {r: 0, g: 1, b: 0.5466394, a: 0}
     - Color_A832A72B: {r: 0, g: 8, b: 7.311302, a: 0}
     - Vector2_6B6A64AF: {r: 1, g: 3, b: 0, a: 0}
+    - Vector2_84F5621A: {r: 0.4, g: 4, b: 0, a: 0}
     - _Color: {r: 0, g: 1, b: 0.016897917, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

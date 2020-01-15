@@ -317,7 +317,7 @@ namespace Lodis
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Behind"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Behind"].GetComponent<PanelBehaviour>().Selected = false;
-                BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
+                BlockCopy.GetComponent<Collider>().isTrigger = true;
             }
             else
             {
@@ -348,7 +348,7 @@ namespace Lodis
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Forward"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Forward"].GetComponent<PanelBehaviour>().Selected = false;
-                BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
+                BlockCopy.GetComponent<Collider>().isTrigger = true;
             }
             else
             {
@@ -379,7 +379,7 @@ namespace Lodis
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Above"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Above"].GetComponent<PanelBehaviour>().Selected = false;
-                BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
+                BlockCopy.GetComponent<Collider>().isTrigger = true;
                 
             }
             else
@@ -411,7 +411,7 @@ namespace Lodis
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Below"].GetComponent<PanelBehaviour>().Occupied = true;
                 panels_in_range["Below"].GetComponent<PanelBehaviour>().Selected = false;
-                BlockCopy.GetComponent<BoxCollider>().isTrigger = true;
+                BlockCopy.GetComponent<Collider>().isTrigger = true;
             }
             else
             {

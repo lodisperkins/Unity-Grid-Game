@@ -11,6 +11,24 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1172816898836844}
   m_IsPrefabAsset: 1
+--- !u!1 &1036433840788932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4463887614342100}
+  - component: {fileID: 33264933991194056}
+  - component: {fileID: 23464464392279434}
+  - component: {fileID: 114096436052479452}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1157144969317794
 GameObject:
   m_ObjectHideFlags: 1
@@ -38,13 +56,13 @@ GameObject:
   - component: {fileID: 4414898728469390}
   - component: {fileID: 33878024566666940}
   - component: {fileID: 23259369743695936}
-  - component: {fileID: 65253169896359656}
   - component: {fileID: 114884981294859076}
   - component: {fileID: 114109388835544152}
   - component: {fileID: 114915944556742216}
   - component: {fileID: 54748281086207030}
   - component: {fileID: 114427125017568984}
   - component: {fileID: 114029233429761654}
+  - component: {fileID: 135190463941212800}
   m_Layer: 0
   m_Name: Defense Block
   m_TagString: Block
@@ -191,14 +209,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172816898836844}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.0198977, y: 0.5, z: 15.207788}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5109598, y: 0.93101114, z: 17.262539}
+  m_LocalScale: {x: 0.4596181, y: 0.4596181, z: 0.4596181}
   m_Children:
   - {fileID: 4603623902458164}
   - {fileID: 224743634510942458}
+  - {fileID: 4463887614342100}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4463887614342100
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036433840788932}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.051238, y: 4.051238, z: 4.051238}
+  m_Children: []
+  m_Father: {fileID: 4414898728469390}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4603623902458164
 Transform:
@@ -248,6 +280,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23464464392279434
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036433840788932}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: e8c2926e7bce6b14aa0372ad43e765ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33264933991194056
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036433840788932}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33878024566666940
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -270,18 +344,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65253169896359656
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1172816898836844}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114029233429761654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,6 +373,19 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
   intendedSender: {fileID: 1172816898836844}
+--- !u!114 &114096436052479452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036433840788932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19eba30ac128dc7499e5e5ae81893d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: {x: 1, y: 1, z: 1}
+  speed: 0.5
 --- !u!114 &114109388835544152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,6 +429,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  hasRaised: 0
   OnObjectDeath: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
@@ -584,6 +660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bar: {fileID: 114479143209355244}
   hp: {fileID: 114109388835544152}
+  _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
+  _defaultColor: {r: 0, g: 0, b: 0, a: 0}
   value: {fileID: 0}
   _healthbarImage: {fileID: 114876307662976262}
   isHealthBar: 1
@@ -633,6 +711,7 @@ MonoBehaviour:
   _defaultMaterial: {fileID: 0}
   BlockWeightVal: 1
   canUpgrade: 0
+  deleting: 0
   sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
@@ -669,6 +748,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!135 &135190463941212800
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.85
+  m_Center: {x: 0, y: 0.41, z: 0}
 --- !u!222 &222083603559155426
 CanvasRenderer:
   m_ObjectHideFlags: 1

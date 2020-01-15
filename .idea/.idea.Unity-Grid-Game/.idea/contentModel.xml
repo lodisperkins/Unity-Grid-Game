@@ -82,6 +82,8 @@
                 <e p="CoreBehaviour.cs" t="Include" />
                 <e p="GunBehaviour.cs" t="Include" />
                 <e p="HealthBehaviour.cs" t="Include" />
+                <e p="HoverBehaviour.cs" t="Include" />
+                <e p="RotateBehaviour.cs" t="Include" />
                 <e p="RoutineBehaviour.cs" t="Include" />
                 <e p="ScreenShakeBehaviour.cs" t="Include" />
               </e>
