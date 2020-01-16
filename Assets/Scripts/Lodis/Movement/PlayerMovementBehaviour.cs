@@ -128,7 +128,7 @@ namespace Lodis
                 _currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
                 Position += Destination;
                 Destination = new Vector2(0, 0);
-                _onMove.Raise();
+                _onMove.Raise(gameObject);
                 return;
             }
             Destination = new Vector2(0, 0);

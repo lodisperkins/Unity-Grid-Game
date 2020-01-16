@@ -10,12 +10,12 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 	
 	public void EnableMoveAnimation()
 	{
-//		if (_animator != null)
-//		{
-//			_animator.SetBool("IsMoving",true);
-//		}
-			
-	}
+        if (_animator != null)
+        {
+            _animator.SetBool("IsMoving", true);
+        }
+
+    }
 
 	public void DisableMoveAnimation()
 	{
@@ -26,9 +26,23 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 	public void EnableAttackAnimation()
 	{
 		if(_animator != null)
-			_animator.SetTrigger("Attack1Trigger");
+			_animator.SetTrigger("OnShoot");
 	}
-
+    public void EnableSpawnAnimation()
+    {
+        if (_animator != null)
+            _animator.SetTrigger("OnSpawn");
+    }
+    public void EnableOverdriveAnimation()
+    {
+        if (_animator != null)
+            _animator.SetTrigger("OnOverdriveActivated");
+    }
+    public void EnableHitAnimation()
+    {
+        if (_animator != null)
+            _animator.SetTrigger("OnHit");
+    }
 	private void OnTriggerEnter(Collider other)
 	{
 		if(_animator != null && _animator.GetBool("Squat")==false)

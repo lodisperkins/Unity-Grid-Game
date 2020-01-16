@@ -2,33 +2,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class CoreBehaviour : MonoBehaviour
+namespace Lodis
 {
+    public class CoreBehaviour : MonoBehaviour
+    {
 
-	[SerializeField] private Material _coreMaterial;
-	private Color _materialColor;
-
-	// Use this for initialization
-	void Start ()
-	{
-		_coreMaterial.color = Color.white;
-		_materialColor = Color.white;
-	}
-
-	private void OnTriggerStay(Collider other)
-	{
-		StartCoroutine(Flash());
-	}
-	//This makes the core flash for a few seconds when hit
-	private IEnumerator Flash()
-	{
-		for (var i = 0; i < 5; i++)
+        [SerializeField] private Material _coreMaterial;
+        [SerializeField]
+        private Event _onExplosion;
+        private Color _materialColor;
+        [SerializeField]
+        private List<GameObject> _pieces;
+        [SerializeField]
+        private HealthBehaviour _healthRef;
+        private IntVariable _healthStamp;
+        System.Random random;
+        [SerializeField]
+        private float _explosionForce;
+        [SerializeField]
+        private float _explosionRadius;
+        [SerializeField]
+        private float _upwardsModifier;
+        // Use this for initialization
+        void Start()
         {
-            _coreMaterial.color =Color.yellow;
-            yield return new WaitForSeconds(.1f);
-            _coreMaterial.color =_materialColor;
-            yield return new WaitForSeconds(.1f);
+            _coreMaterial.color = Color.white;
+            _materialColor = Color.white;
+            _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 70);
+            random = new System.Random();
         }
-	}
+        public void BlowPieceAway()
+        {
+            var randNum = random.Next(0, _pieces.Count);
+            GameObject temp = _pieces[randNum];
+            temp.GetComponent<Rigidbody>().isKinematic = false;
+            temp.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, temp.transform.position, _explosionRadius, _upwardsModifier, ForceMode.Impulse);
+            _onExplosion.Raise(gameObject);
+            Destroy(temp, 3);
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            StartCoroutine(Flash());
+        }
+        //This makes the core flash for a few seconds when hit
+        private IEnumerator Flash()
+        {
+            for (var i = 0; i < 5; i++)
+            {
+                _coreMaterial.color = Color.yellow;
+                yield return new WaitForSeconds(.1f);
+                _coreMaterial.color = _materialColor;
+                yield return new WaitForSeconds(.1f);
+            }
+        }
+
+        private void Update()
+        {
+            Debug.Log(_healthRef.health.Val);
+            if (_healthRef.health.Val <= _healthStamp.Val)
+            {
+                _healthStamp.Val = _healthRef.health.Val - 50;
+                BlowPieceAway();
+            }
+        }
+    }
 }

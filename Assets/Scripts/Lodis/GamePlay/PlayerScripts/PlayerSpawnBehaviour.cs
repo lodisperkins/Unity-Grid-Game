@@ -275,21 +275,25 @@ namespace Lodis
             { 
                 if ( direction.Val.x== -1)
                 {
+                    SendMessage("EnableSpawnAnimation");
                     PlaceBlockLeft();
                     buildStateEnabled = false;
                 }
                 else if (direction.Val.x== 1)
                 {
+                    SendMessage("EnableSpawnAnimation");
                     PlaceBlockRight();
                     buildStateEnabled = false;
                 }
                 else if (direction.Val.y== -1)
                 {
+                    SendMessage("EnableSpawnAnimation");
                     PlaceBlockBelow();
                     buildStateEnabled = false;
                 }
                 else if (direction.Val.y== 1)
                 {
+                    SendMessage("EnableSpawnAnimation");
                     PlaceBlockUp();
                     buildStateEnabled = false;
                 }
@@ -466,24 +470,32 @@ namespace Lodis
         public void RotateBlockRight()
         {
             block_rotation_degrees = 0;
+            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(0);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockLeft()
         {
             block_rotation_degrees = 180;
+            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(180);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockUp()
         {
             block_rotation_degrees = -90;
+            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(-90);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockDown()
         {
             block_rotation_degrees = 90;
+            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
+                blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(90);
         }
 

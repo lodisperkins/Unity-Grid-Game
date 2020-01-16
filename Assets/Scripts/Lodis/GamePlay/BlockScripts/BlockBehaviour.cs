@@ -41,6 +41,13 @@ namespace Lodis
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
         private HealthBehaviour _health;
         private Color _currentMaterialColor;
+        [SerializeField]
+        private GameObject shield;
+        [SerializeField]
+        private SphereCollider shieldCollider;
+        [SerializeField]
+        private GameObject overdriveParticles;
+        private string pastName;
         // Use this for initialization
         void Start()
         {
@@ -51,7 +58,6 @@ namespace Lodis
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
-            _currentMaterialColor = _currentMaterial.color;
             GetComponent<BlockBehaviour>().enabled = true;
             _currentMaterial.SetColor("_EmissionColor",Color.black);
             _health = GetComponent<HealthBehaviour>();
@@ -193,6 +199,17 @@ namespace Lodis
 
             _awake = true;
         }
+        public bool CheckForSameUpgradeBlock(string name)
+        {
+            if(pastName == null || pastName != name)
+            {
+                Debug.Log("past is " + pastName);
+                Debug.Log("current is " + name);
+                pastName = name;
+                return false;
+            }
+            return true;
+        }
         private IEnumerator Flash()
         {
             for (var i = 0; i < 5; i++)
@@ -229,16 +246,16 @@ namespace Lodis
             _gun.enabled = true;
             _gun.bulletCount += 5;
             _gun.damageVal += 1;
-            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .5f, 1);
         }
         //Increases health value 
         public void UpgradeDefense()
         {
             if (_armor != null)
             {
+                shieldCollider.enabled = true;
+                shield.SetActive(true);
                 _armor.enabled = true;
                 _armor.health.Val += 20;
-                gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
             }
         }
 
@@ -247,10 +264,10 @@ namespace Lodis
         {
             if (_energyMine != null)
             {
+                overdriveParticles.SetActive(true);
                 _energyMine.enabled = true;
                 GetComponent<RoutineBehaviour>().actionDelay -= .5f;
                 _energyMine.MaterialAmount +=3;
-                gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, .2f, 0f);
             }
         }
 

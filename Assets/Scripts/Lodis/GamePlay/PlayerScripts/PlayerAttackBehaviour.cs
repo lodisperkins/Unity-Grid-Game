@@ -11,9 +11,12 @@ public class PlayerAttackBehaviour : MonoBehaviour
 	[SerializeField]
 	private float _hitboxActiveTime;
 	private bool _meleeHitboxActive;
+    [SerializeField]
+    private GameObject _weapon;
 	[SerializeField]
 	private GameObject _weaponHitbox;
-
+    [SerializeField]
+    private Animator animator;
 	private PlayerMovementBehaviour player;
 	// Use this for initialization
 	void Start ()
@@ -25,7 +28,9 @@ public class PlayerAttackBehaviour : MonoBehaviour
 	{
 		if (player.canMove)
 		{
-			_meleeHitboxActive = true;
+            _weapon.SetActive(true);
+            animator.SetTrigger("OnAttack");
+            _meleeHitboxActive = true;
 			_time = Time.time + _hitboxActiveTime;
 		}
 		
@@ -35,6 +40,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
 	{
 		if (player.canMove)
 		{
+            
 			_gun.FireBullet();
 		}
 		
@@ -46,6 +52,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
 			_weaponHitbox.SetActive(true);
 			if (Time.time >=_time )
 			{
+                _weapon.SetActive(false);
 				_weaponHitbox.SetActive(false);
 				_meleeHitboxActive = false;
 			}
