@@ -10,10 +10,10 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 	
 	public void EnableMoveAnimation()
 	{
-		if (_animator != null)
-		{
-			_animator.SetBool("IsMoving",true);
-		}
+//		if (_animator != null)
+//		{
+//			_animator.SetBool("IsMoving",true);
+//		}
 			
 	}
 

@@ -19,6 +19,6 @@ public class HoverBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 hoverPos = (Vector3.up * Mathf.Cos(Time.time))* intensity;
-        transform.position = new Vector3(transform.position.x, hoverPos.y, transform.position.z) ;
+        transform.position = new Vector3(transform.position.x, hoverPos.y + transform.position.y, transform.position.z) ;
 	}
 }

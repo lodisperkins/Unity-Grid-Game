@@ -37,7 +37,7 @@ Material:
     - Vector1_EFD6DF01: 0.5
     - _InvFade: 0.77
     m_Colors:
-    - Color_262603E3: {r: 0, g: 0.23950648, b: 1, a: 0}
+    - Color_262603E3: {r: 1, g: 0.31709337, b: 0, a: 0}
     - Color_2B4C8CF9: {r: 0, g: 1, b: 0.5466394, a: 0}
     - Color_A832A72B: {r: 5.992157, g: 3.294118, b: 0, a: 0}
     - Vector2_6B6A64AF: {r: 1, g: 3, b: 0, a: 0}
