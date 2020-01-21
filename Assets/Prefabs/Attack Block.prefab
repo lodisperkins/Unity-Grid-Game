@@ -615,22 +615,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1748962689328902
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4507965303912262}
-  - component: {fileID: 114257642529851612}
-  m_Layer: 0
-  m_Name: Bullet Emitter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1800172854866936
 GameObject:
   m_ObjectHideFlags: 1
@@ -807,7 +791,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733942576174260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.25}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4198981612482480}
@@ -874,7 +858,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609089727696304}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.543143, y: 0.563, z: 22.954597}
+  m_LocalPosition: {x: -0.9468285, y: 0.56, z: 15.140493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4104830866255408}
@@ -905,7 +889,7 @@ Transform:
   - {fileID: 4555753299000294}
   - {fileID: 4178746110753866}
   m_Father: {fileID: 4345587212835386}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4256860782864314
 Transform:
@@ -945,7 +929,6 @@ Transform:
   m_LocalPosition: {x: 0, y: -0, z: -0.06}
   m_LocalScale: {x: 0.6186919, y: 0.6186919, z: 0.6186919}
   m_Children:
-  - {fileID: 4507965303912262}
   - {fileID: 4500095076130566}
   - {fileID: 4229230585837076}
   m_Father: {fileID: 4198981612482480}
@@ -1031,19 +1014,6 @@ Transform:
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: -0.087028764, z: -0.09164956}
   m_LocalScale: {x: 4.051238, y: 4.051238, z: 4.051238}
-  m_Children: []
-  m_Father: {fileID: 4345587212835386}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4507965303912262
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1748962689328902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4345587212835386}
   m_RootOrder: 0
@@ -2588,42 +2558,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
   intendedSender: {fileID: 1123769856014952}
---- !u!114 &114257642529851612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1748962689328902}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
-  owner: 
-  bulletForceScale: 1000
-  bulletDelay: 1
-  bulletCount: 5
-  outOfAmmo:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114884981294859076, guid: 2feecdbaddeb9224aaff6b5b68870b5e,
-          type: 2}
-        m_MethodName: DestroyBlock
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _isTurret: 1
-  _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
-  damageVal: 1
 --- !u!114 &114294227402449744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2672,6 +2606,7 @@ MonoBehaviour:
   _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1
+  block: {fileID: 114782364321774370}
 --- !u!114 &114439213264607044
 MonoBehaviour:
   m_ObjectHideFlags: 1

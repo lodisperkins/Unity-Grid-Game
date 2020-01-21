@@ -18,9 +18,9 @@ namespace Lodis
         private GameObject _tempBullet;
         //the amount the bullet force is scale up by
         [FormerlySerializedAs("Bullet_Force_Scale")] [SerializeField]
-        private int bulletForceScale;
+        public int bulletForceScale;
         //the total amount of force used to move the bullet
-        private Vector3 _bulletForce;
+        public Vector3 _bulletForce;
         //the amount of time between firing bullets
         [FormerlySerializedAs("Bullet_Delay")] [SerializeField]
         private int bulletDelay;
@@ -38,6 +38,8 @@ namespace Lodis
         [SerializeField] private Event _onShotFired;
         // the amount of damge the bullet should deal
         [FormerlySerializedAs("DamageVal")] public int damageVal;
+        [SerializeField]
+        public BlockBehaviour block;
         // Use this for initialization
         void Start()
         {
@@ -59,13 +61,14 @@ namespace Lodis
 
         public void FireBullet(Vector3 position)
         {
-            Debug.Log("parent position: " + position);
             _tempBullet = Instantiate(bullet, position, transform.rotation);
             _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
             _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
             _tempBullet.transform.Rotate(new Vector3(90, 0));
+            _tempBullet.GetComponent<BulletBehaviour>().block = block;
             _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
             _bulletForce = transform.forward * bulletForceScale;
+            _tempBullet.GetComponent<BulletBehaviour>().bulletForce = _bulletForce;
             _tempRigidBody.AddForce(_bulletForce);
             _onShotFired.Raise(gameObject);
         }

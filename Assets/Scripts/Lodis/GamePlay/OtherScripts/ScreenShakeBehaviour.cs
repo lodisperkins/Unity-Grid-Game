@@ -9,6 +9,8 @@ public float shakeVal;
 
 	public bool isShaking;
 	private Vector3 _startPosition;
+    [SerializeField]
+    private float shakeRange;
 	private void Start()
 	{
 		_startPosition = transform.position;
@@ -19,7 +21,7 @@ public float shakeVal;
 		isShaking = false;
 		for(int i = 0; i< 5; i++)
 		{
-			var newPosition = new Vector3( 0,Random.Range(-.08f,.08f),Random.Range(-.08f,.08f));
+			var newPosition = new Vector3( Random.Range(-shakeRange, shakeRange),Random.Range(-shakeRange, shakeRange),0);
 			transform.position += newPosition;
 			yield return new WaitForSeconds(shakeVal);
 		}

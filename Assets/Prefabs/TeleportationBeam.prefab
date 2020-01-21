@@ -660,6 +660,11 @@ MonoBehaviour:
   _laserMatP1: {fileID: 2100000, guid: db1726d80d8be424481232a1a989a287, type: 2}
   _laserMatP2: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
   laser: {fileID: 1793402476192902}
+  block: {fileID: 0}
+  bulletForce: {x: 0, y: 0, z: 0}
+  reflected: 0
+  lifetime: 0
+  onReflect: {fileID: 0}
 --- !u!114 &114854246427212152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,6 +701,11 @@ MonoBehaviour:
   _laserMatP1: {fileID: 0}
   _laserMatP2: {fileID: 0}
   laser: {fileID: 0}
+  block: {fileID: 0}
+  bulletForce: {x: 0, y: 0, z: 0}
+  reflected: 0
+  lifetime: 0
+  onReflect: {fileID: 0}
 --- !u!136 &136473158945362498
 CapsuleCollider:
   m_ObjectHideFlags: 1

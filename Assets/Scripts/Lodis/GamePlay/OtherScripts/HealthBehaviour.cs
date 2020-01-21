@@ -42,7 +42,7 @@ namespace Lodis
         public void takeDamage(int damageVal)
         {
             health.Val -= damageVal;
-            OnHit.Raise();
+            OnHit.Raise(gameObject);
             if (health.Val <= 0)
             {
                 isAlive = false;

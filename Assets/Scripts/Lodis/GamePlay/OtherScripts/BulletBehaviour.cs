@@ -22,23 +22,40 @@ namespace Lodis
         [SerializeField] private Material _laserMatP1;
         [SerializeField] private Material _laserMatP2;
         [SerializeField] private GameObject laser;
+        public BlockBehaviour block;
+        public Vector3 bulletForce;
+        public bool reflected;
+        public int lifetime;
+        [SerializeField]
+        private Event onReflect;
         private void Start()
         {
             TempObject = gameObject;
-            
             ChangeColor();
+            lifetime = 1;
+        }
+        public void ReverseOwner()
+        {
+            if(Owner == "Player1")
+            {
+                Owner = "Player2";
+            }
+            else if (Owner == "Player2")
+            {
+                Owner = "Player1";
+            }
         }
         //(not working) meant to change the bullets color based on the owner
         private void ChangeColor()
         {
-            if (Owner == "Player1")
-            {
-                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
-            }
-            else
-            {
-                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
-            }
+            //if (Owner == "Player1")
+            //{
+            //    laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
+            //}
+            //else
+            //{
+            //    laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
+            //}
         }
         
         private void Awake()
@@ -49,14 +66,34 @@ namespace Lodis
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Projectile"))
+            if (other.CompareTag("Shield"))
+            {
+                GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= 1.5f);
+                reflected = true;
+                lifetime = 2;
+                DamageVal += 1;
+                onReflect.Raise();
+                return;
+            }
+            else if (other.CompareTag("Projectile"))
             {
                 if (Owner == other.GetComponent<BulletBehaviour>().Owner)
                 {
                     return;
                 }
             }
-            if (other.name != Owner && other.CompareTag("Panel") == false)
+            else if(other.name == Owner && reflected)
+            {
+                playDeathParticleSystems(1);
+                ps.transform.position = other.transform.position;
+                var health = other.GetComponent<HealthBehaviour>();
+                if (health != null)
+                {
+                    health.takeDamage(DamageVal);
+                }
+                Destroy(TempObject);
+            }
+            else if (other.name != Owner && other.CompareTag("Panel") == false)
             {
                 playDeathParticleSystems(1);
                 ps.transform.position = other.transform.position;
@@ -79,7 +116,7 @@ namespace Lodis
         // Update is called once per frame
         void Update()
         {
-            Destroy(TempObject, 1);
+            Destroy(TempObject, 8);
         }
     }
 }

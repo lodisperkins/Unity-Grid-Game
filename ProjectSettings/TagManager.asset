@@ -9,6 +9,7 @@ TagManager:
   - Panel
   - Block
   - Core
+  - Shield
   layers:
   - Default
   - TransparentFX

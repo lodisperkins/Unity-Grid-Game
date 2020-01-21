@@ -830,7 +830,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640956749703222}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000028088027}
-  m_LocalPosition: {x: -2.5398765, y: 1.532, z: 23.382818}
+  m_LocalPosition: {x: -3.9748755, y: 1.15, z: 20.163774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4282959392843868}
@@ -868,7 +868,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839051393395248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.357, z: 1.03}
+  m_LocalPosition: {x: -0, y: 0.357, z: 1.175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4242841251177556}
@@ -2210,7 +2210,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65983410588149002
 BoxCollider:
@@ -2223,7 +2223,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5, z: 1}
-  m_Center: {x: 0, y: -0.22, z: 0}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!114 &114028654259176194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2350,6 +2350,9 @@ MonoBehaviour:
   sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
+  shield: {fileID: 0}
+  shieldCollider: {fileID: 0}
+  overdriveParticles: {fileID: 0}
 --- !u!114 &114340818715544754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2609,6 +2612,7 @@ MonoBehaviour:
   bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
   owner: 
   bulletForceScale: 2000
+  _bulletForce: {x: 0, y: 0, z: 0}
   bulletDelay: 1
   bulletCount: 30
   outOfAmmo:
@@ -2630,6 +2634,7 @@ MonoBehaviour:
   _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1
+  block: {fileID: 0}
 --- !u!114 &114981922466565298
 MonoBehaviour:
   m_ObjectHideFlags: 1
