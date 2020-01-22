@@ -21,28 +21,6 @@
               </e>
             </e>
           </e>
-          <e p="VolumetricLines" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Utils" t="Include">
-                <e p="TransformExtensionMethods.cs" t="Include" />
-              </e>
-              <e p="VolumetricLineBehavior.cs" t="Include" />
-              <e p="VolumetricLineSettings.cs" t="Include" />
-              <e p="VolumetricLineStripBehavior.cs" t="Include" />
-              <e p="VolumetricLineVertexData.cs" t="Include" />
-              <e p="VolumetricMultiLineBehavior.cs" t="Include" />
-            </e>
-            <e p="Shaders" t="Include">
-              <e p="_SimpleShader.cginc" t="Include" />
-              <e p="_StripShader.cginc" t="Include" />
-              <e p="Additive.shader" t="Include" />
-              <e p="AlphaBlended.shader" t="Include" />
-              <e p="Fast-Additive.shader" t="Include" />
-              <e p="Fast-AlphaBlended.shader" t="Include" />
-              <e p="Strip-Additive.shader" t="Include" />
-              <e p="Strip-AlphaBlended.shader" t="Include" />
-            </e>
-          </e>
           <e p="Yurowm" t="Include">
             <e p="Shaders" t="Include">
               <e p="SkinShader.shader" t="Include" />
@@ -86,6 +64,7 @@
                 <e p="RotateBehaviour.cs" t="Include" />
                 <e p="RoutineBehaviour.cs" t="Include" />
                 <e p="ScreenShakeBehaviour.cs" t="Include" />
+                <e p="SeekBehaviour.cs" t="Include" />
               </e>
               <e p="PlayerScripts" t="Include">
                 <e p="ArrowBehaviour.cs" t="Include" />
