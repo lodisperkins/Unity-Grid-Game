@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lodis.GamePlay;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace Lodis
 {
     public class BulletBehaviour : MonoBehaviour
     {
+        
         //The player that shot this bullet
         public string Owner;
         //the amount of damage this bullet does 
@@ -27,11 +30,19 @@ namespace Lodis
         public int lifetime;
         [SerializeField]
         private Event onReflect;
+
+        private PanelBehaviour _currentPanel;
+
+        public PanelBehaviour currentPanel
+        {
+            get { return _currentPanel; }
+        }
         private void Start()
         {
             TempObject = gameObject;
             ChangeColor();
             lifetime = 1;
+            GridBehaviour.bulletList.Add(gameObject);
         }
         public void ReverseOwner()
         {
@@ -63,46 +74,73 @@ namespace Lodis
             OnBulletSpawn.Raise();
         }
 
+        public void Reflect()
+        {
+            GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= 1.5f);
+            reflected = true;
+            lifetime = 2;
+            DamageVal += 1;
+            onReflect.Raise();
+            ReverseOwner();
+        }
+        private void ResolveCollision(GameObject other)
+        {
+            switch (other.tag)
+            {
+                case "Shield":
+                {
+                    Reflect();
+                    break;
+                }
+                case "Player":
+                {
+                    if (other.name != Owner || reflected)
+                    {
+                        playDeathParticleSystems(1);
+                        ps.transform.position = other.transform.position;
+                        var health = other.GetComponent<HealthBehaviour>();
+                        if (health != null)
+                        {
+                            health.takeDamage(DamageVal);
+                        }
+                        Destroy(TempObject);
+                    }
+                    break;
+                }
+                case "Core":
+                {
+                    playDeathParticleSystems(1);
+                    ps.transform.position = other.transform.position;
+                    var health = other.GetComponent<HealthBehaviour>();
+                    if (health != null)
+                    {
+                        health.takeDamage(DamageVal);
+                    }
+                    Destroy(TempObject);
+                    break;
+                }
+                case "Panel":
+                {
+                    _currentPanel= other.GetComponent<PanelBehaviour>();
+                    break;
+                }
+                case "Block":
+                {
+                    playDeathParticleSystems(1);
+                    ps.transform.position = other.transform.position;
+                    var health = other.GetComponent<HealthBehaviour>();
+                    if (health != null)
+                    {
+                        health.takeDamage(DamageVal);
+                    }
+                    Destroy(TempObject);
+                    break;
+                }
+            }
+        }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Shield"))
-            {
-                GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= 1.5f);
-                reflected = true;
-                lifetime = 2;
-                DamageVal += 1;
-                onReflect.Raise();
-                return;
-            }
-            else if (other.CompareTag("Projectile"))
-            {
-                if (Owner == other.GetComponent<BulletBehaviour>().Owner)
-                {
-                    return;
-                }
-            }
-            else if(other.name == Owner && reflected)
-            {
-                playDeathParticleSystems(1);
-                ps.transform.position = other.transform.position;
-                var health = other.GetComponent<HealthBehaviour>();
-                if (health != null)
-                {
-                    health.takeDamage(DamageVal);
-                }
-                Destroy(TempObject);
-            }
-            else if (other.name != Owner && other.CompareTag("Panel") == false)
-            {
-                playDeathParticleSystems(1);
-                ps.transform.position = other.transform.position;
-                var health = other.GetComponent<HealthBehaviour>();
-                if (health != null)
-                {
-                    health.takeDamage(DamageVal);
-                }
-                Destroy(TempObject);
-            }
+           ResolveCollision(other.gameObject);
         }
         //plays the particle system after a bullet hits an object
         public void playDeathParticleSystems(float duration)
@@ -117,5 +155,11 @@ namespace Lodis
         {
             Destroy(TempObject, 8);
         }
+
+        private void OnDestroy()
+        {
+            GridBehaviour.bulletList.RemoveItem(gameObject);
+        }
     }
+    
 }

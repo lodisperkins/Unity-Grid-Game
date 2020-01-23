@@ -114,7 +114,6 @@ namespace Lodis
         //Sets the players position to the desired panel if it exists and is not occupied
         void UpdatePosition()
         {
-
             if (CheckPanels(Destination, out NewPanel))
             {
                 if (NewPanel.GetComponent<PanelBehaviour>().Occupied == true)

@@ -85,6 +85,7 @@ namespace Lodis
         {
             if (other.CompareTag("Projectile"))
             {
+                
                 _attackHighlight = true;
                 UpdateColor();
             }

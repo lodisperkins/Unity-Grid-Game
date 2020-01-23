@@ -7344,9 +7344,15 @@ MonoBehaviour:
   m_doNotOverwriteTemplateMaterialProperties: 0
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
-  m_lineColor: {r: 0, g: 0.02782917, b: 1, a: 0}
+  m_lineColor:
+    r: 0
+    g: 0.02782917
+    b: 1
+    a: 0
   m_lineWidth: 66
   m_lightSaberFactor: 0.747
+  m_material: {fileID: 0}
+  m_meshFilter: {fileID: 0}
 --- !u!114 &114840264315933764
 MonoBehaviour:
   m_ObjectHideFlags: 1

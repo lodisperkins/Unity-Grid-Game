@@ -13,7 +13,7 @@ namespace Lodis.GamePlay
         [FormerlySerializedAs("p1Panels")] [FormerlySerializedAs("P1Panels")] [SerializeField] private  PanelList p1PanelsRef;
         //The reference to player 2's panels
         [FormerlySerializedAs("p2Panels")] [FormerlySerializedAs("P2Panels")] [SerializeField] private PanelList p2PanelsRef;
-
+        public static GameObjectList bulletList;
         private PanelList _originalP1Panels;
 
         private PanelList _originalP2Panels;
@@ -48,6 +48,8 @@ namespace Lodis.GamePlay
             P2AssignLists();
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
+            bulletList =ScriptableObject.CreateInstance<GameObjectList>();
+            bulletList.Init();
         }
         //Sets player1 panels to the appropriate material and sets their owner to be player 1
         public void P1AssignLists()

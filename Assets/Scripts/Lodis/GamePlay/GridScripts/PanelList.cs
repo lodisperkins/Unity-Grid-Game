@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Lodis.GamePlay
 {
-    [CreateAssetMenu(menuName = "PanelList")]
+    [CreateAssetMenu(menuName = "Variables/PanelList")]
     public class PanelList : ScriptableObject
     {
         //raised when the a panel is somehow null
