@@ -74,7 +74,7 @@ namespace Lodis
         private void Awake()
         {
             ChangeColor();
-            GridBehaviour.bulletList.Add(gameObject);
+            //GridBehaviour.bulletList.Add(gameObject);
             OnBulletSpawn.Raise();
             panelSetCalled = false;
         }
