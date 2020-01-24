@@ -26,6 +26,7 @@ namespace Lodis.GamePlay.GridScripts
         private Material _player2Mat;
         public float G;
         public float F;
+        public PanelBehaviour previousPanel;
         [SerializeField]
         private int _blockLimit;
 
@@ -46,6 +47,7 @@ namespace Lodis.GamePlay.GridScripts
             _currentColor = new Color();
             blockCounter = 0;
             _blockLimit = 3;
+            G = 1;
             TimerSet = false;
             _panelMat = GetComponent<MeshRenderer>().material;
         }

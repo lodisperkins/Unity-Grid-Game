@@ -117,6 +117,17 @@ namespace Lodis.GamePlay.AIFolder
     		}
     		return nodelist;
     	}
+
+        public void ReconstructPath()
+        {
+	        _currentPath =new List<PanelBehaviour>();
+	        PanelBehaviour temp = _goal;
+	        while (temp != _moveScript._currentPanel.GetComponent<PanelBehaviour>())
+	        {
+		        _currentPath.Insert(0,temp);
+		        temp = temp.previousPanel;
+	        }
+        }
     	public void FindBestPath()
     	{
     		PanelBehaviour panel;
@@ -132,7 +143,8 @@ namespace Lodis.GamePlay.AIFolder
     			panel = openList[0];
     			if (panel == _goal)
     			{
-    				_currentPath = closedList;
+    				ReconstructPath();
+                    return;
     			}
     			openList.Remove(panel);
     			closedList.Add(panel);
@@ -150,6 +162,7 @@ namespace Lodis.GamePlay.AIFolder
     				{
     					neighbor.G = panel.G + neighbor.G;
     					neighbor.F = neighbor.G + Manhattan(neighbor);
+                        neighbor.previousPanel = panel;
     					openList.Add(neighbor);
     				}
     			}
