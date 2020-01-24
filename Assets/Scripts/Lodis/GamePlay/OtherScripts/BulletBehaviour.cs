@@ -30,9 +30,13 @@ namespace Lodis
         public int lifetime;
         [SerializeField]
         private Event onReflect;
-
+        [SerializeField]
+        private Event onPanelSet;
+        
+        private bool panelSetCalled;
+       
         private PanelBehaviour _currentPanel;
-
+ 
         public PanelBehaviour currentPanel
         {
             get { return _currentPanel; }
@@ -42,7 +46,6 @@ namespace Lodis
             TempObject = gameObject;
             ChangeColor();
             lifetime = 1;
-            GridBehaviour.bulletList.Add(gameObject);
         }
         public void ReverseOwner()
         {
@@ -71,7 +74,9 @@ namespace Lodis
         private void Awake()
         {
             ChangeColor();
+            GridBehaviour.bulletList.Add(gameObject);
             OnBulletSpawn.Raise();
+            panelSetCalled = false;
         }
 
         public void Reflect()
@@ -122,6 +127,12 @@ namespace Lodis
                 case "Panel":
                 {
                     _currentPanel= other.GetComponent<PanelBehaviour>();
+                    if (panelSetCalled == false)
+                    {
+                        onPanelSet.Raise();
+                        panelSetCalled = true;
+                    }
+                    
                     break;
                 }
                 case "Block":
@@ -133,6 +144,11 @@ namespace Lodis
                     {
                         health.takeDamage(DamageVal);
                     }
+                    Destroy(TempObject);
+                    break;
+                }
+                case "Projectile":
+                {
                     Destroy(TempObject);
                     break;
                 }
@@ -158,6 +174,7 @@ namespace Lodis
 
         private void OnDestroy()
         {
+            Debug.Log("tried deleting self");
             GridBehaviour.bulletList.RemoveItem(gameObject);
         }
     }

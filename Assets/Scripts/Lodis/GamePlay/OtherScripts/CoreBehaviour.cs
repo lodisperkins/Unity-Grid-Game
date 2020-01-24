@@ -28,13 +28,14 @@ namespace Lodis
         {
             _coreMaterial.color = Color.white;
             _materialColor = Color.white;
-            _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 10);
+            _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 5);
             random = new System.Random();
         }
         public void BlowPieceAway()
         {
             var randNum = random.Next(0, _pieces.Count);
             GameObject temp = _pieces[randNum];
+            _pieces.Remove(temp);
             temp.GetComponent<Rigidbody>().isKinematic = false;
             temp.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, temp.transform.position, _explosionRadius, _upwardsModifier, ForceMode.Impulse);
             _onExplosion.Raise(gameObject);
@@ -60,7 +61,7 @@ namespace Lodis
         {
             if (_healthRef.health.Val <= _healthStamp.Val)
             {
-                _healthStamp.Val = _healthRef.health.Val - 4;
+                _healthStamp.Val = _healthRef.health.Val - 5;
                 BlowPieceAway();
             }
         }

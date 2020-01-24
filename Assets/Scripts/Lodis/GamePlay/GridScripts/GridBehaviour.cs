@@ -51,6 +51,13 @@ namespace Lodis.GamePlay
             bulletList =ScriptableObject.CreateInstance<GameObjectList>();
             bulletList.Init();
         }
+
+        private void Awake()
+        {
+            bulletList =ScriptableObject.CreateInstance<GameObjectList>();
+            bulletList.Init();
+        }
+
         //Sets player1 panels to the appropriate material and sets their owner to be player 1
         public void P1AssignLists()
         {

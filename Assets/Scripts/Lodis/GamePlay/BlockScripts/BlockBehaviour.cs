@@ -255,7 +255,7 @@ namespace Lodis
                 shieldCollider.enabled = true;
                 shield.SetActive(true);
                 _armor.enabled = true;
-                _armor.health.Val += 20;
+                _armor.health.Val += 10;
             }
         }
 

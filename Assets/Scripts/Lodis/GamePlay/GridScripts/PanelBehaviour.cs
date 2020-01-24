@@ -27,6 +27,8 @@ namespace Lodis
         //the reference tho the players material
         private Material _player1Mat;
         private Material _player2Mat;
+        public float G;
+        public float F;
         [SerializeField]
         private int _blockLimit;
 

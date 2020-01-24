@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 54065733839301092}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   reflected: 0
   lifetime: 8
   onReflect: {fileID: 11400000, guid: fb2a1c37efc86824ba9981b197d34848, type: 2}
+  onPanelSet: {fileID: 11400000, guid: 530e37c93af3dee468b76af166eec765, type: 2}
 --- !u!136 &136253901550654478
 CapsuleCollider:
   m_ObjectHideFlags: 1
