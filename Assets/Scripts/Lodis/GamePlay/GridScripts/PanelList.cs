@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Lodis;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
-namespace Lodis.GamePlay
+namespace Lodis.GamePlay.GridScripts
 {
+    public delegate bool Condition(object[] args);
     [CreateAssetMenu(menuName = "Variables/PanelList")]
     public class PanelList : ScriptableObject
     {
@@ -70,6 +70,20 @@ namespace Lodis.GamePlay
         public bool Contains(GameObject panel)
         {
             return panels.Contains(panel);
+        }
+
+        public bool GetPanels(Condition func, out List<PanelBehaviour> panelList)
+        {
+            panelList = new List<PanelBehaviour>();
+            foreach (GameObject panel in panels)
+            {
+                object[] arg = { panel};
+                if (func(arg))
+                {
+                    panelList.Add(panel.GetComponent<PanelBehaviour>());
+                }
+            }
+            return panelList.Count > 0;
         }
         public IEnumerator GetEnumerator()
         {

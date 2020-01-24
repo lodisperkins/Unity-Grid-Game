@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay;
+using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -74,6 +75,10 @@ namespace Lodis
         private void Awake()
         {
             ChangeColor();
+            if (GridBehaviour.bulletList == null)
+            {
+                return;
+            }
             GridBehaviour.bulletList.Add(gameObject);
             OnBulletSpawn.Raise();
             panelSetCalled = false;

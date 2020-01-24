@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Lodis;
 using Lodis.GamePlay;
+using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 
 public class MortarBlockBehaviour : MonoBehaviour

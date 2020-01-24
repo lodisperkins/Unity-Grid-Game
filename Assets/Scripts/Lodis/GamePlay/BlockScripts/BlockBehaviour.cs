@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay;
+using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;

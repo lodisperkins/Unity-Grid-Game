@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Lodis
+namespace Lodis.Movement
 {
 	public class PlayerLookBehaviour : MonoBehaviour
 	{
