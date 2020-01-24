@@ -7196,6 +7196,7 @@ MonoBehaviour:
   reflected: 0
   lifetime: 0
   onReflect: {fileID: 0}
+  onPanelSet: {fileID: 0}
 --- !u!114 &114400500004974856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7453,7 +7454,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   _isTurret: 0
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
-  damageVal: 1
+  damageVal: 2
   block: {fileID: 0}
 --- !u!114 &114796525923483752
 MonoBehaviour:

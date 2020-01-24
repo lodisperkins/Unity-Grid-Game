@@ -183,7 +183,7 @@ namespace Lodis.GamePlay
             }
             if (p2PanelsRef.FindIndex(panelPosition, out index))
             {
-                if (p1Materials.Val <30)
+                if (p1Materials.Val <30|| p2PanelsRef[index].GetComponent<PanelBehaviour>().Occupied)
                 {
                     UnHighlightPanelsP1();
                     return;
@@ -209,7 +209,7 @@ namespace Lodis.GamePlay
             int index = 0;
             if (p1PanelsRef.FindIndex(panelPosition, out index))
             {
-                if (p2Materials.Val < 30)
+                if (p2Materials.Val < 30||p1PanelsRef[index].GetComponent<PanelBehaviour>().Occupied)
                 {
                     onPanelsSwapped.Raise();
                     UnHighlightPanelsP2();

@@ -28,7 +28,7 @@ namespace Lodis
         {
             _coreMaterial.color = Color.white;
             _materialColor = Color.white;
-            _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 5);
+            _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 10);
             random = new System.Random();
         }
         public void BlowPieceAway()
@@ -61,7 +61,7 @@ namespace Lodis
         {
             if (_healthRef.health.Val <= _healthStamp.Val)
             {
-                _healthStamp.Val = _healthRef.health.Val - 5;
+                _healthStamp.Val = _healthRef.health.Val - 10;
                 BlowPieceAway();
             }
         }

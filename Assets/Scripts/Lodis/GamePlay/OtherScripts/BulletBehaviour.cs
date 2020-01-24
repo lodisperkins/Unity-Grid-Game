@@ -86,7 +86,6 @@ namespace Lodis
             lifetime = 2;
             DamageVal += 1;
             onReflect.Raise();
-            ReverseOwner();
         }
         private void ResolveCollision(GameObject other)
         {
@@ -149,6 +148,11 @@ namespace Lodis
                 }
                 case "Projectile":
                 {
+                    if (other.GetComponent<BulletBehaviour>().Owner == Owner)
+                    {
+                        break;
+                    }
+                    playDeathParticleSystems(2);
                     Destroy(TempObject);
                     break;
                 }

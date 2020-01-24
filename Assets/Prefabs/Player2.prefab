@@ -894,7 +894,6 @@ GameObject:
   - component: {fileID: 114198682473724034}
   - component: {fileID: 114145399795342996}
   - component: {fileID: 114558301984527624}
-  - component: {fileID: 114177715995190214}
   - component: {fileID: 114669890966289274}
   m_Layer: 0
   m_Name: Player2
@@ -6751,17 +6750,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
   intendedSender: {fileID: 1143065304500804}
---- !u!114 &114177715995190214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114198682473724034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7223,7 +7211,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
   m_Name: 
@@ -7231,7 +7219,7 @@ MonoBehaviour:
   actions:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114177715995190214}
+      - m_Target: {fileID: 0}
         m_MethodName: Dodge
         m_Mode: 1
         m_Arguments:
@@ -7244,7 +7232,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  Event: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
+  Event: {fileID: 11400000, guid: 530e37c93af3dee468b76af166eec765, type: 2}
   intendedSender: {fileID: 0}
 --- !u!114 &114745166547143200
 MonoBehaviour:
@@ -7349,7 +7337,7 @@ MonoBehaviour:
   block_rotation_degrees: 180
   rotation_val: 0
   materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
-  material_regen_rate: 1.5
+  material_regen_rate: 1
   DeletionBlockObject: {fileID: 1293680906006954, guid: af47b0a34f5294c4186f4b90ce80965f,
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}
@@ -7386,6 +7374,7 @@ MonoBehaviour:
   reflected: 0
   lifetime: 0
   onReflect: {fileID: 0}
+  onPanelSet: {fileID: 0}
 --- !u!114 &114967732325232990
 MonoBehaviour:
   m_ObjectHideFlags: 1
