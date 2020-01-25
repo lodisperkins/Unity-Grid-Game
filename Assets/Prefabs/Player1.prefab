@@ -7318,7 +7318,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   _isTurret: 0
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
-  damageVal: 2
+  damageVal: 1
   block: {fileID: 0}
 --- !u!114 &114796525923483752
 MonoBehaviour:

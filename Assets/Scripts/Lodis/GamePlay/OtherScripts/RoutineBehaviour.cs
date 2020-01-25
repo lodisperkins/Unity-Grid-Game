@@ -42,6 +42,10 @@ namespace Lodis.GamePlay
                 {
                     onActionsBegin.Raise(gameObject);
                 }
+                if (hasLimit)
+                {
+                    i--;
+                }
                 yield return new WaitForSeconds(actionDelay);
             }
             if (_isOnActionsCompletedNotNull)

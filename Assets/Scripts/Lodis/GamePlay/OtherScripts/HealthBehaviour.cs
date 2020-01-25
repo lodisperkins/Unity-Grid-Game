@@ -64,12 +64,14 @@ namespace Lodis
         }
         //(not used) Meant for the player to heal from some secondary health source like the core
         public void Heal()
-        {
-            if (_secondaryHealthSource == null || health.Val == healthRef.Val)
-            {
+        { 
+            
+            if (health.Val == healthRef.Val)
+           {
                 return;
-            }
-            _secondaryHealthSource.health.Val -= conversionRate;
+           }
+            Debug.Log("tried heal");
+//            _secondaryHealthSource.health.Val -= conversionRate;
             health.Val += 1;
         }
 
