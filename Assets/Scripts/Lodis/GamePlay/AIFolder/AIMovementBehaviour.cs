@@ -87,25 +87,27 @@ namespace Lodis.GamePlay.AIFolder
 	        List<PanelBehaviour> moveSpots = new List<PanelBehaviour>();
 	        if (_moveScript.Panels.GetPanels(SafeSpotCheck, out moveSpots))
 	        {
-		        foreach (GameObject bullet in GridBehaviour.bulletList)
+		        for (int i =0; i < GridBehaviour.bulletList.Objects.Count;i++)
 		        {
-			        Vector2 bulletPosition = bullet.GetComponent<BulletBehaviour>().currentPanel.Position;
-                    for (int i = 0; i < moveSpots.Count; i++)
+			        Vector2 bulletPosition = GridBehaviour.bulletList[i].GetComponent<BulletBehaviour>().currentPanel.Position;
+                    for (int j = 0; j < moveSpots.Count; j++)
                     {
-	                    Vector2 panelPosition = moveSpots[i].Position;
+	                    Vector2 panelPosition = moveSpots[j].Position;
                     	if (bulletPosition.y == panelPosition.y)
                     	{
-                    		moveSpots.RemoveAt(i);
-                    		i--;
+                    		moveSpots.RemoveAt(j);
+                    		j--;
                             continue;
                     	}
                         if (bulletPosition.x == panelPosition.x)
                         {
-	                        moveSpots.RemoveAt(i);
-	                        i--;
+	                        moveSpots.RemoveAt(j);
+	                        j--;
                         }
                     }
-                }
+                    GridBehaviour.bulletList.Objects.RemoveAt(i);
+                    i--;
+		        }
 	        }
     		if (moveSpots.Count == 0)
     		{
@@ -241,6 +243,7 @@ namespace Lodis.GamePlay.AIFolder
     	public void Dodge()
     	{
     		FindSafeSpot();
+            Debug.ClearDeveloperConsole();
             Debug.Log("goal is " + _goal.Position);
     		FindBestPath(); 
     		Move();
