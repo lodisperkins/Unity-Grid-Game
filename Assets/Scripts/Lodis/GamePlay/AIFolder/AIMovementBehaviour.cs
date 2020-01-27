@@ -22,7 +22,7 @@ namespace Lodis.GamePlay.AIFolder
     		GetComponent<InputButtonBehaviour>().enabled = false;
     		GetComponent<InputAxisBehaviour>().enabled = false;
             SafeSpotCheck += CheckIfSafeSpot;
-            NeighboorCheck += CheckIfNeighBoor;
+            NeighboorCheck += CheckIfNeighboor;
         }
 
         public bool CheckIfSafeSpot(object[] arg)
@@ -36,7 +36,7 @@ namespace Lodis.GamePlay.AIFolder
 	        return false;
         }
 
-        public bool CheckIfNeighBoor(object[] arg)
+        public bool CheckIfNeighboor(object[] arg)
         {
 	        GameObject temp = (GameObject)arg[0];
 	        Vector2 position = temp.GetComponent<PanelBehaviour>().Position;
@@ -52,7 +52,37 @@ namespace Lodis.GamePlay.AIFolder
 	        }
 	        return false;
         }
-    	public bool FindSafeSpot()
+        public bool CheckIfNeighboor(PanelBehaviour arg)
+        {
+            Vector2 position = arg.Position;
+            Vector2 displacementX = new Vector2(1, 0);
+            Vector2 displacementY = new Vector2(0, 1);
+            if (position == _moveScript.Position + displacementX || position == _moveScript.Position - displacementX)
+            {
+                return true;
+            }
+            if (position == _moveScript.Position + displacementY || position == _moveScript.Position - displacementY)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool CheckIfNeighboor(PanelBehaviour arg , int range)
+        {
+            Vector2 position = arg.Position;
+            Vector2 displacdementX = new Vector2(range, 0);
+            Vector2 displacdementY = new Vector2(0, range);
+            if (position == _moveScript.Position + displacdementX || position == _moveScript.Position - displacdementX)
+            {
+                return true;
+            }
+            if (position == _moveScript.Position + displacdementY || position == _moveScript.Position - displacdementY)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool FindSafeSpot()
         {
 	        List<PanelBehaviour> moveSpots = new List<PanelBehaviour>();
 	        if (_moveScript.Panels.GetPanels(SafeSpotCheck, out moveSpots))
@@ -81,10 +111,23 @@ namespace Lodis.GamePlay.AIFolder
     		{
     			return false;
     		}
-    		_goal = moveSpots[0].GetComponent<PanelBehaviour>();
+    		_goal = FindClosestSafeSpot(moveSpots);
     		return true;
     	}
-    
+        public PanelBehaviour FindClosestSafeSpot(List<PanelBehaviour> moveSpots)
+        {
+            for(int i = 0; i<4; i++)
+            {
+                foreach(PanelBehaviour panel in moveSpots)
+                {
+                    if(CheckIfNeighboor(panel,i))
+                    {
+                        return panel;
+                    }
+                }
+            }
+            return moveSpots[0];
+        }
     	public float Manhattan(PanelBehaviour panel)
     	{
     		return Math.Abs(_goal.Position.x - panel.Position.x) + Math.Abs(_goal.Position.y - panel.Position.y);
@@ -198,6 +241,7 @@ namespace Lodis.GamePlay.AIFolder
     	public void Dodge()
     	{
     		FindSafeSpot();
+            Debug.Log("goal is " + _goal.Position);
     		FindBestPath(); 
     		Move();
     	}

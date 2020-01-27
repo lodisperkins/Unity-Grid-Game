@@ -52,7 +52,7 @@ namespace Lodis
         // Use this for initialization
         void Start()
         {
-            Destination = Position;
+            Destination = new Vector2(0,0);
             canMove = true;
             panelStealActive = false;
             _currentPanel = Panels[16];

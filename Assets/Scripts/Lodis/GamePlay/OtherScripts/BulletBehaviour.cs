@@ -179,7 +179,6 @@ namespace Lodis
 
         private void OnDestroy()
         {
-            Debug.Log("tried deleting self");
             GridBehaviour.bulletList.RemoveItem(gameObject);
         }
     }
