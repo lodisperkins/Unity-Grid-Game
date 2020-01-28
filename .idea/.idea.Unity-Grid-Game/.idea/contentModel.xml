@@ -39,6 +39,7 @@
             </e>
             <e p="GamePlay" t="Include">
               <e p="AIFolder" t="Include">
+                <e p="AIControllerBehaviour.cs" t="Include" />
                 <e p="AIMovementBehaviour.cs" t="Include" />
                 <e p="AISpawnBehaviour.cs" t="Include" />
               </e>
@@ -101,6 +102,7 @@
           <e p="VariableScripts" t="Include">
             <e p="BinaryTree.cs" t="Include" />
             <e p="BlockVariable.cs" t="Include" />
+            <e p="BoolDelegate.cs" t="Include" />
             <e p="GameObjectList.cs" t="Include" />
             <e p="InputVariable.cs" t="Include" />
             <e p="IntVariable.cs" t="Include" />
