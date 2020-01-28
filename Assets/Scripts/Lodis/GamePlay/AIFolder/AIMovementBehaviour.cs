@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay.GridScripts;
 using UnityEngine;
@@ -11,9 +12,19 @@ namespace Lodis.GamePlay.AIFolder
     	private PlayerMovementBehaviour _moveScript;
     	private List<PanelBehaviour> _currentPath;
     	private PanelBehaviour _goal;
+        [SerializeField]
+        private float _movementDelay;
+        public PanelBehaviour Goal
+        {
+	        get { return _goal; }
+	        set { _goal = value; }
+        }
+
         private Condition SafeSpotCheck;
         private Condition NeighboorCheck;
     	private bool shouldDodge;
+
+        private PanelBehaviour _currentPanelInPath;
     	// Use this for initialization
     	void Start ()
     	{
@@ -42,11 +53,11 @@ namespace Lodis.GamePlay.AIFolder
 	        Vector2 position = temp.GetComponent<PanelBehaviour>().Position;
 	        Vector2 displacdementX = new Vector2(1,0);
 	        Vector2 displacdementY = new Vector2(0,1);
-	        if (position == _moveScript.Position+ displacdementX || position == _moveScript.Position -displacdementX)
+	        if (position == _currentPanelInPath.Position+ displacdementX || position == _currentPanelInPath.Position -displacdementX)
 	        {
 		        return true;
 	        }
-	        if (position == _moveScript.Position +displacdementY || position == _moveScript.Position - displacdementY)
+	        if (position == _currentPanelInPath.Position +displacdementY || position == _currentPanelInPath.Position - displacdementY)
 	        {
 		        return true;
 	        }
@@ -135,7 +146,7 @@ namespace Lodis.GamePlay.AIFolder
     		return Math.Abs(_goal.Position.x - panel.Position.x) + Math.Abs(_goal.Position.y - panel.Position.y);
     	}
     		
-    	public List<PanelBehaviour> FindNeighbors(PanelBehaviour currentPanel )
+    	public List<PanelBehaviour> FindNeighbors()
         {
             List<PanelBehaviour> panelsInRange = new List<PanelBehaviour>();
             if (_moveScript.Panels.GetPanels(NeighboorCheck, out panelsInRange))
@@ -193,7 +204,8 @@ namespace Lodis.GamePlay.AIFolder
     			}
     			openList.Remove(panel);
     			closedList.Add(panel);
-    			foreach (PanelBehaviour neighbor in FindNeighbors(panel))
+                _currentPanelInPath = panel;
+    			foreach (PanelBehaviour neighbor in FindNeighbors())
     			{
     				if (closedList.Contains(neighbor) || openList.Contains(neighbor))
     				{
@@ -214,30 +226,32 @@ namespace Lodis.GamePlay.AIFolder
     		}
     	}
     
-    	public void Move()
+    	public IEnumerator Move()
     	{
     		Debug.Log("Tried move");
-    		foreach (PanelBehaviour  panel in _currentPath)
-    		{
+    		for (int i =0; i< _currentPath.Count; i++)
+            {
+	            PanelBehaviour panel = _currentPath[i];
     			if (panel.Position.x < _moveScript.Position.x)
     			{
     				_moveScript.MoveLeft();
     			}
     
-    			if (panel.Position.x > _moveScript.Position.x)
+    			else if (panel.Position.x > _moveScript.Position.x)
     			{
     				_moveScript.MoveRight();
     			}
     
-    			if (panel.Position.y > _moveScript.Position.y)
+    			else if (panel.Position.y > _moveScript.Position.y)
     			{
     				_moveScript.MoveUp();
     			}
     
-    			if (panel.Position.y < _moveScript.Position.y)
+    			else if (panel.Position.y < _moveScript.Position.y)
     			{
     				_moveScript.MoveDown();
     			}
+                yield return new WaitForSeconds(_movementDelay);
     		}
     	}
     	public void Dodge()
@@ -245,9 +259,9 @@ namespace Lodis.GamePlay.AIFolder
     		FindSafeSpot();
             Debug.ClearDeveloperConsole();
             Debug.Log("goal is " + _goal.Position);
-    		FindBestPath(); 
-    		Move();
-    	}
+    		FindBestPath();
+            StartCoroutine(Move());
+        }
     	private void Update()
     	{
     		GetComponent<InputButtonBehaviour>().enabled = false;
