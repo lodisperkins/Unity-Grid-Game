@@ -10014,7 +10014,7 @@ MonoBehaviour:
   axis: Shoot2
   hasMultipleButtons: 0
   _axisNames: []
-  inputBuffer: 0.3
+  inputBuffer: 0.4
 --- !u!1 &377721916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1254131067100762, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -10604,7 +10604,7 @@ MonoBehaviour:
   axis: Shoot1
   hasMultipleButtons: 0
   _axisNames: []
-  inputBuffer: 0.3
+  inputBuffer: 0.4
 --- !u!114 &740903149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23487,7 +23487,7 @@ MonoBehaviour:
   axis: Melee1
   hasMultipleButtons: 0
   _axisNames: []
-  inputBuffer: 0.5
+  inputBuffer: 0
 --- !u!1 &1945666761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1259193105431318, guid: 3c61a511821b873468c4c066ef68dc65,

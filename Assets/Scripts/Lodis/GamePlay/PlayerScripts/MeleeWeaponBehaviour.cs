@@ -8,14 +8,10 @@ public class MeleeWeaponBehaviour : MonoBehaviour {
 
 	[SerializeField] private ParticleSystem ps;
 	[SerializeField] private int _damageVal;
+	[SerializeField] private IntVariable playerEnergy;
 	private void OnTriggerEnter(Collider other)
 	{
-		var health = other.GetComponent<HealthBehaviour>();
-		if (health != null)
-		{
-			PlayParticleSystems(1);
-			health.takeDamage(_damageVal);
-		}
+		
 		
 	}
 	//Plays particle effect when hit
