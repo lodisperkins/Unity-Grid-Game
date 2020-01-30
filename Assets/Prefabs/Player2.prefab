@@ -896,6 +896,8 @@ GameObject:
   - component: {fileID: 114558301984527624}
   - component: {fileID: 114669890966289274}
   - component: {fileID: 114353912550830346}
+  - component: {fileID: 114157280911253660}
+  - component: {fileID: 114144016517452814}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -6689,6 +6691,18 @@ MonoBehaviour:
   VerticalAxis: Vertical2
   Direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
   isRawInput: 1
+--- !u!114 &114144016517452814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decisions: {fileID: 0}
 --- !u!114 &114145399795342996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6751,6 +6765,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
   intendedSender: {fileID: 1143065304500804}
+--- !u!114 &114157280911253660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _testGoal: {fileID: 0}
 --- !u!114 &114198682473724034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6882,6 +6908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movementDelay: 0.3
 --- !u!114 &114357151229158148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7231,7 +7258,7 @@ MonoBehaviour:
   actions:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114353912550830346}
         m_MethodName: Dodge
         m_Mode: 1
         m_Arguments:

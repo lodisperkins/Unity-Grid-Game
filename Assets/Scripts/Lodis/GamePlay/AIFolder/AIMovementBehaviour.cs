@@ -98,9 +98,9 @@ namespace Lodis.GamePlay.AIFolder
 	        List<PanelBehaviour> moveSpots = new List<PanelBehaviour>();
 	        if (_moveScript.Panels.GetPanels(SafeSpotCheck, out moveSpots))
 	        {
-		        for (int i =0; i < GridBehaviour.bulletList.Objects.Count;i++)
+		        for (int i =0; i < GridBehaviour.bulletListP1.Objects.Count;i++)
 		        {
-			        Vector2 bulletPosition = GridBehaviour.bulletList[i].GetComponent<BulletBehaviour>().currentPanel.Position;
+			        Vector2 bulletPosition = GridBehaviour.bulletListP1[i].GetComponent<BulletBehaviour>().currentPanel.Position;
                     for (int j = 0; j < moveSpots.Count; j++)
                     {
 	                    Vector2 panelPosition = moveSpots[j].Position;
@@ -116,7 +116,7 @@ namespace Lodis.GamePlay.AIFolder
 	                        j--;
                         }
                     }
-                    GridBehaviour.bulletList.Objects.RemoveAt(i);
+                    GridBehaviour.bulletListP1.Objects.RemoveAt(i);
                     i--;
 		        }
 	        }

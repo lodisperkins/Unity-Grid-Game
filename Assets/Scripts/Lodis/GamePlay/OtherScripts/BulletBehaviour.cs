@@ -75,11 +75,16 @@ namespace Lodis
         private void Awake()
         {
             ChangeColor();
-            if (GridBehaviour.bulletList == null)
+            if (GridBehaviour.bulletListP1 == null)
             {
                 return;
             }
-            GridBehaviour.bulletList.Add(gameObject);
+
+            if (Owner == "")
+            {
+                GridBehaviour.bulletListP1.Add(gameObject);
+            }
+            
             OnBulletSpawn.Raise();
             panelSetCalled = false;
         }
@@ -179,7 +184,7 @@ namespace Lodis
 
         private void OnDestroy()
         {
-            GridBehaviour.bulletList.RemoveItem(gameObject);
+            GridBehaviour.bulletListP1.RemoveItem(gameObject);
         }
     }
     

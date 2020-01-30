@@ -15,12 +15,18 @@ namespace Lodis.GamePlay.AIFolder
 		// Use this for initialization
 		void Start()
 		{
-			_moveScript = GetComponent<AIMovementBehaviour>();
-			_spawnScript = GetComponent<PlayerSpawnBehaviour>();
+			
+		}
+
+		private void Awake()
+		{
+			
 		}
 
 		public void SelectBlock(int choice)
 		{
+			_moveScript = GetComponent<AIMovementBehaviour>();
+			_spawnScript = GetComponent<PlayerSpawnBehaviour>();
 			switch (choice)
 			{
 				case 0:
@@ -47,6 +53,7 @@ namespace Lodis.GamePlay.AIFolder
 		}
 		public void Build()
 		{
+			SelectBlock(0);
 			_spawnScript.FindNeighbors();
 			_spawnScript.PlaceBlockLeft();
 		}

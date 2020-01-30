@@ -11,16 +11,17 @@ namespace VariableScripts
 	public class Node : ScriptableObject
 	{
 		public Node parent;
+		[SerializeField]
 		private Node _childLeft;
+		[SerializeField]
 		private Node _childRight;
 		public UnityEvent actions;
-		private bool _leftTriggerSet;
-		private bool _rightTriggerSet;
-		public string rightTrigger;
-		public string leftTrigger;
-		public bool LeftTriggerSet
+		private bool _condition;
+		public string conditionName;
+		public bool ConditionMet
 		{
-			get { return _leftTriggerSet; }
+			get { return _condition; }
+			set { _condition = value; }
 		}
 
 		public Node ChildLeft
@@ -33,6 +34,10 @@ namespace VariableScripts
 			}
 		}
 
+		public bool HasChildren()
+		{
+			return _childLeft != null && _childRight != null;
+		}
 		public Node ChildRight
 		{
 			get { return _childRight; }
@@ -41,25 +46,6 @@ namespace VariableScripts
 				_childRight = value;
 				_childRight.parent = this;
 			}
-		}
-
-		public bool RightTriggerSet
-		{
-			get { return _rightTriggerSet; }
-		}
-		public void SetTriggerRight()
-		{
-			_rightTriggerSet = true;
-		}
-		public void SetTriggerLeft()
-		{
-			_leftTriggerSet = true;
-		}
-
-		public void ResetTriggers()
-		{
-			_rightTriggerSet = false;
-			_leftTriggerSet = false;
 		}
 		public Node(Node parent = null, Node childLeft = null, Node childRight = null)
 		{

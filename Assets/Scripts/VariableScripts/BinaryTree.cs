@@ -5,41 +5,37 @@ using UnityEngine.Events;
 
 namespace VariableScripts
 {
-    [CreateAssetMenu(menuName = "AI/StateMachine")]
+    [CreateAssetMenu(menuName = "AI/BinaryTree")]
     public class BinaryTree : ScriptableObject
     {
         public List<Node> nodes;
         public Node root;
         public Node currentNode;
-
-        public void SetTrigger(string triggerName)
+        public float decisionDelay;
+        public void SetCondition(string conditionName, bool value)
         {
             foreach (Node node in nodes)
             {
-                if (node.leftTrigger == triggerName)
+                if (node.conditionName == conditionName)
                 {
-                    node.SetTriggerLeft();
-                }
-                else if(node.rightTrigger == triggerName)
-                {
-                    node.SetTriggerRight();
+                    node.ConditionMet = value;
                 }
             }
         }
-        public IEnumerator TraverseTree()
+        public void TraverseTree()
         {
             currentNode = nodes[0];
             for (int i = 0; i < nodes.Count;)
             {
-                if (currentNode != null)
+                currentNode.actions.Invoke();
+                if (currentNode.HasChildren())
                 {
-                    currentNode.actions.Invoke();
-                    if (currentNode.RightTriggerSet)
+                    if (currentNode.ConditionMet)
                     {
                         currentNode = currentNode.ChildRight;
                         i++;
                     }
-                    else if (currentNode.LeftTriggerSet)
+                    else 
                     {
                         currentNode = currentNode.ChildLeft;
                         i++;
@@ -47,18 +43,8 @@ namespace VariableScripts
                 }
                 else
                 {
-                    ResetTriggers();
                     break;
                 }
-            }
-            yield return new WaitForSeconds(0);
-        }
-
-        public void ResetTriggers()
-        {
-            foreach (Node node in nodes)
-            {
-                node.ResetTriggers();
             }
         }
     }
