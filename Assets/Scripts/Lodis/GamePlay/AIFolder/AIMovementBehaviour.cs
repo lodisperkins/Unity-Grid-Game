@@ -14,6 +14,10 @@ namespace Lodis.GamePlay.AIFolder
     	private PanelBehaviour _goal;
         [SerializeField]
         private float _movementDelay;
+
+       
+
+        [SerializeField] private GameObjectList _enemyBulletList;
         public PanelBehaviour Goal
         {
 	        get { return _goal; }
@@ -25,6 +29,10 @@ namespace Lodis.GamePlay.AIFolder
     	private bool shouldDodge;
 
         private PanelBehaviour _currentPanelInPath;
+        public GameObjectList EnemyBulletList
+       {
+        get { return _enemyBulletList; }
+       }
     	// Use this for initialization
     	void Start ()
     	{
@@ -98,26 +106,30 @@ namespace Lodis.GamePlay.AIFolder
 	        List<PanelBehaviour> moveSpots = new List<PanelBehaviour>();
 	        if (_moveScript.Panels.GetPanels(SafeSpotCheck, out moveSpots))
 	        {
-		        for (int i =0; i < GridBehaviour.bulletListP1.Objects.Count;i++)
+		        for (int i =0; i < _enemyBulletList.Objects.Count;i++)
 		        {
-			        Vector2 bulletPosition = GridBehaviour.bulletListP1[i].GetComponent<BulletBehaviour>().currentPanel.Position;
-                    for (int j = 0; j < moveSpots.Count; j++)
-                    {
-	                    Vector2 panelPosition = moveSpots[j].Position;
-                    	if (bulletPosition.y == panelPosition.y)
-                    	{
-                    		moveSpots.RemoveAt(j);
-                    		j--;
-                            continue;
-                    	}
-                        if (bulletPosition.x == panelPosition.x)
+			        if (_enemyBulletList[i].GetComponent<BulletBehaviour>().currentPanel != null)
+			        {
+				        Vector2 bulletPosition = _enemyBulletList[i].GetComponent<BulletBehaviour>().currentPanel.Position;
+                        for (int j = 0; j < moveSpots.Count; j++)
                         {
-	                        moveSpots.RemoveAt(j);
-	                        j--;
+                            Vector2 panelPosition = moveSpots[j].Position;
+                            if (bulletPosition.y == panelPosition.y)
+                            {
+                                moveSpots.RemoveAt(j);
+                                j--;
+                                continue;
+                            }
+                            if (bulletPosition.x == panelPosition.x)
+                            {
+                                moveSpots.RemoveAt(j);
+                                j--;
+                            }
                         }
-                    }
-                    GridBehaviour.bulletListP1.Objects.RemoveAt(i);
-                    i--;
+                        _enemyBulletList.Objects.RemoveAt(i);
+                        i--;
+			        }
+			        
 		        }
 	        }
     		if (moveSpots.Count == 0)

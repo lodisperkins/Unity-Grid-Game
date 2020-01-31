@@ -1,4 +1,5 @@
-﻿using Lodis.GamePlay.GridScripts;
+﻿using System;
+using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using VariableScripts;
 
@@ -6,34 +7,33 @@ namespace Lodis.GamePlay.AIFolder
 {
 	public class AIControllerBehaviour : MonoBehaviour
 	{
-
-		[SerializeField] private BinaryTree decisions;
-			// Use this for initialization
-		void Start ()
+		private BinaryTreeBehaviour _decisionTree;
+		private AIMovementBehaviour _moveScript;
+		private void Start()
 		{
-			
+			_decisionTree = GetComponent<BinaryTreeBehaviour>();
+			_moveScript = GetComponent<AIMovementBehaviour>();
 		}
 
 		public void ActivateDefenseMode()
 		{
-			decisions.SetCondition("Defend", true);
+			_decisionTree.Decisions.SetCondition("Defend", true);
 		}
-
+    
 		public void ActivateAttackMode()
 		{
-			decisions.SetCondition("Defend", false);
+			_decisionTree.Decisions.SetCondition("Defend", false);
 		}
-		// Update is called once per frame
-		void Update () {
-			if (GridBehaviour.bulletListP1.Objects.Count > 0)
+		private void Update()
+		{
+			if (_moveScript.EnemyBulletList.Objects.Count >0)
 			{
-				ActivateDefenseMode();
+				ActivateDefenseMode(); 
 			}
 			else
 			{
 				ActivateAttackMode();
 			}
-			decisions.TraverseTree();
 		}
 	}
 }

@@ -22,30 +22,6 @@ namespace VariableScripts
                 }
             }
         }
-        public void TraverseTree()
-        {
-            currentNode = nodes[0];
-            for (int i = 0; i < nodes.Count;)
-            {
-                currentNode.actions.Invoke();
-                if (currentNode.HasChildren())
-                {
-                    if (currentNode.ConditionMet)
-                    {
-                        currentNode = currentNode.ChildRight;
-                        i++;
-                    }
-                    else 
-                    {
-                        currentNode = currentNode.ChildLeft;
-                        i++;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
+        
     }
 }

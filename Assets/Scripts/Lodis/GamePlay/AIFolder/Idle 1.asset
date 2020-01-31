@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28198989cec70874eb4acbd17ca0a23b, type: 3}
-  m_Name: Idle
+  m_Name: Idle 1
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  _childLeft: {fileID: 11400000, guid: 2ffd59591d6f78841b0c6148c2870b52, type: 2}
-  _childRight: {fileID: 11400000, guid: 6b532189217fa644f8549e184cb338a9, type: 2}
+  _childLeft: {fileID: 11400000, guid: 144770f029d847e43855e011b80c80d2, type: 2}
+  _childRight: {fileID: 11400000, guid: c63332a7bbe2ed84da2835a12dc61c52, type: 2}
   actions:
     m_PersistentCalls:
       m_Calls: []

@@ -18,6 +18,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
     [SerializeField]
     private Animator animator;
 	private PlayerMovementBehaviour player;
+	
 	// Use this for initialization
 	void Start ()
 	{

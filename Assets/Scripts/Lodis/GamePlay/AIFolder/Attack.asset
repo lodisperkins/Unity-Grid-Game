@@ -16,32 +16,8 @@ MonoBehaviour:
   _childRight: {fileID: 0}
   actions:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114157280911253660, guid: 53af400b8fabd664bbd19ef088780851,
-          type: 2}
-        m_MethodName: SelectBlock
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114157280911253660, guid: 53af400b8fabd664bbd19ef088780851,
-          type: 2}
-        m_MethodName: Build
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  rightTrigger: 
-  leftTrigger: 
+  conditionName: 
+  actionName: Build

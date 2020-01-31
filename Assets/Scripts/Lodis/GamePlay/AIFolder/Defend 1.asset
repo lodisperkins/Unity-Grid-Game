@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28198989cec70874eb4acbd17ca0a23b, type: 3}
-  m_Name: Idle
+  m_Name: Defend 1
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
-  _childLeft: {fileID: 11400000, guid: 2ffd59591d6f78841b0c6148c2870b52, type: 2}
-  _childRight: {fileID: 11400000, guid: 6b532189217fa644f8549e184cb338a9, type: 2}
+  parent: {fileID: 11400000, guid: eeef4db0f0800e24a894ed3c42fcd3d5, type: 2}
+  _childLeft: {fileID: 0}
+  _childRight: {fileID: 0}
   actions:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  conditionName: Defend
-  actionName: 
+  conditionName: 
+  actionName: Dodge

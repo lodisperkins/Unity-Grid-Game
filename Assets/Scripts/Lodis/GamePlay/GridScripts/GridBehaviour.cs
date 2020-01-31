@@ -11,7 +11,8 @@ namespace Lodis.GamePlay.GridScripts
         [FormerlySerializedAs("p1Panels")] [FormerlySerializedAs("P1Panels")] [SerializeField] private  PanelList p1PanelsRef;
         //The reference to player 2's panels
         [FormerlySerializedAs("p2Panels")] [FormerlySerializedAs("P2Panels")] [SerializeField] private PanelList p2PanelsRef;
-        public static GameObjectList bulletListP1;
+        public  GameObjectList bulletListP1;
+        public  GameObjectList bulletListP2;
         private PanelList _originalP1Panels;
 
         private PanelList _originalP2Panels;
@@ -48,12 +49,16 @@ namespace Lodis.GamePlay.GridScripts
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
             bulletListP1 =ScriptableObject.CreateInstance<GameObjectList>();
             bulletListP1.Init();
+            bulletListP2 =ScriptableObject.CreateInstance<GameObjectList>();
+            bulletListP2.Init();
         }
 
         private void Awake()
         {
             bulletListP1 =ScriptableObject.CreateInstance<GameObjectList>();
             bulletListP1.Init();
+            bulletListP2 =ScriptableObject.CreateInstance<GameObjectList>();
+            bulletListP2.Init();
         }
 
         //Sets player1 panels to the appropriate material and sets their owner to be player 1

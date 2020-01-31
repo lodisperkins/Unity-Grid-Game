@@ -18,12 +18,14 @@ namespace VariableScripts
 		public UnityEvent actions;
 		private bool _condition;
 		public string conditionName;
+		public string actionName;
 		public bool ConditionMet
 		{
 			get { return _condition; }
 			set { _condition = value; }
 		}
 
+		
 		public Node ChildLeft
 		{
 			get { return _childLeft; }

@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 114229523389380776}
   - component: {fileID: 114132602686729750}
   - component: {fileID: 114093785245921702}
-  - component: {fileID: 114459045273926866}
   - component: {fileID: 114714455384779632}
   - component: {fileID: 114229358655146172}
   m_Layer: 0
@@ -4203,6 +4202,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4221,6 +4223,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4268,6 +4273,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4286,6 +4294,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4333,6 +4344,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4351,6 +4365,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4369,6 +4386,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4474,6 +4494,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4492,6 +4515,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4510,6 +4536,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4528,6 +4557,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4546,6 +4578,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4564,6 +4599,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4582,6 +4620,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4628,7 +4669,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  hasRaised: 0
   OnObjectDeath: {fileID: 0}
+  OnHit: {fileID: 0}
   ps: {fileID: 0}
 --- !u!114 &114415655196724626
 MonoBehaviour:
@@ -4645,6 +4688,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4663,6 +4709,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4681,6 +4730,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4713,35 +4765,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: ad3cec5df15f31e4ebdf848353c89036, type: 2}
   intendedSender: {fileID: 0}
---- !u!114 &114459045273926866
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161260763785890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114804898863985258}
-        m_MethodName: GiveBackPanelsToP2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  Event: {fileID: 11400000, guid: a0c2899e276610d409b6b3374a10fdd9, type: 2}
-  intendedSender: {fileID: 0}
 --- !u!114 &114553377463261980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4757,6 +4780,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4775,6 +4801,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4793,6 +4822,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4811,6 +4843,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4829,6 +4864,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4847,6 +4885,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4865,6 +4906,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4883,6 +4927,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4901,6 +4948,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4948,6 +4998,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4966,6 +5019,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4984,6 +5040,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5002,6 +5061,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5018,6 +5080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1PanelsRef: {fileID: 11400000, guid: dce9da33097f9cb43b5f47a2d9632a31, type: 2}
   p2PanelsRef: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
+  bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
+  bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
   p1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
   p2Position: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
   onPanelsSwapped: {fileID: 11400000, guid: be2e3e124c3623947a79697a94633a28, type: 2}
@@ -5073,6 +5137,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5091,6 +5158,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5109,6 +5179,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5127,6 +5200,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5145,6 +5221,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5163,6 +5242,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5181,6 +5263,9 @@ MonoBehaviour:
   Owner: Player2
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5199,6 +5284,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5217,6 +5305,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5235,6 +5326,9 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
   _blockLimit: 0
   blockCounter: 0
   BlockCapacityReached: 0
