@@ -108,6 +108,7 @@ namespace Lodis.GamePlay.AIFolder
 	        {
 		        for (int i =0; i < _enemyBulletList.Objects.Count;i++)
 		        {
+			        
 			        if (_enemyBulletList[i].GetComponent<BulletBehaviour>().currentPanel != null)
 			        {
 				        Vector2 bulletPosition = _enemyBulletList[i].GetComponent<BulletBehaviour>().currentPanel.Position;

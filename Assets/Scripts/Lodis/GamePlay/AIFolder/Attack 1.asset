@@ -14,10 +14,6 @@ MonoBehaviour:
   parent: {fileID: 11400000, guid: eeef4db0f0800e24a894ed3c42fcd3d5, type: 2}
   _childLeft: {fileID: 0}
   _childRight: {fileID: 0}
-  actions:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   conditionName: 
-  actionName: Build
+  actionNames:
+  - BuildP1

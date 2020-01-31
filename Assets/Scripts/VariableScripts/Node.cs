@@ -15,10 +15,9 @@ namespace VariableScripts
 		private Node _childLeft;
 		[SerializeField]
 		private Node _childRight;
-		public UnityEvent actions;
 		private bool _condition;
 		public string conditionName;
-		public string actionName;
+		public List<string> actionNames;
 		public bool ConditionMet
 		{
 			get { return _condition; }

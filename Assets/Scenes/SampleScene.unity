@@ -9997,6 +9997,17 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1150263522}
   m_Script: {fileID: 11500000, guid: dd695a6b5890901409b485e528a5333d, type: 3}
+--- !u!114 &354307097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354307074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &365011537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12207,6 +12218,21 @@ Prefab:
       propertyPath: _testGoal
       value: 
       objectReference: {fileID: 1366928812}
+    - target: {fileID: 114200378622562274, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483499789973154, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114551330603045306, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
   m_IsPrefabAsset: 0

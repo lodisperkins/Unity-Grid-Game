@@ -11,10 +11,7 @@ namespace Lodis
     
     	public BinaryTree Decisions;
     	// Use this for initialization
-    	void Start ()
-    	{
-    			
-    	}
+    	
     
     	
         public void TraverseTree()
@@ -22,10 +19,14 @@ namespace Lodis
 	        Decisions.currentNode = Decisions.nodes[0];
 	        for (int i = 0; i < Decisions.nodes.Count;)
 	        {
-		        if (Decisions.currentNode.actionName != "")
+		        foreach (var actionName in Decisions.currentNode.actionNames)
 		        {
-			        SendMessage(Decisions.currentNode.actionName);
+			        if (actionName != "")
+                    {
+                        SendMessage(actionName);
+                    }
 		        }
+		        
 		        if (Decisions.currentNode.HasChildren())
 		        {
 			        if (Decisions.currentNode.ConditionMet)

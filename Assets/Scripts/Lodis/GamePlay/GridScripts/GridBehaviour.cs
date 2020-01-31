@@ -47,10 +47,7 @@ namespace Lodis.GamePlay.GridScripts
             P2AssignLists();
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
-            bulletListP1 =ScriptableObject.CreateInstance<GameObjectList>();
-            bulletListP1.Init();
-            bulletListP2 =ScriptableObject.CreateInstance<GameObjectList>();
-            bulletListP2.Init();
+            
         }
 
         private void Awake()

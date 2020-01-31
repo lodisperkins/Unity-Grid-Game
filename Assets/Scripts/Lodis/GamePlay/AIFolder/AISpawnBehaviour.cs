@@ -51,14 +51,17 @@ namespace Lodis.GamePlay.AIFolder
 				}
 			}
 		}
-		public void Build()
+		public void BuildP2()
 		{
+			SelectBlock(0);
 			_spawnScript.FindNeighbors();
 			_spawnScript.PlaceBlockLeft();
 		}
-		// Update is called once per frame
-		void Update()
+		public void BuildP1()
 		{
+			SelectBlock(0);
+			_spawnScript.FindNeighbors();
+			_spawnScript.PlaceBlockRight();
 		}
 	}
 }
