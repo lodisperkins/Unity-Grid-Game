@@ -245,7 +245,7 @@ namespace Lodis
         {
             _gun.enabled = true;
             _gun.bulletCount += 5;
-            _gun.damageVal += 2;
+            _gun.bulletForceScale += 200;
         }
         //Increases health value 
         public void UpgradeDefense()

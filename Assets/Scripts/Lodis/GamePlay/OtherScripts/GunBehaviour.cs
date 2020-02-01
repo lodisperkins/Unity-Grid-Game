@@ -23,7 +23,7 @@ namespace Lodis
         public Vector3 _bulletForce;
         //the amount of time between firing bullets
         [FormerlySerializedAs("Bullet_Delay")] [SerializeField]
-        private int bulletDelay;
+        private float bulletDelay;
         //the amount of bullet to fire
         [FormerlySerializedAs("Bullet_Count")] public int bulletCount;
         //unity event raised when the gun is out of ammo

@@ -2586,8 +2586,8 @@ MonoBehaviour:
   owner: 
   bulletForceScale: 1000
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 1
-  bulletCount: 5
+  bulletDelay: 0.4
+  bulletCount: 10
   outOfAmmo:
     m_PersistentCalls:
       m_Calls:
@@ -2606,7 +2606,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
-  damageVal: 3
+  damageVal: 1
   block: {fileID: 114782364321774370}
 --- !u!114 &114439213264607044
 MonoBehaviour:

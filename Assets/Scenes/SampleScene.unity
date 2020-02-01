@@ -10014,7 +10014,7 @@ MonoBehaviour:
   axis: Shoot2
   hasMultipleButtons: 0
   _axisNames: []
-  inputBuffer: 0.4
+  inputBuffer: 1
 --- !u!1 &377721916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1254131067100762, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -10604,7 +10604,7 @@ MonoBehaviour:
   axis: Shoot1
   hasMultipleButtons: 0
   _axisNames: []
-  inputBuffer: 0.4
+  inputBuffer: 0.6
 --- !u!114 &740903149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11741,6 +11741,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114840264315933764, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: inputs.Array.size
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4085029642658332, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11992,7 +11997,7 @@ Prefab:
         type: 2}
       propertyPath: inputs.Array.data[15]
       value: 
-      objectReference: {fileID: 407230599}
+      objectReference: {fileID: 0}
     - target: {fileID: 114840264315933764, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: newInput
@@ -23046,6 +23051,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: inputs.Array.size
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4502457238332382, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.0023058876
@@ -23272,7 +23282,7 @@ Prefab:
         type: 2}
       propertyPath: inputs.Array.data[15]
       value: 
-      objectReference: {fileID: 1928869698}
+      objectReference: {fileID: 0}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: newInput
