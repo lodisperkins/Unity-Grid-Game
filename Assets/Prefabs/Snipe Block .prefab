@@ -2613,8 +2613,8 @@ MonoBehaviour:
   owner: 
   bulletForceScale: 2000
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 1
-  bulletCount: 30
+  bulletDelay: 0.4
+  bulletCount: 10
   outOfAmmo:
     m_PersistentCalls:
       m_Calls:

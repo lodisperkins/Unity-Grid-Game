@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Lodis;
 using Lodis.GamePlay;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class AIMovementBehaviour : MonoBehaviour

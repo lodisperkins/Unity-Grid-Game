@@ -2837,7 +2837,7 @@ MonoBehaviour:
   owner: 
   bulletForceScale: 1500
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 1
+  bulletDelay: 0.3
   bulletCount: 10
   outOfAmmo:
     m_PersistentCalls:

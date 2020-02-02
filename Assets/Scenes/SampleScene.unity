@@ -23083,6 +23083,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 354307074}
+    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 1166793325}
     - target: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: _currentPanel
@@ -23188,16 +23198,6 @@ Prefab:
       propertyPath: startingPanels.Array.data[19]
       value: 
       objectReference: {fileID: 1764044846}
-    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 1166793325}
-    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 354307074}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: inputs.Array.data[0]
