@@ -6922,6 +6922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   _damageVal: 2
+  playerEnergy: {fileID: 0}
 --- !u!114 &114282680511122710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7377,7 +7378,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasMultipleButtons: 0
   inputs:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
