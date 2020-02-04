@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 114533408530467866}
   _eventListener: {fileID: 114338181517171024}
-  bulletCapacity: 6
+  bulletCapacity: 11
 --- !u!114 &114211824190323726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1991889374491070}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2d9df7eff4d29a42a0a7f5d89d49816, type: 3}
   m_Name: 
@@ -2825,7 +2825,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.51
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198345794256001166
 ParticleSystem:
