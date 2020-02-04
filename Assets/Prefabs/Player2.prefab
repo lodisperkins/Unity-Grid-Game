@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 136524550849275264}
   - component: {fileID: 54452705590324284}
   - component: {fileID: 114640027515338506}
+  - component: {fileID: 114955632781848238}
   m_Layer: 0
   m_Name: TeleportationBeam
   m_TagString: Projectile
@@ -7395,7 +7396,7 @@ MonoBehaviour:
   _arrow: {fileID: 114488790905741872}
 --- !u!114 &114955632781848238
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143065304500804}
@@ -7417,6 +7418,8 @@ MonoBehaviour:
   lifetime: 0
   onReflect: {fileID: 0}
   onPanelSet: {fileID: 0}
+  _bulletListP1: {fileID: 0}
+  _bulletListP2: {fileID: 0}
 --- !u!114 &114967732325232990
 MonoBehaviour:
   m_ObjectHideFlags: 1
