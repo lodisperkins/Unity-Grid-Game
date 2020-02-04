@@ -42,5 +42,5 @@ Material:
     - Color_A832A72B: {r: 5.992157, g: 3.294118, b: 0, a: 0}
     - Vector2_6B6A64AF: {r: 1, g: 3, b: 0, a: 0}
     - Vector2_84F5621A: {r: 0.4, g: 4, b: 0, a: 0}
-    - _Color: {r: 0, g: 0, b: 1, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _TintColor: {r: 1, g: 0.4669811, b: 0.4669811, a: 0.5}

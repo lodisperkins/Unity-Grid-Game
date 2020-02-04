@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay;
+using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -32,7 +33,8 @@ namespace Lodis
         private Event onReflect;
         [SerializeField]
         private Event onPanelSet;
-        
+        [SerializeField] private GameObjectList _bulletListP1;
+        [SerializeField] private GameObjectList _bulletListP2;
         private bool panelSetCalled;
        
         private PanelBehaviour _currentPanel;
@@ -61,20 +63,21 @@ namespace Lodis
         //(not working) meant to change the bullets color based on the owner
         private void ChangeColor()
         {
-            //if (Owner == "Player1")
-            //{
-            //    laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
-            //}
-            //else
-            //{
-            //    laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
-            //}
+            if (Owner == "Player1")
+            {
+                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
+                _bulletListP1.Add(gameObject);
+            }
+            else
+            {
+                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
+                _bulletListP2.Add(gameObject);
+            }
         }
         
         private void Awake()
         {
             ChangeColor();
-            //GridBehaviour.bulletList.Add(gameObject);
             OnBulletSpawn.Raise();
             panelSetCalled = false;
         }
@@ -177,8 +180,8 @@ namespace Lodis
 
         private void OnDestroy()
         {
-            Debug.Log("tried deleting self");
-            GridBehaviour.bulletList.RemoveItem(gameObject);
+            _bulletListP1.RemoveItem(gameObject);
+            _bulletListP2.RemoveItem(gameObject);
         }
     }
     

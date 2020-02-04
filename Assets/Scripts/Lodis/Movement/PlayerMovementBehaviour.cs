@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 namespace Lodis
 {
@@ -45,16 +46,16 @@ namespace Lodis
         //The list of all panels available to the player
         [SerializeField]
         private List<GameObject> startingPanels;
-        public GamePlay.PanelList Panels;
+        public PanelList Panels;
 
         [SerializeField] private Event _onMove;
         // Use this for initialization
         void Start()
         {
-            Destination = Position;
+            Destination = new Vector2(0,0);
             canMove = true;
             panelStealActive = false;
-            _currentPanel = Panels[17];
+            _currentPanel = Panels[16];
         }
 
         private void Awake()

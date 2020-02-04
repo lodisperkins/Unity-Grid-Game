@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Lodis
+namespace Lodis.GamePlay.GridScripts
 {
     public class PanelBehaviour : MonoBehaviour
     {
@@ -29,6 +26,7 @@ namespace Lodis
         private Material _player2Mat;
         public float G;
         public float F;
+        public PanelBehaviour previousPanel;
         [SerializeField]
         private int _blockLimit;
 
@@ -49,6 +47,7 @@ namespace Lodis
             _currentColor = new Color();
             blockCounter = 0;
             _blockLimit = 3;
+            G = 1;
             TimerSet = false;
             _panelMat = GetComponent<MeshRenderer>().material;
         }

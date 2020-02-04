@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 23315724953162848}
   - component: {fileID: 136524550849275264}
   - component: {fileID: 54452705590324284}
-  - component: {fileID: 114955632781848238}
   - component: {fileID: 114640027515338506}
   m_Layer: 0
   m_Name: TeleportationBeam
@@ -895,6 +894,10 @@ GameObject:
   - component: {fileID: 114145399795342996}
   - component: {fileID: 114558301984527624}
   - component: {fileID: 114669890966289274}
+  - component: {fileID: 114200378622562274}
+  - component: {fileID: 114483499789973154}
+  - component: {fileID: 114551330603045306}
+  - component: {fileID: 114086887751731172}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -6673,6 +6676,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114086887751731172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114124990190854086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6779,6 +6793,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: dd68728f066585c4d908df9a01916280, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114200378622562274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Decisions: {fileID: 11400000, guid: 7ce4595122dfd2a4fafa8cac8377c5ad, type: 2}
 --- !u!114 &114274406004224860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7022,6 +7048,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 3b8ac6ea892d22d4db1e795a289c091e, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114483499789973154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _testGoal: {fileID: 0}
 --- !u!114 &114488790905741872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7036,6 +7074,19 @@ MonoBehaviour:
   _arrow: {fileID: 212422682462779970}
   _timeOffset: 2
   _arrowRotationOffset: -90
+--- !u!114 &114551330603045306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementDelay: 0.3
+  _enemyBulletList: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
 --- !u!114 &114558301984527624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7174,7 +7225,7 @@ MonoBehaviour:
   PositionRef: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
   Destination: {x: 0, y: 0}
   Direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
-  canMove: 0
+  canMove: 1
   panelStealActive: 0
   OnPanelSteal: {fileID: 11400000, guid: ad3cec5df15f31e4ebdf848353c89036, type: 2}
   OnPanelStealDisabled: {fileID: 11400000, guid: f74adfbbf13859e4fb621fd4dc5fa3ad,
@@ -7218,18 +7269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Dodge
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 530e37c93af3dee468b76af166eec765, type: 2}

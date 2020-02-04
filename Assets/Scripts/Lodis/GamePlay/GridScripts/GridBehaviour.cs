@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
-namespace Lodis.GamePlay
+namespace Lodis.GamePlay.GridScripts
 {
     public class GridBehaviour : MonoBehaviour
     {
@@ -13,7 +11,8 @@ namespace Lodis.GamePlay
         [FormerlySerializedAs("p1Panels")] [FormerlySerializedAs("P1Panels")] [SerializeField] private  PanelList p1PanelsRef;
         //The reference to player 2's panels
         [FormerlySerializedAs("p2Panels")] [FormerlySerializedAs("P2Panels")] [SerializeField] private PanelList p2PanelsRef;
-        public static GameObjectList bulletList;
+        public  GameObjectList bulletListP1;
+        public  GameObjectList bulletListP2;
         private PanelList _originalP1Panels;
 
         private PanelList _originalP2Panels;
@@ -48,14 +47,15 @@ namespace Lodis.GamePlay
             P2AssignLists();
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
-            bulletList =ScriptableObject.CreateInstance<GameObjectList>();
-            bulletList.Init();
+            
         }
 
         private void Awake()
         {
-            bulletList =ScriptableObject.CreateInstance<GameObjectList>();
-            bulletList.Init();
+            bulletListP1 =ScriptableObject.CreateInstance<GameObjectList>();
+            bulletListP1.Init();
+            bulletListP2 =ScriptableObject.CreateInstance<GameObjectList>();
+            bulletListP2.Init();
         }
 
         //Sets player1 panels to the appropriate material and sets their owner to be player 1

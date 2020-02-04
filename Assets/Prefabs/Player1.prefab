@@ -1311,7 +1311,6 @@ GameObject:
   - component: {fileID: 23652802739876658}
   - component: {fileID: 136263432070158746}
   - component: {fileID: 54063870365431546}
-  - component: {fileID: 114376634654256842}
   - component: {fileID: 114722563692800334}
   m_Layer: 0
   m_Name: TeleportationBeam
@@ -1402,6 +1401,10 @@ GameObject:
   - component: {fileID: 114086175624425954}
   - component: {fileID: 114310844724626630}
   - component: {fileID: 114574205524328418}
+  - component: {fileID: 114473468418604814}
+  - component: {fileID: 114226752431750920}
+  - component: {fileID: 114585378869448626}
+  - component: {fileID: 114716332770902410}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -6910,6 +6913,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0d885f0989823b84c8e532faf50f0ec5, type: 2}
   intendedSender: {fileID: 1688152834628444}
+--- !u!114 &114226752431750920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _testGoal: {fileID: 0}
 --- !u!114 &114251509615489082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7099,6 +7114,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 95964017459917538}
+--- !u!114 &114473468418604814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Decisions: {fileID: 11400000, guid: 4fca24a19d20f2b4692bdf6d118afd29, type: 2}
 --- !u!114 &114476793149227368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7208,6 +7235,19 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 62888b7debcd7f1488de3eb603969a5c, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114585378869448626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementDelay: 0.3
+  _enemyBulletList: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
 --- !u!114 &114635915937980974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7275,6 +7315,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114716332770902410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114722563692800334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7357,7 +7408,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698780024816490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 862b290c9ec05444a916b859d9713ad7, type: 3}
   m_Name: 
