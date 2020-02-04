@@ -7247,6 +7247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   _damageVal: 2
+  playerEnergy: {fileID: 0}
 --- !u!114 &114840264315933764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7277,7 +7278,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   newInput: {fileID: 0}
-  inputBuffer: 0.5
+  inputBuffer: 0.2
 --- !u!114 &114874611140919194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7294,6 +7295,7 @@ MonoBehaviour:
   _weapon: {fileID: 1254118983419372}
   _weaponHitbox: {fileID: 1581409804660030}
   animator: {fileID: 0}
+  _onInteractPressed: {fileID: 11400000, guid: 03e686a1c87dd0342bb3f6ab97d29d3e, type: 2}
 --- !u!114 &114892875904558440
 MonoBehaviour:
   m_ObjectHideFlags: 1

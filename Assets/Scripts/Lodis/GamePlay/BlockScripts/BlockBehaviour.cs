@@ -150,55 +150,6 @@ namespace Lodis
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
-        //Not in game yet
-        public void MakeBlockSleep(Vector3 parentPosition)
-        {
-            GetComponent<Rigidbody>().useGravity = false;
-            GetComponent<Renderer>().material = _sleepingMateral;
-            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
-            sleeping = true;
-            transform.localScale-= new Vector3(.5f,.5f,.5f);
-            transform.position = parentPosition+Vector3.up;
-            if (name == "Attack Block(Clone)")
-            {
-                GetComponentInChildren<GunBehaviour>().enabled = false;
-            }
-            
-            foreach (MonoBehaviour component in components)
-            {
-                if (component is BlockBehaviour)
-                {
-                    continue;
-                }
-                component.enabled = false;
-            }
-
-            _awake = false;
-        }
-        //not in game yet
-        public void WakeBlock()
-        {
-            GetComponent<Rigidbody>().useGravity = true;
-            GetComponent<Rigidbody>().isKinematic = false;
-            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
-            sleeping = false;
-            transform.localScale+= new Vector3(.5f,.5f,.5f);
-            if (name == "Attack Block(Clone)")
-            {
-                GetComponentInChildren<GunBehaviour>().enabled = true;
-            }
-            
-            foreach (MonoBehaviour component in components)
-            {
-                if (component is BlockBehaviour)
-                {
-                    continue;
-                }
-                component.enabled = true;
-            }
-
-            _awake = true;
-        }
         public bool CheckForSameUpgradeBlock(string name)
         {
             if(pastName == null || pastName != name)

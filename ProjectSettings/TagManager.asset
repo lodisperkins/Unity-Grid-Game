@@ -10,6 +10,7 @@ TagManager:
   - Block
   - Core
   - Shield
+  - Kinetic Field
   layers:
   - Default
   - TransparentFX

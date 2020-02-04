@@ -91,9 +91,8 @@ namespace Lodis
         {
             switch (other.tag)
             {
-                case "Shield":
+                case "Kinetic Shield":
                 {
-                    Reflect();
                     break;
                 }
                 case "Player":

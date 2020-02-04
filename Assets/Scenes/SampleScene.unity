@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.00070712616, g: 0.004981459, b: 0.021264436, a: 1}
+  m_IndirectSpecularColor: {r: 0.000710114, g: 0.0049844263, b: 0.021260299, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10050,24 +10050,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95902620635208710, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
     type: 2}
   m_PrefabInternal: {fileID: 1826055364}
---- !u!114 &407230599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93c46a2575230147a9e84c6d27b557c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonDownMessage: MeleeAttack
-  buttonUpMessage: 
-  buttonNegativeMessage: 
-  axis: Melee2
-  hasMultipleButtons: 0
-  _axisNames: []
-  inputBuffer: 0.5
 --- !u!1 &417485465 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1427233510222268, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -11741,11 +11723,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114840264315933764, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: inputs.Array.size
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 4085029642658332, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11778,11 +11755,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114874611140919194, guid: 53af400b8fabd664bbd19ef088780851,
+    - target: {fileID: 114198682473724034, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
-      propertyPath: animator
+      propertyPath: intendedSender
       value: 
-      objectReference: {fileID: 396468002}
+      objectReference: {fileID: 2142911582}
+    - target: {fileID: 114274406004224860, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2142911583}
+    - target: {fileID: 114274406004224860, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2142911597}
+    - target: {fileID: 114469045107588362, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2142911583}
+    - target: {fileID: 114469045107588362, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2142911597}
+    - target: {fileID: 114569621191412576, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 1166793325}
     - target: {fileID: 114649712960447932, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: _currentPanel
@@ -11888,36 +11890,11 @@ Prefab:
       propertyPath: startingPanels.Array.data[19]
       value: 
       objectReference: {fileID: 1955188085}
-    - target: {fileID: 114569621191412576, guid: 53af400b8fabd664bbd19ef088780851,
+    - target: {fileID: 114874611140919194, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
-      propertyPath: intendedSender
+      propertyPath: animator
       value: 
-      objectReference: {fileID: 1166793325}
-    - target: {fileID: 114469045107588362, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2142911583}
-    - target: {fileID: 114469045107588362, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2142911597}
-    - target: {fileID: 114274406004224860, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2142911583}
-    - target: {fileID: 114274406004224860, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2142911597}
-    - target: {fileID: 114198682473724034, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 2142911582}
+      objectReference: {fileID: 396468002}
     - target: {fileID: 114840264315933764, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: inputs.Array.data[0]
@@ -11997,12 +11974,12 @@ Prefab:
         type: 2}
       propertyPath: inputs.Array.data[15]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1896880045}
     - target: {fileID: 114840264315933764, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: newInput
       value: 
-      objectReference: {fileID: 407230599}
+      objectReference: {fileID: 1896880045}
     - target: {fileID: 114357151229158148, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: _secondaryHealthSource
@@ -16957,6 +16934,24 @@ MonoBehaviour:
   hasMultipleButtons: 0
   _axisNames: []
   inputBuffer: 0
+--- !u!114 &1231904659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93c46a2575230147a9e84c6d27b557c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDownMessage: Interact
+  buttonUpMessage: 
+  buttonNegativeMessage: 
+  axis: Special1
+  hasMultipleButtons: 0
+  _axisNames: []
+  inputBuffer: 0.2
 --- !u!1 &1281286013
 GameObject:
   m_ObjectHideFlags: 0
@@ -23083,16 +23078,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 354307074}
-    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 1166793325}
     - target: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: _currentPanel
@@ -23198,6 +23183,16 @@ Prefab:
       propertyPath: startingPanels.Array.data[19]
       value: 
       objectReference: {fileID: 1764044846}
+    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 1166793325}
+    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 354307074}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: inputs.Array.data[0]
@@ -23275,9 +23270,14 @@ Prefab:
       objectReference: {fileID: 1298980075}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
+      propertyPath: inputs.Array.data[15]
+      value: 
+      objectReference: {fileID: 1231904659}
+    - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
       propertyPath: newInput
       value: 
-      objectReference: {fileID: 1928869698}
+      objectReference: {fileID: 1231904659}
     - target: {fileID: 114476793149227368, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: _secondaryHealthSource
@@ -23447,6 +23447,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1656141449525794, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1896880045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93c46a2575230147a9e84c6d27b557c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDownMessage: Interact
+  buttonUpMessage: 
+  buttonNegativeMessage: 
+  axis: Special2
+  hasMultipleButtons: 0
+  _axisNames: []
+  inputBuffer: 0.2
 --- !u!1 &1911950015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1383351448386966, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -23470,24 +23488,6 @@ MonoBehaviour:
   hasMultipleButtons: 0
   _axisNames: []
   inputBuffer: 0.2
---- !u!114 &1928869698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93c46a2575230147a9e84c6d27b557c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonDownMessage: MeleeAttack
-  buttonUpMessage: 
-  buttonNegativeMessage: 
-  axis: Melee1
-  hasMultipleButtons: 0
-  _axisNames: []
-  inputBuffer: 0
 --- !u!1 &1945666761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1259193105431318, guid: 3c61a511821b873468c4c066ef68dc65,

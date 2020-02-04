@@ -6,35 +6,48 @@ namespace Lodis
 
 
     public class KineticBlockBehaviour : MonoBehaviour {
-        List<Rigidbody> bullets;
-        List<Vector3> velocityVals;
+        private List<Rigidbody> _rigidbodies;
+        private List<BulletBehaviour> _bullets;
+        private List<Vector3> velocityVals;
         [SerializeField]
-        HealthBehaviour block;
-	// Use this for initialization
-	void Start() {
-            bullets = new List<Rigidbody>();
+        private BlockBehaviour block;
+        [SerializeField]
+        private GameEventListener _eventListener;
+        public int bulletCapacity;
+	    // Use this for initialization
+	    void Start() 
+        {
+            _rigidbodies = new List<Rigidbody>();
+            _bullets = new List<BulletBehaviour>();
             velocityVals = new List<Vector3>();
+            _eventListener.intendedSender = block.owner;
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Projectile"))
             {
+                _bullets.Add(other.GetComponent<BulletBehaviour>());
                 Rigidbody temp = other.GetComponent<Rigidbody>();
                 velocityVals.Add(temp.velocity);
-                bullets.Add(temp);
+                _rigidbodies.Add(temp);
                 temp.velocity = Vector3.zero;
             }
         }
-        private void OnDestroy()
+        public void DetonateBlock()
         {
-            for (int i = 0; i < bullets.Count; i++)
+            block.DestroyBlock(0);
+            for (int i = 0; i < _rigidbodies.Count; i++)
             {
-                bullets[i].AddForce(-(velocityVals[i]), ForceMode.Impulse);
+                if (_rigidbodies[i] != null)
+                {
+                    _bullets[i].Owner = block.owner.name;
+                    _rigidbodies[i].AddForce(-(velocityVals[i]) *2, ForceMode.Impulse); 
+                }
             }
         }
         // Update is called once per frame
         void Update() {
-            if (bullets.Count > 10)
+            if (_rigidbodies.Count >= bulletCapacity)
             {
                 block.DestroyBlock(1);
             }

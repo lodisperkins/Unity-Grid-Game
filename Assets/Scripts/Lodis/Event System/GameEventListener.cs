@@ -11,11 +11,10 @@ namespace Lodis
         [SerializeField]
         UnityEvent actions;
         //the event the gameobject should be listening for
-        [SerializeField]
-        Lodis.Event Event;
+        
+        public Lodis.Event Event;
         //The sender the gameobject is waiting for the event to be raiased by
-        [SerializeField]
-        GameObject intendedSender;
+        public GameObject intendedSender;
         // Use this for initialization
         void Start()
         {
