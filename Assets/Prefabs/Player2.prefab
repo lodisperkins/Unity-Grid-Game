@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 136524550849275264}
   - component: {fileID: 54452705590324284}
   - component: {fileID: 114640027515338506}
-  - component: {fileID: 114955632781848238}
   m_Layer: 0
   m_Name: TeleportationBeam
   m_TagString: Projectile
@@ -898,7 +897,7 @@ GameObject:
   - component: {fileID: 114200378622562274}
   - component: {fileID: 114483499789973154}
   - component: {fileID: 114551330603045306}
-  - component: {fileID: 114086887751731172}
+  - component: {fileID: 114092924560488482}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -6677,7 +6676,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114086887751731172
+--- !u!114 &114092924560488482
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6820,7 +6819,7 @@ MonoBehaviour:
   actions:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114124990190854086}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -6831,7 +6830,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114840264315933764}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -6845,7 +6844,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: e0b875e2abd547f44b8627cd3e179f43, type: 2}
-  intendedSender: {fileID: 0}
+  intendedSender: {fileID: 1530351322543348}
 --- !u!114 &114304271626423876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7023,7 +7022,7 @@ MonoBehaviour:
   actions:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114840264315933764}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -7034,7 +7033,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114124990190854086}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -7048,7 +7047,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 3b8ac6ea892d22d4db1e795a289c091e, type: 2}
-  intendedSender: {fileID: 0}
+  intendedSender: {fileID: 1530351322543348}
 --- !u!114 &114483499789973154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7394,32 +7393,6 @@ MonoBehaviour:
   _materialCap: 60
   buildStateEnabled: 0
   _arrow: {fileID: 114488790905741872}
---- !u!114 &114955632781848238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1143065304500804}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422883425e141fa49a54897aa8d6131e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Owner: Player2
-  DamageVal: 1
-  ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
-  OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
-  _laserMatP1: {fileID: 2100000, guid: db1726d80d8be424481232a1a989a287, type: 2}
-  _laserMatP2: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
-  laser: {fileID: 1238309399419896}
-  block: {fileID: 0}
-  bulletForce: {x: 0, y: 0, z: 0}
-  reflected: 0
-  lifetime: 0
-  onReflect: {fileID: 0}
-  onPanelSet: {fileID: 0}
-  _bulletListP1: {fileID: 0}
-  _bulletListP2: {fileID: 0}
 --- !u!114 &114967732325232990
 MonoBehaviour:
   m_ObjectHideFlags: 1

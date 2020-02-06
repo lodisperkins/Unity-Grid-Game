@@ -1312,7 +1312,6 @@ GameObject:
   - component: {fileID: 136263432070158746}
   - component: {fileID: 54063870365431546}
   - component: {fileID: 114722563692800334}
-  - component: {fileID: 114376634654256842}
   m_Layer: 0
   m_Name: TeleportationBeam
   m_TagString: Projectile
@@ -6920,7 +6919,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698780024816490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
   m_Name: 
@@ -7078,33 +7077,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 3b8ac6ea892d22d4db1e795a289c091e, type: 2}
-  intendedSender: {fileID: 0}
---- !u!114 &114376634654256842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688152834628444}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422883425e141fa49a54897aa8d6131e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Owner: Player1
-  DamageVal: 1
-  ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
-  OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
-  _laserMatP1: {fileID: 2100000, guid: db1726d80d8be424481232a1a989a287, type: 2}
-  _laserMatP2: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
-  laser: {fileID: 1035610222217170}
-  block: {fileID: 0}
-  bulletForce: {x: 0, y: 0, z: 0}
-  reflected: 0
-  lifetime: 0
-  onReflect: {fileID: 0}
-  onPanelSet: {fileID: 0}
-  _bulletListP1: {fileID: 0}
-  _bulletListP2: {fileID: 0}
+  intendedSender: {fileID: 1698780024816490}
 --- !u!114 &114400500004974856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7123,7 +7096,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698780024816490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
   m_Name: 
@@ -7244,7 +7217,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698780024816490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
   m_Name: 
@@ -7324,7 +7297,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698780024816490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
   m_Name: 
@@ -7584,7 +7557,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: e0b875e2abd547f44b8627cd3e179f43, type: 2}
-  intendedSender: {fileID: 0}
+  intendedSender: {fileID: 1698780024816490}
 --- !u!136 &136043948356124190
 CapsuleCollider:
   m_ObjectHideFlags: 1
