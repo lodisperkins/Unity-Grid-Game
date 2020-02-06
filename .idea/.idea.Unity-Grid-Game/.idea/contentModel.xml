@@ -45,8 +45,10 @@
                 <e p="BinaryTreeBehaviour.cs" t="Include" />
               </e>
               <e p="BlockScripts" t="Include">
+                <e p="AttackUpgradeBehaviour.cs" t="Include" />
                 <e p="BlockBehaviour.cs" t="Include" />
                 <e p="BlockUIBehaviour.cs" t="Include" />
+                <e p="DefenseBarrierBehaviour.cs" t="Include" />
                 <e p="DeletionBlockBehaviour.cs" t="Include" />
                 <e p="EnergyBlockBehaviour.cs" t="Include" />
                 <e p="KineticBlockBehaviour.cs" t="Include" />

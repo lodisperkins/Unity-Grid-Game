@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay;
+using Lodis.GamePlay.BlockScripts;
 using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -34,6 +35,8 @@ namespace Lodis
         public int BlockWeightVal;
         private bool _awake;
         private Material _currentMaterial;
+
+        public GameObject actionComponent;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
         public bool deleting;
@@ -41,6 +44,7 @@ namespace Lodis
         [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
         private HealthBehaviour _health;
+        public List<GameObject> componentList;
         private Color _currentMaterialColor;
         [SerializeField]
         private GameObject shield;
@@ -59,6 +63,8 @@ namespace Lodis
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
+            componentList = new List<GameObject>();
+            componentList.Add(actionComponent);
             GetComponent<BlockBehaviour>().enabled = true;
             _currentMaterial.SetColor("_EmissionColor",Color.black);
             _health = GetComponent<HealthBehaviour>();
@@ -76,6 +82,7 @@ namespace Lodis
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
             _awake = true;
+            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -85,8 +92,13 @@ namespace Lodis
                 DestroyBlock();
                 return;
             }
-            //otherwise check the name of the block and upgrade
-            Upgrade(other.gameObject);
+            else if (other.CompareTag("Block"))
+            {
+                //otherwise check the name of the block and upgrade
+                Upgrade(other.gameObject);
+            }
+            
+            
         }
 
         public void Upgrade(GameObject block)
@@ -96,32 +108,10 @@ namespace Lodis
             {
                 return;
             }
-            switch (block.name)
-            {
-                case "Attack Block(Clone)":
-                {
-                    UpgradeAttack();
-                    _currentLevel++;
-                    onUpgrade.Raise();
-                    break;
-                }
-                case "Defense Block(Clone)":
-                {
-                    UpgradeDefense();
-                    _currentLevel++;
-                    onUpgrade.Raise();
-                    break;
-                }
-                case "Material Block(Clone)":
-                {
-                    UpgradeMaterial();
-                    _currentLevel++;
-                    onUpgrade.Raise();
-                    break;
-                }
-                default:
-                    return;
-            }
+            GameObject component = block.GetComponent<BlockBehaviour>().actionComponent;
+            component.SendMessage("UpgradeBlock",gameObject);
+            _currentLevel++;
+            onUpgrade.Raise();
             //Destroys the block placed on top after the upgrade to free up space
             BlockBehaviour blockScript;
             blockScript = block.GetComponent<BlockBehaviour>();
@@ -198,17 +188,6 @@ namespace Lodis
             _gun.enabled = true;
             _gun.bulletCount += 5;
             _gun.bulletForceScale += 200;
-        }
-        //Increases health value 
-        public void UpgradeDefense()
-        {
-            if (_armor != null)
-            {
-                shieldCollider.enabled = true;
-                shield.SetActive(true);
-                _armor.enabled = true;
-                _armor.health.Val += 10;
-            }
         }
 
         //increases the materials gained 

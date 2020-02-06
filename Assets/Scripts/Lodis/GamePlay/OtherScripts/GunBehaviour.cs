@@ -40,6 +40,13 @@ namespace Lodis
         [FormerlySerializedAs("DamageVal")] public int damageVal;
         [SerializeField]
         public BlockBehaviour block;
+
+        public UnityEvent OutOfAmmo
+        {
+            get { return outOfAmmo; }
+            set { outOfAmmo = value; }
+        }
+
         // Use this for initialization
         void Start()
         {
