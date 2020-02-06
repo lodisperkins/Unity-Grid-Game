@@ -2210,8 +2210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretScript: {fileID: 0}
   _blockScript: {fileID: 114782364321774370}
-  _damageUpgradeVal: 1
-  _bulletForceUpgradeVal: 200
+  _damageUpgradeVal: 0
+  _bulletForceUpgradeVal: 100
   _ammoUpgradeVal: 6
 --- !u!114 &114051537721699978
 MonoBehaviour:
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   owner: 
   bulletForceScale: 1000
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 0.4
+  bulletDelay: 0.8
   bulletCount: 11
   outOfAmmo:
     m_PersistentCalls:

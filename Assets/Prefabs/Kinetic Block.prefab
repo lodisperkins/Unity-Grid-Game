@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 114338181517171024}
   m_Layer: 0
   m_Name: Kinetic Field
-  m_TagString: Untagged
+  m_TagString: Kinetic Field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

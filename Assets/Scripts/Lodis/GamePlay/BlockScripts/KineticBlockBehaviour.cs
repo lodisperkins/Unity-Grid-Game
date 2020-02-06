@@ -30,8 +30,10 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if (other.CompareTag("Projectile"))
             {
+                other.gameObject.SetActive(false);
                 _bullets.Add(other.GetComponent<BulletBehaviour>());
                 Rigidbody temp = other.GetComponent<Rigidbody>();
+                
                 velocityVals.Add(temp.velocity);
                 _rigidbodies.Add(temp);
                 temp.velocity = Vector3.zero;
@@ -45,6 +47,7 @@ namespace Lodis.GamePlay.BlockScripts
                 if (_rigidbodies[i] != null)
                 {
                     _bullets[i].Owner = block.owner.name;
+                    _rigidbodies[i].gameObject.SetActive(true);
                     _rigidbodies[i].AddForce(-(velocityVals[i]) *2, ForceMode.Impulse); 
                 }
             }

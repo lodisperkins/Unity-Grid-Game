@@ -34,6 +34,7 @@ namespace Lodis.GamePlay.BlockScripts
 					turretScript.damageVal += _damageUpgradeVal;
 					turretScript.bulletForceScale += _bulletForceUpgradeVal;
 					turretScript.bulletCount += _ammoUpgradeVal;
+                    turretScript.bulletDelay -= .2f;
 					return;
 				}
 			}

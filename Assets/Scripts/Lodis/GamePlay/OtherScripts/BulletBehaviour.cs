@@ -94,8 +94,9 @@ namespace Lodis
         {
             switch (other.tag)
             {
-                case "Kinetic Shield":
+                case "Kinetic Field":
                 {
+                    active = true;
                     break;
                 }
                 case "Player":
@@ -152,7 +153,7 @@ namespace Lodis
                 }
                 case "Projectile":
                 {
-                    if (other.GetComponent<BulletBehaviour>().Owner == Owner)
+                    if (other.GetComponent<BulletBehaviour>().Owner == Owner || active)
                     {
                         break;
                     }
@@ -191,7 +192,6 @@ namespace Lodis
             {
                 Destroy();
             }
-            Destroy(TempObject, 8);
         }
 
         private void OnDestroy()
