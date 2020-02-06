@@ -18,48 +18,30 @@ namespace Lodis
         [FormerlySerializedAs("Owner")] public GameObject owner;
         //the cost of materials to build this block
         public int cost;
-        //The gun script attached to the bullet emitter
-        GunBehaviour _gun;
-        //he health behaviour script attached to this block
-        HealthBehaviour _armor;
-        //The material block behaviour script attached to this block
-        EnergyBlockBehaviour _energyMine;
         //The script of the panel this block is currently on
         PanelBehaviour _panel;
         [SerializeField] private Text _level;
         private int _currentLevel;
-        [SerializeField] private Material _sleepingMateral;
-        [SerializeField]
-        private Material _defaultMaterial;
         //The weight of a block represents how much of it can be placed on a panel. Panels havea limit of 3;
         public int BlockWeightVal;
         private bool _awake;
         private Material _currentMaterial;
-
         public GameObject actionComponent;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
         public bool deleting;
-        public bool sleeping;
         [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
         private HealthBehaviour _health;
         public List<GameObject> componentList;
         private Color _currentMaterialColor;
-        [SerializeField]
-        private GameObject shield;
-        [SerializeField]
-        private SphereCollider shieldCollider;
-        [SerializeField]
-        private GameObject overdriveParticles;
         private string pastName;
+
+        [SerializeField] private IntVariable player1Materials;
+        [SerializeField] private IntVariable player2Materials;
         // Use this for initialization
         void Start()
         {
-            //initialzes local variables to be gameobjects components
-            _gun = GetComponentInChildren<GunBehaviour>();
-            _armor = GetComponent<HealthBehaviour>();
-            _energyMine = GetComponent<EnergyBlockBehaviour>();
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
@@ -71,10 +53,6 @@ namespace Lodis
             canUpgrade = false;
             _awake = true;
             _currentLevel = 1;
-            if (_gun != null)
-            {
-                _gun.owner = owner.name;
-            }
         }
 
         private void Awake()
@@ -98,7 +76,6 @@ namespace Lodis
                 Upgrade(other.gameObject);
             }
             
-            
         }
 
         public void Upgrade(GameObject block)
@@ -121,6 +98,8 @@ namespace Lodis
                 blockScript.DestroyBlock();
                 currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
             }
+            canUpgrade = false;
+            GetComponent<RoutineBehaviour>().ResetActions();
         }
         public void enableUpgrades()
         {
@@ -140,17 +119,6 @@ namespace Lodis
             }
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
-        }
-        public bool CheckForSameUpgradeBlock(string name)
-        {
-            if(pastName == null || pastName != name)
-            {
-                Debug.Log("past is " + pastName);
-                Debug.Log("current is " + name);
-                pastName = name;
-                return false;
-            }
-            return true;
         }
         private IEnumerator Flash()
         {
@@ -182,26 +150,22 @@ namespace Lodis
             StartCoroutine(Flash());
             Destroy(TempGameObject,time);
         }
-        //increases attack power and bullet count
-        public void UpgradeAttack()
-        {
-            _gun.enabled = true;
-            _gun.bulletCount += 5;
-            _gun.bulletForceScale += 200;
-        }
 
-        //increases the materials gained 
-        public void UpgradeMaterial()
+        public void GiveMoneyForKill(string shooterName,int damageVal)
         {
-            if (_energyMine != null)
+            if (_health.health.Val - damageVal <= 0)
             {
-                overdriveParticles.SetActive(true);
-                _energyMine.enabled = true;
-                GetComponent<RoutineBehaviour>().actionDelay -= .5f;
-                _energyMine.MaterialAmount +=3;
+                if (shooterName == "Player1")
+                {
+                    player1Materials.Val += cost / 2;
+                }
+                else if (shooterName == "Player2")
+                {
+                    player2Materials.Val += cost / 2;
+                }
             }
+            
         }
-
 
         private void Update()
         {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
 {
@@ -13,7 +14,13 @@ namespace Lodis.GamePlay.BlockScripts
 		void Start ()
 		{
 			turretScript = GetComponent<GunBehaviour>();
-			turretScript.OutOfAmmo.AddListener(_blockScript.DestroyBlock); 
+            turretScript.OutOfAmmo.AddListener(_blockScript.DestroyBlock);
+            turretScript.owner = _blockScript.owner.name;
+		}
+
+		private void Awake()
+		{
+			
 		}
 
 		public void UpgradeBlock(GameObject otherBlock)

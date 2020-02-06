@@ -2211,8 +2211,8 @@ MonoBehaviour:
   turretScript: {fileID: 0}
   _blockScript: {fileID: 114782364321774370}
   _damageUpgradeVal: 1
-  _bulletForceUpgradeVal: 0
-  _ammoUpgradeVal: 0
+  _bulletForceUpgradeVal: 200
+  _ammoUpgradeVal: 6
 --- !u!114 &114051537721699978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2276,7 +2276,7 @@ MonoBehaviour:
   bulletForceScale: 1000
   _bulletForce: {x: 0, y: 0, z: 0}
   bulletDelay: 0.4
-  bulletCount: 10
+  bulletCount: 11
   outOfAmmo:
     m_PersistentCalls:
       m_Calls:
@@ -2457,19 +2457,15 @@ MonoBehaviour:
   owner: {fileID: 0}
   cost: 10
   _level: {fileID: 114558364310588890}
-  _sleepingMateral: {fileID: 2100000, guid: 076dec6e98a51b44b83db6d3af79e422, type: 2}
-  _defaultMaterial: {fileID: 2100000, guid: 49072dbdbbad6f14a8be532a51dca450, type: 2}
   BlockWeightVal: 1
   actionComponent: {fileID: 1733942576174260}
   canUpgrade: 1
   deleting: 0
-  sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
   componentList: []
-  shield: {fileID: 0}
-  shieldCollider: {fileID: 0}
-  overdriveParticles: {fileID: 0}
+  player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
+  player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
 --- !u!114 &114853325703285710
 MonoBehaviour:
   m_ObjectHideFlags: 1

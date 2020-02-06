@@ -2446,17 +2446,15 @@ MonoBehaviour:
   owner: {fileID: 0}
   cost: 30
   _level: {fileID: 114264581305483598}
-  _sleepingMateral: {fileID: 2100000, guid: 076dec6e98a51b44b83db6d3af79e422, type: 2}
-  _defaultMaterial: {fileID: 2100000, guid: 49072dbdbbad6f14a8be532a51dca450, type: 2}
   BlockWeightVal: 3
+  actionComponent: {fileID: 0}
   canUpgrade: 1
   deleting: 0
-  sleeping: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
-  shield: {fileID: 0}
-  shieldCollider: {fileID: 0}
-  overdriveParticles: {fileID: 0}
+  componentList: []
+  player1Materials: {fileID: 11400000, guid: 87b57fe5c39f9ed4ca41fc9b73c03995, type: 2}
+  player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
 --- !u!114 &114229350090518788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2686,7 +2684,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede83023ae3b0f4584efdb167208cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blockScript: {fileID: 0}
+  PlayerSpawner: {fileID: 0}
   MaterialAmount: 15
+  materialUpgradeVal: 0
+  regenTimeUpgradeVal: 0
 --- !u!114 &114575009364112912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2837,7 +2839,7 @@ MonoBehaviour:
   owner: 
   bulletForceScale: 1500
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 0.3
+  bulletDelay: 0.5
   bulletCount: 10
   outOfAmmo:
     m_PersistentCalls:

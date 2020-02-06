@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: KineticBlockMat
+  m_Name: HealthBlockMat
   m_Shader: {fileID: 4800000, guid: 35c41cd263b50ad42abc4ff801604f44, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
@@ -89,7 +89,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_262603E3: {r: 0.93044996, g: 0, b: 1, a: 0}
+    - Color_262603E3: {r: 0, g: 0.8013716, b: 1, a: 0}
     - Vector2_84F5621A: {r: 0.4, g: 4, b: 0, a: 0}
     - _Color: {r: 0, g: 1, b: 0.16702724, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}

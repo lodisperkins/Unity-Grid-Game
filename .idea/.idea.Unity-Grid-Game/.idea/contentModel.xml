@@ -51,6 +51,7 @@
                 <e p="DefenseBarrierBehaviour.cs" t="Include" />
                 <e p="DeletionBlockBehaviour.cs" t="Include" />
                 <e p="EnergyBlockBehaviour.cs" t="Include" />
+                <e p="HealthBarrierBehaviour.cs" t="Include" />
                 <e p="KineticBlockBehaviour.cs" t="Include" />
                 <e p="MortarBlockBehaviour.cs" t="Include" />
               </e>

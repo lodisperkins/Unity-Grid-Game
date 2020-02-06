@@ -36,7 +36,7 @@ namespace Lodis
         [SerializeField] private GameObjectList _bulletListP1;
         [SerializeField] private GameObjectList _bulletListP2;
         private bool panelSetCalled;
-       
+        public bool active;
         private PanelBehaviour _currentPanel;
  
         public PanelBehaviour currentPanel
@@ -143,7 +143,9 @@ namespace Lodis
                     var health = other.GetComponent<HealthBehaviour>();
                     if (health != null)
                     {
+                        other.GetComponent<BlockBehaviour>().GiveMoneyForKill(Owner,DamageVal);
                         health.takeDamage(DamageVal);
+                        
                     }
                     Destroy(TempObject);
                     break;
@@ -162,7 +164,17 @@ namespace Lodis
         }
         private void OnTriggerEnter(Collider other)
         {
-           ResolveCollision(other.gameObject);
+            if (Owner == "")
+            {
+                Destroy();
+                return;
+            }
+            ResolveCollision(other.gameObject);
+        }
+
+        public void Destroy()
+        {
+            Destroy(TempObject);
         }
         //plays the particle system after a bullet hits an object
         public void playDeathParticleSystems(float duration)
@@ -175,6 +187,10 @@ namespace Lodis
         // Update is called once per frame
         void Update()
         {
+            if (Owner == "")
+            {
+                Destroy();
+            }
             Destroy(TempObject, 8);
         }
 

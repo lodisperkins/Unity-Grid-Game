@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-namespace Lodis
+
+namespace Lodis.GamePlay.BlockScripts
 {
 
 
@@ -9,11 +9,14 @@ namespace Lodis
         private List<Rigidbody> _rigidbodies;
         private List<BulletBehaviour> _bullets;
         private List<Vector3> velocityVals;
+        [SerializeField] private HealthBehaviour _blockHealth;
         [SerializeField]
         private BlockBehaviour block;
         [SerializeField]
         private GameEventListener _eventListener;
         public int bulletCapacity;
+
+        [SerializeField] private int _bulletCapUpgradeVal;
 	    // Use this for initialization
 	    void Start() 
         {
@@ -21,6 +24,7 @@ namespace Lodis
             _bullets = new List<BulletBehaviour>();
             velocityVals = new List<Vector3>();
             _eventListener.intendedSender = block.owner;
+            _blockHealth.health.Val = bulletCapacity;
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -45,12 +49,37 @@ namespace Lodis
                 }
             }
         }
+        public void UpgradeBlock(GameObject otherBlock)
+        {
+            BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
+            for (int i = 0; i < _blockScript.componentList.Count; i++)
+            {
+                if (_blockScript.componentList[i].name == gameObject.name)
+                {
+                    _blockScript.componentList[i].GetComponent<KineticBlockBehaviour>().bulletCapacity+= _bulletCapUpgradeVal;
+                    return;
+                }
+            }
+            TransferOwner(otherBlock);
+        }
+        public void TransferOwner(GameObject otherBlock)
+        {
+            block = otherBlock.GetComponent<BlockBehaviour>();
+            block.componentList.Add(gameObject);
+            transform.SetParent(otherBlock.transform,false);
+        }
         // Update is called once per frame
         void Update() {
             if (_rigidbodies.Count >= bulletCapacity)
             {
                 block.DestroyBlock(1);
+                foreach (BulletBehaviour bullet in _bullets)
+                {
+                    bullet.Destroy();
+                }
             }
+
+            _blockHealth.health.Val = bulletCapacity-_rigidbodies.Count;
         }
     }
 }
