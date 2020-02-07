@@ -26,6 +26,8 @@ namespace Lodis
         public float bulletDelay;
         //the amount of bullet to fire
         [FormerlySerializedAs("Bullet_Count")] public int bulletCount;
+
+        private int _currentAmmo;
         //unity event raised when the gun is out of ammo
         [FormerlySerializedAs("OutOfAmmo")] [SerializeField]
         private UnityEvent outOfAmmo;
@@ -41,6 +43,11 @@ namespace Lodis
         [SerializeField]
         public BlockBehaviour block;
 
+        public int CurrentAmmo
+        {
+            get { return _currentAmmo; }
+        }
+
         public UnityEvent OutOfAmmo
         {
             get { return outOfAmmo; }
@@ -54,12 +61,15 @@ namespace Lodis
             {
                 StartCoroutine(Fire());
             }
+
+            _currentAmmo = bulletCount;
         }
         //fires a bullet with a specified interval of time
         private IEnumerator Fire()
         {
             for (int i = 0; i < bulletCount; i++)
             {
+                _currentAmmo = bulletCount - i;
                 FireBullet();
                 yield return new WaitForSeconds(bulletDelay);
             }

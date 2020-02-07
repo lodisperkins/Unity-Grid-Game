@@ -2210,9 +2210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretScript: {fileID: 0}
   _blockScript: {fileID: 114782364321774370}
-  _damageUpgradeVal: 0
+  _damageUpgradeVal: 1
   _bulletForceUpgradeVal: 100
   _ammoUpgradeVal: 6
+  _blockHealth: {fileID: 114964812879654380}
 --- !u!114 &114051537721699978
 MonoBehaviour:
   m_ObjectHideFlags: 1

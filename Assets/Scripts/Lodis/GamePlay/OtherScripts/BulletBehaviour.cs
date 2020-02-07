@@ -126,7 +126,7 @@ namespace Lodis
                     Destroy(TempObject);
                     break;
                 }
-                case "Panel":
+                /*case "Panel":
                 {
                     _currentPanel= other.GetComponent<PanelBehaviour>();
                     if (panelSetCalled == false)
@@ -136,7 +136,7 @@ namespace Lodis
                     }
                     
                     break;
-                }
+                }*/
                 case "Block":
                 {
                     playDeathParticleSystems(1);
@@ -151,7 +151,7 @@ namespace Lodis
                     Destroy(TempObject);
                     break;
                 }
-                case "Projectile":
+                /*case "Projectile":
                 {
                     if (other.GetComponent<BulletBehaviour>().Owner == Owner || active)
                     {
@@ -160,7 +160,7 @@ namespace Lodis
                     playDeathParticleSystems(2);
                     Destroy(TempObject);
                     break;
-                }
+                }*/
             }
         }
         private void OnTriggerEnter(Collider other)

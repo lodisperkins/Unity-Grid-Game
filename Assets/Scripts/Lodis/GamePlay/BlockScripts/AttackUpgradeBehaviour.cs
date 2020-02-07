@@ -10,12 +10,14 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private int _damageUpgradeVal;
 		[SerializeField] private int _bulletForceUpgradeVal;
 		[SerializeField] private int _ammoUpgradeVal;
+		[SerializeField] private HealthBehaviour _blockHealth;
 		// Use this for initialization
 		void Start ()
 		{
 			turretScript = GetComponent<GunBehaviour>();
             turretScript.OutOfAmmo.AddListener(_blockScript.DestroyBlock);
             turretScript.owner = _blockScript.owner.name;
+            _blockHealth.health.Val = turretScript.CurrentAmmo;
 		}
 
 		private void Awake()
@@ -43,13 +45,15 @@ namespace Lodis.GamePlay.BlockScripts
 		public void TransferOwner(GameObject otherBlock)
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
+			_blockHealth = otherBlock.GetComponent<HealthBehaviour>();
 			turretScript.OutOfAmmo.AddListener(blockScript.DestroyBlock);
 			blockScript.componentList.Add(gameObject);
 			transform.SetParent(otherBlock.transform,false);
 		}
 		// Update is called once per frame
-		void Update () {
-		
+		void Update ()
+		{
+			
 		}
 	}
 }
