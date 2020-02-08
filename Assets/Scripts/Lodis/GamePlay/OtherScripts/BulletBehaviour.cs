@@ -25,6 +25,7 @@ namespace Lodis
         [SerializeField] private Material _laserMatP1;
         [SerializeField] private Material _laserMatP2;
         [SerializeField] private GameObject laser;
+        [SerializeField] private GameObject laserLight;
         public BlockBehaviour block;
         public Vector3 bulletForce;
         public bool reflected;
@@ -66,11 +67,13 @@ namespace Lodis
             if (Owner == "Player1")
             {
                 laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
+                laserLight.GetComponent<MeshRenderer>().material.color = Color.red;
                 _bulletListP1.Add(gameObject);
             }
             else
             {
                 laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
+                laserLight.GetComponent<MeshRenderer>().material.color = Color.blue;
                 _bulletListP2.Add(gameObject);
             }
         }
@@ -126,17 +129,17 @@ namespace Lodis
                     Destroy(TempObject);
                     break;
                 }
-                /*case "Panel":
-                {
-                    _currentPanel= other.GetComponent<PanelBehaviour>();
-                    if (panelSetCalled == false)
+                case "Panel":
                     {
-                        onPanelSet.Raise();
-                        panelSetCalled = true;
+                        _currentPanel = other.GetComponent<PanelBehaviour>();
+                        if (panelSetCalled == false)
+                        {
+                            onPanelSet.Raise();
+                            panelSetCalled = true;
+                        }
+
+                        break;
                     }
-                    
-                    break;
-                }*/
                 case "Block":
                 {
                     playDeathParticleSystems(1);

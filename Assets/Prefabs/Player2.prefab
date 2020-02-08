@@ -6954,6 +6954,7 @@ MonoBehaviour:
   OnObjectDeath: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
+  ps2: {fileID: 0}
 --- !u!114 &114413578858805892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6969,7 +6970,7 @@ MonoBehaviour:
   onActionsCompleted: {fileID: 11400000, guid: 04e9d316a6bf6524a8a7e02fee11c569, type: 2}
   actionDelay: 0.2
   actionLimit: 1
-  hasLimit: 0
+  hasLimit: 1
 --- !u!114 &114418338368111622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7379,7 +7380,7 @@ MonoBehaviour:
   block_rotation_degrees: 180
   rotation_val: 0
   materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
-  material_regen_rate: 1
+  material_regen_rate: 0
   DeletionBlockObject: {fileID: 1293680906006954, guid: af47b0a34f5294c4186f4b90ce80965f,
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}
