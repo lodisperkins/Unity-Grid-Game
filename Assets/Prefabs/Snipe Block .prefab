@@ -2280,7 +2280,7 @@ MonoBehaviour:
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
   actionDelay: 0.1
   actionLimit: 1
-  hasLimit: 0
+  hasLimit: 1
 --- !u!114 &114198517032171636
 MonoBehaviour:
   m_ObjectHideFlags: 1

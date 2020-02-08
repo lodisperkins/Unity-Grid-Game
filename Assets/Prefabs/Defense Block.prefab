@@ -265,7 +265,9 @@ GameObject:
   - component: {fileID: 23013208466365632}
   - component: {fileID: 114671545559472948}
   - component: {fileID: 114664284091934782}
-  - component: {fileID: 135674381467533770}
+  - component: {fileID: 114993990273059680}
+  - component: {fileID: 114565348299176418}
+  - component: {fileID: 114454006631643696}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Shield
@@ -756,7 +758,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172816898836844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6029531, y: 1.04, z: 25.483679}
+  m_LocalPosition: {x: 1.6697936, y: 0.5, z: 18.619799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4394250039219412}
@@ -2245,6 +2247,7 @@ MonoBehaviour:
   OnObjectDeath: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
+  ps2: {fileID: 0}
 --- !u!114 &114121312166932442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2346,9 +2349,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.2
+  actionDelay: 0.1
   actionLimit: 1
-  hasLimit: 0
+  hasLimit: 1
+--- !u!114 &114454006631643696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410683124301992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114664284091934782}
+        m_MethodName: DecaySphere
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 4721e8847ea42404c85e512db7daf57a, type: 2}
+  intendedSender: {fileID: 1410683124301992}
 --- !u!114 &114457368727588268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2416,7 +2448,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224526991459611646}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 60
+  m_MaxValue: 75
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -2451,6 +2483,35 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 0
   m_FillOrigin: 0
+--- !u!114 &114565348299176418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410683124301992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114664284091934782}
+        m_MethodName: DestroyBarrier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: b2f3bf7b778901942828e67bad18efd8, type: 2}
+  intendedSender: {fileID: 1410683124301992}
 --- !u!114 &114664284091934782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2463,7 +2524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthScript: {fileID: 114109388835544152}
-  _upgradeVal: 10
+  _upgradeVal: 25
+  shieldTimer: {fileID: 114993990273059680}
 --- !u!114 &114671545559472948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2567,18 +2629,22 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!135 &135674381467533770
-SphereCollider:
+--- !u!114 &114993990273059680
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410683124301992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d821fc31327e73a49bdf954e54ec8549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onActionsBegin: {fileID: 11400000, guid: 4721e8847ea42404c85e512db7daf57a, type: 2}
+  onActionsCompleted: {fileID: 11400000, guid: b2f3bf7b778901942828e67bad18efd8, type: 2}
+  actionDelay: 1
+  actionLimit: 10
+  hasLimit: 1
 --- !u!222 &222083603559155426
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -10,7 +10,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 47eac382e83a64e47acfce56894baf48, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -93,7 +93,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_262603E3: {r: 0, g: 1, b: 0.083200455, a: 0}
+    - Color_262603E3: {r: 0, g: 1, b: 0.08235288, a: 0}
     - Color_2B4C8CF9: {r: 0, g: 1, b: 0.5466394, a: 0}
     - Color_A832A72B: {r: 0, g: 8, b: 7.311302, a: 0}
     - Vector2_6B6A64AF: {r: 1, g: 3, b: 0, a: 0}

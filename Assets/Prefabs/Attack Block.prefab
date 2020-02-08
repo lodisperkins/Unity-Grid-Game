@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 4104830866255408}
   - component: {fileID: 114407928321660956}
   - component: {fileID: 114031447920753854}
+  - component: {fileID: 114739346264071370}
   m_Layer: 0
   m_Name: Bullet Emitter
   m_TagString: Untagged
@@ -2311,9 +2312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.1
+  actionDelay: 0.01
   actionLimit: 1
-  hasLimit: 0
+  hasLimit: 1
 --- !u!114 &114533459708005792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2443,6 +2444,35 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114739346264071370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733942576174260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114031447920753854}
+        m_MethodName: DecreaseHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
+  intendedSender: {fileID: 1733942576174260}
 --- !u!114 &114782364321774370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2553,6 +2583,7 @@ MonoBehaviour:
   OnObjectDeath: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
+  ps2: {fileID: 0}
 --- !u!114 &114969970148039990
 MonoBehaviour:
   m_ObjectHideFlags: 1

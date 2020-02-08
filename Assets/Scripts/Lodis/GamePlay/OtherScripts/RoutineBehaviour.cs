@@ -16,7 +16,7 @@ namespace Lodis.GamePlay
         public float actionDelay;
         //Number of times the actions event will be invoked
         [FormerlySerializedAs("action_limit")] [SerializeField]
-        private int actionLimit;
+        public int actionLimit;
         [SerializeField]
         private bool hasLimit;
 
@@ -36,13 +36,13 @@ namespace Lodis.GamePlay
         }
         private IEnumerator PerformActions()
         {
-            for (var i = 0; i < actionLimit; i++)
+            for (var i = 0; i <= actionLimit; i++)
             {
                 if (_isOnActionsBeginNotNull)
                 {
                     onActionsBegin.Raise(gameObject);
                 }
-                if (hasLimit)
+                if (hasLimit == false)
                 {
                     i--;
                 }

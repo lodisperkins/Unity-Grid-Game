@@ -11,6 +11,8 @@ public float shakeVal;
 	private Vector3 _startPosition;
     [SerializeField]
     private float shakeRange;
+
+    [SerializeField] private int shakeLength;
 	private void Start()
 	{
 		_startPosition = transform.position;
@@ -18,8 +20,12 @@ public float shakeVal;
 
 	IEnumerator Shake()
 	{
+		if (shakeLength == 0)
+		{
+			shakeLength = 5;
+		}
 		isShaking = false;
-		for(int i = 0; i< 5; i++)
+		for(int i = 0; i< shakeLength; i++)
 		{
 			var newPosition = new Vector3( Random.Range(-shakeRange, shakeRange),Random.Range(-shakeRange, shakeRange),0);
 			transform.position += newPosition;
@@ -31,6 +37,11 @@ public float shakeVal;
 
 	public void StartShaking()
 	{
+		isShaking = true;
+	}
+	public void StartShaking(int length)
+	{
+		shakeLength = length;
 		isShaking = true;
 	}
 	

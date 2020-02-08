@@ -31,6 +31,7 @@ namespace Lodis
         [SerializeField] private Event OnHit;
         //the particles that should play on the objects death
         [SerializeField] private ParticleSystem ps;
+        [SerializeField] private ParticleSystem ps2;
         // Use this for initialization
         public void Start()
         {
@@ -61,6 +62,12 @@ namespace Lodis
             var tempPs = Instantiate(ps,transform.position,transform.rotation);
             tempPs.Play();
             Destroy(tempPs, duration);
+            if (ps2 != null)
+            {
+                var tempPs2 = Instantiate(ps2,transform.position,transform.rotation);
+                tempPs.Play();
+                Destroy(tempPs, duration);
+            }
         }
         //(not used) Meant for the player to heal from some secondary health source like the core
         public void Heal()

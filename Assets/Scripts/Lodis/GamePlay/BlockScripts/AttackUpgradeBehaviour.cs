@@ -33,9 +33,11 @@ namespace Lodis.GamePlay.BlockScripts
 				if (_blockScript.componentList[i].name == gameObject.name)
 				{
 					turretScript = _blockScript.componentList[i].GetComponent<GunBehaviour>();
+					
 					turretScript.damageVal += _damageUpgradeVal;
 					turretScript.bulletForceScale += _bulletForceUpgradeVal;
 					turretScript.bulletCount += _ammoUpgradeVal;
+					_blockScript.componentList[i].GetComponent<AttackUpgradeBehaviour>()._blockHealth.health.Val = turretScript.bulletCount;
                     turretScript.bulletDelay -= .2f;
 					return;
 				}
@@ -46,14 +48,15 @@ namespace Lodis.GamePlay.BlockScripts
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
 			_blockHealth = otherBlock.GetComponent<HealthBehaviour>();
+			GetComponent<GameEventListener>().intendedSender = otherBlock;
 			turretScript.OutOfAmmo.AddListener(blockScript.DestroyBlock);
 			blockScript.componentList.Add(gameObject);
 			transform.SetParent(otherBlock.transform,false);
 		}
-		// Update is called once per frame
-		void Update ()
+
+		public void DecreaseHealth()
 		{
-			
+			_blockHealth.health.Val--;
 		}
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.00070712616, g: 0.004981459, b: 0.021264436, a: 1}
+  m_IndirectSpecularColor: {r: 0.000710114, g: 0.0049844263, b: 0.021260299, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5035,6 +5035,18 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1826055364}
   m_Script: {fileID: 11500000, guid: 4cd72909dccf06844982fdcac51b585f, type: 3}
+--- !u!114 &124569945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1826055364}
+  m_Script: {fileID: 11500000, guid: 762e77363e1126d4fbc39cdfe1dea80d, type: 3}
+--- !u!114 &124569961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114851877076358748, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1826055364}
+  m_Script: {fileID: 11500000, guid: 862b290c9ec05444a916b859d9713ad7, type: 3}
 --- !u!1 &152480876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1227986367002548, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -5270,6 +5282,56 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 266.5996
+      objectReference: {fileID: 0}
+    - target: {fileID: 114514633393552792, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 124569941}
+    - target: {fileID: 114514633393552792, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 124569945}
+    - target: {fileID: 114514633393552792, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114514633393552792, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 124569961}
+    - target: {fileID: 114514633393552792, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287826424366318, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 124569941}
+    - target: {fileID: 114347295198141504, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 124569961}
+    - target: {fileID: 114347295198141504, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347295198141504, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 124569945}
+    - target: {fileID: 114347295198141504, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: set_enabled
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5, type: 2}
@@ -11131,7 +11193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 740960920}
         m_MethodName: DestroyBlock
         m_Mode: 4
         m_Arguments:
@@ -11142,7 +11204,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 740960920}
         m_MethodName: playDeathParticleSystems
         m_Mode: 4
         m_Arguments:
@@ -11153,12 +11215,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1853502401}
+        m_MethodName: StartShaking
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   hasRaised: 0
   OnObjectDeath: {fileID: 0}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
-  ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
+  ps: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
+  ps2: {fileID: 0}
 --- !u!135 &908997626
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11298,6 +11372,7 @@ MonoBehaviour:
   shakeVal: 0.01
   isShaking: 0
   shakeRange: 0.5
+  shakeLength: 0
 --- !u!114 &908997633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12216,6 +12291,11 @@ Prefab:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1304077423}
+    - target: {fileID: 114413578858805892, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: hasLimit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
   m_IsPrefabAsset: 0
@@ -22069,12 +22149,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1853502401}
+        m_MethodName: StartShaking
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   hasRaised: 0
   OnObjectDeath: {fileID: 0}
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
-  ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
+  ps: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
+  ps2: {fileID: 0}
 --- !u!135 &1342914504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22256,6 +22348,7 @@ MonoBehaviour:
   shakeVal: 0.01
   isShaking: 0
   shakeRange: 0.5
+  shakeLength: 0
 --- !u!114 &1342914513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23211,6 +23304,11 @@ Prefab:
       propertyPath: _secondaryHealthSource
       value: 
       objectReference: {fileID: 908997625}
+    - target: {fileID: 114282680511122710, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: hasLimit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
   m_IsPrefabAsset: 0
@@ -23280,6 +23378,7 @@ MonoBehaviour:
   shakeVal: 0.01
   isShaking: 0
   shakeRange: 0.9
+  shakeLength: 0
 --- !u!114 &1853502402
 MonoBehaviour:
   m_ObjectHideFlags: 0
