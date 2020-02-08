@@ -190,6 +190,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1345219498061962, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &84603621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114553377463261980, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &84603625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84603618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &96567023 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1311077001441370, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -10327,11 +10351,75 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1254131067100762, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &377721923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377721916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &384152214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1907941693053798, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &384152217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114037383806436888, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &384152221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384152214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 384152217}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &391886171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100014, guid: 9e3de0cd33aafb44fa8ac73613f86c1a,
@@ -10357,6 +10445,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1427233510222268, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &417485468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114215141322694814, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &417485472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 417485465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 417485468}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &417676120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: 9e3de0cd33aafb44fa8ac73613f86c1a,
@@ -10464,6 +10587,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1255784729443476, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &486105130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486105123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &526192649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1624982647642598, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -10474,6 +10626,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1760057283177688, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &557318130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114380285710408762, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &557318134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 557318127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 557318130}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &571541623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1206872947549414, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -11040,6 +11227,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1500983174074244, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &820122608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114193621394186124, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &820122612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820122605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 820122608}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!4 &822759256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: 9e3de0cd33aafb44fa8ac73613f86c1a,
@@ -11126,6 +11348,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1073445908083578, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &878757968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 878757961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &908997624
 GameObject:
   m_ObjectHideFlags: 0
@@ -11465,6 +11716,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1174164301283864, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &932860045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114626149928866406, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &932860049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932860042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 932860045}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &940292955 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100032, guid: 9e3de0cd33aafb44fa8ac73613f86c1a,
@@ -11712,7 +11998,128 @@ Prefab:
       propertyPath: intendedSender
       value: 
       objectReference: {fileID: 124569941}
-    m_RemovedComponents: []
+    - target: {fileID: 114617260052393564, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114380285710408762, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114764545566110206, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114553377463261980, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114869627902610712, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114977296966125952, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114366969946350036, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114037383806436888, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114415655196724626, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114626149928866406, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114193621394186124, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114861274759775202, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114962838391437810, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114960782241690976, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114716993378425706, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114358812283973008, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114215141322694814, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114372133424591082, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114746284295954776, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    - target: {fileID: 114554669431743380, guid: 3c61a511821b873468c4c066ef68dc65,
+        type: 2}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 19800000, guid: f7efb0d9df2264096af57128df85dddb,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 114387301395666060, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1064737569 stripped
@@ -12309,6 +12716,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1201117685019676, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1184825456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184825449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &1190647620
 GameObject:
   m_ObjectHideFlags: 0
@@ -22473,6 +22909,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1794373808199252, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1437765172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437765165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1001 &1439705186
 Prefab:
   m_ObjectHideFlags: 0
@@ -22535,6 +23000,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1013785432511888, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1468524850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468524843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &1477643302 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1075952173374082, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -22545,6 +23039,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1190709849327172, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1489585179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114869627902610712, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &1489585183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489585176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1489585179}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &1495325031
 GameObject:
   m_ObjectHideFlags: 0
@@ -22682,6 +23211,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1657394077693468, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1561969860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114617260052393564, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &1561969864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561969857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561969860}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &1565158481
 GameObject:
   m_ObjectHideFlags: 0
@@ -22870,6 +23434,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1545119442832596, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1614136873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614136866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &1615089788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1423968242778586, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -23035,6 +23628,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1375328870102860, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1764044849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114415655196724626, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &1764044854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764044846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1764044849}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!114 &1787612259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23497,6 +24125,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1383351448386966, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1911950022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911950015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 84603621}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!114 &1916197001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23520,6 +24177,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1259193105431318, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &1945666764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114977296966125952, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &1945666768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945666761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1945666764}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &1955188085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1310683427007648, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -23588,6 +24280,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1900131730269790, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &2009461627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114960782241690976, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &2009461631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009461624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2009461627}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &2013526410
 GameObject:
   m_ObjectHideFlags: 0
@@ -28328,6 +29055,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1084301106805374, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &2078167756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114746284295954776, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
+--- !u!114 &2078167760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078167753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2078167756}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 908997624}
 --- !u!1 &2094995445 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1418091865474280, guid: 3c61a511821b873468c4c066ef68dc65,

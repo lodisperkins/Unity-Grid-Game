@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Serialization;
 
 namespace Lodis.GamePlay.GridScripts
@@ -30,6 +31,7 @@ namespace Lodis.GamePlay.GridScripts
         [SerializeField]
         private int _blockLimit;
 
+        [SerializeField] private ParticleSystem _explosionParticles;
         [FormerlySerializedAs("_blockCounter")] public int blockCounter;
         public int BlockLimit
         {
@@ -181,7 +183,18 @@ namespace Lodis.GamePlay.GridScripts
                 UpdateColor();
             }
         }
-
+        public void PlayParticleSystems(float duration)
+        {
+            var tempPs = Instantiate(_explosionParticles,transform.position,transform.rotation);
+            tempPs.Play();
+            Destroy(tempPs, duration);
+        }
+        public void DestroyPanel()
+        {
+            GameObject temp = gameObject;
+            PlayParticleSystems(2);
+            Destroy(temp,1.2f);
+        }
         private void Update()
         {
             if (blockCounter == _blockLimit)
