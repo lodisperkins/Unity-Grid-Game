@@ -6858,7 +6858,7 @@ MonoBehaviour:
   - SelectBlock1(Y)
   - SelectBlock1(X)
   overdriveEnabled: 0
-  _materialsRegenVal: 0
+  _materialsRegenVal: 5
   _materialCap: 60
   buildStateEnabled: 0
   _arrow: {fileID: 114913368708520014}

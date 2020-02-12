@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.1
+  actionDelay: 0.01
   actionLimit: 1
   hasLimit: 1
 --- !u!114 &114911950753722114

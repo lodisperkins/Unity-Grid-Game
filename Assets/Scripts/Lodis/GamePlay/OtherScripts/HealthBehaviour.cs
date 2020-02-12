@@ -54,6 +54,11 @@ namespace Lodis
         {
             playDeathParticleSystems(2);
             GameObject tempGameObject = gameObject;
+            if (OnObjectDeath != null && hasRaised == false)
+            {
+                hasRaised = true;
+                OnObjectDeath.Raise(gameObject);
+            }
             Destroy(tempGameObject,time);
         }
         //plays particles after the object has died 
@@ -80,16 +85,6 @@ namespace Lodis
             Debug.Log("tried heal");
 //            _secondaryHealthSource.health.Val -= conversionRate;
             health.Val += 1;
-        }
-
-        private void OnDestroy()
-        {
-            if (OnObjectDeath != null && hasRaised == false)
-            {
-                hasRaised = true;
-                OnObjectDeath.Raise(gameObject);
-            }
-            
         }
 
         // Update is called once per frame

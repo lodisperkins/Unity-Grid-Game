@@ -186,7 +186,7 @@ namespace Lodis
             var tempPs = Instantiate(ps,transform.position,transform.rotation);
             tempPs.playbackSpeed = 2.5f;
             tempPs.Play();
-            Destroy(tempPs, duration);
+            Destroy(tempPs);
         }
         // Update is called once per frame
         void Update()
