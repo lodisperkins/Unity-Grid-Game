@@ -81,6 +81,8 @@
                 <e p="HealthBarrierBehaviour.cs" t="Include" />
                 <e p="KineticBlockBehaviour.cs" t="Include" />
                 <e p="MortarBlockBehaviour.cs" t="Include" />
+                <e p="OrbBehaviour.cs" t="Include" />
+                <e p="OrbiterBlockBehaviour.cs" t="Include" />
               </e>
               <e p="GridScripts" t="Include">
                 <e p="GridBehaviour.cs" t="Include" />
@@ -90,6 +92,7 @@
               <e p="OtherScripts" t="Include">
                 <e p="BulletBehaviour.cs" t="Include" />
                 <e p="CoreBehaviour.cs" t="Include" />
+                <e p="DestroyBehaviour.cs" t="Include" />
                 <e p="GunBehaviour.cs" t="Include" />
                 <e p="HealthBehaviour.cs" t="Include" />
                 <e p="HoverBehaviour.cs" t="Include" />

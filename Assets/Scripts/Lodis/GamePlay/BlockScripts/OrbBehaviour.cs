@@ -1,16 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class OrbBehaviour : MonoBehaviour {
+namespace Lodis.GamePlay.BlockScripts
+{
+    public class OrbBehaviour : MonoBehaviour
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public BlockBehaviour block;
+        [SerializeField] private int DamageVal;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            ResolveCollision(other.gameObject);
+        }
+
+        private void ResolveCollision(GameObject other)
+        {
+            switch (other.tag)
+            {
+                case "Block":
+                {
+                    var health = other.GetComponent<HealthBehaviour>();
+                    if (health != null)
+                    {
+                        other.GetComponent<BlockBehaviour>().GiveMoneyForKill(block.owner.name,DamageVal);
+                        health.takeDamage(DamageVal);
+                    }
+                    break;
+                }
+                default:
+                {
+                    var health = other.GetComponent<HealthBehaviour>();
+                    if (health != null && other.name != block.owner.name)
+                    {
+                        health.takeDamage(DamageVal);
+                    }
+                    break;
+                }
+            }
+        }
+    }
 }

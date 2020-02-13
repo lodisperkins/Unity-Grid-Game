@@ -97,11 +97,6 @@ namespace Lodis
         {
             switch (other.tag)
             {
-                case "Kinetic Field":
-                {
-                    active = true;
-                    break;
-                }
                 case "Player":
                 {
                     if (other.name != Owner || reflected)
