@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 114490304771331838}
   m_Layer: 0
   m_Name: Healing Shield
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

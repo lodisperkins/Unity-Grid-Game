@@ -11,6 +11,7 @@ TagManager:
   - Core
   - Shield
   - Kinetic Field
+  - Barrier
   layers:
   - Default
   - TransparentFX

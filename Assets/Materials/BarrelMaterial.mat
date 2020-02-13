@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NewMaterialBlockMaterial 2
+  m_Name: BarrelMaterial
   m_Shader: {fileID: 4800000, guid: 47eac382e83a64e47acfce56894baf48, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
