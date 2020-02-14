@@ -28,6 +28,7 @@ namespace Lodis.GamePlay.BlockScripts
 			if (other.CompareTag("Projectile"))
 			{
 				healthScript.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
+                other.GetComponent<BulletBehaviour>().Destroy();
 			}
 		}
 

@@ -187,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707759762206122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6035174, y: 2.31135, z: 10.949289}
+  m_LocalPosition: {x: -0.6035174, y: 2.31135, z: 0}
   m_LocalScale: {x: 0.06, y: 1, z: 0.11}
   m_Children:
   - {fileID: 4115513450339110}
@@ -202,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914254305440726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.073199, y: 1.155675, z: 20.2307}
+  m_LocalPosition: {x: -5.073199, y: 1.155675, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4394311702203830}
@@ -618,15 +618,9 @@ MonoBehaviour:
   m_doNotOverwriteTemplateMaterialProperties: 1
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
-  m_lineColor:
-    r: 0.034482718
-    g: 1
-    b: 0
-    a: 0
+  m_lineColor: {r: 0.034482718, g: 1, b: 0, a: 0}
   m_lineWidth: 66
   m_lightSaberFactor: 0.747
-  m_material: {fileID: 0}
-  m_meshFilter: {fileID: 0}
 --- !u!114 &114840780974794430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -666,11 +660,16 @@ MonoBehaviour:
   _laserMatP1: {fileID: 2100000, guid: db1726d80d8be424481232a1a989a287, type: 2}
   _laserMatP2: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
   laser: {fileID: 1793402476192902}
+  laserLight: {fileID: 0}
   block: {fileID: 0}
   bulletForce: {x: 0, y: 0, z: 0}
   reflected: 0
   lifetime: 0
   onReflect: {fileID: 0}
+  onPanelSet: {fileID: 0}
+  _bulletListP1: {fileID: 0}
+  _bulletListP2: {fileID: 0}
+  active: 0
 --- !u!114 &114854246427212152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -686,15 +685,9 @@ MonoBehaviour:
   m_doNotOverwriteTemplateMaterialProperties: 0
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
-  m_lineColor:
-    r: 1
-    g: 0.058819957
-    b: 0
-    a: 0
+  m_lineColor: {r: 1, g: 0.058819957, b: 0, a: 0}
   m_lineWidth: 49.8
   m_lightSaberFactor: 0.747
-  m_material: {fileID: 0}
-  m_meshFilter: {fileID: 0}
 --- !u!114 &114930422235514172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -713,11 +706,16 @@ MonoBehaviour:
   _laserMatP1: {fileID: 0}
   _laserMatP2: {fileID: 0}
   laser: {fileID: 0}
+  laserLight: {fileID: 0}
   block: {fileID: 0}
   bulletForce: {x: 0, y: 0, z: 0}
   reflected: 0
   lifetime: 0
   onReflect: {fileID: 0}
+  onPanelSet: {fileID: 0}
+  _bulletListP1: {fileID: 0}
+  _bulletListP2: {fileID: 0}
+  active: 0
 --- !u!136 &136473158945362498
 CapsuleCollider:
   m_ObjectHideFlags: 1

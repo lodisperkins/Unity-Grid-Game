@@ -2197,8 +2197,8 @@ MonoBehaviour:
   _blockHealth: {fileID: 114916341179605010}
   block: {fileID: 114533408530467866}
   _eventListener: {fileID: 114338181517171024}
-  bulletCapacity: 22
-  _bulletCapUpgradeVal: 10
+  bulletCapacity: 15
+  _bulletCapUpgradeVal: 11
 --- !u!114 &114229843652304062
 MonoBehaviour:
   m_ObjectHideFlags: 1

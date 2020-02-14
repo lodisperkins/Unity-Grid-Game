@@ -9,7 +9,7 @@ namespace Lodis.GamePlay.BlockScripts
         private List<Rigidbody> _rigidbodies;
         private List<BulletBehaviour> _bullets;
         private List<Vector3> velocityVals;
-        [SerializeField] private HealthBehaviour _blockHealth;
+        [SerializeField] private HealthBehaviour _blockHealth = new HealthBehaviour();
         [SerializeField]
         private BlockBehaviour block;
         [SerializeField]
@@ -25,28 +25,44 @@ namespace Lodis.GamePlay.BlockScripts
             velocityVals = new List<Vector3>();
             _eventListener.intendedSender = block.owner;
             _blockHealth.health.Val = bulletCapacity;
+            block.specialActions += DetonateBlock;
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Projectile"))
             {
-                other.gameObject.SetActive(false);
-                _bullets.Add(other.GetComponent<BulletBehaviour>());
+               
+                BulletBehaviour bulletscript = other.GetComponent<BulletBehaviour>();
+                if(bulletscript != null)
+                {
+                    _bullets.Add(bulletscript);
+                    other.gameObject.SetActive(false);
+                }
+                
                 Rigidbody temp = other.GetComponent<Rigidbody>();
                 
                 velocityVals.Add(temp.velocity);
                 _rigidbodies.Add(temp);
                 temp.velocity = Vector3.zero;
+                temp.isKinematic = true;
             }
         }
-        public void DetonateBlock()
+        public void DetonateBlock(object[]arg)
         {
             block.DestroyBlock(0);
+            for (int i = 0; i < _bullets.Count; i++)
+            {
+                if (_bullets[i] != null)
+                {
+                    _bullets[i].Owner = block.owner.name;
+                    _bullets[i].gameObject.SetActive(true);
+                }
+            }
             for (int i = 0; i < _rigidbodies.Count; i++)
             {
                 if (_rigidbodies[i] != null)
                 {
-                    _bullets[i].Owner = block.owner.name;
+                    _rigidbodies[i].isKinematic = false;
                     _rigidbodies[i].gameObject.SetActive(true);
                     _rigidbodies[i].AddForce(-(velocityVals[i]) *2, ForceMode.Impulse); 
                 }
@@ -69,6 +85,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             block = otherBlock.GetComponent<BlockBehaviour>();
             block.componentList.Add(gameObject);
+            block.specialActions += DetonateBlock;
             transform.SetParent(otherBlock.transform,false);
         }
         // Update is called once per frame
@@ -81,8 +98,11 @@ namespace Lodis.GamePlay.BlockScripts
                     bullet.Destroy();
                 }
             }
-
-            _blockHealth.health.Val = bulletCapacity-_rigidbodies.Count;
+            if(_blockHealth != null)
+            {
+              _blockHealth.health.Val = bulletCapacity-_rigidbodies.Count; 
+            }
+            
         }
     }
 }

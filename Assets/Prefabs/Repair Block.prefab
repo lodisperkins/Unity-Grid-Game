@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 54383360474484100}
   - component: {fileID: 65283512715152776}
   m_Layer: 0
-  m_Name: Health Block
+  m_Name: Repair Block
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 135386657465840888}
   - component: {fileID: 114490304771331838}
   m_Layer: 0
-  m_Name: Healing Shield
+  m_Name: Repair Shield
   m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 114993990273059680}
   - component: {fileID: 114565348299176418}
   - component: {fileID: 114454006631643696}
+  - component: {fileID: 135229371253411522}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Barrier
@@ -758,7 +759,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172816898836844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6699316, y: 0.5, z: 25.105774}
+  m_LocalPosition: {x: -0.45139357, y: 0.5, z: 13.041236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4394250039219412}
@@ -2645,6 +2646,18 @@ MonoBehaviour:
   actionDelay: 1
   actionLimit: 30
   hasLimit: 1
+--- !u!135 &135229371253411522
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410683124301992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222083603559155426
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -149,16 +149,23 @@ namespace Lodis
                     Destroy(TempObject);
                     break;
                 }
-                /*case "Projectile":
-                {
-                    if (other.GetComponent<BulletBehaviour>().Owner == Owner || active)
+                case "Projectile":
                     {
+                        if(other.name == "Ramming Block(Clone)" && other.GetComponent<BlockBehaviour>().owner.name != Owner)
+                        {
+                            playDeathParticleSystems(1);
+                            ps.transform.position = other.transform.position;
+                            var health = other.GetComponent<HealthBehaviour>();
+                            if (health != null)
+                            {
+                                other.GetComponent<BlockBehaviour>().GiveMoneyForKill(Owner, DamageVal);
+                                health.takeDamage(DamageVal);
+
+                            }
+                            Destroy(TempObject);
+                        }
                         break;
                     }
-                    playDeathParticleSystems(2);
-                    Destroy(TempObject);
-                    break;
-                }*/
             }
         }
         private void OnTriggerEnter(Collider other)

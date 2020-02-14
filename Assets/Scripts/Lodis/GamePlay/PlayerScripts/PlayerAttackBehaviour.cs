@@ -19,19 +19,30 @@ public class PlayerAttackBehaviour : MonoBehaviour
     [SerializeField]
     private Animator animator;
 	private PlayerMovementBehaviour player;
-
+    private RaycastHit _interactionRay;
+    private GameObject _currentBlock;
 	[SerializeField] private Event _onInteractPressed;
 	// Use this for initialization
 	void Start ()
 	{
 		player = GetComponent<PlayerMovementBehaviour>();
+        _interactionRay = new RaycastHit();
 	}
 
 	public void Interact()
 	{
 		if (player.canMove)
 		{
-            _onInteractPressed.Raise(gameObject);
+            if(Physics.Raycast(transform.position,transform.forward,out _interactionRay,3))
+            {
+                _currentBlock = _interactionRay.transform.gameObject;
+                if(_currentBlock.CompareTag("Panel"))
+                {
+                    return;
+                }
+                _currentBlock.SendMessage("ActivateSpecialAction");
+            }
+            
 		}
 	}
 	

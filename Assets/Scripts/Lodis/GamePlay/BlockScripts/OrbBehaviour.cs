@@ -7,7 +7,7 @@ namespace Lodis.GamePlay.BlockScripts
     {
 
         public BlockBehaviour block;
-        [SerializeField] private int DamageVal;
+        [SerializeField] public int DamageVal;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -20,6 +20,10 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 case "Block":
                 {
+                    if(other == block.gameObject)
+                    {
+                        break;
+                    }
                     var health = other.GetComponent<HealthBehaviour>();
                     if (health != null)
                     {
@@ -28,7 +32,7 @@ namespace Lodis.GamePlay.BlockScripts
                     }
                     break;
                 }
-                default:
+                case "Player":
                 {
                     var health = other.GetComponent<HealthBehaviour>();
                     if (health != null && other.name != block.owner.name)

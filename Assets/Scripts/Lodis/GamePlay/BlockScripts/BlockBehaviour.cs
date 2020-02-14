@@ -10,8 +10,10 @@ using UnityEngine.UI;
 
 namespace Lodis
 {
+    
     public class BlockBehaviour : MonoBehaviour
     {
+        public delegate void BlockAction(object[] arg = null);
         //The current panel the block is on
         [FormerlySerializedAs("CurrentPanel")] public GameObject currentPanel;
         //The player that owns the block
@@ -36,7 +38,7 @@ namespace Lodis
         public List<GameObject> componentList;
         private Color _currentMaterialColor;
         private string pastName;
-
+        public BlockAction specialActions;
         [SerializeField] private IntVariable player1Materials;
         [SerializeField] private IntVariable player2Materials;
         // Use this for initialization
@@ -60,11 +62,24 @@ namespace Lodis
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
             _awake = true;
-            
         }
-
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (canUpgrade == false)
+            {
+                if (gameObject.name == "Ramming Block(Clone)")
+                {
+                    if (gameObject.GetComponentInChildren<RammingBlockBehaviour>().isRamming)
+                    {
+                        CheckIfRammingBlock(collision.gameObject);
+                        return;
+                    }
+                }
+            }
+        }
         private void OnTriggerEnter(Collider other)
         {
+            
             if (other.CompareTag("Player"))
             {
                 DestroyBlock();
@@ -72,12 +87,38 @@ namespace Lodis
             }
             else if (other.CompareTag("Block"))
             {
+                if (gameObject.name == "Ramming Block(Clone)")
+                {
+                    RammingBlockBehaviour ramScript = GetComponentInChildren<RammingBlockBehaviour>();
+                    if(ramScript == null)
+                    {
+                        return;
+                    }
+                    if (ramScript.isRamming)
+                    {
+                        
+                        CheckIfRammingBlock(other.gameObject);
+                        return;
+                    }
+                }
                 //otherwise check the name of the block and upgrade
                 Upgrade(other.gameObject);
             }
             
         }
-
+        public bool CheckIfRammingBlock(GameObject other)
+        {
+            foreach (GameObject component in componentList)
+            {
+                RammingBlockBehaviour ram = component.GetComponent<RammingBlockBehaviour>();
+                if (ram != null)
+                {
+                    ram.ResolveCollision(other);
+                    return true;
+                }
+            }
+            return false;
+        }
         public void Upgrade(GameObject block)
         {
             //If the player cannot upgrade yet do nothing 
@@ -88,7 +129,7 @@ namespace Lodis
             GameObject component = block.GetComponent<BlockBehaviour>().actionComponent;
             component.SendMessage("UpgradeBlock",gameObject);
             _currentLevel++;
-            onUpgrade.Raise();
+            onUpgrade.Raise(gameObject);
             //Destroys the block placed on top after the upgrade to free up space
             BlockBehaviour blockScript;
             blockScript = block.GetComponent<BlockBehaviour>();
@@ -120,6 +161,11 @@ namespace Lodis
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
+        public void ActivateSpecialAction()
+        {
+            specialActions.Invoke();
+        }
+
         private IEnumerator Flash()
         {
             for (var i = 0; i < 5; i++)
@@ -145,7 +191,7 @@ namespace Lodis
             }
             canUpgrade = false;
             GameObject TempGameObject = gameObject;
-            
+
             
             StartCoroutine(Flash());
             Destroy(TempGameObject,time);

@@ -59,6 +59,10 @@ namespace Lodis
                 hasRaised = true;
                 OnObjectDeath.Raise(gameObject);
             }
+            if (OnObjectDeath != null)
+            {
+                OnObjectDeath.Raise(gameObject);
+            }
             Destroy(tempGameObject,time);
         }
         //plays particles after the object has died 
@@ -86,7 +90,6 @@ namespace Lodis
 //            _secondaryHealthSource.health.Val -= conversionRate;
             health.Val += 1;
         }
-
         // Update is called once per frame
         void Update()
         {
