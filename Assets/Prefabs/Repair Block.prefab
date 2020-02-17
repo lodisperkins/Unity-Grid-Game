@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4636992662193624}
   - component: {fileID: 33910735511312864}
   - component: {fileID: 23233976191719038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4560435167504586}
   - component: {fileID: 33377268251043478}
   - component: {fileID: 23283231851705910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4871924383561334}
   - component: {fileID: 33294857532126358}
   - component: {fileID: 23141105929563510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114261825132433838}
   - component: {fileID: 54383360474484100}
   - component: {fileID: 65283512715152776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Repair Block
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 224368082952676080}
   - component: {fileID: 114898456811438410}
   - component: {fileID: 114153832611623896}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224674524505275836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4880400332786890}
   - component: {fileID: 33501167533911796}
   - component: {fileID: 23359358963805864}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224176358800599286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,8 @@ GameObject:
   - component: {fileID: 114624391014459226}
   - component: {fileID: 135386657465840888}
   - component: {fileID: 114490304771331838}
-  m_Layer: 0
+  - component: {fileID: 114915535984416808}
+  m_Layer: 9
   m_Name: Repair Shield
   m_TagString: Barrier
   m_Icon: {fileID: 0}
@@ -179,7 +180,7 @@ GameObject:
   - component: {fileID: 224000106841086162}
   - component: {fileID: 222827219104472768}
   - component: {fileID: 114861436924382016}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +197,7 @@ GameObject:
   - component: {fileID: 4158159085192384}
   - component: {fileID: 33843272466132058}
   - component: {fileID: 23946762894524032}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +214,7 @@ GameObject:
   - component: {fileID: 4233844206217094}
   - component: {fileID: 33046592307422308}
   - component: {fileID: 23382659058357392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +231,7 @@ GameObject:
   - component: {fileID: 4004917350780930}
   - component: {fileID: 33218856464626302}
   - component: {fileID: 23381053534835978}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +250,7 @@ GameObject:
   - component: {fileID: 114742853863204994}
   - component: {fileID: 114145968410563574}
   - component: {fileID: 114609490967376188}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +267,7 @@ GameObject:
   - component: {fileID: 4821539283135192}
   - component: {fileID: 33228805406942778}
   - component: {fileID: 23588397179566346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +284,7 @@ GameObject:
   - component: {fileID: 4340518429971940}
   - component: {fileID: 33421553888534700}
   - component: {fileID: 23829612420607732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +301,7 @@ GameObject:
   - component: {fileID: 4815240043988860}
   - component: {fileID: 33541081265026004}
   - component: {fileID: 23897174459860968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +318,7 @@ GameObject:
   - component: {fileID: 4052228006012204}
   - component: {fileID: 33277972733466046}
   - component: {fileID: 23301778640832194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +335,7 @@ GameObject:
   - component: {fileID: 4801665197962442}
   - component: {fileID: 33652479388627056}
   - component: {fileID: 23422722915833128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +352,7 @@ GameObject:
   - component: {fileID: 4799567633333094}
   - component: {fileID: 33040615653762966}
   - component: {fileID: 23777507758921858}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +369,7 @@ GameObject:
   - component: {fileID: 224203015166795192}
   - component: {fileID: 222900099915421750}
   - component: {fileID: 114375383259944520}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +386,7 @@ GameObject:
   - component: {fileID: 4906120047527696}
   - component: {fileID: 33970016642782372}
   - component: {fileID: 23653971432144552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +403,7 @@ GameObject:
   - component: {fileID: 4852747664113120}
   - component: {fileID: 33495623793768676}
   - component: {fileID: 23804261570864646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +420,7 @@ GameObject:
   - component: {fileID: 4276986957749020}
   - component: {fileID: 33798055192655892}
   - component: {fileID: 23330027448110638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +437,7 @@ GameObject:
   - component: {fileID: 224125607232348478}
   - component: {fileID: 222200560680745714}
   - component: {fileID: 114324872270048568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +454,7 @@ GameObject:
   - component: {fileID: 224514747064679384}
   - component: {fileID: 222655024729599470}
   - component: {fileID: 114564118894904540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +471,7 @@ GameObject:
   - component: {fileID: 4943829284770556}
   - component: {fileID: 33711152928352538}
   - component: {fileID: 23531625876876644}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +488,7 @@ GameObject:
   - component: {fileID: 4687636975988252}
   - component: {fileID: 33162628759170926}
   - component: {fileID: 23963618734267660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +505,7 @@ GameObject:
   - component: {fileID: 4375062865457932}
   - component: {fileID: 33849832450269704}
   - component: {fileID: 23287545802334690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +522,7 @@ GameObject:
   - component: {fileID: 4329864058129214}
   - component: {fileID: 33884152904606192}
   - component: {fileID: 23813888757084216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +539,7 @@ GameObject:
   - component: {fileID: 224476338153280526}
   - component: {fileID: 222202965172578152}
   - component: {fileID: 114573651095889262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +556,7 @@ GameObject:
   - component: {fileID: 4340251447955050}
   - component: {fileID: 33362840346926286}
   - component: {fileID: 23983291461766560}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +573,7 @@ GameObject:
   - component: {fileID: 4419079143167436}
   - component: {fileID: 33549669299176358}
   - component: {fileID: 23328832575255536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +590,7 @@ GameObject:
   - component: {fileID: 4011378954566404}
   - component: {fileID: 33223386038026660}
   - component: {fileID: 23021503281435032}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +607,7 @@ GameObject:
   - component: {fileID: 4045006351514072}
   - component: {fileID: 33280552278311674}
   - component: {fileID: 23936049850442220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +624,7 @@ GameObject:
   - component: {fileID: 4669234889419972}
   - component: {fileID: 33724074071742826}
   - component: {fileID: 23577903425026182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2297,12 +2298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babba36395cd853479548c41b0096921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockhealthScript: {fileID: 114671122016015208}
-  _playerhealthScript: {fileID: 0}
+  _healthScript: {fileID: 114671122016015208}
   _block: {fileID: 114695099054440584}
   _upgradeVal: 7
   _healVal: 2
   _bulletsToHeal: 5
+  _deleteEventListener: {fileID: 114915535984416808}
+  _timeUntilNextHeal: 4
 --- !u!114 &114564118894904540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2393,7 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRef: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
+  healthRef: {fileID: 11400000, guid: 305a07550964e454ebc34eb647acab3c, type: 2}
   health: {fileID: 0}
   isAlive: 0
   _secondaryHealthSource: {fileID: 0}
@@ -2430,6 +2432,7 @@ MonoBehaviour:
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
   ps2: {fileID: 0}
+  healthFull: 0
 --- !u!114 &114695099054440584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2556,6 +2559,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114915535984416808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264512994520814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114490304771331838}
+        m_MethodName: DestroyBarrier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
+  intendedSender: {fileID: 1204667091235280}
 --- !u!114 &114934234680647056
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4531974225295176}
   - component: {fileID: 33719491012145818}
   - component: {fileID: 23825248652924562}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4028246408440854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4088584904642222}
   - component: {fileID: 33686532289851520}
   - component: {fileID: 23619623436725008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4002406220379148}
   - component: {fileID: 33276123638250608}
   - component: {fileID: 23940741666552360}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4034031160810896}
   - component: {fileID: 33376810754254550}
   - component: {fileID: 23953142248764354}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 114366839666029644}
   - component: {fileID: 135194058443003192}
   - component: {fileID: 114503550086696904}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramming Barrier
   m_TagString: Barrier
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4329657667508256}
   - component: {fileID: 33857427204462766}
   - component: {fileID: 23327807781930106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4924212278098544}
   - component: {fileID: 33129312576960536}
   - component: {fileID: 23039823727061446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4123204955953566}
   - component: {fileID: 33199597839854130}
   - component: {fileID: 23352098601961746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4414861206143414}
   - component: {fileID: 33268947145129432}
   - component: {fileID: 23175697426582776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4713336305748344}
   - component: {fileID: 33678169672761160}
   - component: {fileID: 23483145672707118}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4163404083505286}
   - component: {fileID: 33376271184712054}
   - component: {fileID: 23750793640700362}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 224788992550749674}
   - component: {fileID: 222867780957742706}
   - component: {fileID: 114572478991005732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 4264204899541538}
   - component: {fileID: 33835734609483834}
   - component: {fileID: 23643566609306568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 224766856133852422}
   - component: {fileID: 114489721339808844}
   - component: {fileID: 114389518445422382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224573878181654356}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 114638866564795816}
   - component: {fileID: 114596599941951506}
   - component: {fileID: 114511539469014950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 4316886913656680}
   - component: {fileID: 33998288612539336}
   - component: {fileID: 23949236483073676}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 4612942359724500}
   - component: {fileID: 33314085681880816}
   - component: {fileID: 23297383505576656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 224341934185835690}
   - component: {fileID: 222542867497670948}
   - component: {fileID: 114608366240650644}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 4923282439473812}
   - component: {fileID: 33893220852372346}
   - component: {fileID: 23872777306736578}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 4639696805916128}
   - component: {fileID: 33561920655920440}
   - component: {fileID: 23191333988745238}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 4516792303780104}
   - component: {fileID: 198288231167966704}
   - component: {fileID: 199975657236277012}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 4217517101798538}
   - component: {fileID: 33692246008739562}
   - component: {fileID: 23980005331101062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 4504655245537144}
   - component: {fileID: 33770743812461760}
   - component: {fileID: 23348895625880538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 4921853530619804}
   - component: {fileID: 33918851798916710}
   - component: {fileID: 23238244087837002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 224079268121395370}
   - component: {fileID: 222423929185805566}
   - component: {fileID: 114545181861133472}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 4530372982235370}
   - component: {fileID: 33682388874858838}
   - component: {fileID: 23794066938693868}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 4165387125764552}
   - component: {fileID: 198861645812507934}
   - component: {fileID: 199325955258136888}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 4315780162007562}
   - component: {fileID: 33201274491330206}
   - component: {fileID: 23904611897167422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 4725981206110516}
   - component: {fileID: 33419665784931428}
   - component: {fileID: 23867651590102556}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 4989712498620178}
   - component: {fileID: 198731729794006470}
   - component: {fileID: 199735049107233562}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 4752964893159136}
   - component: {fileID: 33642606036051440}
   - component: {fileID: 23255325790454786}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 224543468704420338}
   - component: {fileID: 222505818999921328}
   - component: {fileID: 114204422207932198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224027020462016960}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 4160007440496002}
   - component: {fileID: 33253882366274322}
   - component: {fileID: 23413326929104256}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block Corner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 4476448237768242}
   - component: {fileID: 33081592818399702}
   - component: {fileID: 23807315111313932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 114625848821702770}
   - component: {fileID: 54346650470280924}
   - component: {fileID: 65073090732195306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramming Block
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 224761249094438398}
   - component: {fileID: 222666682982279586}
   - component: {fileID: 114588033832277480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 4542108092433498}
   - component: {fileID: 33293293338186822}
   - component: {fileID: 23521931903794766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onActionsBegin: {fileID: 0}
   onActionsCompleted: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
-  actionDelay: 0.001
+  actionDelay: 0.05
   actionLimit: 1
   hasLimit: 1
 --- !u!114 &114204422207932198
@@ -2456,9 +2456,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _block: {fileID: 114334787116484722}
   _blockRigidbody: {fileID: 54346650470280924}
-  _ramForceScale: 20
+  _ramForceScale: 10
   DamageVal: 5
-  UpgradeVal: 2
+  UpgradeVal: 10
   isRamming: 0
 --- !u!114 &114511539469014950
 MonoBehaviour:
@@ -2657,7 +2657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRef: {fileID: 11400000, guid: 7430f1e36fde8284d9f84e88662fc10b, type: 2}
+  healthRef: {fileID: 11400000, guid: 305a07550964e454ebc34eb647acab3c, type: 2}
   health: {fileID: 0}
   isAlive: 0
   _secondaryHealthSource: {fileID: 0}
@@ -2694,6 +2694,7 @@ MonoBehaviour:
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
   ps2: {fileID: 0}
+  healthFull: 0
 --- !u!135 &135194058443003192
 SphereCollider:
   m_ObjectHideFlags: 1

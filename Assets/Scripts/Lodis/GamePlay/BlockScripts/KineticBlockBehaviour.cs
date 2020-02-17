@@ -38,7 +38,10 @@ namespace Lodis.GamePlay.BlockScripts
                     _bullets.Add(bulletscript);
                     other.gameObject.SetActive(false);
                 }
-                
+                if(other.name == "Ramming Block(Clone)")
+                {
+                    bulletCapacity -= 10;
+                }
                 Rigidbody temp = other.GetComponent<Rigidbody>();
                 
                 velocityVals.Add(temp.velocity);

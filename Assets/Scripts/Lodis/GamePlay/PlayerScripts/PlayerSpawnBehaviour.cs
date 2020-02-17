@@ -69,13 +69,30 @@ namespace Lodis
         private bool _panelSelectionInputDown;
         private bool _towerSelectionInputDown;
         [SerializeField] private ArrowBehaviour _arrow;
+
+        public List<GameObject> Blocks
+        {
+            get
+            {
+                return blocks;
+            }
+        }
+
+        public Quaternion Block_rotation
+        {
+            get
+            {
+                return block_rotation;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
             panels_in_range = new Dictionary<string, GameObject>();
             block_rotation = transform.rotation;
             BlockForward = transform.forward;
-            blockRef.Block = blocks[0];
+            blockRef.Block = Blocks[0];
             current_index = 0;
             materials.Val = 60;
             material_regen_time = Time.time + material_regen_rate;
@@ -100,7 +117,7 @@ namespace Lodis
             return false;
         }
 
-        private void BuyItem(int costOfItem)
+        public void BuyItem(int costOfItem)
         {
             if (overdriveEnabled)
             {
@@ -138,7 +155,7 @@ namespace Lodis
         public void DisableDeletion()
         {
             OnDeleteDisabled.Raise(gameObject);
-            blockRef.Block = blocks[current_index];
+            blockRef.Block = Blocks[current_index];
             DeleteEnabled = false;
         }
 
@@ -169,7 +186,7 @@ namespace Lodis
             foreach (GameObject panel in player.Panels)
             {
                 _panel = panel .GetComponent<PanelBehaviour>();
-                _currentBlock = blocks[current_index].GetComponent<BlockBehaviour>();
+                _currentBlock = Blocks[current_index].GetComponent<BlockBehaviour>();
                 var coordinate = _panel.Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
@@ -317,7 +334,7 @@ namespace Lodis
             {
                 BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Behind"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Behind"].transform.position.z);
-                GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
+                GameObject BlockCopy = Instantiate(blockRef.Block, position, Block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Behind"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Behind"].GetComponent<PanelBehaviour>().Occupied = true;
@@ -348,7 +365,7 @@ namespace Lodis
             {
                 BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Forward"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Forward"].transform.position.z);
-                GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
+                GameObject BlockCopy = Instantiate(blockRef.Block, position, Block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Forward"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Forward"].GetComponent<PanelBehaviour>().Occupied = true;
@@ -379,7 +396,7 @@ namespace Lodis
             {
                 BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Above"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Above"].transform.position.z);
-                GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
+                GameObject BlockCopy = Instantiate(blockRef.Block, position, Block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Above"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Above"].GetComponent<PanelBehaviour>().Occupied = true;
@@ -411,7 +428,7 @@ namespace Lodis
             {
                 BuyItem(blockRef.Cost);
                 var position = new Vector3(panels_in_range["Below"].transform.position.x, blockRef.Block.transform.position.y, panels_in_range["Below"].transform.position.z);
-                GameObject BlockCopy = Instantiate(blockRef.Block, position, block_rotation);
+                GameObject BlockCopy = Instantiate(blockRef.Block, position, Block_rotation);
                 BlockCopy.GetComponent<BlockBehaviour>().currentPanel = panels_in_range["Below"];
                 BlockCopy.GetComponentInChildren<BlockBehaviour>().owner = gameObject;
                 panels_in_range["Below"].GetComponent<PanelBehaviour>().Occupied = true;
@@ -432,47 +449,47 @@ namespace Lodis
             player.canMove = false;
             _towerSelectionInputDown = true;
             SelectionColor = Color.red;
-            blockRef.Block = blocks[0];
+            blockRef.Block = Blocks[0];
             current_index = 0;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
         }
         public void SelectBlock1()
         {
             player.canMove = false;
             _towerSelectionInputDown = true;
             SelectionColor = Color.green;
-            blockRef.Block = blocks[1];
+            blockRef.Block = Blocks[1];
             current_index = 1;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
         }
         public void SelectBlock2()
         {
             player.canMove = false;
             _towerSelectionInputDown = true;
             SelectionColor = Color.yellow;
-            blockRef.Block = blocks[2];
+            blockRef.Block = Blocks[2];
             current_index = 2;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
         }
         public void SelectBlock3()
         {
             player.canMove = false;
             _towerSelectionInputDown = true;
             SelectionColor = Color.white;
-            blockRef.Block = blocks[3];
+            blockRef.Block = Blocks[3];
             current_index = 3;
             block_rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
         }
         //Rotates the block so that it faces right 
         public void RotateBlockRight()
         {
             block_rotation_degrees = 0;
             transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(0);
         }
         //Rotates the block so that it faces left 
@@ -480,7 +497,7 @@ namespace Lodis
         {
             block_rotation_degrees = 180;
             transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(180);
         }
         //Rotates the block so that it faces left 
@@ -488,7 +505,7 @@ namespace Lodis
         {
             block_rotation_degrees = -90;
             transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(-90);
         }
         //Rotates the block so that it faces left 
@@ -496,7 +513,7 @@ namespace Lodis
         {
             block_rotation_degrees = 90;
             transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                blocks[current_index].transform.rotation.z);
+                Blocks[current_index].transform.rotation.z);
             _arrow.ShowArrowTemporarily(90);
         }
 

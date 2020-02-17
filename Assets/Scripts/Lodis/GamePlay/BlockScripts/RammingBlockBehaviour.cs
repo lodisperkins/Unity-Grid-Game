@@ -33,9 +33,10 @@ namespace Lodis.GamePlay.BlockScripts
                 case "Block":
                 {
                     var health = other.GetComponent<HealthBehaviour>();
-                    if (health != null && isRamming)
+                        var block = other.GetComponent<BlockBehaviour>();
+                    if (health != null && isRamming && block.canUpgrade)
                     {
-                        other.GetComponent<BlockBehaviour>().GiveMoneyForKill(_block.owner.name, DamageVal);
+                        block.GiveMoneyForKill(_block.owner.name, DamageVal);
                         health.takeDamage(DamageVal);
                         _block.DestroyBlock();
                     }

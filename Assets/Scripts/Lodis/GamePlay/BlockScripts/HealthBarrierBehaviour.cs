@@ -10,6 +10,8 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private int _upgradeVal;
 		[SerializeField] private int _healVal;
 		[SerializeField] private int _bulletsToHeal;
+        [SerializeField]
+        private GameEventListener _deleteEventListener;
         private float _healTimer;
         [SerializeField]
         private float _timeUntilNextHeal;
@@ -21,7 +23,11 @@ namespace Lodis.GamePlay.BlockScripts
             _canHeal = true;
             _healTimer = Time.time + _timeUntilNextHeal;
         }
-
+        public void DestroyBarrier()
+        {
+            GameObject temp = gameObject;
+            Destroy(temp);
+        }
 		private void OnTriggerStay(Collider other)
 		{
             _healthScript = other.GetComponent<HealthBehaviour>();
@@ -33,7 +39,7 @@ namespace Lodis.GamePlay.BlockScripts
 
 		private void TryHeal()
 		{
-            if(_canHeal)
+            if(_canHeal && !_healthScript.healthFull)
             {
                 _healthScript.health.Val +=_healVal;
                 _healTimer = Time.time + _timeUntilNextHeal;
@@ -60,10 +66,11 @@ namespace Lodis.GamePlay.BlockScripts
 			blockScript.componentList.Add(gameObject);
             transform.parent = null;
             transform.position = otherBlock.transform.position;
-		}
+            _deleteEventListener.intendedSender = otherBlock;
+        }
 		// Update is called once per frame
 		void Update () {
-            _canHeal = Time.time >= Time.time + _timeUntilNextHeal;
+            _canHeal = Time.time >= _healTimer;
 		}
 	}
 }

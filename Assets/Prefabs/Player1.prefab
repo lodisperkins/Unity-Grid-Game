@@ -6621,8 +6621,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2.389362, z: 1.284277}
-  m_Center: {x: 0, y: 0.68468106, z: -0.10786152}
+  m_Size: {x: 1.5, y: 1.1785152, z: 1.284277}
+  m_Center: {x: 0, y: 0.07925758, z: -0.10786152}
 --- !u!65 &65427673485353776
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6840,9 +6840,9 @@ MonoBehaviour:
   blockRef: {fileID: 11400000, guid: 5cc77f138c0fd1740a05cbcb8801e15f, type: 2}
   blocks:
   - {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d, type: 2}
-  - {fileID: 1373659190468100, guid: a812f03e95970314894c240ac69c7c3b, type: 2}
+  - {fileID: 1172816898836844, guid: 2feecdbaddeb9224aaff6b5b68870b5e, type: 2}
   - {fileID: 1172816898836844, guid: e62e261ba5097a2449205b7e136f59a0, type: 2}
-  - {fileID: 1447780760735818, guid: 0f88eec17f6dc7b439c56e09611bd5d6, type: 2}
+  - {fileID: 1640956749703222, guid: 197eaec4f3b649b4abe027e5421bc73e, type: 2}
   direction: {fileID: 11400000, guid: e20c7f439e26aab40ac7c4c3e2e1538f, type: 2}
   player: {fileID: 114361469955308476}
   block_rotation_degrees: 0
@@ -7161,6 +7161,7 @@ MonoBehaviour:
   OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   ps2: {fileID: 0}
+  healthFull: 0
 --- !u!114 &114574205524328418
 MonoBehaviour:
   m_ObjectHideFlags: 1

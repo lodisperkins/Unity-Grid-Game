@@ -32,6 +32,7 @@ namespace Lodis
         //the particles that should play on the objects death
         [SerializeField] private ParticleSystem ps;
         [SerializeField] private ParticleSystem ps2;
+        public bool healthFull;
         // Use this for initialization
         public void Start()
         {
@@ -93,15 +94,16 @@ namespace Lodis
         // Update is called once per frame
         void Update()
         {
-            if (isAlive == false)
+            if (isAlive == false && hasRaised == false)
             {
                 OnDeath.Invoke();
-                if (OnObjectDeath != null && hasRaised == false)
+                hasRaised = true;
+                if (OnObjectDeath != null)
                 {
-                    hasRaised = true;
                     OnObjectDeath.Raise(gameObject);
                 }
             }
+            healthFull = health.Val == healthRef.Val;
         }
     }
 }

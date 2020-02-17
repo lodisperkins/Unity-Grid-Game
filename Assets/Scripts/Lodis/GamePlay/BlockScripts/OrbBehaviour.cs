@@ -43,5 +43,13 @@ namespace Lodis.GamePlay.BlockScripts
                 }
             }
         }
+        private void Update()
+        {
+            if(block == null)
+            {
+                GameObject temp = gameObject;
+                Destroy(temp);
+            }
+        }
     }
 }
