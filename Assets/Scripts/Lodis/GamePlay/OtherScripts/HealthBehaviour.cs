@@ -20,7 +20,7 @@ namespace Lodis
         private bool isAlive;
 
         [SerializeField] private HealthBehaviour _secondaryHealthSource;
-
+        
         public int conversionRate;
         //unity event raised when the object dies
         [SerializeField]

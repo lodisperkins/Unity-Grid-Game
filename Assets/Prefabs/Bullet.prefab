@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: none
   DamageVal: 1
-  ps: {fileID: 198269334655731858, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
+  ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
   OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
   _laserMatP1: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
   _laserMatP2: {fileID: 2100000, guid: e8c2926e7bce6b14aa0372ad43e765ee, type: 2}

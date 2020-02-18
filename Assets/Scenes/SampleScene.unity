@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5065,12 +5065,73 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1826055364}
   m_Script: {fileID: 11500000, guid: 762e77363e1126d4fbc39cdfe1dea80d, type: 3}
+--- !u!114 &124569960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114400500004974856, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1826055364}
+  m_Script: {fileID: 11500000, guid: a52c3040899627f41b2b693fdb313a21, type: 3}
 --- !u!114 &124569961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114851877076358748, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
     type: 2}
   m_PrefabInternal: {fileID: 1826055364}
   m_Script: {fileID: 11500000, guid: 862b290c9ec05444a916b859d9713ad7, type: 3}
+--- !u!114 &124569967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124569941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 124569968}
+        m_MethodName: StartShaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 124569960}
+        m_MethodName: EnableHitAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  intendedSender: {fileID: 124569941}
+--- !u!114 &124569968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124569941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeVal: 0.01
+  isShaking: 0
+  shakeRange: 0.4
+  shakeLength: 0
 --- !u!1 &152480876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1227986367002548, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -5336,15 +5397,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: -713.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114468807569042218, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1686180405326860, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5, type: 2}
@@ -10317,6 +10369,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1547286880}
   m_Script: {fileID: 11500000, guid: dd695a6b5890901409b485e528a5333d, type: 3}
+--- !u!114 &354307100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354307074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeVal: 0.01
+  isShaking: 0
+  shakeRange: 0.4
+  shakeLength: 0
 --- !u!114 &365011537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11612,8 +11679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
-  shakeRange: 0.5
-  shakeLength: 0
+  shakeRange: 1
+  shakeLength: 8
 --- !u!114 &908997633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22512,8 +22579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
-  shakeRange: 0.5
-  shakeLength: 0
+  shakeRange: 1
+  shakeLength: 8
 --- !u!114 &1342914513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23189,6 +23256,11 @@ Prefab:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1304077423}
+    - target: {fileID: 114649712960447932, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: shakeScript
+      value: 
+      objectReference: {fileID: 354307100}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
   m_IsPrefabAsset: 0
@@ -23918,6 +23990,21 @@ Prefab:
       propertyPath: _secondaryHealthSource
       value: 
       objectReference: {fileID: 908997625}
+    - target: {fileID: 65156669095108392, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 4.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 65156669095108392, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 1.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: shakeScript
+      value: 
+      objectReference: {fileID: 124569968}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
   m_IsPrefabAsset: 0
@@ -23986,8 +24073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
-  shakeRange: 0.9
-  shakeLength: 0
+  shakeRange: 3
+  shakeLength: 7
 --- !u!114 &1853502402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24069,7 +24156,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 038bf9ae5ebc77d4d8e0192eeaf34eb4, type: 3}
+      objectReference: {fileID: 8300000, guid: 007e0a104ed0aff4e873d8b8a616cc6e, type: 3}
     - target: {fileID: 82764899668502022, guid: 01f9248e60c8e5c4f9f4c213d3b64ace,
         type: 2}
       propertyPath: Mute

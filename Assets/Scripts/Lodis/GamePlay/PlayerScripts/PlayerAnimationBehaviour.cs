@@ -16,7 +16,7 @@ public class PlayerAnimationBehaviour : MonoBehaviour
         }
 
     }
-
+	
 	public void DisableMoveAnimation()
 	{
 		if(_animator != null)
@@ -41,7 +41,7 @@ public class PlayerAnimationBehaviour : MonoBehaviour
     public void EnableHitAnimation()
     {
         if (_animator != null)
-            _animator.SetTrigger("OnHit");
+            _animator.SetTrigger("Hit");
     }
 	private void OnTriggerEnter(Collider other)
 	{

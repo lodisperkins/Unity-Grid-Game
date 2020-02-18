@@ -33,6 +33,7 @@ namespace Lodis
         public Event OnPanelStealEnabled;
         //the current panel the player is on
         public GameObject _currentPanel;
+        public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
         public GameObject CurrentPanel
         {
             get
@@ -123,6 +124,7 @@ namespace Lodis
                     return;
                 }
                 transform.position = new Vector3(NewPanel.transform.position.x, transform.position.y, NewPanel.transform.position.z);
+                shakeScript.StartPosition = transform.position;
                 _currentPanel.GetComponent<PanelBehaviour>().Occupied = false;
                 _currentPanel = NewPanel;
                 _currentPanel.GetComponent<PanelBehaviour>().Occupied = true;

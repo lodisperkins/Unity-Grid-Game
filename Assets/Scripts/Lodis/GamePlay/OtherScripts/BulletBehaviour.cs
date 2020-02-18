@@ -18,7 +18,7 @@ namespace Lodis
         //Temporary gameobject used to delete the bullet without deleting the prefab
         private GameObject TempObject;
         //the particle system to be played when a bullet hits an obstacle
-        [SerializeField] private ParticleSystem ps;
+        [SerializeField] private GameObject ps;
         //Event used to play the sound of a bullet being shot
         [SerializeField] private Event OnBulletSpawn;
         //The laser model attached to this bullet
@@ -186,9 +186,7 @@ namespace Lodis
         public void playDeathParticleSystems(float duration)
         {
             var tempPs = Instantiate(ps,transform.position,transform.rotation);
-            tempPs.playbackSpeed = 2.5f;
-            tempPs.Play();
-            Destroy(tempPs);
+            Destroy(tempPs,.5f);
         }
         // Update is called once per frame
         void Update()
