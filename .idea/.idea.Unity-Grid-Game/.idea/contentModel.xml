@@ -78,11 +78,13 @@
                 <e p="DefenseBarrierBehaviour.cs" t="Include" />
                 <e p="DeletionBlockBehaviour.cs" t="Include" />
                 <e p="EnergyBlockBehaviour.cs" t="Include" />
+                <e p="FactoryBlockBehaviour.cs" t="Include" />
                 <e p="HealthBarrierBehaviour.cs" t="Include" />
                 <e p="KineticBlockBehaviour.cs" t="Include" />
                 <e p="MortarBlockBehaviour.cs" t="Include" />
                 <e p="OrbBehaviour.cs" t="Include" />
                 <e p="OrbiterBlockBehaviour.cs" t="Include" />
+                <e p="RammingBlockBehaviour.cs" t="Include" />
               </e>
               <e p="GridScripts" t="Include">
                 <e p="GridBehaviour.cs" t="Include" />

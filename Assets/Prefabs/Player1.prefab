@@ -6839,10 +6839,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockRef: {fileID: 11400000, guid: 5cc77f138c0fd1740a05cbcb8801e15f, type: 2}
   blocks:
-  - {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d, type: 2}
+  - {fileID: 1609089727696304, guid: beef14e6ff934a34499bf7605c20eb0e, type: 2}
   - {fileID: 1172816898836844, guid: 2feecdbaddeb9224aaff6b5b68870b5e, type: 2}
   - {fileID: 1172816898836844, guid: e62e261ba5097a2449205b7e136f59a0, type: 2}
-  - {fileID: 1640956749703222, guid: 197eaec4f3b649b4abe027e5421bc73e, type: 2}
+  - {fileID: 1447780760735818, guid: 0f88eec17f6dc7b439c56e09611bd5d6, type: 2}
   direction: {fileID: 11400000, guid: e20c7f439e26aab40ac7c4c3e2e1538f, type: 2}
   player: {fileID: 114361469955308476}
   block_rotation_degrees: 0

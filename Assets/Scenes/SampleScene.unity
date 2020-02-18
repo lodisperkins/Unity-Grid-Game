@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.00070712616, g: 0.004981459, b: 0.021264436, a: 1}
+  m_IndirectSpecularColor: {r: 0.000710114, g: 0.0049844263, b: 0.021260299, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5335,7 +5335,16 @@ Prefab:
     - target: {fileID: 224767061762954734, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -713.50006
+      value: -713.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468807569042218, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686180405326860, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9fb7ed40264ea4eb1dfc223fcaeff5, type: 2}
@@ -23704,16 +23713,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 354307074}
-    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 1166793325}
     - target: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: _currentPanel
@@ -23819,6 +23818,16 @@ Prefab:
       propertyPath: startingPanels.Array.data[19]
       value: 
       objectReference: {fileID: 1764044846}
+    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 1166793325}
+    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 354307074}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: inputs.Array.data[0]

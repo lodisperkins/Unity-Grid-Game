@@ -47,7 +47,7 @@ namespace Lodis.GamePlay
 
 		public void ToggleGameWon()
 		{
-			gameWon = !gameWon;
+			gameWon = true;
 		}
 		public void GoToPreviousOption()
 		{
