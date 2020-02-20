@@ -34,6 +34,7 @@ namespace Lodis
         public bool deleting;
         [FormerlySerializedAs("OnUpgrade")] [SerializeField] private Event onUpgrade;
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
+        [SerializeField] private Event onBlockDelete;
         private HealthBehaviour _health;
         public List<GameObject> componentList;
         private Color _currentMaterialColor;
@@ -158,9 +159,19 @@ namespace Lodis
             {
                 _health.hasRaised = true;
             }
+            
             GameObject tempGameObject = gameObject;
             Destroy(tempGameObject);
         }
+
+        private void OnDestroy()
+        {
+            if (onBlockDelete != null)
+            {
+                 onBlockDelete.Raise(gameObject);
+            }
+        }
+
         public void ActivateSpecialAction()
         {
             specialActions.Invoke();

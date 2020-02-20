@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5065,12 +5065,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1826055364}
   m_Script: {fileID: 11500000, guid: 762e77363e1126d4fbc39cdfe1dea80d, type: 3}
---- !u!114 &124569960 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114400500004974856, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1826055364}
-  m_Script: {fileID: 11500000, guid: a52c3040899627f41b2b693fdb313a21, type: 3}
 --- !u!114 &124569961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114851877076358748, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
@@ -5102,17 +5096,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 124569960}
-        m_MethodName: EnableHitAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
@@ -5130,7 +5113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
-  shakeRange: 0.4
+  shakeRange: 0.7
   shakeLength: 0
 --- !u!1 &152480876 stripped
 GameObject:
@@ -10382,8 +10365,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
-  shakeRange: 0.4
+  shakeRange: 0.7
   shakeLength: 0
+--- !u!114 &354307101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354307074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 354307100}
+        m_MethodName: StartShaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  intendedSender: {fileID: 354307074}
 --- !u!114 &365011537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24005,6 +24017,12 @@ Prefab:
       propertyPath: shakeScript
       value: 
       objectReference: {fileID: 124569968}
+    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: blocks.Array.data[1]
+      value: 
+      objectReference: {fileID: 1204667091235280, guid: 112ddff1595f6924c976ee59514053a7,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
   m_IsPrefabAsset: 0
@@ -24058,7 +24076,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  Event: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
   intendedSender: {fileID: 0}
 --- !u!114 &1853502401
 MonoBehaviour:

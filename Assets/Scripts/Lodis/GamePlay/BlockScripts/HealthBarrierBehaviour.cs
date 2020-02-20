@@ -30,8 +30,8 @@ namespace Lodis.GamePlay.BlockScripts
         }
 		private void OnTriggerStay(Collider other)
 		{
-            _healthScript = other.GetComponent<HealthBehaviour>();
-			if (_healthScript != null)
+			_healthScript = other.GetComponent<HealthBehaviour>();
+			if (_healthScript != null && other.name != "Repair Block(Clone)")
 			{
 				TryHeal();
 			}
