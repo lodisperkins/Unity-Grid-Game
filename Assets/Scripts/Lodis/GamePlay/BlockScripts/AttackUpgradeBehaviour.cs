@@ -47,8 +47,8 @@ namespace Lodis.GamePlay.BlockScripts
 		public void TransferOwner(GameObject otherBlock)
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
-			_blockHealth = otherBlock.GetComponent<HealthBehaviour>();
-			GetComponent<GameEventListener>().intendedSender = otherBlock;
+            _blockHealth = otherBlock.GetComponent<HealthBehaviour>();
+            _blockHealth.health.Val = turretScript.bulletCount;
 			turretScript.OutOfAmmo.AddListener(blockScript.DestroyBlock);
 			blockScript.componentList.Add(gameObject);
 			transform.SetParent(otherBlock.transform,false);

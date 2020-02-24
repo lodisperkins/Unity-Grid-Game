@@ -53,7 +53,7 @@ namespace Lodis
             GetComponent<BlockBehaviour>().enabled = true;
             _currentMaterial.SetColor("_EmissionColor",Color.black);
             _health = GetComponent<HealthBehaviour>();
-            canUpgrade = false;
+            canUpgrade = true;
             _awake = true;
             _currentLevel = 1;
         }
@@ -103,7 +103,7 @@ namespace Lodis
                     }
                 }
                 //otherwise check the name of the block and upgrade
-                Upgrade(other.gameObject);
+                Upgrade(other.GetComponent<BlockBehaviour>());
             }
             
         }
@@ -120,42 +120,39 @@ namespace Lodis
             }
             return false;
         }
-        public void Upgrade(GameObject block)
+        public void Upgrade(BlockBehaviour block)
         {
-            //If the player cannot upgrade yet do nothing 
-            if (!canUpgrade)
+            //If the block cannot upgrade other blocks do nothing 
+            if (!block.canUpgrade)
             {
                 return;
             }
-            GameObject component = block.GetComponent<BlockBehaviour>().actionComponent;
-            component.SendMessage("UpgradeBlock",gameObject);
+            block.actionComponent.SendMessage("UpgradeBlock",gameObject);
             _currentLevel++;
             onUpgrade.Raise(gameObject);
             //Destroys the block placed on top after the upgrade to free up space
-            BlockBehaviour blockScript;
-            blockScript = block.GetComponent<BlockBehaviour>();
+            block.GetComponent<BlockBehaviour>();
             var destroyblock = block.GetComponent<DeletionBlockBehaviour>();
-            if (blockScript != null && destroyblock == null)
+            if (block != null && destroyblock == null)
             {
-                blockScript.DestroyBlock();
+                block.DestroyBlock();
+                block.canUpgrade = false;
                 currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
             }
-            canUpgrade = false;
-            GetComponent<RoutineBehaviour>().ResetActions();
         }
-        public void enableUpgrades()
+        public void DisableUpgrades()
         {
-            canUpgrade = true;
+            canUpgrade = false;
         }
         //Destroys this block instantly
         public void DestroyBlock()
         {
-            if (canUpgrade && _health != null)
+            if (!canUpgrade && _health != null)
             {
                 _panel.Occupied = false;
                 _health.playDeathParticleSystems(2);
             }
-            else if(!canUpgrade&& _health != null)
+            else if(canUpgrade&& _health != null)
             {
                 _health.hasRaised = true;
             }

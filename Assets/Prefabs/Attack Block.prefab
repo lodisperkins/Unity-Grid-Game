@@ -452,6 +452,8 @@ GameObject:
   - component: {fileID: 114449685214321504}
   - component: {fileID: 114053253877227240}
   - component: {fileID: 54029346772090652}
+  - component: {fileID: 114354113086096324}
+  - component: {fileID: 114903615145851264}
   m_Layer: 9
   m_Name: Attack Block
   m_TagString: Block
@@ -2248,7 +2250,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114782364321774370}
-        m_MethodName: enableUpgrades
+        m_MethodName: DisableUpgrades
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2262,6 +2264,21 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
   intendedSender: {fileID: 1609089727696304}
+--- !u!114 &114354113086096324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609089727696304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeVal: 0.01
+  isShaking: 0
+  shakeRange: 0.7
+  shakeLength: 0
 --- !u!114 &114407928321660956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2510,6 +2527,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _block: {fileID: 1609089727696304}
+--- !u!114 &114903615145851264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609089727696304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114354113086096324}
+        m_MethodName: StartShaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  intendedSender: {fileID: 1609089727696304}
 --- !u!114 &114939396852627446
 MonoBehaviour:
   m_ObjectHideFlags: 1
