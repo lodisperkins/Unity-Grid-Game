@@ -108,7 +108,8 @@ GameObject:
   - component: {fileID: 135194058443003192}
   - component: {fileID: 114503550086696904}
   - component: {fileID: 114804881448714462}
-  m_Layer: 9
+  - component: {fileID: 114829288299332026}
+  m_Layer: 0
   m_Name: Ramming Barrier
   m_TagString: Barrier
   m_Icon: {fileID: 0}
@@ -2713,7 +2714,7 @@ MonoBehaviour:
   OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
   _laserMatP1: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
   _laserMatP2: {fileID: 2100000, guid: 561790cbdf11c9c42976451f520ae915, type: 2}
-  laser: {fileID: 1893602849636482}
+  _laser: {fileID: 1893602849636482}
   laserLight: {fileID: 1095753360676404}
   block: {fileID: 114334787116484722}
   bulletForce: {x: 0, y: 0, z: 0}
@@ -2724,6 +2725,35 @@ MonoBehaviour:
   _bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   _bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
   active: 0
+--- !u!114 &114829288299332026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095753360676404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114503550086696904}
+        m_MethodName: RemoveOtherSpecialActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
+  intendedSender: {fileID: 1893602849636482}
 --- !u!135 &135194058443003192
 SphereCollider:
   m_ObjectHideFlags: 1

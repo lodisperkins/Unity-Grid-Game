@@ -79,16 +79,16 @@ namespace Lodis
                 //otherwise check the name of the block and upgrade
                 Upgrade(other.GetComponent<BlockBehaviour>());
             }
-            if(actionComponent != null)
+            foreach(IUpgradable component in componentList)
             {
-                actionComponent.ResolveCollision(other.gameObject);
+                component.ResolveCollision(other.gameObject);
             }
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if (actionComponent != null)
+            foreach (IUpgradable component in componentList)
             {
-                actionComponent.ResolveCollision(collision.gameObject);
+                component.ResolveCollision(collision.gameObject);
             }
         }
         public void Upgrade(BlockBehaviour block)

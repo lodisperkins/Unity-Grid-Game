@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 135386657465840888}
   - component: {fileID: 114490304771331838}
   - component: {fileID: 114915535984416808}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Repair Shield
   m_TagString: Barrier
   m_Icon: {fileID: 0}

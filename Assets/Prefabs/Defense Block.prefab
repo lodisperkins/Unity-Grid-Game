@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 65728833381609178}
   - component: {fileID: 114234282012569578}
   - component: {fileID: 114434985076502166}
-  - component: {fileID: 114981202253341448}
   m_Layer: 9
   m_Name: Defense Block
   m_TagString: Block
@@ -290,6 +289,8 @@ GameObject:
   - component: {fileID: 114565348299176418}
   - component: {fileID: 114454006631643696}
   - component: {fileID: 135997003791203268}
+  - component: {fileID: 114133742017147760}
+  - component: {fileID: 114004820989101046}
   m_Layer: 9
   m_Name: Sphere
   m_TagString: Barrier
@@ -2249,6 +2250,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114004820989101046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419338390495314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7613af2929f131d4cbf39b155618d633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalObject: {fileID: 1419338390495314}
+  flashObject: {fileID: 1410683124301992}
+  numberOfFlashes: 5
+  flashSpeed: 0.01
 --- !u!114 &114029233429761654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2343,6 +2359,35 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114133742017147760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419338390495314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114004820989101046}
+        m_MethodName: StartFlashing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  intendedSender: {fileID: 1172816898836844}
 --- !u!114 &114154084961781932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2462,17 +2507,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114234282012569578}
         m_MethodName: StartShaking
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114981202253341448}
-        m_MethodName: StartFlashing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2764,21 +2798,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114981202253341448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1172816898836844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7613af2929f131d4cbf39b155618d633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalObject: {fileID: 1419338390495314}
-  flashObject: {fileID: 1410683124301992}
-  numberOfFlashes: 5
-  flashSpeed: 0.01
 --- !u!114 &114993990273059680
 MonoBehaviour:
   m_ObjectHideFlags: 1

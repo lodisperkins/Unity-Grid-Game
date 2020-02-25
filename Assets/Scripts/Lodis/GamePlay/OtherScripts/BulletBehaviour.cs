@@ -24,7 +24,7 @@ namespace Lodis
         //The laser model attached to this bullet
         [SerializeField] private Material _laserMatP1;
         [SerializeField] private Material _laserMatP2;
-        [SerializeField] private GameObject laser;
+        [SerializeField] private GameObject _laser;
         [SerializeField] private GameObject laserLight;
         public BlockBehaviour block;
         public Vector3 bulletForce;
@@ -44,6 +44,20 @@ namespace Lodis
         {
             get { return _currentPanel; }
         }
+
+        public GameObject Laser
+        {
+            get
+            {
+                return _laser;
+            }
+
+            set
+            {
+                _laser = value;
+            }
+        }
+
         private void Start()
         {
             TempObject = gameObject;
@@ -66,13 +80,13 @@ namespace Lodis
         {
             if (Owner == "Player1")
             {
-                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
+                Laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
                 laserLight.GetComponent<MeshRenderer>().material.color = Color.red;
                 _bulletListP1.Add(gameObject);
             }
             else
             {
-                laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
+                Laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP2;
                 laserLight.GetComponent<MeshRenderer>().material.color = Color.blue;
                 _bulletListP2.Add(gameObject);
             }

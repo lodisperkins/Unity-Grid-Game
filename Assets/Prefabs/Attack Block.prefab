@@ -92,12 +92,12 @@ GameObject:
   - component: {fileID: 33744122266397774}
   - component: {fileID: 23288299171153948}
   m_Layer: 9
-  m_Name: Box
+  m_Name: FlashBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1111203893618180
 GameObject:
   m_ObjectHideFlags: 1
@@ -368,6 +368,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1511624849367668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4693513639739930}
+  - component: {fileID: 33777095804397702}
+  - component: {fileID: 23983952565362974}
+  m_Layer: 9
+  m_Name: Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1535007745888612
 GameObject:
   m_ObjectHideFlags: 1
@@ -454,6 +471,7 @@ GameObject:
   - component: {fileID: 54029346772090652}
   - component: {fileID: 114354113086096324}
   - component: {fileID: 114903615145851264}
+  - component: {fileID: 114273005887081650}
   m_Layer: 9
   m_Name: Attack Block
   m_TagString: Block
@@ -761,10 +779,10 @@ Transform:
   m_GameObject: {fileID: 1105417676296570}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: -0}
   m_LocalPosition: {x: 0, y: 0, z: -0.059999466}
-  m_LocalScale: {x: 13.9998455, y: 13.9998455, z: 13.9998455}
+  m_LocalScale: {x: 13.999849, y: 13.999849, z: 13.999849}
   m_Children: []
   m_Father: {fileID: 4198981612482480}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4198981612482480
 Transform:
@@ -773,7 +791,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609089727696304}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.209992, y: 0.611, z: 25.324}
+  m_LocalPosition: {x: -0.2484211, y: 0.609, z: 25.318626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4104830866255408}
@@ -787,6 +805,7 @@ Transform:
   - {fileID: 4119965722778924}
   - {fileID: 4553690279061194}
   - {fileID: 4256860782864314}
+  - {fileID: 4693513639739930}
   - {fileID: 4178746110753866}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -972,6 +991,19 @@ Transform:
   m_Father: {fileID: 4119965722778924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -88.359, y: 0, z: 0}
+--- !u!4 &4693513639739930
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511624849367668}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.059999466}
+  m_LocalScale: {x: 13.9998455, y: 13.9998455, z: 13.9998455}
+  m_Children: []
+  m_Father: {fileID: 4198981612482480}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4785857159817234
 Transform:
   m_ObjectHideFlags: 1
@@ -1369,7 +1401,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8979de94ad943864a8a3c0c5ff620b01, type: 2}
+  - {fileID: 2100000, guid: de63e406e5cb39443ba0ed4c6ec9ae3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1984,6 +2016,41 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23983952565362974
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511624849367668}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 8979de94ad943864a8a3c0c5ff620b01, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!33 &33030889202586396
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2145,6 +2212,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1105417676296570}
   m_Mesh: {fileID: 4300000, guid: 3e6f5aee9ac31934697c9c63a3ee96d4, type: 3}
+--- !u!33 &33777095804397702
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511624849367668}
+  m_Mesh: {fileID: 4300000, guid: 3e6f5aee9ac31934697c9c63a3ee96d4, type: 3}
 --- !u!33 &33828183090840168
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2264,6 +2338,21 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
   intendedSender: {fileID: 1609089727696304}
+--- !u!114 &114273005887081650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609089727696304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7613af2929f131d4cbf39b155618d633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalObject: {fileID: 1511624849367668}
+  flashObject: {fileID: 1105417676296570}
+  numberOfFlashes: 5
+  flashSpeed: 0.01
 --- !u!114 &114354113086096324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2542,6 +2631,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114354113086096324}
         m_MethodName: StartShaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114273005887081650}
+        m_MethodName: StartFlashing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

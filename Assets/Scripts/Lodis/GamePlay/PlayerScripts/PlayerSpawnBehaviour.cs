@@ -104,7 +104,7 @@ namespace Lodis
         /// </summary>
         /// <param name="costOfItem"></param>
         /// <returns></returns>
-        private bool CheckMaterial(int costOfItem)
+        public bool CheckMaterial(int costOfItem)
         {
             if (overdriveEnabled)
             {
