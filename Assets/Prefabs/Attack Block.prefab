@@ -2211,7 +2211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae65d155c2332649bfe66f93bd10f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretScript: {fileID: 0}
+  turretScript: {fileID: 114407928321660956}
   _blockScript: {fileID: 114782364321774370}
   _damageUpgradeVal: 1
   _bulletForceUpgradeVal: 100
@@ -2506,13 +2506,12 @@ MonoBehaviour:
   cost: 10
   _level: {fileID: 114558364310588890}
   BlockWeightVal: 1
-  actionComponent: {fileID: 1733942576174260}
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
   onBlockDelete: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
-  componentList: []
+  specialFeature: {fileID: 114031447920753854}
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
 --- !u!114 &114853325703285710

@@ -8,12 +8,16 @@ namespace Lodis.GamePlay.BlockScripts
 
         public BlockBehaviour block;
         [SerializeField] public int DamageVal;
-
+        [SerializeField] private GameObject ps;
         private void OnTriggerEnter(Collider other)
         {
             ResolveCollision(other.gameObject);
         }
-
+        public void PlayHitParticleSystems(float duration)
+        {
+            var tempPs = Instantiate(ps, transform.position, transform.rotation);
+            Destroy(tempPs, .5f);
+        }
         private void ResolveCollision(GameObject other)
         {
             switch (other.tag)
@@ -30,6 +34,7 @@ namespace Lodis.GamePlay.BlockScripts
                         other.GetComponent<BlockBehaviour>().GiveMoneyForKill(block.owner.name,DamageVal);
                         health.takeDamage(DamageVal);
                     }
+                    PlayHitParticleSystems(1);
                     break;
                 }
                 case "Player":
@@ -38,18 +43,15 @@ namespace Lodis.GamePlay.BlockScripts
                     if (health != null && other.name != block.owner.name)
                     {
                         health.takeDamage(DamageVal);
+                        PlayHitParticleSystems(1);
                     }
+                    
                     break;
                 }
             }
         }
         private void Update()
         {
-            if(block == null)
-            {
-                GameObject temp = gameObject;
-                Destroy(temp);
-            }
         }
     }
 }

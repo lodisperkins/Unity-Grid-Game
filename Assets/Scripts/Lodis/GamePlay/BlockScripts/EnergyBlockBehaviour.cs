@@ -2,12 +2,11 @@
 
 namespace Lodis.GamePlay.BlockScripts
 {
-    public class EnergyBlockBehaviour : MonoBehaviour
+    public class EnergyBlockBehaviour : MonoBehaviour,IUpgradable
     {
         //the player the material block is responsible for
         [SerializeField] private BlockBehaviour _blockScript;
         private GameObject Player;
-        [SerializeField]
         //the players spawning script that hold its current materials
         private PlayerSpawnBehaviour PlayerSpawner;
         //the amount of materials the block increases the players by
@@ -16,6 +15,25 @@ namespace Lodis.GamePlay.BlockScripts
         public int materialUpgradeVal;
 
         public float regenTimeUpgradeVal;
+
+        public BlockBehaviour block
+        {
+            get
+            {
+                return _blockScript;
+            }
+            set
+            {
+                _blockScript = value;
+            }
+        }
+        public GameObject specialFeature
+        {
+            get
+            {
+                return gameObject;
+            }
+        }
         // Use this for initialization
         void Start()
         {
@@ -30,12 +48,12 @@ namespace Lodis.GamePlay.BlockScripts
         public void UpgradeBlock(GameObject otherBlock)
         {
             BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-            for (int i = 0; i < _blockScript.componentList.Count; i++)
+            foreach (IUpgradable component in _blockScript.componentList)
             {
-                if (_blockScript.componentList[i].name == gameObject.name)
+                if (component.specialFeature.name == gameObject.name)
                 {
-                    _blockScript.componentList[i].GetComponent<EnergyBlockBehaviour>().MaterialAmount += materialUpgradeVal;
-                    _blockScript.componentList[i].GetComponent<RoutineBehaviour>().actionDelay -= regenTimeUpgradeVal;
+                    component.specialFeature.GetComponent<EnergyBlockBehaviour>().MaterialAmount += materialUpgradeVal;
+                    component.specialFeature.GetComponent<RoutineBehaviour>().actionDelay -= regenTimeUpgradeVal;
                     return;
                 }
             }
@@ -44,8 +62,13 @@ namespace Lodis.GamePlay.BlockScripts
         public void TransferOwner(GameObject otherBlock)
         {
             BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
-            blockScript.componentList.Add(gameObject);
+            blockScript.componentList.Add(this);
             transform.SetParent(otherBlock.transform,false);
+        }
+
+        public void ResolveCollision(GameObject collision)
+        {
+            return;
         }
     }
 }

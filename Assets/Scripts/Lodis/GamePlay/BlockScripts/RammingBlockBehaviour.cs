@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis.GamePlay.BlockScripts
 {
-    public class RammingBlockBehaviour : MonoBehaviour {
+    public class RammingBlockBehaviour : MonoBehaviour,IUpgradable {
         [SerializeField]
-        private BlockBehaviour _block;
+        private BlockBehaviour _blockScript;
         [SerializeField]
         private Rigidbody _blockRigidbody;
         private Vector3 _ramForce;
@@ -15,53 +15,46 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField] public int UpgradeVal;
         private Quaternion playerRotation;
         public bool isRamming;
+        private BulletBehaviour _projectileScript;
+        public BlockBehaviour block
+        {
+            get
+            {
+                return _blockScript;
+            }
+            set
+            {
+                _blockScript = value;
+            }
+        }
+        public GameObject specialFeature
+        {
+            get
+            {
+                return gameObject;
+            }
+        }
         private void Start()
         {
-            _block.specialActions += Ram;
+            _blockScript.specialActions += Ram;
             _blockRigidbody.isKinematic = true;
-           
+            _projectileScript = GetComponent<BulletBehaviour>();
         }
-        private void OnCollisionEnter(Collision collision)
+        public void InitializeProjectileScript()
         {
-            ResolveCollision(collision.gameObject);
-        }
-
-        public void ResolveCollision(GameObject other)
-        {
-            switch (other.tag)
-            {
-                case "Block":
-                {
-                    var health = other.GetComponent<HealthBehaviour>();
-                        var block = other.GetComponent<BlockBehaviour>();
-                    if (health != null && isRamming && block.canUpgrade)
-                    {
-                        block.GiveMoneyForKill(_block.owner.name, DamageVal);
-                        health.takeDamage(DamageVal);
-                        _block.DestroyBlock();
-                    }
-                    break;
-                }
-                default:
-                {
-                    var health = other.GetComponent<HealthBehaviour>();
-                    if (health != null && other.name != _block.owner.name)
-                    {
-                        health.takeDamage(DamageVal);
-                        _block.DestroyBlock();
-                    }
-                    break;
-                }
-            }
+            _projectileScript.enabled = true;
+            _projectileScript.DamageVal = DamageVal;
+            _projectileScript.Owner = _blockScript.owner.name;
+            _projectileScript.lifetime = 5;
         }
         public void UpgradeBlock(GameObject otherBlock)
         {
             BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-            for (int i = 0; i < _blockScript.componentList.Count; i++)
+            foreach (IUpgradable component in _blockScript.componentList)
             {
-                if (_blockScript.componentList[i].name == gameObject.name)
+                if (component.specialFeature.name == gameObject.name)
                 {
-                    _blockScript.componentList[i].GetComponent<RammingBlockBehaviour>().DamageVal += UpgradeVal;
+                    component.specialFeature.GetComponent<RammingBlockBehaviour>().DamageVal += UpgradeVal;
                     return;
                 }
             }
@@ -70,27 +63,38 @@ namespace Lodis.GamePlay.BlockScripts
         public void Ram(object[] args)
         {
             isRamming = true;
-            transform.rotation = _block.owner.transform.rotation;
+            InitializeProjectileScript();
+            transform.rotation = _blockScript.owner.transform.rotation;
             transform.parent.tag = "Projectile";
             _blockRigidbody.isKinematic = false;
-            _block.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
-            _block.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter = 0;
+            _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
+            _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter = 0;
             _ramForce = transform.forward * _ramForceScale;
             _blockRigidbody.AddForce(_ramForce, ForceMode.Impulse);
         }
         public void TransferOwner(GameObject otherBlock)
         {
-            _block = otherBlock.GetComponent<BlockBehaviour>();
-            _block.componentList.Add(gameObject);
+            _blockScript = otherBlock.GetComponent<BlockBehaviour>();
+            _blockScript.componentList.Add(this);
             _blockRigidbody = otherBlock.GetComponent<Rigidbody>();
             _blockRigidbody.isKinematic = true;
-            _block.specialActions += Ram;
+            _blockScript.specialActions += Ram;
             transform.SetParent(otherBlock.transform,false);
         }
-        // Update is called once per frame
-        void Update () {
-            _block.canUpgrade = !isRamming; 
-	    }
+
+        void IUpgradable.ResolveCollision(GameObject collision)
+        {
+            if (_blockScript.canUpgrade)
+            {
+                return;
+            }
+            _projectileScript.ResolveCollision(collision.gameObject);
+        }
+        private void OnDestroy()
+        {
+            GameObject temp = block.gameObject;
+            Destroy(temp);
+        }
     }
 }
 

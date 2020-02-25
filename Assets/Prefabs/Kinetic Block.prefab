@@ -2195,7 +2195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockHealth: {fileID: 114916341179605010}
-  block: {fileID: 114533408530467866}
+  _blockScript: {fileID: 114533408530467866}
   _eventListener: {fileID: 114338181517171024}
   bulletCapacity: 15
   _bulletCapUpgradeVal: 11
@@ -2378,13 +2378,12 @@ MonoBehaviour:
   cost: 20
   _level: {fileID: 114536119272752628}
   BlockWeightVal: 1
-  actionComponent: {fileID: 1427170257466008}
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
   onBlockDelete: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
-  componentList: []
+  specialFeature: {fileID: 114179621140624666}
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
 --- !u!114 &114536119272752628

@@ -93,7 +93,7 @@ namespace Lodis
             DamageVal += 1;
             onReflect.Raise();
         }
-        private void ResolveCollision(GameObject other)
+        public void ResolveCollision(GameObject other)
         {
             switch (other.tag)
             {
@@ -166,6 +166,19 @@ namespace Lodis
                         }
                         break;
                     }
+                case "Barrier":
+                    {
+                        playDeathParticleSystems(1);
+                        ps.transform.position = other.transform.position;
+                        break;
+                    }
+                default:
+                    {
+                        playDeathParticleSystems(1);
+                        ps.transform.position = other.transform.position;
+                        Destroy(TempObject);
+                        break;
+                    }
             }
         }
         private void OnTriggerEnter(Collider other)
@@ -177,7 +190,15 @@ namespace Lodis
             }
             ResolveCollision(other.gameObject);
         }
-
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (Owner == "")
+            {
+                Destroy();
+                return;
+            }
+            ResolveCollision(collision.gameObject);
+        }
         public void Destroy()
         {
             Destroy(TempObject);

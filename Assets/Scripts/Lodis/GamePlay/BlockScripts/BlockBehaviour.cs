@@ -28,7 +28,7 @@ namespace Lodis
         public int BlockWeightVal;
         private bool _awake;
         private Material _currentMaterial;
-        public GameObject actionComponent;
+        public IUpgradable actionComponent;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
         public bool deleting;
@@ -36,10 +36,11 @@ namespace Lodis
         [FormerlySerializedAs("OnBlockSpawn")] [SerializeField] private Event onBlockSpawn;
         [SerializeField] private Event onBlockDelete;
         private HealthBehaviour _health;
-        public List<GameObject> componentList;
+        public List<IUpgradable> componentList;
         private Color _currentMaterialColor;
         private string pastName;
         public BlockAction specialActions;
+        public MonoBehaviour specialFeature;
         [SerializeField] private IntVariable player1Materials;
         [SerializeField] private IntVariable player2Materials;
         // Use this for initialization
@@ -48,7 +49,8 @@ namespace Lodis
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
-            componentList = new List<GameObject>();
+            componentList = new List<IUpgradable>();
+            actionComponent = specialFeature as IUpgradable;
             componentList.Add(actionComponent);
             GetComponent<BlockBehaviour>().enabled = true;
             _currentMaterial.SetColor("_EmissionColor",Color.black);
@@ -64,70 +66,39 @@ namespace Lodis
             onBlockSpawn.Raise();
             _awake = true;
         }
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (canUpgrade == false)
-            {
-                if (gameObject.name == "Ramming Block(Clone)")
-                {
-                    if (gameObject.GetComponentInChildren<RammingBlockBehaviour>().isRamming)
-                    {
-                        CheckIfRammingBlock(collision.gameObject);
-                        return;
-                    }
-                }
-            }
-        }
         private void OnTriggerEnter(Collider other)
         {
             
-            if (other.CompareTag("Player"))
+            if (other.name == "TeleportationBeam")
             {
                 DestroyBlock();
                 return;
             }
             else if (other.CompareTag("Block"))
             {
-                if (gameObject.name == "Ramming Block(Clone)")
-                {
-                    RammingBlockBehaviour ramScript = GetComponentInChildren<RammingBlockBehaviour>();
-                    if(ramScript == null)
-                    {
-                        return;
-                    }
-                    if (ramScript.isRamming)
-                    {
-                        
-                        CheckIfRammingBlock(other.gameObject);
-                        return;
-                    }
-                }
                 //otherwise check the name of the block and upgrade
                 Upgrade(other.GetComponent<BlockBehaviour>());
             }
-            
-        }
-        public bool CheckIfRammingBlock(GameObject other)
-        {
-            foreach (GameObject component in componentList)
+            if(actionComponent != null)
             {
-                RammingBlockBehaviour ram = component.GetComponent<RammingBlockBehaviour>();
-                if (ram != null)
-                {
-                    ram.ResolveCollision(other);
-                    return true;
-                }
+                actionComponent.ResolveCollision(other.gameObject);
             }
-            return false;
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (actionComponent != null)
+            {
+                actionComponent.ResolveCollision(collision.gameObject);
+            }
         }
         public void Upgrade(BlockBehaviour block)
         {
             //If the block cannot upgrade other blocks do nothing 
-            if (!block.canUpgrade)
+            if (!block.canUpgrade || block.actionComponent == null)
             {
                 return;
             }
-            block.actionComponent.SendMessage("UpgradeBlock",gameObject);
+            block.actionComponent.UpgradeBlock(gameObject);
             _currentLevel++;
             onUpgrade.Raise(gameObject);
             //Destroys the block placed on top after the upgrade to free up space

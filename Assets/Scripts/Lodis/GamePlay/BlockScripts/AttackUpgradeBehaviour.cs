@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
 {
-	public class AttackUpgradeBehaviour : MonoBehaviour {
+	public class AttackUpgradeBehaviour : MonoBehaviour,IUpgradable {
 
 		[SerializeField] private GunBehaviour turretScript;
 		[SerializeField] private BlockBehaviour _blockScript;
@@ -11,6 +11,24 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private int _bulletForceUpgradeVal;
 		[SerializeField] private int _ammoUpgradeVal;
 		[SerializeField] private HealthBehaviour _blockHealth;
+        public BlockBehaviour block
+        {
+            get
+            {
+                return _blockScript;
+            }
+            set
+            {
+                _blockScript = value;
+            }
+        }
+        public GameObject specialFeature
+        {
+            get
+            {
+                return gameObject;
+            }
+        }
 		// Use this for initialization
 		void Start ()
 		{
@@ -20,24 +38,18 @@ namespace Lodis.GamePlay.BlockScripts
             _blockHealth.health.Val = turretScript.CurrentAmmo;
 		}
 
-		private void Awake()
-		{
-			
-		}
-
 		public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-			for (int i = 0; i < _blockScript.componentList.Count; i++)
-			{
-				if (_blockScript.componentList[i].name == gameObject.name)
-				{
-					turretScript = _blockScript.componentList[i].GetComponent<GunBehaviour>();
-					
+            foreach (IUpgradable component in _blockScript.componentList)
+            {
+                if (component.specialFeature.name == gameObject.name)
+                {
+					turretScript = component.specialFeature.GetComponent<GunBehaviour>();
 					turretScript.damageVal += _damageUpgradeVal;
 					turretScript.bulletForceScale += _bulletForceUpgradeVal;
 					turretScript.bulletCount += _ammoUpgradeVal;
-					_blockScript.componentList[i].GetComponent<AttackUpgradeBehaviour>()._blockHealth.health.Val = turretScript.bulletCount;
+                    component.specialFeature.GetComponent<AttackUpgradeBehaviour>()._blockHealth.health.Val = turretScript.bulletCount;
                     turretScript.bulletDelay -= .2f;
 					return;
 				}
@@ -50,7 +62,7 @@ namespace Lodis.GamePlay.BlockScripts
             _blockHealth = otherBlock.GetComponent<HealthBehaviour>();
             _blockHealth.health.Val = turretScript.bulletCount;
 			turretScript.OutOfAmmo.AddListener(blockScript.DestroyBlock);
-			blockScript.componentList.Add(gameObject);
+			blockScript.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);
 		}
 
@@ -58,5 +70,10 @@ namespace Lodis.GamePlay.BlockScripts
 		{
 			_blockHealth.health.Val--;
 		}
-	}
+
+        public void ResolveCollision(GameObject collision)
+        {
+            return;
+        }
+    }
 }

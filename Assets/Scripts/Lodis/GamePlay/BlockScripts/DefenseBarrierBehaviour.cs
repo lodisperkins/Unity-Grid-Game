@@ -3,14 +3,15 @@ using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
 {
-	public class DefenseBarrierBehaviour : MonoBehaviour
+	public class DefenseBarrierBehaviour : MonoBehaviour,IUpgradable
 	{
 		[SerializeField] private HealthBehaviour healthScript;
 		private float _decayVal;
 		[SerializeField] private int _upgradeVal;
 		private string colorName;
 		private Material _attachedMaterial;
-		
+        [SerializeField]
+        private BlockBehaviour _blockScript;
 		[SerializeField] private RoutineBehaviour shieldTimer;
 
 		private float lerpNum;
@@ -22,24 +23,32 @@ namespace Lodis.GamePlay.BlockScripts
 			colorName = "Color_262603E3";
 			_attachedMaterial = GetComponent<MeshRenderer>().material;
 		}
-
-		private void OnTriggerEnter(Collider other)
-		{
-			if (other.CompareTag("Projectile"))
-			{
-				healthScript.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
-                other.GetComponent<BulletBehaviour>().Destroy();
-			}
-		}
-
-		public void UpgradeBlock(GameObject otherBlock)
+        public BlockBehaviour block
+        {
+            get
+            {
+                return _blockScript;
+            }
+            set
+            {
+                _blockScript = value;
+            }
+        }
+        public GameObject specialFeature
+        {
+            get
+            {
+                return gameObject;
+            }
+        }
+        public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-			for (int i = 0; i < _blockScript.componentList.Count; i++)
-			{
-				if (_blockScript.componentList[i].name == gameObject.name)
-				{
-					_blockScript.componentList[i].GetComponent<DefenseBarrierBehaviour>().Upgrade();
+            foreach (IUpgradable component in _blockScript.componentList)
+            {
+                if (component.specialFeature.name == gameObject.name)
+                {
+                    component.specialFeature.GetComponent<DefenseBarrierBehaviour>().Upgrade();
 					return;
 				}
 			}
@@ -71,12 +80,21 @@ namespace Lodis.GamePlay.BlockScripts
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
 			healthScript = otherBlock.GetComponent<HealthBehaviour>();
 			healthScript.health.Val += _upgradeVal;
-			blockScript.componentList.Add(gameObject);
+			blockScript.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);
 		}
 		// Update is called once per frame
 		void Update () {
 			
 		}
-	}
+
+        public void ResolveCollision(GameObject collision)
+        {
+            if (collision.CompareTag("Projectile"))
+            {
+                healthScript.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
+                collision.GetComponent<BulletBehaviour>().Destroy();
+            }
+        }
+    }
 }

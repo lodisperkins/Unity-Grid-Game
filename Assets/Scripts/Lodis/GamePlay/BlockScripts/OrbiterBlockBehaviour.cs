@@ -2,10 +2,10 @@
 
 namespace Lodis.GamePlay.BlockScripts
 {
-	public class OrbiterBlockBehaviour : MonoBehaviour {
-		
+	public class OrbiterBlockBehaviour : MonoBehaviour,IUpgradable {
+
 		[SerializeField]
-		private BlockBehaviour _block;
+		private BlockBehaviour _blockScript;
         [SerializeField]
         private GameObject _orb1;
         [SerializeField]
@@ -18,6 +18,26 @@ namespace Lodis.GamePlay.BlockScripts
         private GameEventListener _upgradeEventListener;
         [SerializeField]
         private GameEventListener _deleteEventListener;
+        public BlockBehaviour block
+        {
+            get
+            {
+                return _blockScript;
+            }
+            set
+            {
+                _blockScript = value;
+            }
+        }
+
+        public GameObject specialFeature
+        {
+            get
+            {
+                return gameObject;
+            }
+        }
+
         private void Start()
         {
             transform.parent = null;
@@ -25,11 +45,11 @@ namespace Lodis.GamePlay.BlockScripts
         public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-			for (int i = 0; i < _blockScript.componentList.Count; i++)
+			foreach (IUpgradable component in _blockScript.componentList)
 			{
-				if (_blockScript.componentList[i].name == gameObject.name)
+				if (component.specialFeature.name == gameObject.name)
 				{
-					_blockScript.componentList[i].GetComponent<OrbiterBlockBehaviour>().UpgradeOrbs();
+					component.specialFeature.GetComponent<OrbiterBlockBehaviour>().UpgradeOrbs();
                     return;
 				}
 			}
@@ -59,25 +79,43 @@ namespace Lodis.GamePlay.BlockScripts
                 return;
             }
             BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-            for (int i = 0; i < _blockScript.componentList.Count; i++)
+            foreach(IUpgradable component in _blockScript.componentList)
             {
-                if (_blockScript.componentList[i].CompareTag("Barrier") || _blockScript.componentList[i].CompareTag("Gun"))
+                if (component.specialFeature.CompareTag("Barrier") || component.specialFeature.CompareTag("Gun"))
                 {
-                    _blockScript.componentList[i].transform.SetParent(_orb1.transform,false);
-                    _blockScript.componentList[i].transform.localScale = _orb1.transform.localScale;
-                    Instantiate(_blockScript.componentList[i], _orb2.transform, false);
+                    component.specialFeature.transform.SetParent(_orb1.transform,false);
+                    component.specialFeature.transform.position = _orb1.transform.position;
+                    component.specialFeature.transform.localScale = _orb1.transform.localScale;
+                    GameObject componentClone =Instantiate(component.specialFeature, _orb2.transform, false);
+                    componentClone.transform.position =_orb2.transform.position;
+                    DisableOrbAttack();
                     return;
                 }
             }
         }
+        public void DisableOrbAttack()
+        {
+            _orb1.GetComponent<OrbBehaviour>().DamageVal = 0;
+            _orb2.GetComponent<OrbBehaviour>().DamageVal = 0;
+            _orb3.GetComponent<OrbBehaviour>().DamageVal = 0;
+        }
 		public void TransferOwner(GameObject otherBlock)
 		{
-			_block = otherBlock.GetComponent<BlockBehaviour>();
-			_block.componentList.Add(gameObject);
+			_blockScript = otherBlock.GetComponent<BlockBehaviour>();
+			_blockScript.componentList.Add(this);
+            transform.SetParent(otherBlock.transform,false);
             transform.position = otherBlock.transform.position;
             _upgradeEventListener.intendedSender = otherBlock;
             _deleteEventListener.intendedSender = otherBlock;
             ChangeOrbProperties(otherBlock);
-		}
-	}
+            _orb1.GetComponent<OrbBehaviour>().block = _blockScript;
+            _orb2.GetComponent<OrbBehaviour>().block = _blockScript;
+            _orb3.GetComponent<OrbBehaviour>().block = _blockScript;
+        }
+
+        public void ResolveCollision(GameObject collision)
+        {
+            return;
+        }
+    }
 }

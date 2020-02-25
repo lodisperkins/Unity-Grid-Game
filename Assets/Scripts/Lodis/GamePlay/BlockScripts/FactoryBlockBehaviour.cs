@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis.GamePlay.BlockScripts
 {
-    public class FactoryBlockBehaviour : MonoBehaviour {
+    public class FactoryBlockBehaviour : MonoBehaviour,IUpgradable {
         private Lodis.PlayerMovementBehaviour _playerMoveScript;
         private Lodis.PlayerSpawnBehaviour _playerSpawnScript;
         private List<GameObject> _playerBlocks;
@@ -14,6 +14,25 @@ namespace Lodis.GamePlay.BlockScripts
         GridScripts.PanelBehaviour _currentPanel;
         private GridScripts.Condition NeighboorCheck;
         List<GridScripts.PanelBehaviour> panelsInRange;
+        public BlockBehaviour block
+        {
+            get
+            {
+                return _blockScript;
+            }
+            set
+            {
+                _blockScript = value;
+            }
+        }
+        public GameObject specialFeature
+        {
+            get
+            {
+                return gameObject;
+            }
+        }
+
         // Use this for initialization
         void Start () {
             _playerMoveScript = _blockScript.owner.GetComponent<PlayerMovementBehaviour>();
@@ -71,6 +90,21 @@ namespace Lodis.GamePlay.BlockScripts
         void Update () {
 		
 	    }
+
+        public void UpgradeBlock(GameObject otherBlock)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void TransferOwner(GameObject otherBlock)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ResolveCollision(GameObject collision)
+        {
+            return;
+        }
     }
 }
     

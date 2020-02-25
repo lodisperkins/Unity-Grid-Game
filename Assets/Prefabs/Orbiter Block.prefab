@@ -2411,7 +2411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4470b02134fb1e4459ff65e19dd66977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _block: {fileID: 114815086511935174}
+  _blockScript: {fileID: 114815086511935174}
   _orb1: {fileID: 1455435606527152}
   _orb2: {fileID: 1933537297599054}
   _orb3: {fileID: 1640133893434882}
@@ -2460,6 +2460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 114815086511935174}
   DamageVal: 1
+  ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
 --- !u!114 &114134211248467716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2585,7 +2586,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114815086511935174}
-        m_MethodName: enableUpgrades
+        m_MethodName: DisableUpgrades
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2612,6 +2613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 114815086511935174}
   DamageVal: 1
+  ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
 --- !u!114 &114440889182419572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2643,6 +2645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 114815086511935174}
   DamageVal: 1
+  ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
 --- !u!114 &114547294263425514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2868,13 +2871,12 @@ MonoBehaviour:
   cost: 10
   _level: {fileID: 114547294263425514}
   BlockWeightVal: 1
-  actionComponent: {fileID: 1747620586658296}
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
   onBlockDelete: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
-  componentList: []
+  specialFeature: {fileID: 114026520184561036}
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
 --- !u!114 &114833949336806034
