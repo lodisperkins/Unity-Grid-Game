@@ -11,9 +11,16 @@ namespace Lodis.GamePlay.BlockScripts
         private int _blockIndex;
         [SerializeField]
         private BlockBehaviour _blockScript;
+        [SerializeField]
+        private RoutineBehaviour _spawnRoutine;
         GridScripts.PanelBehaviour _currentPanel;
         private GridScripts.Condition NeighboorCheck;
         List<GridScripts.PanelBehaviour> panelsInRange;
+        private Color SelectionColor;
+        private string colorName;
+        [SerializeField]
+        private GameObject box;
+        private Material _attachedMaterial;
         public BlockBehaviour block
         {
             get
@@ -37,15 +44,18 @@ namespace Lodis.GamePlay.BlockScripts
         void Start () {
             _playerMoveScript = _blockScript.owner.GetComponent<PlayerMovementBehaviour>();
             _playerSpawnScript = _blockScript.owner.GetComponent<PlayerSpawnBehaviour>();
-            _playerBlocks = _blockScript.owner.GetComponent<PlayerSpawnBehaviour>().Blocks;
+            _playerBlocks = _playerSpawnScript.Blocks;
             _currentPanel = _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>();
             _blockIndex = 0;
             _currentBlock = new BlockVariable();
+            _attachedMaterial = box.GetComponent<MeshRenderer>().material;
             _currentBlock.Block = _playerBlocks[_blockIndex];
             block.specialActions += SwitchBlocks;
             NeighboorCheck += CheckIfNeighboor;
-
+            colorName = "Color_262603E3";
+            _blockScript.Health.health.Val = _spawnRoutine.numberOfActionsLeft;
             List<GridScripts.PanelBehaviour> panelsInRange = new List<GridScripts.PanelBehaviour>();
+            FindNeighbors();
         }
         public bool CheckIfNeighboor(object[] arg)
         {
@@ -74,23 +84,22 @@ namespace Lodis.GamePlay.BlockScripts
         }
         public void SpawnBlock()
         {
-            FindNeighbors();
             _currentBlock.Block = _playerBlocks[_blockIndex];
             int panelIndex = Random.Range(0, panelsInRange.Count - 1);
-            if (panelsInRange[panelIndex].blockCounter < 3 && _playerSpawnScript.CheckMaterial(_currentBlock.Cost))
+            if (panelsInRange[panelIndex].blockCounter < 3 )
             {
-                _playerSpawnScript.BuyItem(_currentBlock.Cost);
                
                 var position = new Vector3(panelsInRange[panelIndex].gameObject.transform.position.x, _currentBlock.Block.transform.position.y, panelsInRange[panelIndex].gameObject.transform.position.z);
                 GameObject BlockCopy = Instantiate(_currentBlock.Block, position, _playerSpawnScript.Block_rotation);
                 BlockBehaviour copyScript = BlockCopy.GetComponent<BlockBehaviour>();
                 copyScript.currentPanel = panelsInRange[panelIndex].gameObject;
                 copyScript.owner = _blockScript.owner;
-                copyScript.specialFeature = block.specialFeature;
-                Instantiate(specialFeature.gameObject, BlockCopy.transform);
+                copyScript.InitializeBlock();
+                TransferUpgrades(copyScript);
                 panelsInRange[panelIndex].Occupied = true;
                 panelsInRange[panelIndex].Selected = false;
                 BlockCopy.GetComponent<Collider>().isTrigger = true;
+                block.Health.takeDamage(1);
             }
         }
         public void SwitchBlocks(object[] args)
@@ -99,6 +108,49 @@ namespace Lodis.GamePlay.BlockScripts
             if(_blockIndex > 3)
             {
                 _blockIndex = 0;
+            }
+        }
+        private void UpdateColor()
+        {
+            switch(_blockIndex)
+            {
+                case (0):
+                    {
+                        SelectionColor = Color.red;
+                        break;
+                    }
+                case (1):
+                    {
+                        SelectionColor = Color.green;
+                        break;
+                    }
+                case (2):
+                    {
+                        SelectionColor = Color.yellow;
+                        break;
+                    }
+                case (3):
+                    {
+                        SelectionColor = Color.white;
+                        break;
+                    }
+            }
+            //highlights panels
+            //foreach(GridScripts.PanelBehaviour panel in panelsInRange)
+            //{
+            //    panel.SelectionColor = SelectionColor;
+            //    panel.Selected = true;
+            //}
+            if(_attachedMaterial != null)
+            {
+                _attachedMaterial.SetColor(colorName, SelectionColor);
+            }
+        }
+        public void UnHighlightPanels()
+        {
+            foreach (GridScripts.PanelBehaviour panel in panelsInRange)
+            {
+                panel.Selected = false;
             }
         }
         public void UpgradeBlock(GameObject otherBlock)
@@ -114,11 +166,31 @@ namespace Lodis.GamePlay.BlockScripts
             }
             TransferOwner(otherBlock);
         }
+        private void TransferUpgrades(BlockBehaviour spawnedBlock)
+        {
+            foreach(IUpgradable component in block.componentList)
+            {
+                if(component.specialFeature.name == gameObject.name)
+                {
+                    continue;
+                }
+                spawnedBlock.InitializeBlock();
+                component.TransferOwner(spawnedBlock.gameObject);
+                Instantiate(component.specialFeature.gameObject, spawnedBlock.transform);
+            }
+        }
+        public void DestroyFactory()
+        {
+            _spawnRoutine.StopAllCoroutines();
+            block.DestroyBlock();
+        }
         public void Upgrade()
         {
             var routineScript = GetComponent<RoutineBehaviour>();
+            routineScript.ResetActions();
             routineScript.actionLimit += 3;
             routineScript.actionDelay -= 1;
+            _blockScript.Health.health.Val = _spawnRoutine.numberOfActionsLeft;
         }
         public void TransferOwner(GameObject otherBlock)
         {
@@ -126,10 +198,18 @@ namespace Lodis.GamePlay.BlockScripts
             blockScript.componentList.Add(this);
             transform.SetParent(otherBlock.transform, false);
         }
-
+        private void OnDestroy()
+        {
+            UnHighlightPanels();
+            block.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
+        }
         public void ResolveCollision(GameObject collision)
         {
             return;
+        }
+        private void Update()
+        {
+            UpdateColor();
         }
     }
 }

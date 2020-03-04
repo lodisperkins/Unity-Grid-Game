@@ -50,21 +50,35 @@ namespace Lodis.GamePlay.BlockScripts
             if (other.CompareTag("Projectile"))
             {
                 BulletBehaviour bulletscript = other.GetComponent<BulletBehaviour>();
-                if(bulletscript != null)
+                if(bulletscript != null && other.name == "Bullet(Clone)")
                 {
                     _bullets.Add(bulletscript);
                     other.gameObject.SetActive(false);
+                    _blockHealth.health.Val--;
                 }
-                else
+                else if(other.name == "Ramming Barrier")
                 {
-                    bulletCapacity -= 10;
+                    Rigidbody parentRigidbody = other.GetComponentInParent<Rigidbody>();
+                    if (parentRigidbody != null)
+                    {
+                        velocityVals.Add(parentRigidbody.velocity);
+                        _rigidbodies.Add(parentRigidbody);
+                        parentRigidbody.velocity = Vector3.zero;
+                        parentRigidbody.isKinematic = true;
+                    }
+                    _bullets.Add(bulletscript);
+                    bulletCapacity -= 5;
+                    _blockHealth.health.Val -= 5;
                 }
                 Rigidbody temp = other.GetComponent<Rigidbody>();
+                if(temp != null)
+                {
+                    velocityVals.Add(temp.velocity);
+                    _rigidbodies.Add(temp);
+                    temp.velocity = Vector3.zero;
+                    temp.isKinematic = true;
+                }
                 
-                velocityVals.Add(temp.velocity);
-                _rigidbodies.Add(temp);
-                temp.velocity = Vector3.zero;
-                temp.isKinematic = true;
             }
         }
         public void DetonateBlock(object[]arg)
@@ -106,6 +120,7 @@ namespace Lodis.GamePlay.BlockScripts
             _blockScript = otherBlock.GetComponent<BlockBehaviour>();
             _blockScript.componentList.Add(this);
             _blockScript.specialActions += DetonateBlock;
+            _blockHealth = otherBlock.GetComponent<HealthBehaviour>();
             transform.SetParent(otherBlock.transform,false);
         }
         // Update is called once per frame
@@ -117,10 +132,6 @@ namespace Lodis.GamePlay.BlockScripts
                 {
                     bullet.Destroy();
                 }
-            }
-            if(_blockHealth != null)
-            {
-              _blockHealth.health.Val = bulletCapacity-_rigidbodies.Count; 
             }
         }
 

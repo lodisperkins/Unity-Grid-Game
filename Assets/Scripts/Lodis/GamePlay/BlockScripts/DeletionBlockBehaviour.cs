@@ -5,13 +5,37 @@ namespace Lodis
 {
     //deletion blocks are invisible blocks used to delete others. They are only selected while
     //the player is in the deletion state.
-    public class DeletionBlockBehaviour : MonoBehaviour
+    public class DeletionBlockBehaviour : MonoBehaviour,IUpgradable
     {
         private PlayerSpawnBehaviour _player;
         [SerializeField] private Event _onDelete;
         private BlockBehaviour _deletionBlock;
         //particles to be played when a block is deleted
         [SerializeField] private ParticleSystem ps;
+
+        public BlockBehaviour block
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
+        GameObject IUpgradable.specialFeature
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public GameObject specialFeature;
+
         private void Start()
         {
             _deletionBlock = GetComponent<BlockBehaviour>();
@@ -26,15 +50,24 @@ namespace Lodis
             tempPs.playbackSpeed = 2.0f;
             Destroy(tempPs, duration);
         }
-        //Refunds the player half of the energy used to buildthe block
+        //Refunds the player half of the energy used to build the block
         private void GetRefund(BlockBehaviour block)
         {
             _player.AddMaterials(block.cost /2);
         }
-        
-        private void OnTriggerEnter(Collider other)
+        public void UpgradeBlock(GameObject otherBlock)
         {
-            var block = other.GetComponent<BlockBehaviour>();
+            throw new System.NotImplementedException();
+        }
+
+        public void TransferOwner(GameObject otherBlock)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ResolveCollision(GameObject collision)
+        {
+            var block = collision.GetComponent<BlockBehaviour>();
             if (block != null && !block.deleting)
             {
                 block.deleting = true;

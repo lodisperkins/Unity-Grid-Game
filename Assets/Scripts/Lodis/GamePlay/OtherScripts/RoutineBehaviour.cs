@@ -19,7 +19,7 @@ namespace Lodis.GamePlay
         public int actionLimit;
         [SerializeField]
         private bool hasLimit;
-
+        public int numberOfActionsLeft;
         private bool _isOnActionsBeginNotNull;
         private bool _isOnActionsCompletedNotNull;
         private void OnEnable()
@@ -38,6 +38,7 @@ namespace Lodis.GamePlay
         {
             for (var i = 0; i <= actionLimit; i++)
             {
+                numberOfActionsLeft = actionLimit - i;
                 if (_isOnActionsBeginNotNull)
                 {
                     onActionsBegin.Raise(gameObject);

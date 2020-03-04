@@ -21,6 +21,8 @@ namespace Lodis
         private BlockVariable blockRef;
         //the blocks the player has to choose from
         [SerializeField]
+        private GameObjectList blockListRef;
+        [SerializeField]
         private List<GameObject> blocks;
         private int current_index;
         //The direction the player is inputting. Used to determine where the object will spawn
@@ -92,6 +94,7 @@ namespace Lodis
             panels_in_range = new Dictionary<string, GameObject>();
             block_rotation = transform.rotation;
             BlockForward = transform.forward;
+            blocks = blockListRef.Objects;
             blockRef.Block = Blocks[0];
             current_index = 0;
             materials.Val = 60;
@@ -190,7 +193,7 @@ namespace Lodis
                 var coordinate = _panel.Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !DeleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -201,7 +204,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -212,7 +215,7 @@ namespace Lodis
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -223,7 +226,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -488,32 +491,28 @@ namespace Lodis
         public void RotateBlockRight()
         {
             block_rotation_degrees = 0;
-            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                Blocks[current_index].transform.rotation.z);
+            transform.rotation = Quaternion.Euler(0, block_rotation_degrees, 0);
             _arrow.ShowArrowTemporarily(0);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockLeft()
         {
             block_rotation_degrees = 180;
-            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                Blocks[current_index].transform.rotation.z);
+            transform.rotation = Quaternion.Euler(0, block_rotation_degrees,0);
             _arrow.ShowArrowTemporarily(180);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockUp()
         {
             block_rotation_degrees = -90;
-            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                Blocks[current_index].transform.rotation.z);
+            transform.rotation = Quaternion.Euler(0, block_rotation_degrees, 0);
             _arrow.ShowArrowTemporarily(-90);
         }
         //Rotates the block so that it faces left 
         public void RotateBlockDown()
         {
             block_rotation_degrees = 90;
-            transform.rotation = Quaternion.Euler(blockRef.Block.transform.rotation.eulerAngles.x, block_rotation_degrees,
-                Blocks[current_index].transform.rotation.z);
+            transform.rotation = Quaternion.Euler(0, block_rotation_degrees, 0);
             _arrow.ShowArrowTemporarily(90);
         }
 

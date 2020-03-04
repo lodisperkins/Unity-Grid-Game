@@ -657,6 +657,8 @@ GameObject:
   - component: {fileID: 114625848821702770}
   - component: {fileID: 54346650470280924}
   - component: {fileID: 65073090732195306}
+  - component: {fileID: 114179189713851282}
+  - component: {fileID: 114964730228050476}
   m_Layer: 9
   m_Name: Ramming Block
   m_TagString: Block
@@ -2309,6 +2311,22 @@ MonoBehaviour:
   actionDelay: 0.01
   actionLimit: 1
   hasLimit: 1
+  numberOfActionsLeft: 0
+--- !u!114 &114179189713851282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893602849636482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeVal: 0.01
+  isShaking: 0
+  shakeRange: 0.7
+  shakeLength: 0
 --- !u!114 &114204422207932198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2753,6 +2771,35 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
+  intendedSender: {fileID: 1893602849636482}
+--- !u!114 &114964730228050476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893602849636482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114179189713851282}
+        m_MethodName: StartShaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   intendedSender: {fileID: 1893602849636482}
 --- !u!135 &135194058443003192
 SphereCollider:

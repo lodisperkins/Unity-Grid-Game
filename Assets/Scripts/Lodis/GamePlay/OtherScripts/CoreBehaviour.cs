@@ -23,23 +23,27 @@ namespace Lodis
         private float _explosionRadius;
         [SerializeField]
         private float _upwardsModifier;
+        private int currentPiece;
         // Use this for initialization
         void Start()
         {
             _coreMaterial.color = Color.white;
             _materialColor = Color.white;
             _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 10);
-            random = new System.Random();
+            currentPiece = 0;
         }
         public void BlowPieceAway()
         {
-            var randNum = random.Next(0, _pieces.Count);
-            GameObject temp = _pieces[randNum];
-            _pieces.Remove(temp);
-            temp.GetComponent<Rigidbody>().isKinematic = false;
-            temp.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, temp.transform.position, _explosionRadius, _upwardsModifier, ForceMode.Impulse);
-            _onExplosion.Raise(gameObject);
-            Destroy(temp, 3);
+            if(currentPiece < _pieces.Count)
+            {
+                GameObject temp = _pieces[currentPiece];
+                _pieces.Remove(temp);
+                temp.GetComponent<Rigidbody>().isKinematic = false;
+                temp.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, temp.transform.position, _explosionRadius, _upwardsModifier, ForceMode.Impulse);
+                _onExplosion.Raise(gameObject);
+                Destroy(temp, 3);
+                currentPiece++;
+            }
         }
         private void OnTriggerStay(Collider other)
         {

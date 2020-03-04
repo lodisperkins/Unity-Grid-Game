@@ -17,16 +17,30 @@ public class FlashBehaviour : MonoBehaviour {
 	}
     private IEnumerator Flash()
     {
-        for (var i = 0; i < numberOfFlashes; i++)
+        if (flashObject != null && normalObject != null)
         {
-            normalObject.SetActive(false);
-            flashObject.SetActive(true);
-            yield return new WaitForSeconds(flashSpeed);
+            for (var i = 0; i < numberOfFlashes; i++)
+            {
+                normalObject.SetActive(false);
+                flashObject.SetActive(true);
+                yield return new WaitForSeconds(flashSpeed);
+                normalObject.SetActive(true);
+                flashObject.SetActive(false);
+                yield return new WaitForSeconds(flashSpeed);
+            }
             normalObject.SetActive(true);
-            flashObject.SetActive(false);
-            yield return new WaitForSeconds(flashSpeed);
         }
-        normalObject.SetActive(true);
+        else
+        {
+            for (var i = 0; i < numberOfFlashes; i++)
+            {
+                normalObject.SetActive(false);
+                yield return new WaitForSeconds(flashSpeed);
+                normalObject.SetActive(true);
+                yield return new WaitForSeconds(flashSpeed);
+            }
+            normalObject.SetActive(true);
+        }
     }
     public void StartFlashing()
     {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
 
@@ -30,8 +31,18 @@ namespace Lodis.GamePlay.GridScripts
         public PanelBehaviour previousPanel;
         [SerializeField]
         private int _blockLimit;
-
-        [SerializeField] private ParticleSystem _explosionParticles;
+        private float xAbsolute;
+        private float yAbsolute;
+        private float zAbsolute;
+        private bool _isBroken;
+        public bool IsBroken
+        {
+            get
+            {
+                return _isBroken;
+            }
+        }
+        [SerializeField] private GameObject _explosionParticles;
         [FormerlySerializedAs("_blockCounter")] public int blockCounter;
         public int BlockLimit
         {
@@ -52,6 +63,7 @@ namespace Lodis.GamePlay.GridScripts
             G = 1;
             TimerSet = false;
             _panelMat = GetComponent<MeshRenderer>().material;
+            
         }
 
         private void OnEnable()
@@ -83,6 +95,31 @@ namespace Lodis.GamePlay.GridScripts
             }
 
         }
+
+        public float XAbsolute
+        {
+            get
+            {
+                return xAbsolute;
+            }
+        }
+
+        public float YAbsolute
+        {
+            get
+            {
+                return yAbsolute;
+            }
+        }
+
+        public float ZAbsolute
+        {
+            get
+            {
+                return zAbsolute;
+            }
+        }
+        
         //highlights the panel when a bullet passes through it
         private void OnTriggerStay(Collider other)
         {
@@ -92,6 +129,7 @@ namespace Lodis.GamePlay.GridScripts
                 _attackHighlight = true;
                 UpdateColor();
             }
+            
         }
         
         private void OnTriggerExit(Collider other)
@@ -167,7 +205,33 @@ namespace Lodis.GamePlay.GridScripts
                     _currentColor = _player2Mat.color;
                 }
             }
-             
+        }
+        public void BreakPanel(float time)
+        {
+            if (_isBroken == false && Occupied == false)
+            {
+                _isBroken = true;
+                StartCoroutine(Break(time));
+            }
+        }
+        public IEnumerator Break(float time)
+        {
+            MeshRenderer mesh = GetComponent<MeshRenderer>();
+            PlayParticleSystems(.5f);
+            mesh.enabled = false;
+            Occupied = true;
+            yield return new WaitForSeconds(time);
+            for(int i = 0; i<= 5; i++)
+            {
+                mesh.enabled = true;
+                yield return new WaitForSeconds(0.01f);
+                mesh.enabled = false;
+                yield return new WaitForSeconds(0.01f);
+            }
+            mesh.enabled = true;
+            Occupied = false;
+            _isBroken = false;
+            
         }
         //changes the current owner of the panel to be the name of the item passsed in
         public void UpdateOwner(string newOwner)
@@ -186,7 +250,7 @@ namespace Lodis.GamePlay.GridScripts
         public void PlayParticleSystems(float duration)
         {
             var tempPs = Instantiate(_explosionParticles,transform.position,transform.rotation);
-            tempPs.Play();
+           
             Destroy(tempPs, duration);
         }
         public void DestroyPanel()
@@ -197,11 +261,12 @@ namespace Lodis.GamePlay.GridScripts
         }
         private void Update()
         {
-            if (blockCounter == _blockLimit)
+            if (blockCounter == _blockLimit || _isBroken)
             {
                 BlockCapacityReached = true;
+                Occupied = true;
             }
-            else if (blockCounter == 0)
+            else if (blockCounter == 0 && _isBroken == false)
             {
                 Occupied = false;
             }
@@ -209,6 +274,9 @@ namespace Lodis.GamePlay.GridScripts
             {
                 BlockCapacityReached = false;
             }
+            xAbsolute = transform.position.x;
+            yAbsolute = transform.position.y;
+            zAbsolute = transform.position.z;
             UpdateOwner(Owner);
         }
     }

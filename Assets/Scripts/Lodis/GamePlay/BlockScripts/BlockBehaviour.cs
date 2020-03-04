@@ -43,8 +43,21 @@ namespace Lodis
         public MonoBehaviour specialFeature;
         [SerializeField] private IntVariable player1Materials;
         [SerializeField] private IntVariable player2Materials;
+
+        public HealthBehaviour Health
+        {
+            get
+            {
+                return _health;
+            }
+        }
+
         // Use this for initialization
         void Start()
+        {
+            InitializeBlock();
+        }
+        public void InitializeBlock()
         {
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
@@ -53,13 +66,12 @@ namespace Lodis
             actionComponent = specialFeature as IUpgradable;
             componentList.Add(actionComponent);
             GetComponent<BlockBehaviour>().enabled = true;
-            _currentMaterial.SetColor("_EmissionColor",Color.black);
+            _currentMaterial.SetColor("_EmissionColor", Color.black);
             _health = GetComponent<HealthBehaviour>();
             canUpgrade = true;
             _awake = true;
             _currentLevel = 1;
         }
-
         private void Awake()
         {
             //raises the event signaling the block has been spawned
@@ -74,6 +86,21 @@ namespace Lodis
                 DestroyBlock();
                 return;
             }
+            else if(other.CompareTag("Panel"))
+            {
+                //var newPanel = other.GetComponent<PanelBehaviour>();
+                //if (newPanel.Occupied)
+                //{
+                //    return;
+                //}
+                //else
+                //{
+                //    currentPanel.GetComponent<PanelBehaviour>().Occupied = false;
+                //    currentPanel.GetComponent<PanelBehaviour>().blockCounter = 0;
+                //    currentPanel = newPanel.gameObject;
+                //    currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
+                //}
+            }
             else if (other.CompareTag("Block"))
             {
                 //otherwise check the name of the block and upgrade
@@ -81,14 +108,20 @@ namespace Lodis
             }
             foreach(IUpgradable component in componentList)
             {
-                component.ResolveCollision(other.gameObject);
+                if(component != null)
+                {
+                    component.ResolveCollision(other.gameObject);
+                }
             }
         }
         private void OnCollisionEnter(Collision collision)
         {
             foreach (IUpgradable component in componentList)
             {
-                component.ResolveCollision(collision.gameObject);
+                if (component != null)
+                {
+                    component.ResolveCollision(collision.gameObject);
+                }
             }
         }
         public void Upgrade(BlockBehaviour block)
@@ -118,14 +151,14 @@ namespace Lodis
         //Destroys this block instantly
         public void DestroyBlock()
         {
-            if (!canUpgrade && _health != null)
+            if (!canUpgrade && Health != null)
             {
                 _panel.Occupied = false;
-                _health.playDeathParticleSystems(2);
+                Health.playDeathParticleSystems(2);
             }
-            else if(canUpgrade&& _health != null)
+            else if(canUpgrade&& Health != null)
             {
-                _health.hasRaised = true;
+                Health.hasRaised = true;
             }
             
             GameObject tempGameObject = gameObject;
@@ -159,14 +192,14 @@ namespace Lodis
         public void DestroyBlock(float time)
         {
             _panel.blockCounter = 0;
-            if (canUpgrade && _health != null)
+            if (canUpgrade && Health != null)
             {
                 _panel.Occupied = false;
-                _health.playDeathParticleSystems(2);
+                Health.playDeathParticleSystems(2);
             }
-            else if(!canUpgrade&& _health != null)
+            else if(!canUpgrade&& Health != null)
             {
-                _health.hasRaised = true;
+                Health.hasRaised = true;
             }
             canUpgrade = false;
             GameObject TempGameObject = gameObject;
@@ -178,7 +211,7 @@ namespace Lodis
 
         public void GiveMoneyForKill(string shooterName,int damageVal)
         {
-            if (_health.health.Val - damageVal <= 0)
+            if (Health.health.Val - damageVal <= 0)
             {
                 if (shooterName == "Player1")
                 {

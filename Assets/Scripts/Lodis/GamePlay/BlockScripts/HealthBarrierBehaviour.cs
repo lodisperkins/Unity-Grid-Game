@@ -65,13 +65,13 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if (other.CompareTag("Projectile"))
             {
-                _healthScript.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
+                block.Health.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
                 other.GetComponent<BulletBehaviour>().Destroy();
             }
             if ( other.name != _blockScript.owner.name && other.CompareTag("Block") && other.name != "Orbiter Block(Clone)")
             {
                 _healthScript = other.GetComponent<HealthBehaviour>();
-                _healthScript.health.Val += _healVal * 2;
+                block.Health.Heal(_healVal * 2);
             }
         }
         private void TryHeal()

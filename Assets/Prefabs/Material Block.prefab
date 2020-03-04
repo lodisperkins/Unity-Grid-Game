@@ -178,6 +178,8 @@ GameObject:
   - component: {fileID: 114685874643101328}
   - component: {fileID: 114339541003221576}
   - component: {fileID: 54604026786006182}
+  - component: {fileID: 114326363979038618}
+  - component: {fileID: 114115907556720234}
   m_Layer: 9
   m_Name: Material Block
   m_TagString: Block
@@ -2264,6 +2266,35 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114115907556720234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114326363979038618}
+        m_MethodName: StartShaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  intendedSender: {fileID: 1172816898836844}
 --- !u!114 &114295738289527486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2285,6 +2316,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114326363979038618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeVal: 0.01
+  isShaking: 0
+  shakeRange: 0.7
+  shakeLength: 0
 --- !u!114 &114339541003221576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2301,6 +2347,7 @@ MonoBehaviour:
   actionDelay: 0.01
   actionLimit: 1
   hasLimit: 1
+  numberOfActionsLeft: 0
 --- !u!114 &114436050809686000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2377,6 +2424,7 @@ MonoBehaviour:
   actionDelay: 3
   actionLimit: 60
   hasLimit: 0
+  numberOfActionsLeft: 0
 --- !u!114 &114677249479609268
 MonoBehaviour:
   m_ObjectHideFlags: 1

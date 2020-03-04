@@ -13,6 +13,7 @@ TagManager:
   - Kinetic Field
   - Barrier
   - Gun
+  - Wind
   layers:
   - Default
   - TransparentFX

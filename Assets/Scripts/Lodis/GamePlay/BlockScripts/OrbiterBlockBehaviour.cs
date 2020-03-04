@@ -40,7 +40,6 @@ namespace Lodis.GamePlay.BlockScripts
 
         private void Start()
         {
-            transform.parent = null;
         }
         public void UpgradeBlock(GameObject otherBlock)
 		{
@@ -83,6 +82,7 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 if (component.specialFeature.CompareTag("Barrier") || component.specialFeature.CompareTag("Gun"))
                 {
+                    component.block = block;
                     component.specialFeature.transform.SetParent(_orb1.transform,false);
                     component.specialFeature.transform.position = _orb1.transform.position;
                     component.specialFeature.transform.localScale = _orb1.transform.localScale;

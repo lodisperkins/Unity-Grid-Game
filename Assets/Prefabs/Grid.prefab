@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 64587039575406560}
   - component: {fileID: 114962838391437810}
   - component: {fileID: 65201808408334626}
+  - component: {fileID: 114029224472690016}
   m_Layer: 0
   m_Name: Panel(1,2)
   m_TagString: Panel
@@ -44,6 +45,7 @@ GameObject:
   - component: {fileID: 64455657133304380}
   - component: {fileID: 114366969946350036}
   - component: {fileID: 65250263672309060}
+  - component: {fileID: 114450365093996778}
   m_Layer: 0
   m_Name: Panel(4,1)
   m_TagString: Panel
@@ -84,6 +86,7 @@ GameObject:
   - component: {fileID: 64381941534562690}
   - component: {fileID: 114746284295954776}
   - component: {fileID: 65893739396393514}
+  - component: {fileID: 114345670623010988}
   m_Layer: 0
   m_Name: Panel(1,3)
   m_TagString: Panel
@@ -128,6 +131,7 @@ GameObject:
   - component: {fileID: 64486213536203772}
   - component: {fileID: 114626149928866406}
   - component: {fileID: 65765732122856166}
+  - component: {fileID: 114734172050831190}
   m_Layer: 0
   m_Name: Panel(3,1)
   m_TagString: Panel
@@ -148,6 +152,7 @@ GameObject:
   - component: {fileID: 64893180275557322}
   - component: {fileID: 114869627902610712}
   - component: {fileID: 65930167414107418}
+  - component: {fileID: 114346024779312390}
   m_Layer: 0
   m_Name: Panel(2,3)
   m_TagString: Panel
@@ -168,6 +173,7 @@ GameObject:
   - component: {fileID: 64788260703521628}
   - component: {fileID: 114372133424591082}
   - component: {fileID: 65669957012522622}
+  - component: {fileID: 114095195377705996}
   m_Layer: 0
   m_Name: Panel(3,2)
   m_TagString: Panel
@@ -248,6 +254,7 @@ GameObject:
   - component: {fileID: 64175859014475028}
   - component: {fileID: 114554669431743380}
   - component: {fileID: 65123303668190520}
+  - component: {fileID: 114417054716705862}
   m_Layer: 0
   m_Name: Panel(3,3)
   m_TagString: Panel
@@ -268,6 +275,7 @@ GameObject:
   - component: {fileID: 64046521463614838}
   - component: {fileID: 114861274759775202}
   - component: {fileID: 65808383325778408}
+  - component: {fileID: 114998993615725784}
   m_Layer: 0
   m_Name: Panel(4,0)
   m_TagString: Panel
@@ -288,6 +296,7 @@ GameObject:
   - component: {fileID: 64356108960427094}
   - component: {fileID: 114977296966125952}
   - component: {fileID: 65541151358685714}
+  - component: {fileID: 114419524550437494}
   m_Layer: 0
   m_Name: Panel(2,0)
   m_TagString: Panel
@@ -368,6 +377,7 @@ GameObject:
   - component: {fileID: 64234723139129104}
   - component: {fileID: 114553377463261980}
   - component: {fileID: 65608810494096444}
+  - component: {fileID: 114454410982684838}
   m_Layer: 0
   m_Name: Panel(4,2)
   m_TagString: Panel
@@ -388,7 +398,7 @@ GameObject:
   - component: {fileID: 64635432250986780}
   - component: {fileID: 114415655196724626}
   - component: {fileID: 65853524862014512}
-  - component: {fileID: 114387301395666060}
+  - component: {fileID: 114194769750199758}
   m_Layer: 0
   m_Name: Panel(0,3)
   m_TagString: Panel
@@ -424,6 +434,7 @@ GameObject:
   - component: {fileID: 64157844749757942}
   - component: {fileID: 114764545566110206}
   - component: {fileID: 65587206389439312}
+  - component: {fileID: 114195766220314750}
   m_Layer: 0
   m_Name: Panel(2,2)
   m_TagString: Panel
@@ -524,6 +535,7 @@ GameObject:
   - component: {fileID: 64572497734249796}
   - component: {fileID: 114215141322694814}
   - component: {fileID: 65711362560011942}
+  - component: {fileID: 114551759458703598}
   m_Layer: 0
   m_Name: Panel(1,0)
   m_TagString: Panel
@@ -584,6 +596,7 @@ GameObject:
   - component: {fileID: 64749469416794414}
   - component: {fileID: 114193621394186124}
   - component: {fileID: 65878003474760380}
+  - component: {fileID: 114579845010544388}
   m_Layer: 0
   m_Name: Panel(1,1)
   m_TagString: Panel
@@ -639,6 +652,7 @@ GameObject:
   - component: {fileID: 64936806102284284}
   - component: {fileID: 114716993378425706}
   - component: {fileID: 65406827753243212}
+  - component: {fileID: 114240178519909634}
   m_Layer: 0
   m_Name: Panel(2,1)
   m_TagString: Panel
@@ -699,6 +713,7 @@ GameObject:
   - component: {fileID: 64970095446978902}
   - component: {fileID: 114617260052393564}
   - component: {fileID: 65923868672694046}
+  - component: {fileID: 114947151784159980}
   m_Layer: 0
   m_Name: Panel(0,0)
   m_TagString: Panel
@@ -759,6 +774,7 @@ GameObject:
   - component: {fileID: 64061283192782924}
   - component: {fileID: 114380285710408762}
   - component: {fileID: 65121384101818268}
+  - component: {fileID: 114026088762907940}
   m_Layer: 0
   m_Name: Panel(3,0)
   m_TagString: Panel
@@ -799,6 +815,7 @@ GameObject:
   - component: {fileID: 64075783436743216}
   - component: {fileID: 114358812283973008}
   - component: {fileID: 65673886081738862}
+  - component: {fileID: 114718381895755446}
   m_Layer: 0
   m_Name: Panel(4,3)
   m_TagString: Panel
@@ -839,6 +856,7 @@ GameObject:
   - component: {fileID: 64110077749402440}
   - component: {fileID: 114960782241690976}
   - component: {fileID: 65095376430830974}
+  - component: {fileID: 114319431213881594}
   m_Layer: 0
   m_Name: Panel(0,1)
   m_TagString: Panel
@@ -859,6 +877,7 @@ GameObject:
   - component: {fileID: 64696528084591116}
   - component: {fileID: 114037383806436888}
   - component: {fileID: 65996964649939334}
+  - component: {fileID: 114139897171856840}
   m_Layer: 0
   m_Name: Panel(0,2)
   m_TagString: Panel
@@ -4187,6 +4206,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 17, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114026088762907940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760057283177688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114380285710408762}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114029224472690016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013785432511888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114037383806436888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4206,6 +4283,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114091944886694408
@@ -4227,6 +4305,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114093785245921702
@@ -4258,6 +4337,35 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 5dfa5f0153f607e40ac87af3f406d2b8, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114095195377705996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201117685019676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114106006083157292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4277,6 +4385,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114116889959799066
@@ -4298,6 +4407,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114132602686729750
@@ -4329,6 +4439,35 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 5dfa5f0153f607e40ac87af3f406d2b8, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114139897171856840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907941693053798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114037383806436888}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114193621394186124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4348,8 +4487,67 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114194769750199758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375328870102860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114415655196724626}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114195766220314750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383351448386966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114215141322694814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4369,6 +4567,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114215954273757724
@@ -4390,6 +4589,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114229358655146172
@@ -4450,6 +4650,35 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: f74adfbbf13859e4fb621fd4dc5fa3ad, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114240178519909634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545119442832596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114267699081446252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4498,8 +4727,96 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114319431213881594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900131730269790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114960782241690976}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114345670623010988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084301106805374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114746284295954776}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114346024779312390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1190709849327172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114869627902610712}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114350300029824694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4519,6 +4836,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114358812283973008
@@ -4540,6 +4858,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114366969946350036
@@ -4561,6 +4880,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114372133424591082
@@ -4582,6 +4902,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114375370224892404
@@ -4603,6 +4924,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114380285710408762
@@ -4624,55 +4946,9 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
---- !u!114 &114387301395666060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1375328870102860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
-  health: {fileID: 11400000, guid: 72aaaf3be9edd484b81a43a5a3df1748, type: 2}
-  isAlive: 0
-  _secondaryHealthSource: {fileID: 0}
-  conversionRate: 0
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114387301395666060}
-        m_MethodName: DestroyBlock
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114387301395666060}
-        m_MethodName: playDeathParticleSystems
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  hasRaised: 0
-  OnObjectDeath: {fileID: 0}
-  OnHit: {fileID: 0}
-  ps: {fileID: 0}
 --- !u!114 &114415655196724626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4692,8 +4968,67 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114417054716705862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254131067100762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114419524550437494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259193105431318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114977296966125952}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114428209929248196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4713,6 +5048,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114443495328497766
@@ -4734,6 +5070,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114447855917024232
@@ -4765,6 +5102,82 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: ad3cec5df15f31e4ebdf848353c89036, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114450365093996778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073445908083578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114454410982684838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345219498061962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114551759458703598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427233510222268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114215141322694814}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114553377463261980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4784,6 +5197,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114554669431743380
@@ -4805,6 +5219,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114574650796745408
@@ -4826,8 +5241,38 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114579845010544388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500983174074244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114193621394186124}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114617191661336792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4847,6 +5292,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114617260052393564
@@ -4868,6 +5314,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114626149928866406
@@ -4889,6 +5336,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114633674594662672
@@ -4910,6 +5358,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114640375394384632
@@ -4931,6 +5380,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114687373677836014
@@ -4952,6 +5402,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114714455384779632
@@ -5002,8 +5453,67 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114718381895755446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794373808199252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
+--- !u!114 &114734172050831190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1174164301283864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114626149928866406}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114744876720297658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5023,6 +5533,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114746284295954776
@@ -5044,6 +5555,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114764545566110206
@@ -5065,6 +5577,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114804898863985258
@@ -5141,6 +5654,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114856998311804186
@@ -5162,6 +5676,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114861068218555690
@@ -5183,6 +5698,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114861274759775202
@@ -5204,6 +5720,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114866234641435222
@@ -5225,6 +5742,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114869627902610712
@@ -5246,8 +5764,38 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114947151784159980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657394077693468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114617260052393564}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}
 --- !u!114 &114960198742371514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5267,6 +5815,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114960782241690976
@@ -5288,6 +5837,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114962838391437810
@@ -5309,6 +5859,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
 --- !u!114 &114977296966125952
@@ -5330,5 +5881,35 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
+--- !u!114 &114998993615725784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1255784729443476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114553377463261980}
+        m_MethodName: DestroyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  intendedSender: {fileID: 0}

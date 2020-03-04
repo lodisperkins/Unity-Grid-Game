@@ -41,6 +41,10 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject;
             }
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            ResolveCollision(other.gameObject);
+        }
         public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -92,7 +96,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if (collision.CompareTag("Projectile"))
             {
-                healthScript.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
+                block.Health.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
                 collision.GetComponent<BulletBehaviour>().Destroy();
             }
         }

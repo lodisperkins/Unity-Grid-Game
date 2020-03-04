@@ -43,11 +43,11 @@ public class OverdriveBehaviour : MonoBehaviour
 		
 		if (_health.health.Val >= 75)
 		{
-			_overdriveLength = 10;
+			_overdriveLength = 5;
 		}
 		else if(_health.health.Val >= 25 && _health.health.Val < 75)
 		{
-			_overdriveLength = 20;
+			_overdriveLength = 15;
 		}
 		else
 		{

@@ -186,6 +186,10 @@ namespace Lodis
                         ps.transform.position = other.transform.position;
                         break;
                     }
+                case "Wind":
+                    {
+                        break;
+                    }
                 default:
                     {
                         playDeathParticleSystems(1);

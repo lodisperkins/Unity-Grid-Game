@@ -34,7 +34,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
 		if (player.canMove)
 		{
             int layerMask = 1 << 9;
-            if(Physics.Raycast(transform.position,transform.forward,out _interactionRay,5,layerMask))
+            if(Physics.Raycast(transform.position,transform.forward,out _interactionRay,2,layerMask))
             {
                 _currentBlock = _interactionRay.transform.gameObject;
                 if(_currentBlock.CompareTag("Panel"))
