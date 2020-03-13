@@ -43,6 +43,10 @@ namespace Lodis
         //decrements the objects health by the damge amount given
         public void takeDamage(int damageVal)
         {
+            if(gameObject == null)
+            {
+                return;
+            }
             health.Val -= damageVal;
             OnHit.Raise(gameObject);
             if (health.Val <= 0)

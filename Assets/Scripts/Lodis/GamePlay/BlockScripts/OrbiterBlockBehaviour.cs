@@ -117,5 +117,10 @@ namespace Lodis.GamePlay.BlockScripts
         {
             return;
         }
+        public void ActivateDisplayMode()
+        {
+            DisableOrbAttack();
+            return;
+        }
     }
 }

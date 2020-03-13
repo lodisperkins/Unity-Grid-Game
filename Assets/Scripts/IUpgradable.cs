@@ -17,6 +17,7 @@ namespace Lodis
         void UpgradeBlock(GameObject otherBlock);
         void TransferOwner(GameObject otherBlock);
         void ResolveCollision(GameObject collision);
+        void ActivateDisplayMode();
     }
 }
 

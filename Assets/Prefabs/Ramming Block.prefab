@@ -1062,7 +1062,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893602849636482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4393513, y: 1, z: 13.134355}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4205881942440878}
@@ -2376,6 +2376,7 @@ MonoBehaviour:
   cost: 10
   _level: {fileID: 114204422207932198}
   BlockWeightVal: 1
+  awake: 0
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}

@@ -76,5 +76,10 @@ namespace Lodis
                 _onDelete.Raise();
             }
         }
+
+        public void ActivateDisplayMode()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

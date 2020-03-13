@@ -70,5 +70,11 @@ namespace Lodis.GamePlay.BlockScripts
         {
             return;
         }
+
+        public void ActivateDisplayMode()
+        {
+            gameObject.SetActive(false);
+            return;
+        }
     }
 }

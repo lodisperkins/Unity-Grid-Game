@@ -95,9 +95,16 @@ namespace Lodis.GamePlay
 				Time.timeScale = 1;
 				isPaused = false;
 				OnUnPause.Raise(gameObject);
-				SceneManager.LoadScene(0);
+				SceneManager.LoadScene("BattleScene");
 			}
 		}
+        public void ReturnToBlockSelect()
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+            OnUnPause.Raise(gameObject);
+            SceneManager.LoadScene("TowerSelectScene");
+        }
 		public void Quit()
 		{
 			if (isPaused || gameWon)

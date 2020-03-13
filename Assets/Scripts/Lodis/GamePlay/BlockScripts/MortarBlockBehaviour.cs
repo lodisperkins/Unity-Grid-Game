@@ -22,10 +22,16 @@ public class MortarBlockBehaviour : MonoBehaviour
 	private int _yPosition;
 	private Vector2 _aimOffSet;
 	private Vector3 _targetPosition;
+    [SerializeField] private GunBehaviour _gun;
 	// Use this for initialization
 	void Start () {
 		_block = GetComponent<BlockBehaviour>();
-	}
+        if (_block.owner == null)
+        {
+            _bulletEmitter.GetComponent<GunBehaviour>().StopAllCoroutines();
+            return;
+        }
+    }
 	//This long piece of code is used to aim at the opponent panel regardless of how the field changes
 	//There are still some instances where this will not work. In which case the first or last panel
 	//in the opponent list is fired at
@@ -129,7 +135,11 @@ public class MortarBlockBehaviour : MonoBehaviour
     }
     public void FireMortar()
 	{
-        if(_block.owner.name == "Player1")
+        if (_block.owner == null)
+        {
+            return;
+        }
+        if (_block.owner.name == "Player1")
         {
             AimAtOpponentPanelP1();
         }

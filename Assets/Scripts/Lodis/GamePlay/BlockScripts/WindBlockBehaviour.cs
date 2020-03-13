@@ -85,8 +85,9 @@ namespace Lodis.GamePlay
                 other.gameObject.GetComponent<SeekBehaviour>().Init(FindSafePanel(other.transform.position), velocity, (int)windForce, 0.5f, true);
             }
         }
-        private void OnTriggerStay(Collider other)
+        public void ActivateDisplayMode()
         {
+            return;
         }
 
     }

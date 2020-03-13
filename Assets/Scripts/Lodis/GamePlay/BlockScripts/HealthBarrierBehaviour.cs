@@ -17,7 +17,8 @@ namespace Lodis.GamePlay.BlockScripts
         private float _timeUntilNextHeal;
 		private int _currentBulletsToHeal;
         private bool _canHeal;
-
+        private int _healCounter;
+        private int _healLimit;
         public BlockBehaviour block
         {
             get
@@ -40,8 +41,14 @@ namespace Lodis.GamePlay.BlockScripts
         void Start ()
 		{
             _canHeal = true;
-            _healthScript = block.gameObject.GetComponent<HealthBehaviour>();
+            if(_healthScript != null)
+            {
+                _healthScript = block.gameObject.GetComponent<HealthBehaviour>();
+            }
+            
             _healTimer = Time.time + _timeUntilNextHeal;
+            _healCounter = 0;
+            _healLimit = 10;
         }
         public void DestroyBarrier()
         {
@@ -76,8 +83,9 @@ namespace Lodis.GamePlay.BlockScripts
         }
         private void TryHeal()
 		{
-            if(_canHeal && !_healthScript.healthFull)
+            if(_canHeal && !_healthScript.healthFull && _healCounter < _healLimit)
             {
+                _healCounter++;
                 _healthScript.health.Val +=_healVal;
                 _healTimer = Time.time + _timeUntilNextHeal;
             }
@@ -89,6 +97,7 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 if (component.specialFeature.name == gameObject.name)
                 {
+                    component.specialFeature.GetComponent<HealthBarrierBehaviour>()._healLimit += _upgradeVal;
                     component.specialFeature.GetComponent<HealthBarrierBehaviour>()._healthScript.health.Val += _upgradeVal;
 					return;
 				}
@@ -98,8 +107,6 @@ namespace Lodis.GamePlay.BlockScripts
 		public void TransferOwner(GameObject otherBlock)
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
-			_healthScript = otherBlock.GetComponent<HealthBehaviour>();
-			_healthScript.health.Val += _upgradeVal;
 			blockScript.componentList.Add(this);
             transform.parent = null;
             transform.position = otherBlock.transform.position;
@@ -113,6 +120,10 @@ namespace Lodis.GamePlay.BlockScripts
         public void ResolveCollision(GameObject collision)
         {
             return; 
+        }
+        public void ActivateDisplayMode()
+        {
+            return;
         }
     }
 }

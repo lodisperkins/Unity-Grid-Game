@@ -15,15 +15,25 @@ namespace Lodis.GamePlay
         private Text _timerText;
         [SerializeField]
         private RoutineBehaviour _routineScript;
+        bool canExplode;
 	    // Use this for initialization
 	    void Start () {
             _explosionRadius = GetComponent<SphereCollider>();
-	    }
+            canExplode = true;
+            if (_block == null)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+                canExplode = false;
+            }
+        }
 	    public void Explode()
         {
-            _explosionRadius.enabled = true;
-            _block.Health.playDeathParticleSystems(.5f);
-            _block.DestroyBlock(.1f);
+            if(_block.Health != null && canExplode)
+            { _explosionRadius.enabled = true;
+                _block.Health.playDeathParticleSystems(.5f);
+                _block.DestroyBlock(.1f);
+            }
+            
         }
         private void OnTriggerEnter(Collider other)
         {

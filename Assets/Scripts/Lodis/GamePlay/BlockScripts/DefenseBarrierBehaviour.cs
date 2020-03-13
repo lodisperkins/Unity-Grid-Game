@@ -87,10 +87,6 @@ namespace Lodis.GamePlay.BlockScripts
 			blockScript.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);
 		}
-		// Update is called once per frame
-		void Update () {
-			
-		}
 
         public void ResolveCollision(GameObject collision)
         {
@@ -99,6 +95,11 @@ namespace Lodis.GamePlay.BlockScripts
                 block.Health.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
                 collision.GetComponent<BulletBehaviour>().Destroy();
             }
+        }
+        public void ActivateDisplayMode()
+        {
+            shieldTimer.StopAllCoroutines();
+            shieldTimer.enabled = false;
         }
     }
 }

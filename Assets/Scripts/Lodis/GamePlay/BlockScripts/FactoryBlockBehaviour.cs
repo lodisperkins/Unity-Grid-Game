@@ -21,6 +21,7 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private GameObject box;
         private Material _attachedMaterial;
+        private int panelIndex;
         public BlockBehaviour block
         {
             get
@@ -47,6 +48,7 @@ namespace Lodis.GamePlay.BlockScripts
             _playerBlocks = _playerSpawnScript.Blocks;
             _currentPanel = _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>();
             _blockIndex = 0;
+            panelIndex = 0;
             _currentBlock = new BlockVariable();
             _attachedMaterial = box.GetComponent<MeshRenderer>().material;
             _currentBlock.Block = _playerBlocks[_blockIndex];
@@ -85,12 +87,17 @@ namespace Lodis.GamePlay.BlockScripts
         public void SpawnBlock()
         {
             _currentBlock.Block = _playerBlocks[_blockIndex];
-            int panelIndex = Random.Range(0, panelsInRange.Count - 1);
-            if (panelsInRange[panelIndex].blockCounter < 3 )
+            panelIndex++;
+            Quaternion rotation = new Quaternion(0, _playerSpawnScript.Block_rotation.y, 0,0);
+            if(panelIndex >= panelsInRange.Count)
+            {
+                panelIndex = 0;
+            }
+            if (panelsInRange[panelIndex].blockCounter + _currentBlock.BlockScript.BlockWeightVal <= 3 && panelsInRange[panelIndex].Occupied == false)
             {
                
                 var position = new Vector3(panelsInRange[panelIndex].gameObject.transform.position.x, _currentBlock.Block.transform.position.y, panelsInRange[panelIndex].gameObject.transform.position.z);
-                GameObject BlockCopy = Instantiate(_currentBlock.Block, position, _playerSpawnScript.Block_rotation);
+                GameObject BlockCopy = Instantiate(_currentBlock.Block, position,rotation);
                 BlockBehaviour copyScript = BlockCopy.GetComponent<BlockBehaviour>();
                 copyScript.currentPanel = panelsInRange[panelIndex].gameObject;
                 copyScript.owner = _blockScript.owner;
@@ -105,6 +112,10 @@ namespace Lodis.GamePlay.BlockScripts
         public void SwitchBlocks(object[] args)
         {
             _blockIndex++;
+            if(_blockIndex == 2)
+            {
+                _blockIndex++;
+            }
             if(_blockIndex > 3)
             {
                 _blockIndex = 0;
@@ -175,8 +186,8 @@ namespace Lodis.GamePlay.BlockScripts
                     continue;
                 }
                 spawnedBlock.InitializeBlock();
-                component.TransferOwner(spawnedBlock.gameObject);
-                Instantiate(component.specialFeature.gameObject, spawnedBlock.transform);
+                GameObject compClone = Instantiate(component.specialFeature.gameObject, spawnedBlock.transform);
+                compClone.GetComponent<IUpgradable>().TransferOwner(spawnedBlock.gameObject);
             }
         }
         public void DestroyFactory()
@@ -189,7 +200,7 @@ namespace Lodis.GamePlay.BlockScripts
             var routineScript = GetComponent<RoutineBehaviour>();
             routineScript.ResetActions();
             routineScript.actionLimit += 3;
-            routineScript.actionDelay -= 1;
+            routineScript.actionDelay -= .5f;
             _blockScript.Health.health.Val = _spawnRoutine.numberOfActionsLeft;
         }
         public void TransferOwner(GameObject otherBlock)
@@ -200,6 +211,10 @@ namespace Lodis.GamePlay.BlockScripts
         }
         private void OnDestroy()
         {
+            if(panelsInRange == null)
+            {
+                return;
+            }
             UnHighlightPanels();
             block.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
         }
@@ -210,6 +225,12 @@ namespace Lodis.GamePlay.BlockScripts
         private void Update()
         {
             UpdateColor();
+        }
+        public void ActivateDisplayMode()
+        {
+            gameObject.SetActive(false);
+            _spawnRoutine.StopAllCoroutines();
+            _spawnRoutine.enabled = false;
         }
     }
 }

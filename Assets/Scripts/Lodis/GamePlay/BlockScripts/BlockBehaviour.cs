@@ -26,7 +26,8 @@ namespace Lodis
         private int _currentLevel;
         //The weight of a block represents how much of it can be placed on a panel. Panels havea limit of 3;
         public int BlockWeightVal;
-        private bool _awake;
+        [SerializeField]
+        public bool awake;
         private Material _currentMaterial;
         public IUpgradable actionComponent;
         //If true, the player may upgrade this block, otherwise they must wait until it is
@@ -43,7 +44,7 @@ namespace Lodis
         public MonoBehaviour specialFeature;
         [SerializeField] private IntVariable player1Materials;
         [SerializeField] private IntVariable player2Materials;
-
+        [SerializeField] private Canvas _blockUI;
         public HealthBehaviour Health
         {
             get
@@ -59,24 +60,34 @@ namespace Lodis
         }
         public void InitializeBlock()
         {
+            actionComponent = specialFeature as IUpgradable;
+            if (awake)
+            {
+                _blockUI = GetComponentInChildren<Canvas>();
+                _blockUI.enabled = false;
+                if(actionComponent != null)
+                {
+                    actionComponent.ActivateDisplayMode();
+                }
+                return;
+            }
+            
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
             _currentMaterial = GetComponent<Renderer>().material;
             componentList = new List<IUpgradable>();
-            actionComponent = specialFeature as IUpgradable;
+            
             componentList.Add(actionComponent);
             GetComponent<BlockBehaviour>().enabled = true;
             _currentMaterial.SetColor("_EmissionColor", Color.black);
             _health = GetComponent<HealthBehaviour>();
             canUpgrade = true;
-            _awake = true;
             _currentLevel = 1;
         }
         private void Awake()
         {
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
-            _awake = true;
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -106,6 +117,10 @@ namespace Lodis
                 //otherwise check the name of the block and upgrade
                 Upgrade(other.GetComponent<BlockBehaviour>());
             }
+            if(componentList == null)
+            {
+                return;
+            }
             foreach(IUpgradable component in componentList)
             {
                 if(component != null)
@@ -116,6 +131,10 @@ namespace Lodis
         }
         private void OnCollisionEnter(Collision collision)
         {
+            if(componentList == null)
+            {
+                return;
+            }
             foreach (IUpgradable component in componentList)
             {
                 if (component != null)
@@ -151,18 +170,20 @@ namespace Lodis
         //Destroys this block instantly
         public void DestroyBlock()
         {
-            if (!canUpgrade && Health != null)
+
+            if (canUpgrade == false && Health != null)
             {
                 _panel.Occupied = false;
                 Health.playDeathParticleSystems(2);
             }
-            else if(canUpgrade&& Health != null)
+            else if (!canUpgrade && Health != null)
             {
                 Health.hasRaised = true;
             }
-            
-            GameObject tempGameObject = gameObject;
-            Destroy(tempGameObject);
+            canUpgrade = false;
+            GameObject TempGameObject = gameObject;
+            //StartCoroutine(Flash());
+            Destroy(TempGameObject);
         }
 
         private void OnDestroy()
@@ -178,21 +199,29 @@ namespace Lodis
             specialActions.Invoke();
         }
 
-        private IEnumerator Flash()
-        {
-            for (var i = 0; i < 5; i++)
-            {
-                _currentMaterial.SetColor("_EmissionColor",new Color(.7f,.5f,0.1f,1));
-                yield return new WaitForSeconds(.1f);
-                _currentMaterial.SetColor("_EmissionColor",Color.black); 
-                yield return new WaitForSeconds(.1f);
-            }
-        }
+        //private IEnumerator Flash()
+        //{
+        //    if(_currentMaterial == null)
+        //    {
+        //        StopAllCoroutines();
+        //    }
+        //    for (var i = 0; i < 5; i++)
+        //    {
+        //        _currentMaterial.SetColor("_EmissionColor",new Color(.7f,.5f,0.1f,1));
+        //        yield return new WaitForSeconds(.1f);
+        //        _currentMaterial.SetColor("_EmissionColor",Color.black); 
+        //        yield return new WaitForSeconds(.1f);
+        //    }
+        //}
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
-            _panel.blockCounter = 0;
-            if (canUpgrade && Health != null)
+            if(_panel != null)
+            {
+                _panel.blockCounter = 0;
+            }
+            
+            if (canUpgrade == false && Health != null)
             {
                 _panel.Occupied = false;
                 Health.playDeathParticleSystems(2);
@@ -205,7 +234,7 @@ namespace Lodis
             GameObject TempGameObject = gameObject;
 
             
-            StartCoroutine(Flash());
+            //StartCoroutine(Flash());
             Destroy(TempGameObject,time);
         }
 

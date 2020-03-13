@@ -106,6 +106,11 @@ namespace Lodis.GamePlay.BlockScripts
             GameObject temp = block.gameObject;
             Destroy(temp);
         }
+
+        public void ActivateDisplayMode()
+        {
+            return;
+        }
     }
 }
 

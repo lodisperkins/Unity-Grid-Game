@@ -75,5 +75,12 @@ namespace Lodis.GamePlay.BlockScripts
         {
             return;
         }
+
+        public void ActivateDisplayMode()
+        {
+            gameObject.SetActive(false);
+            turretScript.StopAllCoroutines();
+            turretScript.enabled = false;
+        }
     }
 }

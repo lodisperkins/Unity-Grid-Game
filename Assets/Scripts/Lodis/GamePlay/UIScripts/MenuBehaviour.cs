@@ -13,7 +13,12 @@ namespace Lodis.GamePlay
     {
         [SerializeField] private GameObject _controlsPanel;
         [SerializeField] private Event onSelected;
+        [SerializeField] private Event onCancel;
+        [SerializeField] private Event onHighlighted;
         [SerializeField] private List<Image> _displayOptions;
+        [SerializeField] private string _horizontalAxis;
+        [SerializeField] private string _submitAxis;
+        [SerializeField] private string _cancelAxis;
         private int _currentIndex;
         private bool _canPressButton;
         private bool _controlWindowUp;
@@ -25,23 +30,25 @@ namespace Lodis.GamePlay
 
         public void GoToNextOption()
         {
-            _displayOptions[_currentIndex].color = Color.yellow;
+            _displayOptions[_currentIndex].color = Color.white;
             _currentIndex++;
             if (_currentIndex > _displayOptions.Count - 1)
             {
                 _currentIndex = 0;
             }
-            _displayOptions[_currentIndex].color = Color.white;
+            _displayOptions[_currentIndex].color = Color.yellow;
+            onHighlighted.Raise(_displayOptions[_currentIndex].gameObject);
         }
         public void GoToPreviousOption()
         {
-            _displayOptions[_currentIndex].color = Color.yellow;
+            _displayOptions[_currentIndex].color = Color.white;
             _currentIndex--;
             if (_currentIndex < 0)
             {
                 _currentIndex = _displayOptions.Count - 1;
             }
-            _displayOptions[_currentIndex].color = Color.white;
+            _displayOptions[_currentIndex].color = Color.yellow;
+            onHighlighted.Raise(_displayOptions[_currentIndex].gameObject);
         }
 
         public void ToggleControlsMenu()
@@ -63,7 +70,7 @@ namespace Lodis.GamePlay
         private void Update()
         {
 
-            if ((Input.GetAxis("Vertical1") < .5 && Input.GetAxis("Vertical1") > -.5) && Input.GetAxis("Vertical2") > -.5 && (Input.GetAxis("Vertical2") < .5))
+            if ((Input.GetAxis(_horizontalAxis) < .5 && Input.GetAxis(_horizontalAxis) > -.5))
             {
                 if (_controlWindowUp == false)
                 {
@@ -71,27 +78,17 @@ namespace Lodis.GamePlay
                 }
             }
 
-            if (Input.GetAxis("Vertical1") >= .8 && _canPressButton)
+            if (Input.GetAxis(_horizontalAxis) <= -.8 && _canPressButton)
             {
                 _canPressButton = false;
                 GoToPreviousOption();
             }
-            else if (Input.GetAxisRaw("Vertical1") <= -.8 && _canPressButton)
+            else if (Input.GetAxisRaw(_horizontalAxis) >= .8 && _canPressButton)
             {
                 _canPressButton = false;
                 GoToNextOption();
             }
-            if (Input.GetAxis("Vertical2") >= .8 && _canPressButton)
-            {
-                _canPressButton = false;
-                GoToPreviousOption();
-            }
-            else if (Input.GetAxisRaw("Vertical2") <= -.8 && _canPressButton)
-            {
-                _canPressButton = false;
-                GoToNextOption();
-            }
-            if ((Input.GetAxis("Vertical1") < .5 && Input.GetAxis("Vertical1") > -.5) && Input.GetAxis("Vertical2") > -.5 && (Input.GetAxis("Vertical2") < .5))
+            if ((Input.GetAxis(_horizontalAxis) < .5 && Input.GetAxis(_horizontalAxis) > -.5))
             {
                 if (_controlWindowUp == false)
                 {
@@ -99,29 +96,23 @@ namespace Lodis.GamePlay
                 }
             }
 
-            if (Input.GetAxis("Vertical1") >= .8 && _canPressButton)
+            if (Input.GetAxis(_horizontalAxis) <= -.8 && _canPressButton)
             {
                 _canPressButton = false;
                 GoToPreviousOption();
             }
-            else if (Input.GetAxisRaw("Vertical1") <= -.8 && _canPressButton)
+            else if (Input.GetAxisRaw(_horizontalAxis) >= .8 && _canPressButton)
             {
                 _canPressButton = false;
                 GoToNextOption();
             }
-            if (Input.GetAxis("Vertical2") >= .8 && _canPressButton)
-            {
-                _canPressButton = false;
-                GoToPreviousOption();
-            }
-            else if (Input.GetAxisRaw("Vertical2") <= -.8 && _canPressButton)
-            {
-                _canPressButton = false;
-                GoToNextOption();
-            }
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown(_submitAxis))
             {
                 DoCurrentAction();
+            }
+            if(Input.GetButtonDown(_cancelAxis))
+            {
+                onCancel.Raise(gameObject);
             }
         }
     }
