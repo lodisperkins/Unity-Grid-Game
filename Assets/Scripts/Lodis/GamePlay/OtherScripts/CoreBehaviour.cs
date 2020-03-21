@@ -6,11 +6,9 @@ namespace Lodis
 {
     public class CoreBehaviour : MonoBehaviour
     {
-
-        [SerializeField] private Material _coreMaterial;
+        
         [SerializeField]
         private Event _onExplosion;
-        private Color _materialColor;
         [SerializeField]
         private List<GameObject> _pieces;
         [SerializeField]
@@ -27,10 +25,12 @@ namespace Lodis
         // Use this for initialization
         void Start()
         {
-            _coreMaterial.color = Color.white;
-            _materialColor = Color.white;
             _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 10);
             currentPiece = 0;
+        }
+        private void Awake()
+        {
+           
         }
         public void BlowPieceAway()
         {
@@ -45,22 +45,6 @@ namespace Lodis
                 currentPiece++;
             }
         }
-        private void OnTriggerStay(Collider other)
-        {
-            StartCoroutine(Flash());
-        }
-        //This makes the core flash for a few seconds when hit
-        private IEnumerator Flash()
-        {
-            for (var i = 0; i < 5; i++)
-            {
-                _coreMaterial.color = Color.yellow;
-                yield return new WaitForSeconds(.1f);
-                _coreMaterial.color = _materialColor;
-                yield return new WaitForSeconds(.1f);
-            }
-        }
-
         private void Update()
         {
             if (_healthRef.health.Val <= _healthStamp.Val)

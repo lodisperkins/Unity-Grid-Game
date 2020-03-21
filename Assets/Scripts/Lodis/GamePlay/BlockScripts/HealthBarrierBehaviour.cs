@@ -37,6 +37,15 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject;
             }
         }
+
+        public string Name
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start ()
 		{
@@ -72,13 +81,13 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if (other.CompareTag("Projectile"))
             {
-                block.Health.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
+                block.HealthScript.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
                 other.GetComponent<BulletBehaviour>().Destroy();
             }
             if ( other.name != _blockScript.owner.name && other.CompareTag("Block") && other.name != "Orbiter Block(Clone)")
             {
                 _healthScript = other.GetComponent<HealthBehaviour>();
-                block.Health.Heal(_healVal * 2);
+                block.HealthScript.Heal(_healVal * 2);
             }
         }
         private void TryHeal()

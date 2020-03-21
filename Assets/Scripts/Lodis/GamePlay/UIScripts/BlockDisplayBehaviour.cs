@@ -19,7 +19,7 @@ namespace Lodis
             }
             currentBlock = Instantiate(_blocks[index]);
             currentBlock.transform.position = transform.position;
-            currentBlock.GetComponent<BlockBehaviour>().awake = true;
+            currentBlock.GetComponent<BlockBehaviour>().ActivateDisplayMode();
             currentBlock.transform.localScale *= _blockScaleSize;
         }
     }

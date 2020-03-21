@@ -37,6 +37,14 @@ namespace Lodis.GamePlay
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public GameObject specialFeature;
 
         public void ResolveCollision(GameObject other)

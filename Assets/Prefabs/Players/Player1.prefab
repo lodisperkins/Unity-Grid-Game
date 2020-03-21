@@ -10586,6 +10586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRef: {fileID: 11400000, guid: 5cc77f138c0fd1740a05cbcb8801e15f, type: 2}
+  blockListRef: {fileID: 0}
   blocks:
   - {fileID: 1609089727696304, guid: beef14e6ff934a34499bf7605c20eb0e, type: 2}
   - {fileID: 1172816898836844, guid: 2feecdbaddeb9224aaff6b5b68870b5e, type: 2}

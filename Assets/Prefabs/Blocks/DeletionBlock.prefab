@@ -106,6 +106,7 @@ MonoBehaviour:
   cost: 0
   _level: {fileID: 0}
   BlockWeightVal: 0
+  awake: 0
   canUpgrade: 0
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -114,6 +115,7 @@ MonoBehaviour:
   specialFeature: {fileID: 114616023834657678}
   player1Materials: {fileID: 0}
   player2Materials: {fileID: 0}
+  _blockUI: {fileID: 0}
 --- !u!114 &114616023834657678
 MonoBehaviour:
   m_ObjectHideFlags: 1

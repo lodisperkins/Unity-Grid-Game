@@ -278,13 +278,18 @@ MonoBehaviour:
   currentPanel: {fileID: 0}
   owner: {fileID: 0}
   cost: 10
-  _sleepingMateral: {fileID: 2100000, guid: 076dec6e98a51b44b83db6d3af79e422, type: 2}
-  _defaultMaterial: {fileID: 2100000, guid: 49072dbdbbad6f14a8be532a51dca450, type: 2}
+  _level: {fileID: 0}
   BlockWeightVal: 0
+  awake: 0
   canUpgrade: 1
-  sleeping: 0
+  deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
+  onBlockDelete: {fileID: 0}
+  specialFeature: {fileID: 0}
+  player1Materials: {fileID: 0}
+  player2Materials: {fileID: 0}
+  _blockUI: {fileID: 0}
 --- !u!114 &114264179564565822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,11 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_Ref: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
-  DisplayHealth: 0
-  Health: {fileID: 0}
-  IsAlive: 0
-  canHeal: 0
+  healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
+  health: {fileID: 0}
+  isAlive: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -330,7 +333,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  hasRaised: 0
+  OnObjectDeath: {fileID: 0}
+  OnHit: {fileID: 0}
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
+  ps2: {fileID: 0}
+  healthFull: 0
 --- !u!114 &114516213190910178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,7 +379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede83023ae3b0f4584efdb167208cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blockScript: {fileID: 0}
   MaterialAmount: 15
+  materialUpgradeVal: 0
+  regenTimeUpgradeVal: 0
 --- !u!114 &114575009364112912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +399,7 @@ MonoBehaviour:
   actionDelay: 0.1
   actionLimit: 1
   hasLimit: 0
+  numberOfActionsLeft: 0
 --- !u!114 &114907662371916106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,6 +415,7 @@ MonoBehaviour:
   _bulletEmitter: {fileID: 1734885017088298, guid: 5af92e9293549e74a9da26c51e5abfd4,
     type: 2}
   _bulletEmitterPosition: {x: 0, y: 20, z: 0}
+  _gun: {fileID: 0}
 --- !u!114 &114913433600047622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,6 +430,7 @@ MonoBehaviour:
   bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
   owner: 
   bulletForceScale: 1500
+  _bulletForce: {x: 0, y: 0, z: 0}
   bulletDelay: 1
   bulletCount: 5
   outOfAmmo:
@@ -438,3 +452,4 @@ MonoBehaviour:
   _isTurret: 1
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1
+  block: {fileID: 0}

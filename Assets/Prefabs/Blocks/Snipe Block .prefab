@@ -2281,6 +2281,7 @@ MonoBehaviour:
   actionDelay: 0.1
   actionLimit: 1
   hasLimit: 1
+  numberOfActionsLeft: 0
 --- !u!114 &114198517032171636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2342,6 +2343,7 @@ MonoBehaviour:
   cost: 30
   _level: {fileID: 114198517032171636}
   BlockWeightVal: 3
+  awake: 0
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -2350,6 +2352,7 @@ MonoBehaviour:
   specialFeature: {fileID: 114977799961102892}
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
+  _blockUI: {fileID: 0}
 --- !u!114 &114497817105084790
 MonoBehaviour:
   m_ObjectHideFlags: 1

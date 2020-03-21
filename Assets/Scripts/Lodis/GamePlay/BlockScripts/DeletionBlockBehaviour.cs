@@ -34,6 +34,14 @@ namespace Lodis
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public GameObject specialFeature;
 
         private void Start()

@@ -26,9 +26,6 @@ namespace Lodis
         private int _currentLevel;
         //The weight of a block represents how much of it can be placed on a panel. Panels havea limit of 3;
         public int BlockWeightVal;
-        [SerializeField]
-        public bool awake;
-        private Material _currentMaterial;
         public IUpgradable actionComponent;
         //If true, the player may upgrade this block, otherwise they must wait until it is
         public bool canUpgrade;
@@ -39,13 +36,13 @@ namespace Lodis
         private HealthBehaviour _health;
         public List<IUpgradable> componentList;
         private Color _currentMaterialColor;
-        private string pastName;
         public BlockAction specialActions;
         public MonoBehaviour specialFeature;
+        //The energy for both players used to give a boost when this block is destroyed
         [SerializeField] private IntVariable player1Materials;
         [SerializeField] private IntVariable player2Materials;
         [SerializeField] private Canvas _blockUI;
-        public HealthBehaviour Health
+        public HealthBehaviour HealthScript
         {
             get
             {
@@ -54,73 +51,49 @@ namespace Lodis
         }
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             InitializeBlock();
+            //raises the event signaling the block has been spawned
+            onBlockSpawn.Raise();
         }
+        //sets all values to default
         public void InitializeBlock()
         {
             actionComponent = specialFeature as IUpgradable;
-            if (awake)
-            {
-                _blockUI = GetComponentInChildren<Canvas>();
-                _blockUI.enabled = false;
-                if(actionComponent != null)
-                {
-                    actionComponent.ActivateDisplayMode();
-                }
-                return;
-            }
-            
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
-            _currentMaterial = GetComponent<Renderer>().material;
             componentList = new List<IUpgradable>();
-            
             componentList.Add(actionComponent);
-            GetComponent<BlockBehaviour>().enabled = true;
-            _currentMaterial.SetColor("_EmissionColor", Color.black);
             _health = GetComponent<HealthBehaviour>();
             canUpgrade = true;
             _currentLevel = 1;
         }
-        private void Awake()
+        //Turns off UI and disablkes any special components attached
+        public void ActivateDisplayMode()
         {
-            //raises the event signaling the block has been spawned
-            onBlockSpawn.Raise();
+            _blockUI = GetComponentInChildren<Canvas>();
+            _blockUI.enabled = false;
+            if (actionComponent != null)
+            {
+                actionComponent.ActivateDisplayMode();
+            }
+            return;
         }
         private void OnTriggerEnter(Collider other)
         {
-            
+            //Check if the player teleported onto a block
             if (other.name == "TeleportationBeam")
             {
                 DestroyBlock();
                 return;
             }
-            else if(other.CompareTag("Panel"))
-            {
-                //var newPanel = other.GetComponent<PanelBehaviour>();
-                //if (newPanel.Occupied)
-                //{
-                //    return;
-                //}
-                //else
-                //{
-                //    currentPanel.GetComponent<PanelBehaviour>().Occupied = false;
-                //    currentPanel.GetComponent<PanelBehaviour>().blockCounter = 0;
-                //    currentPanel = newPanel.gameObject;
-                //    currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
-                //}
-            }
+            //Upgrade check
             else if (other.CompareTag("Block"))
             {
-                //otherwise check the name of the block and upgrade
                 Upgrade(other.GetComponent<BlockBehaviour>());
             }
-            if(componentList == null)
-            {
-                return;
-            }
+            //Tells all components of the block that collision has occured
             foreach(IUpgradable component in componentList)
             {
                 if(component != null)
@@ -131,10 +104,7 @@ namespace Lodis
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if(componentList == null)
-            {
-                return;
-            }
+            //Tells all components of the block that collision has occured
             foreach (IUpgradable component in componentList)
             {
                 if (component != null)
@@ -143,6 +113,7 @@ namespace Lodis
                 }
             }
         }
+        //Upgrades the block that this block was placed upon
         public void Upgrade(BlockBehaviour block)
         {
             //If the block cannot upgrade other blocks do nothing 
@@ -153,6 +124,7 @@ namespace Lodis
             block.actionComponent.UpgradeBlock(gameObject);
             _currentLevel++;
             onUpgrade.Raise(gameObject);
+
             //Destroys the block placed on top after the upgrade to free up space
             block.GetComponent<BlockBehaviour>();
             var destroyblock = block.GetComponent<DeletionBlockBehaviour>();
@@ -171,18 +143,17 @@ namespace Lodis
         public void DestroyBlock()
         {
 
-            if (canUpgrade == false && Health != null)
+            if (canUpgrade == false && HealthScript != null)
             {
                 _panel.Occupied = false;
-                Health.playDeathParticleSystems(2);
+                HealthScript.playDeathParticleSystems(2);
             }
-            else if (!canUpgrade && Health != null)
+            else if (!canUpgrade && HealthScript != null)
             {
-                Health.hasRaised = true;
+                HealthScript.hasRaised = true;
             }
             canUpgrade = false;
             GameObject TempGameObject = gameObject;
-            //StartCoroutine(Flash());
             Destroy(TempGameObject);
         }
 
@@ -198,21 +169,7 @@ namespace Lodis
         {
             specialActions.Invoke();
         }
-
-        //private IEnumerator Flash()
-        //{
-        //    if(_currentMaterial == null)
-        //    {
-        //        StopAllCoroutines();
-        //    }
-        //    for (var i = 0; i < 5; i++)
-        //    {
-        //        _currentMaterial.SetColor("_EmissionColor",new Color(.7f,.5f,0.1f,1));
-        //        yield return new WaitForSeconds(.1f);
-        //        _currentMaterial.SetColor("_EmissionColor",Color.black); 
-        //        yield return new WaitForSeconds(.1f);
-        //    }
-        //}
+        
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
@@ -221,32 +178,29 @@ namespace Lodis
                 _panel.blockCounter = 0;
             }
             
-            if (canUpgrade == false && Health != null)
+            if (canUpgrade == false && HealthScript != null)
             {
                 _panel.Occupied = false;
-                Health.playDeathParticleSystems(2);
+                HealthScript.playDeathParticleSystems(2);
             }
-            else if(!canUpgrade&& Health != null)
+            else if(!canUpgrade&& HealthScript != null)
             {
-                Health.hasRaised = true;
+                HealthScript.hasRaised = true;
             }
             canUpgrade = false;
             GameObject TempGameObject = gameObject;
-
-            
-            //StartCoroutine(Flash());
             Destroy(TempGameObject,time);
         }
-
+        //Gives the player a slight energy boost for destroying this block
         public void GiveMoneyForKill(string shooterName,int damageVal)
         {
-            if (Health.health.Val - damageVal <= 0)
+            if (HealthScript.health.Val - damageVal <= 0)
             {
-                if (shooterName == "Player1")
+                if (shooterName == "Player1" && shooterName != owner.name)
                 {
                     player1Materials.Val += cost / 2;
                 }
-                else if (shooterName == "Player2")
+                else if (shooterName == "Player2" && shooterName != owner.name)
                 {
                     player2Materials.Val += cost / 2;
                 }
@@ -256,6 +210,7 @@ namespace Lodis
 
         private void Update()
         {
+            //Updates the ui to reflect the blocks current level
             if (_level != null)
             {
                 _level.text = "lvl. "+_currentLevel;

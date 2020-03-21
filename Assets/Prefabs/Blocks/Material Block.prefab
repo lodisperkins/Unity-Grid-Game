@@ -2562,6 +2562,7 @@ MonoBehaviour:
   specialFeature: {fileID: 114677249479609268}
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
+  _blockUI: {fileID: 0}
 --- !u!114 &114858185130071156
 MonoBehaviour:
   m_ObjectHideFlags: 1

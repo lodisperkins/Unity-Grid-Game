@@ -124,9 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_Ref: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
-  Health: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
-  IsAlive: 0
+  healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
+  health: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
+  isAlive: 0
+  _secondaryHealthSource: {fileID: 0}
+  conversionRate: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -154,9 +156,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  hasRaised: 0
   OnObjectDeath: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   ps: {fileID: 0}
+  ps2: {fileID: 0}
+  healthFull: 0
 --- !u!114 &114638637751728120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,3 +177,10 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
+  _blockLimit: 0
+  _explosionParticles: {fileID: 0}
+  blockCounter: 0
+  BlockCapacityReached: 0

@@ -8980,6 +8980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRef: {fileID: 11400000, guid: 0018f07231d12e442997f41bac47a20e, type: 2}
+  blockListRef: {fileID: 0}
   blocks:
   - {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d, type: 2}
   - {fileID: 1373659190468100, guid: a812f03e95970314894c240ac69c7c3b, type: 2}

@@ -83,7 +83,8 @@ public class InputVariable : ScriptableObject
         }
 
     }
-    private void Init(string axisName, string funcMessage1, string funcMessage2, string funcMessage3,object funcArg,float timer,bool hasMultiInput,List<string>buttons)
+    private void Init(string axisName, string funcMessage1, string funcMessage2, string funcMessage3,
+        object funcArg,float timer,bool hasMultiInput,List<string>buttons)
     {
         axis = axisName;
         buttonDownMessage = funcMessage1;
@@ -94,7 +95,8 @@ public class InputVariable : ScriptableObject
         hasMultipleButtons = hasMultiInput;
         _axisNames = buttons;
     }
-    public static InputVariable CreateInstance(string axisName, string funcMessage1,string funcMessage2, string funcMessage3, object funcArg, float timer, bool hasMultiInput, List<string>buttons)
+    public static InputVariable CreateInstance(string axisName, string funcMessage1,string funcMessage2, string funcMessage3,
+        object funcArg, float timer, bool hasMultiInput, List<string>buttons)
     {
         var data = CreateInstance<InputVariable>();
         data.Init(axisName, funcMessage1,funcMessage2,funcMessage3, funcArg,timer,hasMultiInput,buttons);

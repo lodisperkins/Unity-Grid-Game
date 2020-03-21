@@ -34,6 +34,15 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject;
             }
         }
+
+        public string Name
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         private void Start()
         {
             _blockScript.specialActions += Ram;

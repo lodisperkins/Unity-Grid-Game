@@ -41,6 +41,14 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start () {
             _playerMoveScript = _blockScript.owner.GetComponent<PlayerMovementBehaviour>();
@@ -55,7 +63,7 @@ namespace Lodis.GamePlay.BlockScripts
             block.specialActions += SwitchBlocks;
             NeighboorCheck += CheckIfNeighboor;
             colorName = "Color_262603E3";
-            _blockScript.Health.health.Val = _spawnRoutine.numberOfActionsLeft;
+            _blockScript.HealthScript.health.Val = _spawnRoutine.numberOfActionsLeft;
             List<GridScripts.PanelBehaviour> panelsInRange = new List<GridScripts.PanelBehaviour>();
             FindNeighbors();
         }
@@ -106,7 +114,7 @@ namespace Lodis.GamePlay.BlockScripts
                 panelsInRange[panelIndex].Occupied = true;
                 panelsInRange[panelIndex].Selected = false;
                 BlockCopy.GetComponent<Collider>().isTrigger = true;
-                block.Health.takeDamage(1);
+                block.HealthScript.takeDamage(1);
             }
         }
         public void SwitchBlocks(object[] args)
@@ -146,12 +154,6 @@ namespace Lodis.GamePlay.BlockScripts
                         break;
                     }
             }
-            //highlights panels
-            //foreach(GridScripts.PanelBehaviour panel in panelsInRange)
-            //{
-            //    panel.SelectionColor = SelectionColor;
-            //    panel.Selected = true;
-            //}
             if(_attachedMaterial != null)
             {
                 _attachedMaterial.SetColor(colorName, SelectionColor);
@@ -201,7 +203,7 @@ namespace Lodis.GamePlay.BlockScripts
             routineScript.ResetActions();
             routineScript.actionLimit += 3;
             routineScript.actionDelay -= .5f;
-            _blockScript.Health.health.Val = _spawnRoutine.numberOfActionsLeft;
+            _blockScript.HealthScript.health.Val = _spawnRoutine.numberOfActionsLeft;
         }
         public void TransferOwner(GameObject otherBlock)
         {

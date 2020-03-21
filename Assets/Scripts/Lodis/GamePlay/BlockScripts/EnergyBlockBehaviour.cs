@@ -34,6 +34,15 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject;
             }
         }
+
+        public string Name
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -45,6 +54,12 @@ namespace Lodis.GamePlay.BlockScripts
         {
             PlayerSpawner.AddMaterials(MaterialAmount);
         }
+        /// <summary>
+        /// Upgrades:
+        /// Increases the amount of energy given
+        /// Decreases energy boost cooldown
+        /// </summary>
+        /// <param name="otherBlock"></param>
         public void UpgradeBlock(GameObject otherBlock)
         {
             BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -59,6 +74,10 @@ namespace Lodis.GamePlay.BlockScripts
             }
             TransferOwner(otherBlock);
         }
+        /// <summary>
+        /// Transfers the energy boost component
+        /// </summary>
+        /// <param name="otherBlock"></param>
         public void TransferOwner(GameObject otherBlock)
         {
             BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -70,7 +89,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             return;
         }
-
+        //Turns off particle effect
         public void ActivateDisplayMode()
         {
             gameObject.SetActive(false);

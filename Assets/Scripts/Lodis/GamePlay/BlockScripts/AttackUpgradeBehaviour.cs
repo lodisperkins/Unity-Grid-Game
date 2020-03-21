@@ -11,6 +11,7 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private int _bulletForceUpgradeVal;
 		[SerializeField] private int _ammoUpgradeVal;
 		[SerializeField] private HealthBehaviour _blockHealth;
+        private string _nameOfItem;
         public BlockBehaviour block
         {
             get
@@ -20,6 +21,13 @@ namespace Lodis.GamePlay.BlockScripts
             set
             {
                 _blockScript = value;
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return _nameOfItem;
             }
         }
         public GameObject specialFeature
@@ -32,30 +40,46 @@ namespace Lodis.GamePlay.BlockScripts
 		// Use this for initialization
 		void Start ()
 		{
+            _nameOfItem = specialFeature.name;
 			turretScript = GetComponent<GunBehaviour>();
             turretScript.OutOfAmmo.AddListener(_blockScript.DestroyBlock);
             turretScript.owner = _blockScript.owner.name;
             _blockHealth.health.Val = turretScript.CurrentAmmo;
 		}
-
+        /// <summary>
+        /// Upgrades:
+        /// Bullet damage increased
+        /// Bullet speed increased
+        /// Ammo capacity increased
+        /// Fire rate increased
+        /// </summary>
+        /// <param name="otherBlock"></param>
 		public void UpgradeBlock(GameObject otherBlock)
 		{
-			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
-            foreach (IUpgradable component in _blockScript.componentList)
+			BlockBehaviour _otherBlockScript = otherBlock.GetComponent<BlockBehaviour>();
+            foreach (IUpgradable component in _otherBlockScript.componentList)
             {
-                if (component.specialFeature.name == gameObject.name)
+                if (component.Name == Name)
                 {
-					turretScript = component.specialFeature.GetComponent<GunBehaviour>();
+                    turretScript = component.specialFeature.GetComponent<GunBehaviour>();
 					turretScript.damageVal += _damageUpgradeVal;
 					turretScript.bulletForceScale += _bulletForceUpgradeVal;
 					turretScript.bulletCount += _ammoUpgradeVal;
-                    component.specialFeature.GetComponent<AttackUpgradeBehaviour>()._blockHealth.health.Val = turretScript.bulletCount;
                     turretScript.bulletDelay -= .2f;
+                    _otherBlockScript.HealthScript.health.Val = turretScript.bulletCount;
 					return;
 				}
 			}
 			TransferOwner(otherBlock);
 		}
+        /// <summary>
+        /// - Sets health of other block to be current
+        /// ammunition count
+        /// 
+        /// -  Adds the detroy block func for the
+        /// other block as a listener for the out of anmmo event
+        /// </summary>
+        /// <param name="otherBlock"></param>
 		public void TransferOwner(GameObject otherBlock)
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -65,7 +89,7 @@ namespace Lodis.GamePlay.BlockScripts
 			blockScript.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);
 		}
-
+        //Used to decrease health everytime a shot is fired
 		public void DecreaseHealth()
 		{
 			_blockHealth.health.Val--;
@@ -75,7 +99,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             return;
         }
-
+        //Turns off turret 
         public void ActivateDisplayMode()
         {
             gameObject.SetActive(false);

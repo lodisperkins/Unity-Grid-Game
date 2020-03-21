@@ -13,8 +13,8 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private BlockBehaviour _blockScript;
 		[SerializeField] private RoutineBehaviour shieldTimer;
-
-		private float lerpNum;
+        private string _nameOfItem;
+        private float lerpNum;
 		// Use this for initialization
 		void Start ()
 		{
@@ -22,6 +22,7 @@ namespace Lodis.GamePlay.BlockScripts
 			lerpNum = (float)1/shieldTimer.actionLimit;
 			colorName = "Color_262603E3";
 			_attachedMaterial = GetComponent<MeshRenderer>().material;
+            _nameOfItem = gameObject.name;
 		}
         public BlockBehaviour block
         {
@@ -41,16 +42,26 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject;
             }
         }
+
+        public string Name
+        {
+            get
+            {
+                return _nameOfItem;
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             ResolveCollision(other.gameObject);
         }
+
         public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
             foreach (IUpgradable component in _blockScript.componentList)
             {
-                if (component.specialFeature.name == gameObject.name)
+                if (component.Name == Name)
                 {
                     component.specialFeature.GetComponent<DefenseBarrierBehaviour>().Upgrade();
 					return;
@@ -58,7 +69,11 @@ namespace Lodis.GamePlay.BlockScripts
 			}
 			TransferOwner(otherBlock);
 		}
-
+        /// <summary>
+        /// Upgrades:
+        /// Increases health
+        /// Replenishes shield
+        /// </summary>
 		public void Upgrade()
 		{
 			gameObject.SetActive(true);
@@ -74,11 +89,17 @@ namespace Lodis.GamePlay.BlockScripts
 			healthScript.health.Val = 5;
 			gameObject.SetActive(false);
 		}
+        //Changes the color of the sphere to reflect how much time it has left
 		public void DecaySphere()
 		{
 			_attachedMaterial.SetColor(colorName,Color.Lerp(Color.green, Color.red,lerpNum));
 			lerpNum += _decayVal;
 		}
+        /// <summary>
+        /// Transfers shield to other block
+        /// while also healing other block.
+        /// </summary>
+        /// <param name="otherBlock"></param>
 		public void TransferOwner(GameObject otherBlock)
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -87,15 +108,16 @@ namespace Lodis.GamePlay.BlockScripts
 			blockScript.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);
 		}
-
+        //Tells the block to take damage
         public void ResolveCollision(GameObject collision)
         {
             if (collision.CompareTag("Projectile"))
             {
-                block.Health.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
+                block.HealthScript.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
                 collision.GetComponent<BulletBehaviour>().Destroy();
             }
         }
+        //Stops shield from decaying
         public void ActivateDisplayMode()
         {
             shieldTimer.StopAllCoroutines();

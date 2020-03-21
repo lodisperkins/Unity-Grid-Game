@@ -127,3 +127,10 @@ MonoBehaviour:
   Owner: Player1
   Occupied: 0
   SelectionColor: {r: 0, g: 0, b: 0, a: 0}
+  G: 0
+  F: 0
+  previousPanel: {fileID: 0}
+  _blockLimit: 0
+  _explosionParticles: {fileID: 0}
+  blockCounter: 0
+  BlockCapacityReached: 0

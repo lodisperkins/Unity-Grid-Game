@@ -19,6 +19,7 @@ namespace Lodis.GamePlay
 	    // Use this for initialization
 	    void Start () {
             _explosionRadius = GetComponent<SphereCollider>();
+            //this is mainly to check to see if the block is being displayed on the ui or in battle
             canExplode = true;
             if (_block == null)
             {
@@ -28,15 +29,16 @@ namespace Lodis.GamePlay
         }
 	    public void Explode()
         {
-            if(_block.Health != null && canExplode)
+            if(_block.HealthScript != null && canExplode)
             { _explosionRadius.enabled = true;
-                _block.Health.playDeathParticleSystems(.5f);
+                _block.HealthScript.playDeathParticleSystems(.5f);
                 _block.DestroyBlock(.1f);
             }
             
         }
         private void OnTriggerEnter(Collider other)
         {
+            //breaks all panels in range
             if(other.CompareTag("Panel"))
             {
                 if(other.gameObject == _block.currentPanel && _explosionRadius.enabled)
@@ -45,6 +47,7 @@ namespace Lodis.GamePlay
                 }
                 other.GetComponent<GridScripts.PanelBehaviour>().BreakPanel(5);
             }
+            //damages everything else 
             else if(other.gameObject != _block.gameObject)
             {
                 var health = other.GetComponent<HealthBehaviour>();

@@ -618,9 +618,15 @@ MonoBehaviour:
   m_doNotOverwriteTemplateMaterialProperties: 1
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
-  m_lineColor: {r: 0.034482718, g: 1, b: 0, a: 0}
+  m_lineColor:
+    r: 0.034482718
+    g: 1
+    b: 0
+    a: 0
   m_lineWidth: 66
   m_lightSaberFactor: 0.747
+  m_material: {fileID: 0}
+  m_meshFilter: {fileID: 0}
 --- !u!114 &114840780974794430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -685,9 +691,15 @@ MonoBehaviour:
   m_doNotOverwriteTemplateMaterialProperties: 0
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
-  m_lineColor: {r: 1, g: 0.058819957, b: 0, a: 0}
+  m_lineColor:
+    r: 1
+    g: 0.058819957
+    b: 0
+    a: 0
   m_lineWidth: 49.8
   m_lightSaberFactor: 0.747
+  m_material: {fileID: 0}
+  m_meshFilter: {fileID: 0}
 --- !u!114 &114930422235514172
 MonoBehaviour:
   m_ObjectHideFlags: 1
