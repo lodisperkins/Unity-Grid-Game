@@ -20,6 +20,10 @@ namespace Lodis.GamePlay.GridScripts
             {
                 return panels;
             }
+            set
+            {
+                panels = value;
+            }
         }
         //a list of panels meant to be in the players possesion only temporarily
         public List<GameObject> tempPanels;

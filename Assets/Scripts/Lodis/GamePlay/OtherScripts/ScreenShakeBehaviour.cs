@@ -8,6 +8,8 @@ namespace Lodis.GamePlay.OtherScripts
 		public float shakeVal;
 
 		public bool isShaking;
+        public bool updatePosition;
+        public bool isMoving;
 		private Vector3 _startPosition;
 
 		public Vector3 StartPosition
@@ -27,7 +29,8 @@ namespace Lodis.GamePlay.OtherScripts
 
 		IEnumerator Shake()
 		{
-			if (shakeLength == 0)
+           
+            if (shakeLength == 0)
 			{
 				shakeLength = 5;
 			}
@@ -56,11 +59,19 @@ namespace Lodis.GamePlay.OtherScripts
 
 		public void StartShaking()
 		{
+            if(isMoving)
+            {
+                return;
+            }
 			isShaking = true;
 		}
 		public void StartShaking(int length)
 		{
-			shakeLength = length;
+            if (isMoving)
+            {
+                return;
+            }
+            shakeLength = length;
 			isShaking = true;
 		}
 	

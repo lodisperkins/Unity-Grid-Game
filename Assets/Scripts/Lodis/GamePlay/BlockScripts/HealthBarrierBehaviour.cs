@@ -13,6 +13,7 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private GameEventListener _deleteEventListener;
         private float _healTimer;
+        private string _nameOfItem;
         [SerializeField]
         private float _timeUntilNextHeal;
 		private int _currentBulletsToHeal;
@@ -42,7 +43,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new NotImplementedException();
+                return _nameOfItem;
             }
         }
 
@@ -50,11 +51,8 @@ namespace Lodis.GamePlay.BlockScripts
         void Start ()
 		{
             _canHeal = true;
-            if(_healthScript != null)
-            {
-                _healthScript = block.gameObject.GetComponent<HealthBehaviour>();
-            }
-            
+            _healthScript = block.gameObject.GetComponent<HealthBehaviour>();
+            _nameOfItem = gameObject.name;
             _healTimer = Time.time + _timeUntilNextHeal;
             _healCounter = 0;
             _healLimit = 10;
@@ -92,7 +90,7 @@ namespace Lodis.GamePlay.BlockScripts
         }
         private void TryHeal()
 		{
-            if(_canHeal && !_healthScript.healthFull && _healCounter < _healLimit)
+            if(_canHeal && !_healthScript.healthFull)
             {
                 _healCounter++;
                 _healthScript.health.Val +=_healVal;

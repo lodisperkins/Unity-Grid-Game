@@ -2376,7 +2376,6 @@ MonoBehaviour:
   cost: 10
   _level: {fileID: 114204422207932198}
   BlockWeightVal: 1
-  awake: 0
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -2745,6 +2744,7 @@ MonoBehaviour:
   _bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   _bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
   active: 0
+  hitTrail: {fileID: 1046898937792080}
 --- !u!114 &114829288299332026
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -105,7 +105,7 @@ namespace Lodis
                     OnObjectDeath.Raise(gameObject);
                 }
             }
-            healthFull = health.Val == healthRef.Val;
+            healthFull = health.Val >= healthRef.Val;
         }
     }
 }

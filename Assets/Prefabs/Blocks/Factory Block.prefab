@@ -2262,7 +2262,6 @@ MonoBehaviour:
   cost: 30
   _level: {fileID: 114896365177001106}
   BlockWeightVal: 1
-  awake: 0
   canUpgrade: 0
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -2635,7 +2634,7 @@ MonoBehaviour:
   onActionsBegin: {fileID: 11400000, guid: 4721e8847ea42404c85e512db7daf57a, type: 2}
   onActionsCompleted: {fileID: 11400000, guid: b2f3bf7b778901942828e67bad18efd8, type: 2}
   actionDelay: 2
-  actionLimit: 6
+  actionLimit: 4
   hasLimit: 1
   numberOfActionsLeft: 0
 --- !u!222 &222091263460883320

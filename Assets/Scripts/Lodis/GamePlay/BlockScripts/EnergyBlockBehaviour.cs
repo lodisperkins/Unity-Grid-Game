@@ -39,7 +39,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return gameObject.name;
             }
         }
 

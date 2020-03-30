@@ -42,19 +42,16 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return gameObject.name;
             }
         }
-
-        private void Start()
-        {
-        }
+        
         public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
 			foreach (IUpgradable component in _blockScript.componentList)
 			{
-				if (component.specialFeature.name == gameObject.name)
+				if (component.Name == Name)
 				{
 					component.specialFeature.GetComponent<OrbiterBlockBehaviour>().UpgradeOrbs();
                     return;
@@ -71,6 +68,7 @@ namespace Lodis.GamePlay.BlockScripts
             Destroy(temp2);
             Destroy(temp3);
         }
+        //Adds another orb to the orbit
         public void UpgradeOrbs()
         {
             if(_orb2.activeInHierarchy)
@@ -79,6 +77,7 @@ namespace Lodis.GamePlay.BlockScripts
             }
             _orb2.SetActive(true);
         }
+        //Takes whatever feature that was merged into the orbiter block and gives it to the orbs instead
         public void ChangeOrbProperties(GameObject otherBlock)
         {
             if(otherBlock == null)
@@ -101,11 +100,18 @@ namespace Lodis.GamePlay.BlockScripts
                 }
             }
         }
+
         public void DisableOrbAttack()
         {
             _orb1.GetComponent<OrbBehaviour>().DamageVal = 0;
+            _orb1.GetComponent<SphereCollider>().enabled = false;
+            _orb1.GetComponent<MeshRenderer>().enabled = false;
             _orb2.GetComponent<OrbBehaviour>().DamageVal = 0;
+            _orb2.GetComponent<SphereCollider>().enabled = false;
+            _orb2.GetComponent<MeshRenderer>().enabled = false;
             _orb3.GetComponent<OrbBehaviour>().DamageVal = 0;
+            _orb3.GetComponent<SphereCollider>().enabled = false;
+            _orb3.GetComponent<MeshRenderer>().enabled = false;
         }
 		public void TransferOwner(GameObject otherBlock)
 		{

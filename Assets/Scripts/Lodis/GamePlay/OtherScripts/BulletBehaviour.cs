@@ -39,7 +39,7 @@ namespace Lodis
         private bool panelSetCalled;
         public bool active;
         private PanelBehaviour _currentPanel;
- 
+        public GameObject hitTrail;
         public PanelBehaviour currentPanel
         {
             get { return _currentPanel; }

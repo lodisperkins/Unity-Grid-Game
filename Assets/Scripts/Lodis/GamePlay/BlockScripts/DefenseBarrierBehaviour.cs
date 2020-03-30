@@ -15,6 +15,8 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private RoutineBehaviour shieldTimer;
         private string _nameOfItem;
         private float lerpNum;
+        [SerializeField]
+        private Event onHit;
 		// Use this for initialization
 		void Start ()
 		{
@@ -84,9 +86,13 @@ namespace Lodis.GamePlay.BlockScripts
 			lerpNum = (float)1/shieldTimer.actionLimit;
 			_attachedMaterial.SetColor(colorName,Color.Lerp(Color.green, Color.red,lerpNum));
 		}
+        //Destrpys the barrier surrounding the block and reduces the health to 5
 		public void DestroyBarrier()
 		{
-			healthScript.health.Val = 5;
+            if(healthScript.health.Val > 5)
+            {
+                healthScript.health.Val = 5;
+            }
 			gameObject.SetActive(false);
 		}
         //Changes the color of the sphere to reflect how much time it has left
@@ -102,18 +108,19 @@ namespace Lodis.GamePlay.BlockScripts
         /// <param name="otherBlock"></param>
 		public void TransferOwner(GameObject otherBlock)
 		{
-			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
+			block = otherBlock.GetComponent<BlockBehaviour>();
 			healthScript = otherBlock.GetComponent<HealthBehaviour>();
 			healthScript.health.Val += _upgradeVal;
-			blockScript.componentList.Add(this);
+			block.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);
 		}
         //Tells the block to take damage
         public void ResolveCollision(GameObject collision)
         {
-            if (collision.CompareTag("Projectile"))
+            if (collision.CompareTag("Projectile") && gameObject.activeSelf)
             {
                 block.HealthScript.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
+                onHit.Raise(gameObject);
                 collision.GetComponent<BulletBehaviour>().Destroy();
             }
         }

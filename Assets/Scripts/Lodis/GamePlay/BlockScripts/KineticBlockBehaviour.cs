@@ -4,12 +4,14 @@ using UnityEngine;
 namespace Lodis.GamePlay.BlockScripts
 {
 
-
+    /// <summary>
+    /// rework
+    /// </summary>
     public class KineticBlockBehaviour : MonoBehaviour,IUpgradable {
         private List<Rigidbody> _rigidbodies;
         private List<BulletBehaviour> _bullets;
         private List<Vector3> velocityVals;
-        [SerializeField] private HealthBehaviour _blockHealth = new HealthBehaviour();
+        [SerializeField] private HealthBehaviour _blockHealth;
         [SerializeField]
         private BlockBehaviour _blockScript;
         [SerializeField]
@@ -40,7 +42,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return gameObject.name;
             }
         }
 
@@ -54,42 +56,7 @@ namespace Lodis.GamePlay.BlockScripts
             _blockHealth.health.Val = bulletCapacity;
             _blockScript.specialActions += DetonateBlock;
         }
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Projectile"))
-            {
-                BulletBehaviour bulletscript = other.GetComponent<BulletBehaviour>();
-                if(bulletscript != null && other.name == "Bullet(Clone)")
-                {
-                    _bullets.Add(bulletscript);
-                    other.gameObject.SetActive(false);
-                    _blockHealth.health.Val--;
-                }
-                else if(other.name == "Ramming Barrier")
-                {
-                    Rigidbody parentRigidbody = other.GetComponentInParent<Rigidbody>();
-                    if (parentRigidbody != null)
-                    {
-                        velocityVals.Add(parentRigidbody.velocity);
-                        _rigidbodies.Add(parentRigidbody);
-                        parentRigidbody.velocity = Vector3.zero;
-                        parentRigidbody.isKinematic = true;
-                    }
-                    _bullets.Add(bulletscript);
-                    bulletCapacity -= 5;
-                    _blockHealth.health.Val -= 5;
-                }
-                Rigidbody temp = other.GetComponent<Rigidbody>();
-                if(temp != null)
-                {
-                    velocityVals.Add(temp.velocity);
-                    _rigidbodies.Add(temp);
-                    temp.velocity = Vector3.zero;
-                    temp.isKinematic = true;
-                }
-                
-            }
-        }
+        //Destroys block and fires all absorbed projectiles
         public void DetonateBlock(object[]arg)
         {
             _blockScript.DestroyBlock(0);
@@ -98,19 +65,25 @@ namespace Lodis.GamePlay.BlockScripts
                 if (_bullets[i] != null)
                 {
                     _bullets[i].Owner = _blockScript.owner.name;
-                    _bullets[i].gameObject.SetActive(true);
+                    _bullets[i].DamageVal *= 2;
                 }
             }
             for (int i = 0; i < _rigidbodies.Count; i++)
             {
                 if (_rigidbodies[i] != null)
                 {
+                    _rigidbodies[i].GetComponent<Transform>().parent = null;
+                    _rigidbodies[i].GetComponent<Collider>().enabled = true;
                     _rigidbodies[i].isKinematic = false;
-                    _rigidbodies[i].gameObject.SetActive(true);
                     _rigidbodies[i].AddForce(-(velocityVals[i]) *2, ForceMode.Impulse); 
                 }
             }
         }
+        /// <summary>
+        /// Upgrades:
+        /// Bullet Capacity Increased
+        /// </summary>
+        /// <param name="otherBlock"></param>
         public void UpgradeBlock(GameObject otherBlock)
         {
             BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -119,6 +92,7 @@ namespace Lodis.GamePlay.BlockScripts
                 if (component.specialFeature.name == gameObject.name)
                 {
                     component.specialFeature.GetComponent<KineticBlockBehaviour>().bulletCapacity+= _bulletCapUpgradeVal;
+                    component.specialFeature.GetComponent<KineticBlockBehaviour>()._blockHealth.Heal(_bulletCapUpgradeVal);
                     return;
                 }
             }
@@ -143,8 +117,69 @@ namespace Lodis.GamePlay.BlockScripts
                 }
             }
         }
+        //This needs to be done here. Resolve collision func is called twice
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Projectile"))
+            {
+                BulletBehaviour bulletscript = other.GetComponent<BulletBehaviour>();
+                /// <summary>
+                /// Since a ramming block has its barrier as a separate collider,
+                /// there must be a separate condition to get its parent added to 
+                /// the list instead of it. The other condition should work for
+                /// every other projectile.
+                /// </summary>
+                /// <param name="other"></param>
+                if (other.name == "Ramming Barrier")
+                {
+                    Rigidbody parentRigidbody = other.GetComponentInParent<Rigidbody>();
+                    Collider parentCollider = parentRigidbody.GetComponentInParent<Collider>();
+                    if (parentRigidbody != null)
+                    {
+                        //disables ramming barrier
+                        other.GetComponent<Collider>().enabled= false;
+                        //disables parent
+                        parentCollider.enabled = false;
+                        parentCollider.transform.SetParent(transform, false);
+                        parentCollider.transform.position = transform.position;
+                        parentCollider.transform.localScale /= 2;
+                        //Adds parent to list
+                        velocityVals.Add(parentRigidbody.velocity);
+                        _rigidbodies.Add(parentRigidbody);
+                        parentRigidbody.velocity = Vector3.zero;
+                        parentRigidbody.isKinematic = true;
+                        
+                    }
+                    _bullets.Add(bulletscript);
+                    bulletCapacity -= bulletscript.DamageVal;
+                    _blockHealth.health.Val -= bulletscript.DamageVal;
+                    return;
+                }
+                //Condition for normal projectiles
+                if (bulletscript != null)
+                {
+                    _bullets.Add(bulletscript);
+                    bulletscript.hitTrail.SetActive(false);
+                    other.GetComponent<Collider>().enabled = false;
+                    other.transform.localScale /= 2;
+                    other.transform.SetParent(transform, false);
+                    other.transform.position = transform.position;
+                    _blockHealth.health.Val-= bulletscript.DamageVal;
+                    bulletCapacity -= bulletscript.DamageVal;
+                }
+                
+                Rigidbody temp = other.GetComponent<Rigidbody>();
+                if (temp != null)
+                {
+                    velocityVals.Add(temp.velocity);
+                    _rigidbodies.Add(temp);
+                    temp.velocity = Vector3.zero;
+                    temp.isKinematic = true;
+                }
 
-        public void ResolveCollision(GameObject collision)
+            }
+        }
+        public void ResolveCollision(GameObject other)
         {
             return;
         }

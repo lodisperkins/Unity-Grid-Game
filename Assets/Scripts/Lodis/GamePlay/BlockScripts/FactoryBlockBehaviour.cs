@@ -45,7 +45,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return gameObject.name;
             }
         }
 
@@ -54,7 +54,7 @@ namespace Lodis.GamePlay.BlockScripts
             _playerMoveScript = _blockScript.owner.GetComponent<PlayerMovementBehaviour>();
             _playerSpawnScript = _blockScript.owner.GetComponent<PlayerSpawnBehaviour>();
             _playerBlocks = _playerSpawnScript.Blocks;
-            _currentPanel = _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>();
+            _currentPanel = _blockScript.Panel;
             _blockIndex = 0;
             panelIndex = 0;
             _currentBlock = new BlockVariable();
@@ -101,7 +101,7 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 panelIndex = 0;
             }
-            if (panelsInRange[panelIndex].blockCounter + _currentBlock.BlockScript.BlockWeightVal <= 3 && panelsInRange[panelIndex].Occupied == false)
+            if (panelsInRange[panelIndex].blockCounter + _currentBlock.BlockScript.BlockWeightVal <= 3)
             {
                
                 var position = new Vector3(panelsInRange[panelIndex].gameObject.transform.position.x, _currentBlock.Block.transform.position.y, panelsInRange[panelIndex].gameObject.transform.position.z);
@@ -111,6 +111,7 @@ namespace Lodis.GamePlay.BlockScripts
                 copyScript.owner = _blockScript.owner;
                 copyScript.InitializeBlock();
                 TransferUpgrades(copyScript);
+                copyScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter -= 1;
                 panelsInRange[panelIndex].Occupied = true;
                 panelsInRange[panelIndex].Selected = false;
                 BlockCopy.GetComponent<Collider>().isTrigger = true;
@@ -171,7 +172,7 @@ namespace Lodis.GamePlay.BlockScripts
             BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
             foreach (IUpgradable component in _blockScript.componentList)
             {
-                if (component.specialFeature.name == gameObject.name)
+                if (component.Name == Name)
                 {
                     component.specialFeature.GetComponent<FactoryBlockBehaviour>().Upgrade();
                     return;
@@ -179,16 +180,27 @@ namespace Lodis.GamePlay.BlockScripts
             }
             TransferOwner(otherBlock);
         }
-        private void TransferUpgrades(BlockBehaviour spawnedBlock)
+        public void TransferUpgrades(BlockBehaviour spawnedBlock)
         {
-            foreach(IUpgradable component in block.componentList)
+            GameObject compClone = null;
+            foreach (IUpgradable component in block.componentList)
             {
-                if(component.specialFeature.name == gameObject.name)
+                if(component.Name == Name)
                 {
                     continue;
                 }
-                spawnedBlock.InitializeBlock();
-                GameObject compClone = Instantiate(component.specialFeature.gameObject, spawnedBlock.transform);
+                foreach(IUpgradable othercomponent in spawnedBlock.componentList)
+                {
+                    if(component.specialFeature.CompareTag(othercomponent.specialFeature.tag))
+                    {
+                        continue;
+                    }
+                    compClone = component.specialFeature.gameObject;
+                }
+            }
+            if(compClone != null)
+            {
+                compClone = Instantiate(compClone, spawnedBlock.transform);
                 compClone.GetComponent<IUpgradable>().TransferOwner(spawnedBlock.gameObject);
             }
         }

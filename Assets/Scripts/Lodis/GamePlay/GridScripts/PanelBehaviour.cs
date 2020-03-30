@@ -23,6 +23,7 @@ namespace Lodis.GamePlay.GridScripts
         public Color SelectionColor;
         //whether or not the panel is currently being selected
         private bool _selected;
+        private bool triggerEmpty;
         //the reference tho the players material
         private Material _player1Mat;
         private Material _player2Mat;
@@ -35,6 +36,8 @@ namespace Lodis.GamePlay.GridScripts
         private float yAbsolute;
         private float zAbsolute;
         private bool _isBroken;
+        private BlockBehaviour currentBlock;
+        private RaycastHit _detectionRay;
         public bool IsBroken
         {
             get
@@ -119,21 +122,59 @@ namespace Lodis.GamePlay.GridScripts
                 return zAbsolute;
             }
         }
-        
+
+        public BlockBehaviour CurrentBlock
+        {
+            get
+            {
+                return currentBlock;
+            }
+        }
+        private bool CheckIfOccupied()
+        {
+            if(Position == new Vector2(4,2))
+            {
+                Debug.DrawRay(transform.position, transform.up);
+            }
+            
+            if(Physics.Raycast(transform.position, transform.up, out _detectionRay))
+            {
+                GameObject objectDetected = _detectionRay.transform.gameObject;
+                if (objectDetected.CompareTag("Block") || objectDetected.CompareTag("Player"))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         //highlights the panel when a bullet passes through it
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Projectile"))
             {
-                
                 _attackHighlight = true;
                 UpdateColor();
             }
             
         }
-        
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag("Block"))
+            {
+                currentBlock = other.GetComponent<BlockBehaviour>();
+            }
+        }
         private void OnTriggerExit(Collider other)
         {
+            if(other.CompareTag("Block"))
+            {
+               if(currentBlock == other.GetComponent<BlockBehaviour>())
+               {
+                    currentBlock = null;
+                    blockCounter = 0;
+               }
+            }
             _attackHighlight = false;
             UpdateColor();
         }
@@ -261,18 +302,12 @@ namespace Lodis.GamePlay.GridScripts
         }
         private void Update()
         {
-            if (blockCounter == _blockLimit || _isBroken)
+            BlockCapacityReached = blockCounter == BlockLimit;
+            Occupied = CheckIfOccupied();
+            if(IsBroken)
             {
                 BlockCapacityReached = true;
                 Occupied = true;
-            }
-            else if (blockCounter == 0 && _isBroken == false)
-            {
-                Occupied = false;
-            }
-            else
-            {
-                BlockCapacityReached = false;
             }
             xAbsolute = transform.position.x;
             yAbsolute = transform.position.y;

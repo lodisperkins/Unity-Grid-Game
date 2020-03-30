@@ -14,8 +14,10 @@ namespace Lodis.GamePlay.GridScripts
         public  GameObjectList bulletListP1;
         public  GameObjectList bulletListP2;
         private PanelList _originalP1Panels;
-
         private PanelList _originalP2Panels;
+        [SerializeField]
+        private  PanelList globalPanelListRef;
+        public static PanelList globalPanelList;
         // player 1's current position on the grid
         [FormerlySerializedAs("P1Position")] [SerializeField]
         private Vector2Variable p1Position;
@@ -37,17 +39,17 @@ namespace Lodis.GamePlay.GridScripts
 //The amount of materials the players have
         [SerializeField] private Material _p1Material;
         [SerializeField] private Material _p2Material;
-    
+        public GameObject proofPanel;
         [SerializeField] private PlayerSpawnBehaviour _player1;
         [SerializeField] private PlayerSpawnBehaviour _player2;
         // Use this for initialization
         void Start()
         {
+            globalPanelList = globalPanelListRef;
             P1AssignLists();
             P2AssignLists();
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
-            
         }
 
         private void Awake()
@@ -134,6 +136,7 @@ namespace Lodis.GamePlay.GridScripts
         {
             get { return p2PanelsRef.Count; }
         }
+        
         public GameObject GetPanelFromP2List(int index)
         {
             return p2PanelsRef[index];

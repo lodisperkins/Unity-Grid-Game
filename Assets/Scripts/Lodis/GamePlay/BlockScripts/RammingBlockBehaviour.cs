@@ -48,6 +48,7 @@ namespace Lodis.GamePlay.BlockScripts
             _blockScript.specialActions += Ram;
             _blockRigidbody.isKinematic = true;
             _projectileScript = GetComponent<BulletBehaviour>();
+            Ram(null);
         }
         public void InitializeProjectileScript()
         {
@@ -74,15 +75,10 @@ namespace Lodis.GamePlay.BlockScripts
             isRamming = true;
             InitializeProjectileScript();
             transform.rotation = _blockScript.owner.transform.rotation;
-            transform.tag = "Projectile";
+            gameObject.tag = "Projectile";
             _blockRigidbody.isKinematic = false;
             _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
             _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter = 0;
-            OtherScripts.ScreenShakeBehaviour shakeScript = _blockScript.GetComponent<OtherScripts.ScreenShakeBehaviour>();
-            if(shakeScript != null)
-            {
-                shakeScript.enabled = false;
-            }
             _ramForce = transform.forward * _ramForceScale;
             _blockRigidbody.AddForce(_ramForce, ForceMode.Impulse);
         }

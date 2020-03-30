@@ -46,6 +46,20 @@ namespace Lodis.GamePlay.BlockScripts
             turretScript.owner = _blockScript.owner.name;
             _blockHealth.health.Val = turretScript.CurrentAmmo;
 		}
+        
+		public void UpgradeBlock(GameObject otherBlock)
+		{
+			BlockBehaviour _otherBlockScript = otherBlock.GetComponent<BlockBehaviour>();
+            foreach (IUpgradable component in _otherBlockScript.componentList)
+            {
+                if (component.Name == Name)
+                {
+                    component.specialFeature.GetComponent<AttackUpgradeBehaviour>().Upgrade();
+					return;
+				}
+			}
+			TransferOwner(otherBlock);
+		}
         /// <summary>
         /// Upgrades:
         /// Bullet damage increased
@@ -54,24 +68,14 @@ namespace Lodis.GamePlay.BlockScripts
         /// Fire rate increased
         /// </summary>
         /// <param name="otherBlock"></param>
-		public void UpgradeBlock(GameObject otherBlock)
-		{
-			BlockBehaviour _otherBlockScript = otherBlock.GetComponent<BlockBehaviour>();
-            foreach (IUpgradable component in _otherBlockScript.componentList)
-            {
-                if (component.Name == Name)
-                {
-                    turretScript = component.specialFeature.GetComponent<GunBehaviour>();
-					turretScript.damageVal += _damageUpgradeVal;
-					turretScript.bulletForceScale += _bulletForceUpgradeVal;
-					turretScript.bulletCount += _ammoUpgradeVal;
-                    turretScript.bulletDelay -= .2f;
-                    _otherBlockScript.HealthScript.health.Val = turretScript.bulletCount;
-					return;
-				}
-			}
-			TransferOwner(otherBlock);
-		}
+        public void Upgrade()
+        {
+            turretScript.damageVal += _damageUpgradeVal;
+            turretScript.bulletForceScale += _bulletForceUpgradeVal;
+            turretScript.bulletCount += _ammoUpgradeVal;
+            turretScript.bulletDelay -= .2f;
+            _blockHealth.health.Val = turretScript.bulletCount;
+        }
         /// <summary>
         /// - Sets health of other block to be current
         /// ammunition count

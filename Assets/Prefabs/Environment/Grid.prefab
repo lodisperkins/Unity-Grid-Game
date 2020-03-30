@@ -5595,6 +5595,7 @@ MonoBehaviour:
   p2PanelsRef: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
   bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
+  globalPanelList: {fileID: 11400000, guid: 80026cbfee3155043acf76d49c2fa2cb, type: 2}
   p1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
   p2Position: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
   onPanelsSwapped: {fileID: 11400000, guid: be2e3e124c3623947a79697a94633a28, type: 2}

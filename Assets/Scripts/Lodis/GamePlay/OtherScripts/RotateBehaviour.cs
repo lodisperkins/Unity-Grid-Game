@@ -8,6 +8,7 @@ public class RotateBehaviour : MonoBehaviour {
     private Vector3 axis;
     [SerializeField]
     private float speed;
+    public bool rotateOnSelf;
 	// Use this for initialization
 	void Start () {
 		axis = axis * speed;
@@ -15,7 +16,11 @@ public class RotateBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if(rotateOnSelf)
+        {
+            transform.Rotate(axis, Space.Self);
+            return;
+        }
         transform.Rotate(axis, Space.World);
 	}
 }

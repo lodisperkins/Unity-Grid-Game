@@ -29,7 +29,7 @@ namespace Lodis.GamePlay.BlockScripts
                         break;
                     }
                     var health = other.GetComponent<HealthBehaviour>();
-                    if (health != null && block.owner != null)
+                    if (health != null && block.owner != null && DamageVal > 0)
                     {
                         other.GetComponent<BlockBehaviour>().GiveMoneyForKill(block.owner.name,DamageVal);
                         health.takeDamage(DamageVal);
@@ -44,7 +44,7 @@ namespace Lodis.GamePlay.BlockScripts
                 case "Player":
                 {
                     var health = other.GetComponent<HealthBehaviour>();
-                    if (health != null && other.name != block.owner.name)
+                    if (health != null && other.name != block.owner.name && DamageVal > 0)
                     {
                         health.takeDamage(DamageVal);
                         PlayHitParticleSystems(1);

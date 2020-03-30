@@ -2553,7 +2553,6 @@ MonoBehaviour:
   cost: 30
   _level: {fileID: 114436050809686000}
   BlockWeightVal: 1
-  awake: 0
   canUpgrade: 0
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}

@@ -2244,7 +2244,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114069381122320830
 MonoBehaviour:
@@ -2498,7 +2498,6 @@ MonoBehaviour:
   cost: 20
   _level: {fileID: 114536119272752628}
   BlockWeightVal: 1
-  awake: 0
   canUpgrade: 1
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}

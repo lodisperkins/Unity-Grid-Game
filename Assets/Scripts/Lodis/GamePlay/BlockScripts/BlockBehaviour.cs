@@ -21,7 +21,7 @@ namespace Lodis
         //the cost of materials to build this block
         public int cost;
         //The script of the panel this block is currently on
-        PanelBehaviour _panel;
+        private PanelBehaviour _panel;
         [SerializeField] private Text _level;
         private int _currentLevel;
         //The weight of a block represents how much of it can be placed on a panel. Panels havea limit of 3;
@@ -42,6 +42,7 @@ namespace Lodis
         [SerializeField] private IntVariable player1Materials;
         [SerializeField] private IntVariable player2Materials;
         [SerializeField] private Canvas _blockUI;
+        public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
         public HealthBehaviour HealthScript
         {
             get
@@ -50,10 +51,21 @@ namespace Lodis
             }
         }
 
+        public PanelBehaviour Panel
+        {
+            get
+            {
+                return currentPanel.GetComponent<PanelBehaviour>();
+            }
+        }
+
+        private void Start()
+        {
+            InitializeBlock();
+        }
         // Use this for initialization
         void Awake()
         {
-            InitializeBlock();
             //raises the event signaling the block has been spawned
             onBlockSpawn.Raise();
         }
@@ -66,6 +78,7 @@ namespace Lodis
             componentList = new List<IUpgradable>();
             componentList.Add(actionComponent);
             _health = GetComponent<HealthBehaviour>();
+            shakeScript = GetComponent<GamePlay.OtherScripts.ScreenShakeBehaviour>();
             canUpgrade = true;
             _currentLevel = 1;
         }
@@ -93,14 +106,24 @@ namespace Lodis
             {
                 Upgrade(other.GetComponent<BlockBehaviour>());
             }
+            else if (other.CompareTag("Panel"))
+            {
+                int oldWeight = Panel.blockCounter;
+                currentPanel = other.gameObject;
+                Panel.blockCounter = oldWeight;
+            }
             //Tells all components of the block that collision has occured
-            foreach(IUpgradable component in componentList)
+            foreach (IUpgradable component in componentList)
             {
                 if(component != null)
                 {
                     component.ResolveCollision(other.gameObject);
                 }
             }
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -145,7 +168,6 @@ namespace Lodis
 
             if (canUpgrade == false && HealthScript != null)
             {
-                _panel.Occupied = false;
                 HealthScript.playDeathParticleSystems(2);
             }
             else if (!canUpgrade && HealthScript != null)
@@ -173,14 +195,13 @@ namespace Lodis
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {
-            if(_panel != null)
+            if(Panel != null)
             {
-                _panel.blockCounter = 0;
+                Panel.blockCounter = 0;
             }
             
             if (canUpgrade == false && HealthScript != null)
             {
-                _panel.Occupied = false;
                 HealthScript.playDeathParticleSystems(2);
             }
             else if(!canUpgrade&& HealthScript != null)
