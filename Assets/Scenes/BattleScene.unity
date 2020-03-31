@@ -58577,11 +58577,6 @@ Prefab:
       objectReference: {fileID: 1231904659}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
-      propertyPath: inputs.Array.data[16]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
       propertyPath: newInput
       value: 
       objectReference: {fileID: 1123780659}

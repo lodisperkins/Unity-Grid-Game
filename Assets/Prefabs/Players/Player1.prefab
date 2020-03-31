@@ -10578,6 +10578,7 @@ MonoBehaviour:
     type: 2}
   chargeBullet: {fileID: 1263534599806752, guid: 3c715578c73e8fe45a8222db373e9eb5,
     type: 2}
+  timeUntilCharged: 3
 --- !u!114 &114099383312118654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11191,7 +11192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasMultipleButtons: 0
   inputs:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

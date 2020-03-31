@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 33996360611008250}
   - component: {fileID: 23224405644891672}
   - component: {fileID: 54441083875996388}
-  - component: {fileID: 65570990293466836}
   - component: {fileID: 114987400176186350}
   - component: {fileID: 114331524947748714}
+  - component: {fileID: 135254806930817600}
   m_Layer: 0
   m_Name: ChargeBullet
   m_TagString: Projectile
@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 4028620337374148}
   - component: {fileID: 33983532056336564}
   - component: {fileID: 23462477789000420}
-  - component: {fileID: 135343715394601914}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -92,11 +91,9 @@ GameObject:
   - component: {fileID: 4266973167061266}
   - component: {fileID: 33296928435720400}
   - component: {fileID: 23598854394183834}
-  - component: {fileID: 135382684630455056}
-  - component: {fileID: 114508426729998356}
   m_Layer: 0
-  m_Name: Ramming Barrier
-  m_TagString: Barrier
+  m_Name: OuterBarrier
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,18 +370,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!65 &65570990293466836
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1263534599806752}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114331524947748714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,35 +383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: 
   DamageVal: 5
-  ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
-  OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
-  _laserMatP1: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
-  _laserMatP2: {fileID: 2100000, guid: 561790cbdf11c9c42976451f520ae915, type: 2}
-  _laser: {fileID: 1263534599806752}
-  laserLight: {fileID: 1742762284017520}
-  block: {fileID: 0}
-  bulletForce: {x: 0, y: 0, z: 0}
-  reflected: 0
-  lifetime: 5
-  onReflect: {fileID: 11400000, guid: fb2a1c37efc86824ba9981b197d34848, type: 2}
-  onPanelSet: {fileID: 11400000, guid: 530e37c93af3dee468b76af166eec765, type: 2}
-  _bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
-  _bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
-  active: 0
-  hitTrail: {fileID: 1055782054629894}
---- !u!114 &114508426729998356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742762284017520}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422883425e141fa49a54897aa8d6131e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Owner: 
-  DamageVal: 0
   ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
   OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
   _laserMatP1: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
@@ -457,26 +413,14 @@ MonoBehaviour:
   size1: {x: 0.5, y: 0.5, z: 0.5}
   size2: {x: 1.5, y: 1.5, z: 1.5}
   lerpRate: 10
---- !u!135 &135343715394601914
+--- !u!135 &135254806930817600
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1600172506148160}
+  m_GameObject: {fileID: 1263534599806752}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135382684630455056
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742762284017520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
