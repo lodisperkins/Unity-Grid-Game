@@ -22,8 +22,12 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private RaycastHit _interactionRay;
     private GameObject _currentBlock;
 	[SerializeField] private Event _onInteractPressed;
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    private GameObject normalBullet;
+    [SerializeField]
+    private GameObject chargeBullet;
+    // Use this for initialization
+    void Start ()
 	{
 		player = GetComponent<PlayerMovementBehaviour>();
         _interactionRay = new RaycastHit();
@@ -51,9 +55,19 @@ public class PlayerAttackBehaviour : MonoBehaviour
 	{
 		if (player.canMove)
 		{
-			_gun.FireBullet();
+            _gun.ChangeBullet(normalBullet);
+            _gun.FireBullet();
 		}
 	}
+    public void FireChargeGun()
+    {
+        if(player.canMove)
+        {
+            _gun.ChangeBullet(chargeBullet);
+            _gun.FireBullet();
+        }
+        
+    }
 	// Update is called once per frame
 	void Update () {
 		if (_meleeHitboxActive)

@@ -132,19 +132,27 @@ namespace Lodis.GamePlay.GridScripts
         }
         private bool CheckIfOccupied()
         {
-            if(Position == new Vector2(4,2))
-            {
-                Debug.DrawRay(transform.position, transform.up);
-            }
-            
             if(Physics.Raycast(transform.position, transform.up, out _detectionRay))
             {
                 GameObject objectDetected = _detectionRay.transform.gameObject;
-                if (objectDetected.CompareTag("Block") || objectDetected.CompareTag("Player"))
+                switch (objectDetected.tag)
                 {
-                    return true;
+                    case ("Block"):
+                        {
+                            BlockBehaviour blockScript = GetComponent<BlockBehaviour>();
+                            if(blockScript != null)
+                            {
+                                blockCounter = blockScript.BlockWeightVal;
+                            }
+                            return true;
+                        }
+                    case ("Player"):
+                        {
+                            return true;
+                        }
                 }
             }
+            blockCounter = 0;
             return false;
         }
         //highlights the panel when a bullet passes through it

@@ -48,7 +48,6 @@ namespace Lodis.GamePlay.BlockScripts
             _blockScript.specialActions += Ram;
             _blockRigidbody.isKinematic = true;
             _projectileScript = GetComponent<BulletBehaviour>();
-            Ram(null);
         }
         public void InitializeProjectileScript()
         {

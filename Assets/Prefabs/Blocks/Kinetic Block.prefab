@@ -781,7 +781,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373659190468100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.539, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224316669299893528}
@@ -2259,6 +2259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axis: {x: 1, y: 1, z: 1}
   speed: 0.5
+  rotateOnSelf: 0
 --- !u!114 &114078327674369578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2272,6 +2273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
+  updatePosition: 0
+  isMoving: 0
   shakeRange: 0.7
   shakeLength: 0
 --- !u!114 &114179621140624666
@@ -2507,6 +2510,7 @@ MonoBehaviour:
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
   _blockUI: {fileID: 0}
+  shakeScript: {fileID: 0}
 --- !u!114 &114536119272752628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2682,7 +2686,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224757730394623772}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 21
+  m_MaxValue: 37
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -2749,7 +2753,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222420782941755414
 CanvasRenderer:

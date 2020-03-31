@@ -65,7 +65,7 @@ namespace Lodis.GamePlay.BlockScripts
                 if (_bullets[i] != null)
                 {
                     _bullets[i].Owner = _blockScript.owner.name;
-                    _bullets[i].DamageVal *= 2;
+                    //_bullets[i].DamageVal *= 2;
                 }
             }
             for (int i = 0; i < _rigidbodies.Count; i++)
@@ -92,7 +92,7 @@ namespace Lodis.GamePlay.BlockScripts
                 if (component.specialFeature.name == gameObject.name)
                 {
                     component.specialFeature.GetComponent<KineticBlockBehaviour>().bulletCapacity+= _bulletCapUpgradeVal;
-                    component.specialFeature.GetComponent<KineticBlockBehaviour>()._blockHealth.Heal(_bulletCapUpgradeVal);
+                    component.specialFeature.GetComponent<KineticBlockBehaviour>()._blockHealth.health.Val+=_bulletCapUpgradeVal;
                     return;
                 }
             }
@@ -108,14 +108,6 @@ namespace Lodis.GamePlay.BlockScripts
         }
         // Update is called once per frame
         void Update() {
-            if (_rigidbodies.Count >= bulletCapacity)
-            {
-                _blockScript.DestroyBlock(1);
-                foreach (BulletBehaviour bullet in _bullets)
-                {
-                    bullet.Destroy();
-                }
-            }
         }
         //This needs to be done here. Resolve collision func is called twice
         private void OnTriggerEnter(Collider other)
@@ -151,7 +143,6 @@ namespace Lodis.GamePlay.BlockScripts
                         
                     }
                     _bullets.Add(bulletscript);
-                    bulletCapacity -= bulletscript.DamageVal;
                     _blockHealth.health.Val -= bulletscript.DamageVal;
                     return;
                 }
@@ -165,7 +156,6 @@ namespace Lodis.GamePlay.BlockScripts
                     other.transform.SetParent(transform, false);
                     other.transform.position = transform.position;
                     _blockHealth.health.Val-= bulletscript.DamageVal;
-                    bulletCapacity -= bulletscript.DamageVal;
                 }
                 
                 Rigidbody temp = other.GetComponent<Rigidbody>();

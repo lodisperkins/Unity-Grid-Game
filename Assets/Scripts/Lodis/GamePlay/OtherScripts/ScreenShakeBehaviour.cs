@@ -29,7 +29,10 @@ namespace Lodis.GamePlay.OtherScripts
 
 		IEnumerator Shake()
 		{
-           
+           if(updatePosition)
+            {
+                _startPosition = transform.position;
+            }
             if (shakeLength == 0)
 			{
 				shakeLength = 5;

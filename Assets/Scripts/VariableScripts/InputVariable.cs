@@ -15,10 +15,14 @@ public class InputVariable : ScriptableObject
     [SerializeField]
     private string axis;
     public bool hasMultipleButtons;
+    public bool mustHold;
+    public bool canPress = true;
     [SerializeField] private List<string> _axisNames;
     [SerializeField]
     private float inputBuffer;
-    private float timer;
+    private float inputBufferTimer;
+    private float holdTimer;
+    public float holdTime;
     public string Axis
     {
         get
@@ -63,17 +67,40 @@ public class InputVariable : ScriptableObject
     }
 
 
-    public bool CheckTime()
+    public bool CheckBufferTime()
     {
-        if (Time.time < timer)
+        if (Time.time < inputBufferTimer)
         {
             return false;
         }
         else
         {
-            timer = Time.time + InputBuffer;
+            inputBufferTimer = Time.time + InputBuffer;
             return true;
         }
+    }
+    public void ResetHoldTime()
+    {
+        holdTimer = 0;
+    }
+    public bool CheckHoldTime()
+    {
+        Debug.Log(holdTimer);
+        if (holdTime <= 0)
+        {
+            return true;
+        }
+        if (holdTimer == 0)
+        {
+            holdTimer = Time.time + holdTime;
+            return false;
+        }
+        else if(Time.time >= holdTimer)
+        {
+            holdTimer = 0;
+            return true;
+        }
+        return false;
     }
     public object Arg
     {
@@ -84,7 +111,7 @@ public class InputVariable : ScriptableObject
 
     }
     private void Init(string axisName, string funcMessage1, string funcMessage2, string funcMessage3,
-        object funcArg,float timer,bool hasMultiInput,List<string>buttons)
+        object funcArg,float timer,bool hasMultiInput,List<string>buttons,bool mustHoldVal, float holdTimeVal)
     {
         axis = axisName;
         buttonDownMessage = funcMessage1;
@@ -94,12 +121,14 @@ public class InputVariable : ScriptableObject
         inputBuffer = timer;
         hasMultipleButtons = hasMultiInput;
         _axisNames = buttons;
+        mustHold = mustHoldVal;
+        holdTime = holdTimeVal;
     }
     public static InputVariable CreateInstance(string axisName, string funcMessage1,string funcMessage2, string funcMessage3,
-        object funcArg, float timer, bool hasMultiInput, List<string>buttons)
+        object funcArg, float timer, bool hasMultiInput, List<string>buttons, bool mustHoldVal, float holdTime)
     {
         var data = CreateInstance<InputVariable>();
-        data.Init(axisName, funcMessage1,funcMessage2,funcMessage3, funcArg,timer,hasMultiInput,buttons);
+        data.Init(axisName, funcMessage1,funcMessage2,funcMessage3, funcArg,timer,hasMultiInput,buttons,mustHoldVal,holdTime);
         return data;
     }
 }

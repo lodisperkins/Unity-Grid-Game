@@ -75,12 +75,14 @@ namespace Lodis
             }
             outOfAmmo.Invoke();
         }
-
+        public void ChangeBullet(GameObject newBullet)
+        {
+            bullet = newBullet;
+        }
         public void FireBullet(Vector3 position)
         {
             _tempBullet = Instantiate(bullet, position, transform.rotation);
             _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
-            _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
             _tempBullet.transform.Rotate(new Vector3(90, 0));
             _tempBullet.GetComponent<BulletBehaviour>().block = block;
             _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
@@ -93,7 +95,6 @@ namespace Lodis
         {
             _tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
-            _tempBullet.GetComponent<BulletBehaviour>().DamageVal = damageVal;
             _tempBullet.transform.Rotate(new Vector3(90, 0));
             _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
             _bulletForce = transform.forward * bulletForceScale;

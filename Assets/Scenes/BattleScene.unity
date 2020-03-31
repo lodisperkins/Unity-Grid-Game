@@ -877,8 +877,11 @@ MonoBehaviour:
   buttonNegativeMessage: MoveDown
   axis: Vertical2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.15
+  holdTime: 0
 --- !u!1 &114436182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5516,8 +5519,11 @@ MonoBehaviour:
   buttonNegativeMessage: RotateBlockDown
   axis: RotateVertical1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!114 &121422554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5534,10 +5540,13 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: 
   hasMultipleButtons: 1
+  mustHold: 0
+  canPress: 1
   _axisNames:
   - Shoot2
   - Melee2
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &124569941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698780024816490, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
@@ -6126,8 +6135,11 @@ MonoBehaviour:
   buttonNegativeMessage: SelectBlock1
   axis: SelectBlock1(Y)
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!114 &168345568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6144,8 +6156,11 @@ MonoBehaviour:
   buttonNegativeMessage: SelectBlock3
   axis: SelectBlock2(X)
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -6828,8 +6843,11 @@ MonoBehaviour:
   buttonNegativeMessage: PanelSelectionButtonDown
   axis: Horizontal2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1001 &268405868
 Prefab:
   m_ObjectHideFlags: 0
@@ -11686,8 +11704,11 @@ MonoBehaviour:
   buttonNegativeMessage: MoveLeft
   axis: Horizontal2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.15
+  holdTime: 0
 --- !u!1 &335333402 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1456105364648052, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -11890,8 +11911,11 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: Shoot2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.4
+  holdTime: 0
 --- !u!1 &373473181
 GameObject:
   m_ObjectHideFlags: 0
@@ -19263,8 +19287,11 @@ MonoBehaviour:
   buttonNegativeMessage: EnablePanelSteal
   axis: PanelAction2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!114 &721710480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19281,8 +19308,11 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Vertical1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &723781649
 GameObject:
   m_ObjectHideFlags: 0
@@ -19372,8 +19402,11 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: Shoot1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.4
+  holdTime: 0
 --- !u!114 &740903149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19390,8 +19423,11 @@ MonoBehaviour:
   buttonNegativeMessage: PanelSelectionButtonDown
   axis: Vertical2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!114 &740960902 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114310844724626630, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
@@ -19639,8 +19675,11 @@ MonoBehaviour:
   buttonNegativeMessage: PanelSelectionButtonDown
   axis: Horizontal1
   hasMultipleButtons: 0
+  mustHold: 1
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &778262475
 GameObject:
   m_ObjectHideFlags: 0
@@ -19736,8 +19775,11 @@ MonoBehaviour:
   buttonNegativeMessage: EnablePanelSteal
   axis: PanelAction2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &789238229
 GameObject:
   m_ObjectHideFlags: 0
@@ -20249,8 +20291,11 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Vertical2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &843205879
 GameObject:
   m_ObjectHideFlags: 0
@@ -25319,8 +25364,11 @@ MonoBehaviour:
   buttonNegativeMessage: RotateBlockLeft
   axis: RotateHorizontal2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!1 &878757961 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1073445908083578, guid: 3c61a511821b873468c4c066ef68dc65,
@@ -26172,6 +26220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
+  updatePosition: 0
+  isMoving: 0
   shakeRange: 1
   shakeLength: 8
 --- !u!114 &908997633
@@ -26406,8 +26456,11 @@ MonoBehaviour:
   buttonNegativeMessage: PanelSelectionButtonDown
   axis: Vertical1
   hasMultipleButtons: 0
+  mustHold: 1
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &964114286
 GameObject:
   m_ObjectHideFlags: 0
@@ -26687,8 +26740,11 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Horizontal2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &997927095
 GameObject:
   m_ObjectHideFlags: 0
@@ -32687,8 +32743,11 @@ MonoBehaviour:
   buttonNegativeMessage: MoveLeft
   axis: Horizontal1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
-  inputBuffer: 0.15
+  inputBuffer: 0
+  holdTime: 0
 --- !u!1 &1098474801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: 9e3de0cd33aafb44fa8ac73613f86c1a,
@@ -32957,6 +33016,27 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118320800}
   m_CullTransparentMesh: 0
+--- !u!114 &1123780659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93c46a2575230147a9e84c6d27b557c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDownMessage: FireChargeGun
+  buttonUpMessage: 
+  buttonNegativeMessage: 
+  axis: Shoot1
+  hasMultipleButtons: 0
+  mustHold: 1
+  canPress: 1
+  _axisNames: []
+  inputBuffer: 0
+  holdTime: 1
 --- !u!1 &1126176992
 GameObject:
   m_ObjectHideFlags: 0
@@ -43712,8 +43792,11 @@ MonoBehaviour:
   buttonNegativeMessage: SelectBlock1
   axis: SelectBlock2(Y)
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!114 &1231904659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43730,8 +43813,11 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: Special1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!1 &1235680704
 GameObject:
   m_ObjectHideFlags: 0
@@ -44107,8 +44193,11 @@ MonoBehaviour:
   buttonNegativeMessage: MoveDown
   axis: Vertical1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
-  inputBuffer: 0.15
+  inputBuffer: 0
+  holdTime: 0
 --- !u!114 &1298980075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44125,8 +44214,11 @@ MonoBehaviour:
   buttonNegativeMessage: SelectBlock3
   axis: SelectBlock1(X)
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!1 &1304077420
 GameObject:
   m_ObjectHideFlags: 0
@@ -48922,8 +49014,11 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Horizontal1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &1330903661
 GameObject:
   m_ObjectHideFlags: 0
@@ -53996,6 +54091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
+  updatePosition: 0
+  isMoving: 0
   shakeRange: 1
   shakeLength: 8
 --- !u!114 &1342914513
@@ -54321,8 +54418,11 @@ MonoBehaviour:
   buttonNegativeMessage: RotateBlockDown
   axis: RotateVertical2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!1 &1394598713
 GameObject:
   m_ObjectHideFlags: 0
@@ -57137,8 +57237,11 @@ MonoBehaviour:
   buttonNegativeMessage: EnablePanelSteal
   axis: PanelAction1
   hasMultipleButtons: 0
+  mustHold: 1
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &1714329858
 GameObject:
   m_ObjectHideFlags: 0
@@ -57857,10 +57960,13 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: 
   hasMultipleButtons: 1
+  mustHold: 0
+  canPress: 1
   _axisNames:
   - Shoot1
   - Melee1
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &1799445248
 GameObject:
   m_ObjectHideFlags: 0
@@ -58242,11 +58348,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: blocks.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4502457238332382, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.0023058876
@@ -58279,16 +58380,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 354307074}
-    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 1166793325}
     - target: {fileID: 114361469955308476, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: _currentPanel
@@ -58394,6 +58485,16 @@ Prefab:
       propertyPath: startingPanels.Array.data[19]
       value: 
       objectReference: {fileID: 1764044846}
+    - target: {fileID: 114574205524328418, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 1166793325}
+    - target: {fileID: 114635915937980974, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 354307074}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: inputs.Array.data[0]
@@ -58476,49 +58577,19 @@ Prefab:
       objectReference: {fileID: 1231904659}
     - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
+      propertyPath: inputs.Array.data[16]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114878015514341180, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
       propertyPath: newInput
       value: 
-      objectReference: {fileID: 1231904659}
+      objectReference: {fileID: 1123780659}
     - target: {fileID: 114476793149227368, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
         type: 2}
       propertyPath: _secondaryHealthSource
       value: 
       objectReference: {fileID: 908997625}
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: blocks.Array.data[0]
-      value: 
-      objectReference: {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d,
-        type: 2}
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: blocks.Array.data[2]
-      value: 
-      objectReference: {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d,
-        type: 2}
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: blocks.Array.data[1]
-      value: 
-      objectReference: {fileID: 1373659190468100, guid: a812f03e95970314894c240ac69c7c3b,
-        type: 2}
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: blocks.Array.data[3]
-      value: 
-      objectReference: {fileID: 1772094693998044, guid: ab7537d0e21e1e041856cc3c0baf5f21,
-        type: 2}
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: blockListRef
-      value: 
-      objectReference: {fileID: 11400000, guid: 5356464b385584b45a5963fe7fbc8c7c,
-        type: 2}
-    - target: {fileID: 114099383312118654, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
-        type: 2}
-      propertyPath: material_regen_rate
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
   m_IsPrefabAsset: 0
@@ -58692,8 +58763,11 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: Build2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.3
+  holdTime: 0
 --- !u!1 &1853502396 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1899979578717606, guid: 715ba38951fe19046b98bba3dea8f9c3,
@@ -58741,6 +58815,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
+  updatePosition: 0
+  isMoving: 0
   shakeRange: 3
   shakeLength: 7
 --- !u!114 &1853502402
@@ -59089,8 +59165,11 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: Special2
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!1 &1908872122
 GameObject:
   m_ObjectHideFlags: 0
@@ -59191,8 +59270,11 @@ MonoBehaviour:
   buttonNegativeMessage: RotateBlockLeft
   axis: RotateHorizontal1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0.2
+  holdTime: 0
 --- !u!1 &1917437375
 GameObject:
   m_ObjectHideFlags: 0
@@ -64330,8 +64412,11 @@ MonoBehaviour:
   buttonNegativeMessage: EnablePanelSteal
   axis: PanelAction1
   hasMultipleButtons: 0
+  mustHold: 1
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &1979544253
 GameObject:
   m_ObjectHideFlags: 0
@@ -69629,8 +69714,11 @@ MonoBehaviour:
   buttonNegativeMessage: 
   axis: Build1
   hasMultipleButtons: 0
+  mustHold: 0
+  canPress: 1
   _axisNames: []
   inputBuffer: 0
+  holdTime: 0
 --- !u!1 &2108819066 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1300065631052246, guid: 3c61a511821b873468c4c066ef68dc65,

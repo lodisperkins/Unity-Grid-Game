@@ -27,16 +27,19 @@ public class InputButtonBehaviour : MonoBehaviour
     //checks the list to see if any of the button are down
     public void CheckButton(InputVariable input)
     {
-        if (Input.GetAxisRaw(input.Axis) == 1)
+        
+        if (Input.GetAxisRaw(input.Axis) == 1 && input.canPress)
         {
-            if(input.CheckTime())
+            input.canPress = false;
+            if(input.CheckBufferTime())
             {
                 SendMessage(input.ButtonDownMessage,input.Arg);
             }
         }
-        else if(Input.GetAxisRaw(input.Axis) == -1)
+        else if(Input.GetAxisRaw(input.Axis) == -1 && input.canPress)
         {
-            if (input.CheckTime())
+            input.canPress = false;
+            if (input.CheckBufferTime())
             {
                 SendMessage(input.ButtonNegativeMessage);
             }
@@ -45,8 +48,53 @@ public class InputButtonBehaviour : MonoBehaviour
         {
             SendMessage(input.ButtonUpMessage);
         }
+        else if (Input.GetAxis(input.Axis) < .5 && Input.GetAxis(input.Axis) > -.5)
+        {
+            input.canPress = true;
+        }
     }
-
+    public void CheckHeldButton(InputVariable input)
+    {
+        //if (input.Axis == "Shoot1")
+        //{
+        //    Debug.Log(input.canPress);
+        //    Debug.Log(Input.GetAxis(input.Axis));
+        //}
+        if (Input.GetAxisRaw(input.Axis) == 1 &&input.canPress)
+        {
+            
+            if (input.CheckBufferTime() && input.CheckHoldTime())
+            {
+                if (input.holdTime != 0)
+                {
+                    input.canPress = false;
+                }
+                SendMessage(input.ButtonDownMessage, input.Arg);
+                input.ResetHoldTime();
+            }
+        }
+        else if (Input.GetAxisRaw(input.Axis) == -1 && input.canPress)
+        {
+            if (input.CheckBufferTime() && input.CheckHoldTime())
+            {
+                if (input.holdTime != 0)
+                {
+                    input.canPress = false;
+                }
+                SendMessage(input.ButtonNegativeMessage);
+                input.ResetHoldTime();
+            }
+        }
+        else if (input.ButtonUpMessage != "")
+        {
+            SendMessage(input.ButtonUpMessage);
+        }
+        else if (Input.GetAxis(input.Axis) < .1 && Input.GetAxis(input.Axis) > -.1)
+        {
+            input.ResetHoldTime();
+            input.canPress = true;
+        }
+    }
     public void CheckButtons(InputVariable input)
     {
         bool allPressed = true;
@@ -77,6 +125,10 @@ public class InputButtonBehaviour : MonoBehaviour
             {
                 CheckButtons(input);
             }
+            else if(input.mustHold)
+            {
+                CheckHeldButton(input);
+            }
             else
             {
                 CheckButton(input);
@@ -84,9 +136,9 @@ public class InputButtonBehaviour : MonoBehaviour
         }
     }
     //adds an input to the list
-    public void AddInput(string Axis,string message1,string message2,string message3, object Arg, bool hasMultiInput,List<string> buttons)
+    public void AddInput(string Axis,string message1,string message2,string message3, object Arg, bool hasMultiInput,List<string> buttons, bool mustHold,float holdTime)
     {
-        newInput = InputVariable.CreateInstance(Axis, message1,message2,message3, Arg,inputBuffer,hasMultiInput,buttons);
+        newInput = InputVariable.CreateInstance(Axis, message1,message2,message3, Arg,inputBuffer,hasMultiInput,buttons,mustHold,holdTime);
         inputs.Add(newInput);
     }
     //clears the entire input list
@@ -108,6 +160,8 @@ public class InputButtonEditor : Editor
     [SerializeField]
     List<string> buttons;
     private bool hasMultipleInputs;
+    private bool mustHold;
+    private float holdTime;
     string message1;
     string message2;
     string message3;
@@ -124,9 +178,14 @@ public class InputButtonEditor : Editor
         message3 = EditorGUILayout.TextField("Button Negative Func", message3);
         arg = EditorGUILayout.ObjectField("Argument",arg, typeof(object), true);
         hasMultipleInputs = EditorGUILayout.Toggle("Has Multiple Inputs", hasMultipleInputs);
-        if(GUILayout.Button("Add Input"))
+        mustHold = EditorGUILayout.Toggle("Must Be Held", mustHold);
+        if(mustHold)
         {
-            myscript.AddInput(button,message1,message2,message3,arg,hasMultipleInputs,buttons);
+            holdTime = EditorGUILayout.FloatField("Hold Time", holdTime);
+        }
+        if (GUILayout.Button("Add Input"))
+        {
+            myscript.AddInput(button,message1,message2,message3,arg,hasMultipleInputs,buttons,mustHold,holdTime);
         }
         if(GUILayout.Button("Clear"))
         {
