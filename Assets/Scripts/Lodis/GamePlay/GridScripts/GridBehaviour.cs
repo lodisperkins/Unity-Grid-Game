@@ -205,7 +205,7 @@ namespace Lodis.GamePlay.GridScripts
         {
             Vector2 panelPosition = new Vector2((int)p2Position.Val.x + (int)p2Direction.X, (int)p2Position.Val.y + (int)p2Direction.Y);
             //This checks for a diagnol input and returns if one is detected;
-            if (Math.Abs(p1Direction.X) == 1 && Math.Abs(p1Direction.Y) == 1)
+            if (Math.Abs(p2Direction.X) == 1 && Math.Abs(p2Direction.Y) == 1)
             {
                 return;
             }

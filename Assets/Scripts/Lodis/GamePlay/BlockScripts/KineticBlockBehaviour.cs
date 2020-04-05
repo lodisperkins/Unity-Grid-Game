@@ -143,7 +143,7 @@ namespace Lodis.GamePlay.BlockScripts
                         
                     }
                     _bullets.Add(bulletscript);
-                    _blockHealth.health.Val -= bulletscript.DamageVal;
+                    _blockHealth.takeDamage(bulletscript.DamageVal);
                     return;
                 }
                 //Condition for normal projectiles
@@ -155,7 +155,7 @@ namespace Lodis.GamePlay.BlockScripts
                     other.transform.localScale /= 2;
                     other.transform.SetParent(transform, false);
                     other.transform.position = transform.position;
-                    _blockHealth.health.Val-= bulletscript.DamageVal;
+                    _blockHealth.takeDamage(bulletscript.DamageVal);
                 }
                 
                 Rigidbody temp = other.GetComponent<Rigidbody>();

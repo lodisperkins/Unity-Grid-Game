@@ -13,6 +13,8 @@ namespace Lodis.GamePlay.AIFolder
     	private List<PanelBehaviour> _currentPath;
     	private PanelBehaviour _goal;
         [SerializeField]
+        private PanelBehaviour _testGoal;
+        [SerializeField]
         private float _movementDelay;
 
        
@@ -269,7 +271,14 @@ namespace Lodis.GamePlay.AIFolder
     	}
     	public void Dodge()
     	{
-    		FindSafeSpot();
+            if(_testGoal == null)
+            {
+                FindSafeSpot();
+            }
+            else
+            {
+                _goal = _testGoal;
+            }
             Debug.ClearDeveloperConsole();
             Debug.Log("goal is " + _goal.Position);
     		FindBestPath();

@@ -7,7 +7,7 @@ using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 namespace Lodis
 {
     
@@ -43,6 +43,7 @@ namespace Lodis
         [SerializeField] private IntVariable player2Materials;
         [SerializeField] private Canvas _blockUI;
         public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
+        [SerializeField] private UnityEvent displayModeActions;
         public HealthBehaviour HealthScript
         {
             get
@@ -85,6 +86,8 @@ namespace Lodis
         //Turns off UI and disablkes any special components attached
         public void ActivateDisplayMode()
         {
+            enabled = false;
+            displayModeActions.Invoke();
             _blockUI = GetComponentInChildren<Canvas>();
             _blockUI.enabled = false;
             if (actionComponent != null)
@@ -120,10 +123,6 @@ namespace Lodis
                     component.ResolveCollision(other.gameObject);
                 }
             }
-        }
-        private void OnTriggerStay(Collider other)
-        {
-            
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -236,9 +235,13 @@ namespace Lodis
             {
                 _level.text = "lvl. "+_currentLevel;
             }
-            if (_currentLevel >= 3)
+            if (_currentLevel == 3)
             {
                 _level.text = "MAX";
+            }
+            else if (_currentLevel > 3)
+            {
+                _level.text = "OverLVL";
             }
         }
     }

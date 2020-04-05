@@ -5805,6 +5805,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1227986367002548, guid: 3c61a511821b873468c4c066ef68dc65,
     type: 2}
   m_PrefabInternal: {fileID: 1040239185}
+--- !u!114 &152480879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114856998311804186, guid: 3c61a511821b873468c4c066ef68dc65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040239185}
+  m_Script: {fileID: 11500000, guid: 7e1453c2314ca0848b48a8611f511351, type: 3}
 --- !u!1 &152756492
 GameObject:
   m_ObjectHideFlags: 0
@@ -19675,7 +19681,7 @@ MonoBehaviour:
   buttonNegativeMessage: PanelSelectionButtonDown
   axis: Horizontal1
   hasMultipleButtons: 0
-  mustHold: 1
+  mustHold: 0
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -26456,7 +26462,7 @@ MonoBehaviour:
   buttonNegativeMessage: PanelSelectionButtonDown
   axis: Vertical1
   hasMultipleButtons: 0
-  mustHold: 1
+  mustHold: 0
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -55994,6 +56000,26 @@ Prefab:
       propertyPath: material_regen_rate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114200378622562274, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483499789973154, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114551330603045306, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092924560488482, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
   m_IsPrefabAsset: 0
@@ -58585,6 +58611,11 @@ Prefab:
       propertyPath: _secondaryHealthSource
       value: 
       objectReference: {fileID: 908997625}
+    - target: {fileID: 114585378869448626, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: _testGoal
+      value: 
+      objectReference: {fileID: 152480879}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
   m_IsPrefabAsset: 0

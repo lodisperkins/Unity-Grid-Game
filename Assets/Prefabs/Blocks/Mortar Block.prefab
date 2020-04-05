@@ -1948,7 +1948,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100002, guid: d897fcf8d452ba04baedfdfc436a5858, type: 3}
+  - {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2313,6 +2313,33 @@ MonoBehaviour:
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
   _blockUI: {fileID: 0}
   shakeScript: {fileID: 0}
+  displayModeActions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 65760197354081792}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1738925671840322}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114223565174130098
 MonoBehaviour:
   m_ObjectHideFlags: 1

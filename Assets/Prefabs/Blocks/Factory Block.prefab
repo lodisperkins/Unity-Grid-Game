@@ -2271,6 +2271,34 @@ MonoBehaviour:
   player1Materials: {fileID: 11400000, guid: 978f23129b4439a46a77d5036052a0d9, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
   _blockUI: {fileID: 0}
+  shakeScript: {fileID: 0}
+  displayModeActions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 65018705031778438}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1982616123977000}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114517568140079830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2422,6 +2450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
+  updatePosition: 0
+  isMoving: 0
   shakeRange: 0.7
   shakeLength: 0
 --- !u!114 &114744907713043128
