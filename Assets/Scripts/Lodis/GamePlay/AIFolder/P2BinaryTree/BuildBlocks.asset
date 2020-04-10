@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28198989cec70874eb4acbd17ca0a23b, type: 3}
-  m_Name: Attack
+  m_Name: BuildBlocks
   m_EditorClassIdentifier: 
-  parent: {fileID: 11400000, guid: 4d118110138919b4596c9618c597c29c, type: 2}
-  _childLeft: {fileID: 0}
-  _childRight: {fileID: 0}
-  conditionName: 
-  actionNames:
-  - BuildP2
+  parent: {fileID: 11400000, guid: 08626d3b614c5864c96fcf0d2e382e4e, type: 2}
+  _childLeft: {fileID: 11400000, guid: c4303f2b765aa844eb61bc215e5dd030, type: 2}
+  _childRight: {fileID: 11400000, guid: 074544605acc5b243b7bc6baac402d10, type: 2}
+  conditionName: SupportStatusCheck
+  actionNames: []

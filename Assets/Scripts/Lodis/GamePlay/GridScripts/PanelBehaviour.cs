@@ -36,7 +36,7 @@ namespace Lodis.GamePlay.GridScripts
         private float yAbsolute;
         private float zAbsolute;
         private bool _isBroken;
-        private BlockBehaviour currentBlock;
+        [SerializeField] private BlockBehaviour currentBlock;
         private RaycastHit _detectionRay;
         public bool IsBroken
         {
@@ -132,17 +132,17 @@ namespace Lodis.GamePlay.GridScripts
         }
         private bool CheckIfOccupied()
         {
-            if(Physics.Raycast(transform.position, transform.up, out _detectionRay))
+            if (Physics.Raycast(transform.position, transform.up, out _detectionRay))
             {
                 GameObject objectDetected = _detectionRay.transform.gameObject;
                 switch (objectDetected.tag)
                 {
                     case ("Block"):
                         {
-                            BlockBehaviour blockScript = GetComponent<BlockBehaviour>();
+                            BlockBehaviour blockScript = objectDetected.GetComponent<BlockBehaviour>();
                             if(blockScript != null)
                             {
-                                blockCounter = blockScript.BlockWeightVal;
+                                currentBlock = blockScript;
                             }
                             return true;
                         }
@@ -152,7 +152,10 @@ namespace Lodis.GamePlay.GridScripts
                         }
                 }
             }
-            blockCounter = 0;
+            else if(currentBlock == null)
+            {
+                blockCounter = 0;
+            }
             return false;
         }
         //highlights the panel when a bullet passes through it
@@ -180,7 +183,6 @@ namespace Lodis.GamePlay.GridScripts
                if(currentBlock == other.GetComponent<BlockBehaviour>())
                {
                     currentBlock = null;
-                    blockCounter = 0;
                }
             }
             _attackHighlight = false;

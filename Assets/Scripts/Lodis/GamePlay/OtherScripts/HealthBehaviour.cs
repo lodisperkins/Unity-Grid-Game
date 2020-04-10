@@ -33,6 +33,15 @@ namespace Lodis
         [SerializeField] private ParticleSystem ps;
         [SerializeField] private ParticleSystem ps2;
         public bool healthFull;
+
+        public IntVariable HealthRef
+        {
+            get
+            {
+                return healthRef;
+            }
+        }
+
         // Use this for initialization
         public void Start()
         {

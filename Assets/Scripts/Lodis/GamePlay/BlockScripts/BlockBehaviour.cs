@@ -24,7 +24,7 @@ namespace Lodis
         private PanelBehaviour _panel;
         [SerializeField] private Text _level;
         private int _currentLevel;
-        //The weight of a block represents how much of it can be placed on a panel. Panels havea limit of 3;
+        //The weight of a block represents how much of it can be placed on a panel. Panels have a limit of 3;
         public int BlockWeightVal;
         public IUpgradable actionComponent;
         //If true, the player may upgrade this block, otherwise they must wait until it is
@@ -44,6 +44,8 @@ namespace Lodis
         [SerializeField] private Canvas _blockUI;
         public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
         [SerializeField] private UnityEvent displayModeActions;
+        [SerializeField] private string _type;
+        public List<string> types;
         public HealthBehaviour HealthScript
         {
             get
@@ -60,6 +62,13 @@ namespace Lodis
             }
         }
 
+        public string Type
+        {
+            get
+            {
+                return _type;
+            }
+        }
         private void Start()
         {
             InitializeBlock();
@@ -73,6 +82,15 @@ namespace Lodis
         //sets all values to default
         public void InitializeBlock()
         {
+            if(owner.name =="Player1")
+            {
+                BlackBoard.p1Blocks.Add(this);
+            }
+            else
+            {
+                BlackBoard.p2Blocks.Add(this);
+            }
+            types.Add(_type);
             actionComponent = specialFeature as IUpgradable;
             _panel = currentPanel.GetComponent<PanelBehaviour>();
             _panel.blockCounter += BlockWeightVal;
@@ -113,7 +131,10 @@ namespace Lodis
             {
                 int oldWeight = Panel.blockCounter;
                 currentPanel = other.gameObject;
-                Panel.blockCounter = oldWeight;
+                if(oldWeight != 0)
+                {
+                    Panel.blockCounter = oldWeight;
+                }
             }
             //Tells all components of the block that collision has occured
             foreach (IUpgradable component in componentList)
@@ -146,7 +167,7 @@ namespace Lodis
             block.actionComponent.UpgradeBlock(gameObject);
             _currentLevel++;
             onUpgrade.Raise(gameObject);
-
+            types.Add(block._type);
             //Destroys the block placed on top after the upgrade to free up space
             block.GetComponent<BlockBehaviour>();
             var destroyblock = block.GetComponent<DeletionBlockBehaviour>();
@@ -184,6 +205,8 @@ namespace Lodis
             {
                  onBlockDelete.Raise(gameObject);
             }
+            BlackBoard.p1Blocks.Remove(this);
+            BlackBoard.p2Blocks.Remove(this);
         }
 
         public void ActivateSpecialAction()

@@ -85,7 +85,7 @@ public class InputVariable : ScriptableObject
     }
     public bool CheckHoldTime()
     {
-        Debug.Log(holdTimer);
+        //Debug.Log(holdTimer);
         if (holdTime <= 0)
         {
             return true;

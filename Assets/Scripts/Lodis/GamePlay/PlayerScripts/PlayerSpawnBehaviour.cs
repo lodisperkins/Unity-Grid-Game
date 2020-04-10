@@ -98,6 +98,7 @@ namespace Lodis
             blockRef.Block = Blocks[0];
             current_index = 0;
             materials.Val = 60;
+            
             material_regen_time = Time.time + material_regen_rate;
             buildStateEnabled = true;
         }

@@ -19293,7 +19293,7 @@ MonoBehaviour:
   buttonNegativeMessage: EnablePanelSteal
   axis: PanelAction2
   hasMultipleButtons: 0
-  mustHold: 0
+  mustHold: 1
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -19314,7 +19314,7 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Vertical1
   hasMultipleButtons: 0
-  mustHold: 0
+  mustHold: 1
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -19411,7 +19411,7 @@ MonoBehaviour:
   mustHold: 0
   canPress: 1
   _axisNames: []
-  inputBuffer: 0.4
+  inputBuffer: 0.2
   holdTime: 0
 --- !u!114 &740903149
 MonoBehaviour:
@@ -19781,7 +19781,7 @@ MonoBehaviour:
   buttonNegativeMessage: EnablePanelSteal
   axis: PanelAction2
   hasMultipleButtons: 0
-  mustHold: 0
+  mustHold: 1
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -20297,7 +20297,7 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Vertical2
   hasMultipleButtons: 0
-  mustHold: 0
+  mustHold: 1
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -26746,7 +26746,7 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Horizontal2
   hasMultipleButtons: 0
-  mustHold: 0
+  mustHold: 1
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -49020,7 +49020,7 @@ MonoBehaviour:
   buttonNegativeMessage: StealPanel
   axis: Horizontal1
   hasMultipleButtons: 0
-  mustHold: 0
+  mustHold: 1
   canPress: 1
   _axisNames: []
   inputBuffer: 0
@@ -55713,11 +55713,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: blocks.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4085029642658332, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55750,6 +55745,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114198682473724034, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 124569941}
+    - target: {fileID: 114483499789973154, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: _testGoal
+      value: 
+      objectReference: {fileID: 1366928812}
+    - target: {fileID: 114569621191412576, guid: 53af400b8fabd664bbd19ef088780851,
+        type: 2}
+      propertyPath: intendedSender
+      value: 
+      objectReference: {fileID: 1166793325}
     - target: {fileID: 114649712960447932, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: _currentPanel
@@ -55855,21 +55865,6 @@ Prefab:
       propertyPath: startingPanels.Array.data[19]
       value: 
       objectReference: {fileID: 1955188085}
-    - target: {fileID: 114569621191412576, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 1166793325}
-    - target: {fileID: 114483499789973154, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: _testGoal
-      value: 
-      objectReference: {fileID: 1366928812}
-    - target: {fileID: 114198682473724034, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: intendedSender
-      value: 
-      objectReference: {fileID: 124569941}
     - target: {fileID: 114840264315933764, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
       propertyPath: inputs.Array.data[0]
@@ -55965,60 +55960,10 @@ Prefab:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1304077423}
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: blocks.Array.data[1]
-      value: 
-      objectReference: {fileID: 1172816898836844, guid: 2feecdbaddeb9224aaff6b5b68870b5e,
-        type: 2}
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: blocks.Array.data[3]
-      value: 
-      objectReference: {fileID: 1447780760735818, guid: 0f88eec17f6dc7b439c56e09611bd5d6,
-        type: 2}
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: blocks.Array.data[2]
-      value: 
-      objectReference: {fileID: 1172816898836844, guid: e62e261ba5097a2449205b7e136f59a0,
-        type: 2}
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: blocks.Array.data[0]
-      value: 
-      objectReference: {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d,
-        type: 2}
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: blockListRef
-      value: 
-      objectReference: {fileID: 11400000, guid: f80a202cb61de8a4caf3d1494b7bf48a,
-        type: 2}
-    - target: {fileID: 114928660566369492, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: material_regen_rate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114200378622562274, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114483499789973154, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114551330603045306, guid: 53af400b8fabd664bbd19ef088780851,
         type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114092924560488482, guid: 53af400b8fabd664bbd19ef088780851,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: _movementDelay
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af400b8fabd664bbd19ef088780851, type: 2}
@@ -58616,6 +58561,11 @@ Prefab:
       propertyPath: _testGoal
       value: 
       objectReference: {fileID: 152480879}
+    - target: {fileID: 114851877076358748, guid: a0423aa4d6a6b6e46a70f6c243bf96c6,
+        type: 2}
+      propertyPath: isRawInput
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0423aa4d6a6b6e46a70f6c243bf96c6, type: 2}
   m_IsPrefabAsset: 0

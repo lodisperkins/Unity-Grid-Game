@@ -50,6 +50,7 @@ namespace Lodis.GamePlay.GridScripts
             P2AssignLists();
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
+            
         }
 
         private void Awake()
@@ -319,6 +320,11 @@ namespace Lodis.GamePlay.GridScripts
                     panel.GetComponent<PanelBehaviour>().Selected = true;
                 }
             }
+        }
+        private void Update()
+        {
+            BlackBoard.p1PanelList = p1PanelsRef;
+            BlackBoard.p2PanelList = p2PanelsRef;
         }
     }
 }

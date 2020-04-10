@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28198989cec70874eb4acbd17ca0a23b, type: 3}
-  m_Name: Defend
+  m_Name: UpgradeBlocks
   m_EditorClassIdentifier: 
-  parent: {fileID: 11400000, guid: 4d118110138919b4596c9618c597c29c, type: 2}
+  parent: {fileID: 11400000, guid: c2cddd37d9a9bb8449378236b536f652, type: 2}
   _childLeft: {fileID: 0}
   _childRight: {fileID: 0}
   conditionName: 
   actionNames:
-  - Dodge
+  - UpgradeBlock

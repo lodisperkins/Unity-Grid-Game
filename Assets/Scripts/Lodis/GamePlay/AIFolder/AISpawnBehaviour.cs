@@ -12,6 +12,7 @@ namespace Lodis.GamePlay.AIFolder
 		[SerializeField]
 		private PanelBehaviour _testGoal;
 		private PlayerSpawnBehaviour _spawnScript;
+        
 		// Use this for initialization
 		void Start()
 		{
@@ -51,17 +52,59 @@ namespace Lodis.GamePlay.AIFolder
 				}
 			}
 		}
-		public void BuildP2()
+		public bool Build(int blockIndex, PanelBehaviour buildPanel)
 		{
-			SelectBlock(0);
-			_spawnScript.FindNeighbors();
-			_spawnScript.PlaceBlockLeft();
-		}
-		public void BuildP1()
-		{
-			SelectBlock(0);
-			_spawnScript.FindNeighbors();
-			_spawnScript.PlaceBlockRight();
+            //Check if building at oanel is possible
+            if(_spawnScript.Blocks.Count<=0 || buildPanel.BlockCapacityReached || buildPanel.IsBroken)
+            {
+                return false;
+            }
+            //select block type
+			SelectBlock(blockIndex);
+            Dictionary<string, PanelBehaviour> availableBuildPanels;
+            //Looks for all possible building vantage points
+            if(name == "Player1")
+            { 
+                BlackBoard.p1PanelList.FindNeighborsForPanel(buildPanel, out availableBuildPanels);
+            }
+            else
+            {
+                BlackBoard.p2PanelList.FindNeighborsForPanel(buildPanel, out availableBuildPanels);
+            }
+            //Checks to see the direction the vantage point is in relation to the building spot
+            if(availableBuildPanels.ContainsKey("Forward"))
+            {
+                _moveScript.onArrival = new UnityEngine.Events.UnityAction(_spawnScript.FindNeighbors);
+                _moveScript.onArrival += _spawnScript.PlaceBlockLeft;
+                _moveScript.onArrival += _moveScript.playerMoveScript.EnableMovement;
+                _moveScript.MoveToPanel(availableBuildPanels["Forward"]);
+                return true;
+            }
+            else if(availableBuildPanels.ContainsKey("Behind"))
+            {
+                _moveScript.onArrival = new UnityEngine.Events.UnityAction(_spawnScript.FindNeighbors);
+                _moveScript.onArrival += _spawnScript.PlaceBlockRight;
+                _moveScript.onArrival += _moveScript.playerMoveScript.EnableMovement;
+                _moveScript.MoveToPanel(availableBuildPanels["Behind"]);
+                return true;
+            }
+            else if(availableBuildPanels.ContainsKey("Above"))
+            {
+                _moveScript.onArrival = new UnityEngine.Events.UnityAction(_spawnScript.FindNeighbors);
+                _moveScript.onArrival += _spawnScript.PlaceBlockBelow;
+                _moveScript.onArrival += _moveScript.playerMoveScript.EnableMovement;
+                _moveScript.MoveToPanel(availableBuildPanels["Above"]);
+                return true;
+            }
+            else if(availableBuildPanels.ContainsKey("Below"))
+            {
+                _moveScript.onArrival = new UnityEngine.Events.UnityAction(_spawnScript.FindNeighbors);
+                _moveScript.onArrival += _spawnScript.PlaceBlockRight;
+                _moveScript.onArrival += _moveScript.playerMoveScript.EnableMovement;
+                _moveScript.MoveToPanel(availableBuildPanels["Above"]);
+                return true;
+            }
+            return false;
 		}
 	}
 }

@@ -10,6 +10,7 @@ namespace Lodis
     {
     
     	public BinaryTree Decisions;
+        public int nodeCount;
     	// Use this for initialization
     	
     
@@ -17,7 +18,7 @@ namespace Lodis
         public void TraverseTree()
         {
 	        Decisions.currentNode = Decisions.nodes[0];
-	        for (int i = 0; i < Decisions.nodes.Count;)
+	        for (int i = 0; i < nodeCount;)
 	        {
 		        foreach (var actionName in Decisions.currentNode.actionNames)
 		        {

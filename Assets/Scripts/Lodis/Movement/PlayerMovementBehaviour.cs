@@ -57,6 +57,14 @@ namespace Lodis
             canMove = true;
             panelStealActive = false;
             _currentPanel = Panels[16];
+            if (name == "Player1")
+            {
+                BlackBoard.Player1 = gameObject;
+            }
+            else
+            {
+                BlackBoard.Player2 = gameObject;
+            }
         }
 
         private void Awake()
@@ -226,6 +234,14 @@ namespace Lodis
         void Update()
         {
             PositionRef.Val = Position;
+            if(name =="Player1")
+            {
+                BlackBoard.p1Position = Position;
+            }
+            else
+            {
+                BlackBoard.p2Position = Position;
+            }
         }
     }
 }

@@ -3,21 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay.GridScripts;
 using UnityEngine;
-
+using UnityEngine.Events;
 namespace Lodis.GamePlay.AIFolder
 {
 	
 	public class AIMovementBehaviour : MonoBehaviour
     {
-    	private PlayerMovementBehaviour _moveScript;
+    	public PlayerMovementBehaviour playerMoveScript;
     	private List<PanelBehaviour> _currentPath;
     	private PanelBehaviour _goal;
         [SerializeField]
         private PanelBehaviour _testGoal;
         [SerializeField]
         private float _movementDelay;
-
-       
+        public UnityAction onArrival;
+        private bool isMoving;
 
         [SerializeField] private GameObjectList _enemyBulletList;
         public PanelBehaviour Goal
@@ -38,7 +38,7 @@ namespace Lodis.GamePlay.AIFolder
     	// Use this for initialization
     	void Start ()
     	{
-    		_moveScript = GetComponent<PlayerMovementBehaviour>();
+    		playerMoveScript = GetComponent<PlayerMovementBehaviour>();
     		_currentPath = new List<PanelBehaviour>();
     		GetComponent<InputButtonBehaviour>().enabled = false;
     		GetComponent<InputAxisBehaviour>().enabled = false;
@@ -50,7 +50,7 @@ namespace Lodis.GamePlay.AIFolder
         {
 	        GameObject temp = (GameObject)arg[0];
 	        Vector2 position = temp.GetComponent<PanelBehaviour>().Position;
-	        if (position.x == _moveScript.Position.x || position.y == _moveScript.Position.y)
+	        if (position.x == playerMoveScript.Position.x || position.y == playerMoveScript.Position.y)
 	        {
 		        return true;
 	        }
@@ -78,11 +78,11 @@ namespace Lodis.GamePlay.AIFolder
             Vector2 position = arg.Position;
             Vector2 displacementX = new Vector2(1, 0);
             Vector2 displacementY = new Vector2(0, 1);
-            if (position == _moveScript.Position + displacementX || position == _moveScript.Position - displacementX)
+            if (position == playerMoveScript.Position + displacementX || position == playerMoveScript.Position - displacementX)
             {
                 return true;
             }
-            if (position == _moveScript.Position + displacementY || position == _moveScript.Position - displacementY)
+            if (position == playerMoveScript.Position + displacementY || position == playerMoveScript.Position - displacementY)
             {
                 return true;
             }
@@ -93,11 +93,11 @@ namespace Lodis.GamePlay.AIFolder
             Vector2 position = arg.Position;
             Vector2 displacdementX = new Vector2(range, 0);
             Vector2 displacdementY = new Vector2(0, range);
-            if (position == _moveScript.Position + displacdementX || position == _moveScript.Position - displacdementX)
+            if (position == playerMoveScript.Position + displacdementX || position == playerMoveScript.Position - displacdementX)
             {
                 return true;
             }
-            if (position == _moveScript.Position + displacdementY || position == _moveScript.Position - displacdementY)
+            if (position == playerMoveScript.Position + displacdementY || position == playerMoveScript.Position - displacdementY)
             {
                 return true;
             }
@@ -106,7 +106,7 @@ namespace Lodis.GamePlay.AIFolder
         public bool FindSafeSpot()
         {
 	        List<PanelBehaviour> moveSpots = new List<PanelBehaviour>();
-	        if (_moveScript.Panels.GetPanels(SafeSpotCheck, out moveSpots))
+	        if (playerMoveScript.Panels.GetPanels(SafeSpotCheck, out moveSpots))
 	        {
 		        for (int i =0; i < _enemyBulletList.Objects.Count;i++)
 		        {
@@ -164,7 +164,7 @@ namespace Lodis.GamePlay.AIFolder
     	public List<PanelBehaviour> FindNeighbors()
         {
             List<PanelBehaviour> panelsInRange = new List<PanelBehaviour>();
-            if (_moveScript.Panels.GetPanels(NeighboorCheck, out panelsInRange))
+            if (playerMoveScript.Panels.GetPanels(NeighboorCheck, out panelsInRange))
             {
 	            return panelsInRange;
             }
@@ -193,7 +193,7 @@ namespace Lodis.GamePlay.AIFolder
         {
 	        _currentPath =new List<PanelBehaviour>();
 	        PanelBehaviour temp = _goal;
-	        while (temp != _moveScript._currentPanel.GetComponent<PanelBehaviour>())
+	        while (temp != playerMoveScript._currentPanel.GetComponent<PanelBehaviour>())
 	        {
 		        _currentPath.Insert(0,temp);
 		        temp = temp.previousPanel;
@@ -202,12 +202,12 @@ namespace Lodis.GamePlay.AIFolder
     	public void FindBestPath()
     	{
     		PanelBehaviour panel;
-    		PanelBehaviour startPanel = _moveScript.CurrentPanel.GetComponent<PanelBehaviour>();
+    		PanelBehaviour startPanel = playerMoveScript.CurrentPanel.GetComponent<PanelBehaviour>();
     		List<PanelBehaviour> openList = new List<PanelBehaviour>();
     		openList.Add(startPanel);
     		List<PanelBehaviour> closedList = new List<PanelBehaviour>();
-    		_moveScript._currentPanel.GetComponent<PanelBehaviour>().F =
-    			Manhattan(_moveScript.CurrentPanel.GetComponent<PanelBehaviour>());
+    		playerMoveScript._currentPanel.GetComponent<PanelBehaviour>().F =
+    			Manhattan(playerMoveScript.CurrentPanel.GetComponent<PanelBehaviour>());
     		while (openList.Count > 0)
     		{
     			openList = SortPanels(openList);
@@ -243,31 +243,38 @@ namespace Lodis.GamePlay.AIFolder
     
     	public IEnumerator Move()
     	{
-    		Debug.Log("Tried move");
+            //Debug.Log("Tried move");
+            isMoving = true;
     		for (int i =0; i< _currentPath.Count; i++)
             {
 	            PanelBehaviour panel = _currentPath[i];
-    			if (panel.Position.x < _moveScript.Position.x)
+    			if (panel.Position.x < playerMoveScript.Position.x)
     			{
-    				_moveScript.MoveLeft();
+                    playerMoveScript.EnableMovement();
+                    playerMoveScript.MoveLeft();
+                }
+    
+    			else if (panel.Position.x > playerMoveScript.Position.x)
+    			{
+                    playerMoveScript.EnableMovement();
+                    playerMoveScript.MoveRight();
+                }
+    
+    			else if (panel.Position.y > playerMoveScript.Position.y)
+    			{
+                    playerMoveScript.EnableMovement();
+                    playerMoveScript.MoveUp();
     			}
     
-    			else if (panel.Position.x > _moveScript.Position.x)
+    			else if (panel.Position.y < playerMoveScript.Position.y)
     			{
-    				_moveScript.MoveRight();
-    			}
-    
-    			else if (panel.Position.y > _moveScript.Position.y)
-    			{
-    				_moveScript.MoveUp();
-    			}
-    
-    			else if (panel.Position.y < _moveScript.Position.y)
-    			{
-    				_moveScript.MoveDown();
-    			}
+                    playerMoveScript.EnableMovement();
+                    playerMoveScript.MoveDown();
+                }
                 yield return new WaitForSeconds(_movementDelay);
     		}
+            isMoving = false;
+            onArrival.Invoke();
     	}
     	public void Dodge()
     	{
@@ -279,9 +286,19 @@ namespace Lodis.GamePlay.AIFolder
             {
                 _goal = _testGoal;
             }
-            Debug.ClearDeveloperConsole();
-            Debug.Log("goal is " + _goal.Position);
+            //Debug.ClearDeveloperConsole();
+            //Debug.Log("goal is " + _goal.Position);
     		FindBestPath();
+            StartCoroutine(Move());
+        }
+        public void MoveToPanel(PanelBehaviour panel)
+        {
+            if(isMoving)
+            {
+                return;
+            }
+            _goal = panel;
+            FindBestPath();
             StartCoroutine(Move());
         }
     	private void Update()

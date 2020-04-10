@@ -8233,11 +8233,18 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coreScore: 0
+  _supportScore: 0
+  _supportBlockScore: 0
+  _supportDefenseScore: 0
+  _blockHealthScore: 0
+  _blockAmountScore: 0
+  _totalScore: 0
 --- !u!114 &114116989126093374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8390,12 +8397,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Decisions: {fileID: 11400000, guid: 7ce4595122dfd2a4fafa8cac8377c5ad, type: 2}
+  Decisions: {fileID: 11400000, guid: 5a4b9cd5c40115b4bb057b31573e92cd, type: 2}
+  nodeCount: 11
 --- !u!114 &114274406004224860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8663,7 +8671,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
   m_Name: 
@@ -8689,12 +8697,14 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementDelay: 0.3
+  playerMoveScript: {fileID: 0}
+  _testGoal: {fileID: 0}
+  _movementDelay: 0.57
   _enemyBulletList: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
 --- !u!114 &114558301984527624
 MonoBehaviour:
@@ -8897,6 +8907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
+  updatePosition: 0
+  isMoving: 0
   shakeRange: 0.7
   shakeLength: 0
 --- !u!114 &114840264315933764
@@ -8947,6 +8959,10 @@ MonoBehaviour:
   _weaponHitbox: {fileID: 0}
   animator: {fileID: 0}
   _onInteractPressed: {fileID: 11400000, guid: 03e686a1c87dd0342bb3f6ab97d29d3e, type: 2}
+  normalBullet: {fileID: 0}
+  chargeBullet: {fileID: 0}
+  timeUntilCharged: 0
+  charged: 1
 --- !u!114 &114892875904558440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8980,18 +8996,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRef: {fileID: 11400000, guid: 0018f07231d12e442997f41bac47a20e, type: 2}
-  blockListRef: {fileID: 0}
-  blocks:
-  - {fileID: 1893602849636482, guid: 3eaf268a7ba29ed49932602d08e71c3d, type: 2}
-  - {fileID: 1373659190468100, guid: a812f03e95970314894c240ac69c7c3b, type: 2}
-  - {fileID: 1125205063312076, guid: 67d3f3ca080b24b4295e1c259f471e0d, type: 2}
-  - {fileID: 1772094693998044, guid: ab7537d0e21e1e041856cc3c0baf5f21, type: 2}
+  blockListRef: {fileID: 11400000, guid: f80a202cb61de8a4caf3d1494b7bf48a, type: 2}
+  blocks: []
   direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
   player: {fileID: 114649712960447932}
   block_rotation_degrees: 180
   rotation_val: 0
   materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
-  material_regen_rate: 0.5
+  material_regen_rate: 1
   DeletionBlockObject: {fileID: 1293680906006954, guid: af47b0a34f5294c4186f4b90ce80965f,
     type: 2}
   OnDeleteEnabled: {fileID: 11400000, guid: 3b5e575f938042f47a985c853b2dc257, type: 2}

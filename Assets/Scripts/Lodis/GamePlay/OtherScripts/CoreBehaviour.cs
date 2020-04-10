@@ -27,6 +27,14 @@ namespace Lodis
         {
             _healthStamp = IntVariable.CreateInstance(_healthRef.health.Val - 10);
             currentPiece = 0;
+            if(name == "P1 Core")
+            {
+                BlackBoard.p1Core = gameObject;
+            }
+            else
+            {
+                BlackBoard.p2Core = gameObject;
+            }
         }
         private void Awake()
         {

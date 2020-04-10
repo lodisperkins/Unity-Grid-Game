@@ -2624,6 +2624,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  _type: Attack
 --- !u!114 &114853325703285710
 MonoBehaviour:
   m_ObjectHideFlags: 1
