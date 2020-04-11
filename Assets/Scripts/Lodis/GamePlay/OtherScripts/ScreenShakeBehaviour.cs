@@ -11,7 +11,7 @@ namespace Lodis.GamePlay.OtherScripts
         public bool updatePosition;
         public bool isMoving;
 		private Vector3 _startPosition;
-
+        public bool shouldStop;
 		public Vector3 StartPosition
 		{
 			get { return _startPosition; }
@@ -42,6 +42,11 @@ namespace Lodis.GamePlay.OtherScripts
 			float val = 0;
 			for(int i = 0; i< shakeLength; i++)
 			{
+                if(shouldStop)
+                {
+                    shouldStop = false;
+                    yield break;
+                }
 				if (positive)
 				{
 					val = Random.Range(0, shakeRange);

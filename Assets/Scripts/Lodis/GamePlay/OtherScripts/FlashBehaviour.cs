@@ -11,38 +11,75 @@ public class FlashBehaviour : MonoBehaviour {
     private int numberOfFlashes;
     [SerializeField]
     private float flashSpeed;
-    private MeshRenderer flashRenderer;
-    private MeshRenderer normalRenderer;
+    [SerializeField]
+    private List<MeshRenderer> flashRenderers;
+    [SerializeField]
+    private List<MeshRenderer> normalRenderers;
+    public bool isInfinite;
     // Use this for initialization
     void Start () {
-        flashRenderer = flashObject.GetComponent<MeshRenderer>();
-        normalRenderer = normalObject.GetComponent<MeshRenderer>();
     }
     private IEnumerator FlashMeshrenderer()
     {
-        if (flashObject != null && normalObject != null)
+        if (flashRenderers != null && normalRenderers != null)
         {
             for (var i = 0; i < numberOfFlashes; i++)
             {
-                normalRenderer.enabled = false;
-                flashRenderer.enabled = true;
+                foreach(MeshRenderer renderer in normalRenderers)
+                {
+                    renderer.enabled = false;
+                }
+
+                foreach (MeshRenderer renderer in flashRenderers)
+                {
+                    renderer.enabled = true;
+                }
                 yield return new WaitForSeconds(flashSpeed);
-                normalRenderer.enabled = true;
-                flashRenderer.enabled = false;
+                foreach (MeshRenderer renderer in normalRenderers)
+                {
+                    renderer.enabled = true;
+                }
+
+                foreach (MeshRenderer renderer in flashRenderers)
+                {
+                    renderer.enabled = false;
+                }
                 yield return new WaitForSeconds(flashSpeed);
+                if(isInfinite)
+                {
+                    i--;
+                }
             }
-            normalRenderer.enabled = true;
+            foreach (MeshRenderer renderer in normalRenderers)
+            {
+                renderer.enabled = true;
+            }
         }
         else
         {
             for (var i = 0; i < numberOfFlashes; i++)
             {
-                normalObject.GetComponent<MeshRenderer>().enabled = false;
+                foreach (MeshRenderer renderer in normalRenderers)
+                {
+                    renderer.enabled = false;
+                }
+
                 yield return new WaitForSeconds(flashSpeed);
-                normalObject.GetComponent<MeshRenderer>().enabled = true;
+                foreach (MeshRenderer renderer in normalRenderers)
+                {
+                    renderer.enabled = true;
+                }
+;
                 yield return new WaitForSeconds(flashSpeed);
+                if (isInfinite)
+                {
+                    i--;
+                }
             }
-            normalRenderer.enabled = true;
+            foreach (MeshRenderer renderer in normalRenderers)
+            {
+                renderer.enabled = true;
+            }
         }
     }
     private IEnumerator FlashGameObject()
@@ -57,6 +94,10 @@ public class FlashBehaviour : MonoBehaviour {
                 normalObject.SetActive(true);
                 flashObject.SetActive(false);
                 yield return new WaitForSeconds(flashSpeed);
+                if (isInfinite)
+                {
+                    i--;
+                }
             }
             normalObject.SetActive(true);
         }
@@ -68,18 +109,52 @@ public class FlashBehaviour : MonoBehaviour {
                 yield return new WaitForSeconds(flashSpeed);
                 normalObject.SetActive(true);
                 yield return new WaitForSeconds(flashSpeed);
+                if (isInfinite)
+                {
+                    i--;
+                }
             }
             normalObject.SetActive(true);
         }
     }
     public void StartFlashing()
     {
-        if(normalRenderer == null)
+        if(normalRenderers.Count <=0)
         {
             StartCoroutine(FlashGameObject());
             return;
         }
         StartCoroutine(FlashMeshrenderer());
+    }
+    public void StopFlashing()
+    {
+        if(normalObject != null)
+        {
+            normalObject.SetActive(true);
+            if (flashObject != null)
+            {
+                flashObject.SetActive(false);
+            }
+        }
+        if(normalRenderers.Count >0)
+        {
+            foreach (MeshRenderer renderer in normalRenderers)
+            {
+                renderer.enabled = false;
+            }
+            if(flashRenderers.Count > 0)
+            {
+                foreach (MeshRenderer renderer in flashRenderers)
+                {
+                    renderer.enabled = false;
+                }
+            }
+        }
+        StopAllCoroutines();
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
     // Update is called once per frame
     void Update () {

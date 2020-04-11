@@ -40,6 +40,10 @@ namespace Lodis
             {
                 return _currentPanel;
             }
+            set
+            {
+                _currentPanel = value;
+            }
         }
         
         //Used to store the value of the panel the player will be traveling to
@@ -103,6 +107,7 @@ namespace Lodis
         public void ResetPositionToCurrentPanel()
         {
             transform.position = new Vector3(CurrentPanel.transform.position.x, transform.position.y, CurrentPanel.transform.position.z);
+            Position = _currentPanel.GetComponent<PanelBehaviour>().Position;
         }
         public void ResetPositionToStartPanel()
         {

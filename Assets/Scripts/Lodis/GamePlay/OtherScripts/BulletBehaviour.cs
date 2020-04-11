@@ -206,7 +206,18 @@ namespace Lodis
                 Destroy();
                 return;
             }
+            if (DamageVal >= 5)
+            {
+                Vector3 direction = other.transform.position - transform.position;
+                KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
+                if (knockBackScript != null)
+                {
+                    knockBackScript.KnockBack(direction, 50, 1);
+                }
+                
+            }
             ResolveCollision(other.gameObject);
+            
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -214,6 +225,11 @@ namespace Lodis
             {
                 Destroy();
                 return;
+            }
+            if (DamageVal >= 5)
+            {
+                Vector3 direction = collision.contacts[0].point - transform.position;
+                collision.gameObject.GetComponent<KnockBackBehaviour>().KnockBack(direction, 50, 1);
             }
             ResolveCollision(collision.gameObject);
         }

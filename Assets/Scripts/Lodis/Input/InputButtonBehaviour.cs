@@ -85,8 +85,10 @@ public class InputButtonBehaviour : MonoBehaviour
                 input.ResetHoldTime();
             }
         }
-        else if (input.ButtonUpMessage != "")
+        else if (Input.GetAxis(input.Axis) < .1 && Input.GetAxis(input.Axis) > -.1 && input.ButtonUpMessage != "")
         {
+            input.ResetHoldTime();
+            input.canPress = true;
             SendMessage(input.ButtonUpMessage);
         }
         else if (Input.GetAxis(input.Axis) < .1 && Input.GetAxis(input.Axis) > -.1)

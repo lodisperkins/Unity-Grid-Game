@@ -30,12 +30,15 @@ public class PlayerAttackBehaviour : MonoBehaviour
     [SerializeField]
     private float timeUntilCharged;
     [SerializeField]
-    private bool charged =true;
+    private bool charged;
+    [SerializeField]
+    private GameObject chargeParticles;
     // Use this for initialization
     void Start ()
 	{
 		player = GetComponent<PlayerMovementBehaviour>();
         _interactionRay = new RaycastHit();
+        charged = false;
 	}
 
 	public void Interact()
@@ -55,27 +58,29 @@ public class PlayerAttackBehaviour : MonoBehaviour
             
 		}
 	}
-	
+	private void ChargeGun()
+    {
+        charged = true;
+        chargeParticles.SetActive(true);
+    }
 	public void FireGun()
 	{
 		if (player.canMove)
 		{
-            if(charged)
-            {
-                FireChargeGun();
-                chargeTimer = Time.time + timeUntilCharged;
-                charged = false;
-                return;
-            }
-            chargeTimer = Time.time + timeUntilCharged;
             _gun.ChangeBullet(normalBullet);
             _gun.FireBullet();
 		}
 	}
     public void FireChargeGun()
     {
-        _gun.ChangeBullet(chargeBullet);
-        _gun.FireBullet();
+        if(charged)
+        {
+            _gun.ChangeBullet(chargeBullet);
+            _gun.FireBullet();
+            charged = false;
+            chargeParticles.SetActive(false);
+        }
+        
     }
 	// Update is called once per frame
 	void Update () {
@@ -89,9 +94,5 @@ public class PlayerAttackBehaviour : MonoBehaviour
 				_meleeHitboxActive = false;
 			}
 		}
-        if(!charged)
-        {
-            charged = Time.time > chargeTimer;
-        }
 	}
 }

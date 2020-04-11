@@ -2331,6 +2331,7 @@ MonoBehaviour:
   isShaking: 0
   updatePosition: 0
   isMoving: 0
+  shouldStop: 0
   shakeRange: 0.7
   shakeLength: 0
 --- !u!114 &114339541003221576
@@ -2615,6 +2616,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _type: Support
+  types: []
 --- !u!114 &114858185130071156
 MonoBehaviour:
   m_ObjectHideFlags: 1
