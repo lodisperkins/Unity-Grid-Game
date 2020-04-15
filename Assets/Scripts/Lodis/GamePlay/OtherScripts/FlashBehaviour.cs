@@ -54,6 +54,10 @@ public class FlashBehaviour : MonoBehaviour {
             {
                 renderer.enabled = true;
             }
+            foreach (MeshRenderer renderer in flashRenderers)
+            {
+                renderer.enabled = false;
+            }
         }
         else
         {
@@ -100,6 +104,7 @@ public class FlashBehaviour : MonoBehaviour {
                 }
             }
             normalObject.SetActive(true);
+            flashObject.SetActive(false);
         }
         else
         {
@@ -115,6 +120,7 @@ public class FlashBehaviour : MonoBehaviour {
                 }
             }
             normalObject.SetActive(true);
+            flashObject.SetActive(false);
         }
     }
     public void StartFlashing()

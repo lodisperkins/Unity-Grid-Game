@@ -2108,7 +2108,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125205063312076}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa3c317921e3cf4b9d8977a77d350f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _block: {fileID: 1125205063312076}
+  _gameObject: {fileID: 1125205063312076}
 --- !u!114 &114176156805791298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2300,6 +2300,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _type: Support
+  types: []
+  canDelete: 0
 --- !u!114 &114517568140079830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2347,6 +2349,7 @@ MonoBehaviour:
   value: {fileID: 0}
   _healthbarImage: {fileID: 114176156805791298}
   isHealthBar: 1
+  fillImage: {fileID: 0}
 --- !u!114 &114609213156158122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2451,8 +2454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeVal: 0.01
   isShaking: 0
-  updatePosition: 0
+  updatePosition: 1
   isMoving: 0
+  shouldStop: 0
   shakeRange: 0.7
   shakeLength: 0
 --- !u!114 &114744907713043128

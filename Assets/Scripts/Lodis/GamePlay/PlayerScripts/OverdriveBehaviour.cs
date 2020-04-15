@@ -8,9 +8,9 @@ using Event = Lodis.Event;
 public class OverdriveBehaviour : MonoBehaviour
 {
 
-	[SerializeField] private PlayerSpawnBehaviour _player;
-
-	[SerializeField] private HealthBehaviour _health;
+	[SerializeField] private PlayerSpawnBehaviour _playerSpawnScript;
+    [SerializeField] private PlayerMovementBehaviour _playerMoveScript;
+    [SerializeField] private HealthBehaviour _health;
 	private float _time;
 	[SerializeField]
 	private float _overdriveLength;
@@ -37,9 +37,9 @@ public class OverdriveBehaviour : MonoBehaviour
 		{
 			return;
 		}
-		_player.overdriveEnabled = true;
+		_playerSpawnScript.overdriveEnabled = true;
 		_onOverdriveEnabled.Raise(gameObject);
-		_player.AddMaterials(60);
+		_playerSpawnScript.AddMaterials(60);
 		
 		if (_health.health.Val >= 75)
 		{
@@ -59,16 +59,26 @@ public class OverdriveBehaviour : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (_player.overdriveEnabled)
+        if(_playerMoveScript.panelStealActive && _playerSpawnScript.DeleteEnabled)
+        {
+            StopMaterialLoss();
+        }
+		if (_playerSpawnScript.overdriveEnabled)
 		{
 			used = true;
 			if (Time.time >=_time )
 			{
-				_player.overdriveEnabled = false;
+				_playerSpawnScript.overdriveEnabled = false;
 				_onOverdriveDisabled.Raise(gameObject);
 				_particles.SetActive(false);
 				
 			}
 		}
-	}
+        if(Input.GetAxis("PanelAction1") <= -.5f && Input.GetAxis("PanelAction1") >= .5f)
+        {
+            StopMaterialLoss();
+        }
+        Debug.Log(Input.GetAxis("PanelAction1"));
+
+    }
 }

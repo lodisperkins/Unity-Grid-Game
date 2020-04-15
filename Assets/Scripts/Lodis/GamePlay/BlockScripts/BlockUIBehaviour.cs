@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BlockUIBehaviour : MonoBehaviour
 {
-	[SerializeField] private GameObject _block;
+	[SerializeField] private GameObject _gameObject;
 	// Update is called once per frame
 	void Update () {
-		transform.LookAt(_block.transform.forward);
+		transform.LookAt(_gameObject.transform.forward);
        
 	}
 }

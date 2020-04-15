@@ -74,6 +74,19 @@ namespace Lodis.GamePlay
             }
         }
 
+        public Color displayColor
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public GameObject specialFeature;
 
         public void ResolveCollision(GameObject other)
@@ -230,6 +243,21 @@ namespace Lodis.GamePlay
         {
             FindPanels();
             FindBlock();
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

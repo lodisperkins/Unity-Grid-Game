@@ -33,17 +33,44 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private bool charged;
     [SerializeField]
     private GameObject chargeParticles;
+    [SerializeField]
+    private AudioSource chargingAudio;
+    [SerializeField]
+    private string shootAxis;
+    private bool charging;
+    private AudioSource tempSource;
+    public int weaponUseAmount;
+    private IUpgradable secondaryWeapon;
+    private bool willInteract;
+    [SerializeField] private SliderBehaviour sliderScript;
+    [SerializeField] private IntVariable altAmmoAmount;
     // Use this for initialization
     void Start ()
 	{
 		player = GetComponent<PlayerMovementBehaviour>();
         _interactionRay = new RaycastHit();
         charged = false;
+        InitializeBlackBoard();
 	}
-
+    public void InitializeBlackBoard()
+    {
+        altAmmoAmount.Val = 0;
+        if (name == "Player1")
+        {
+            BlackBoard.altAmmoAmountP1 = altAmmoAmount;
+        }
+        else
+        {
+            BlackBoard.altAmmoAmountP2 = altAmmoAmount;
+        }
+    }
+    public void TryInteract()
+    {
+        willInteract = true;
+    }
 	public void Interact()
 	{
-		if (player.canMove)
+		if (player.canMove && willInteract)
 		{
             int layerMask = 1 << 9;
             if(Physics.Raycast(transform.position,transform.forward,out _interactionRay,2,layerMask))
@@ -51,14 +78,35 @@ public class PlayerAttackBehaviour : MonoBehaviour
                 _currentBlock = _interactionRay.transform.gameObject;
                 if(_currentBlock.CompareTag("Panel"))
                 {
+                    willInteract = false;
                     return;
                 }
                 _currentBlock.SendMessage("ActivateSpecialAction");
             }
-            
 		}
-	}
-	private void ChargeGun()
+        willInteract = false;
+    }
+    public void EquipSecondaryWeapon()
+    {
+        willInteract = false;
+        if (player.canMove)
+        {
+            int layerMask = 1 << 9;
+            if (Physics.Raycast(transform.position, transform.forward, out _interactionRay, 2, layerMask))
+            {
+                _currentBlock = _interactionRay.transform.gameObject;
+                if (_currentBlock.CompareTag("Panel"))
+                {
+                    return;
+                }
+                _currentBlock.SendMessage("UpgradePlayer",this);
+                sliderScript.gameObject.SetActive(true);
+                sliderScript.Bar.maxValue = weaponUseAmount;
+                sliderScript.fillImage.color = secondaryWeapon.displayColor;
+            }
+        }
+    }
+    private void ChargeGun()
     {
         charged = true;
         chargeParticles.SetActive(true);
@@ -82,8 +130,35 @@ public class PlayerAttackBehaviour : MonoBehaviour
         }
         
     }
-	// Update is called once per frame
-	void Update () {
+    public void SetSecondaryWeapon(IUpgradable weapon, int useAmount)
+    {
+        secondaryWeapon = weapon;
+        altAmmoAmount.Val  = useAmount;
+    }
+    public void UseSecondaryWeapon()
+    {
+        if(altAmmoAmount.Val > 0)
+        {
+            secondaryWeapon.PlayerAttack();
+            altAmmoAmount.Val--;
+           
+        }
+        else if (secondaryWeapon != null)
+        {
+            sliderScript.gameObject.SetActive(false);
+            secondaryWeapon.DetachFromPlayer();
+            secondaryWeapon = null;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(secondaryWeapon != null)
+        {
+            secondaryWeapon.ResolveCollision(other.gameObject); 
+        }
+    }
+    // Update is called once per frame
+    void Update () {
 		if (_meleeHitboxActive)
 		{
 			_weaponHitbox.SetActive(true);
@@ -94,5 +169,13 @@ public class PlayerAttackBehaviour : MonoBehaviour
 				_meleeHitboxActive = false;
 			}
 		}
+        if(Input.GetButtonDown(shootAxis))
+        {
+            tempSource = Instantiate(chargingAudio);
+        }
+        else if(Input.GetButtonUp(shootAxis))
+        {
+            Destroy(tempSource);
+        }
 	}
 }

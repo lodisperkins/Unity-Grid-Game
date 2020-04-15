@@ -9,6 +9,8 @@ namespace Lodis
         RaycastHit ray;
         GameObject hitTarget;
         RaycastHit[] raycastPanelHits;
+        [SerializeField]
+        private Event onKnockback;
         // Use this for initialization
         void Start()
         {
@@ -22,6 +24,7 @@ namespace Lodis
         }
         public void KnockBack(Vector3 direction,float power,float stunTime = 0)
         {
+            onKnockback.Raise();
             if (CompareTag("Player"))
             {
                 StartCoroutine(Stun(stunTime));

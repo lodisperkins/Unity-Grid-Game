@@ -102,6 +102,7 @@ namespace Lodis
         public void Reflect()
         {
             GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= 1.5f);
+            ReverseOwner();
             reflected = true;
             lifetime = 2;
             DamageVal += 1;
@@ -151,6 +152,10 @@ namespace Lodis
                     }
                 case "Block":
                 {
+                    if(other.name == "DeletionBlock(Clone)")
+                    {
+                        return;
+                    }
                     playDeathParticleSystems(1);
                     ps.transform.position = other.transform.position;
                     var health = other.GetComponent<HealthBehaviour>();
@@ -212,7 +217,7 @@ namespace Lodis
                 KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
                 if (knockBackScript != null)
                 {
-                    knockBackScript.KnockBack(direction, 50, 1);
+                    knockBackScript.KnockBack(direction, 100, 1);
                 }
                 
             }
@@ -229,7 +234,7 @@ namespace Lodis
             if (DamageVal >= 5)
             {
                 Vector3 direction = collision.contacts[0].point - transform.position;
-                collision.gameObject.GetComponent<KnockBackBehaviour>().KnockBack(direction, 50, 1);
+                collision.gameObject.GetComponent<KnockBackBehaviour>().KnockBack(direction, 100, 1);
             }
             ResolveCollision(collision.gameObject);
         }

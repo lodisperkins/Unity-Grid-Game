@@ -43,6 +43,19 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public Color displayColor
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -94,6 +107,21 @@ namespace Lodis.GamePlay.BlockScripts
         {
             gameObject.SetActive(false);
             return;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using System.Collections;
 namespace Lodis.GamePlay.BlockScripts
 {
 	public class DefenseBarrierBehaviour : MonoBehaviour,IUpgradable
@@ -17,6 +17,16 @@ namespace Lodis.GamePlay.BlockScripts
         private float lerpNum;
         [SerializeField]
         private Event onHit;
+        [SerializeField]
+        private Color _displayColor;
+        [SerializeField]
+        private int playerUseAmount;
+        private bool playerAttached;
+        PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField]
+        private bool canReflect; 
 		// Use this for initialization
 		void Start ()
 		{
@@ -50,6 +60,19 @@ namespace Lodis.GamePlay.BlockScripts
             get
             {
                 return _nameOfItem;
+            }
+        }
+
+        public Color displayColor
+        {
+            get
+            {
+                return _displayColor;
+            }
+
+            set
+            {
+                _displayColor = value;
             }
         }
 
@@ -119,6 +142,11 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if (collision.CompareTag("Projectile") && gameObject.activeSelf)
             {
+                if(canReflect)
+                {
+                    collision.gameObject.GetComponent<BulletBehaviour>().Reflect();
+                    return;
+                }
                 block.HealthScript.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
                 onHit.Raise(gameObject);
                 collision.GetComponent<BulletBehaviour>().Destroy();
@@ -129,6 +157,44 @@ namespace Lodis.GamePlay.BlockScripts
         {
             shieldTimer.StopAllCoroutines();
             shieldTimer.enabled = false;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            shieldTimer.shouldStop = true;
+            shieldTimer.StopAllCoroutines();
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            SphereCollider collider = GetComponent<SphereCollider>();
+            collider.isTrigger = false;
+            transform.localScale *= 1.2f;
+            playerAttached = true;
+            teleportBeam.Teleport(player.transform.position);
+            player.SetSecondaryWeapon(this, playerUseAmount);
+        }
+        private IEnumerator EnableReflector()
+        {
+            canReflect = true;
+            yield return new WaitForSeconds(.5f);
+            gameObject.SetActive(false);
+            canReflect = false;
+        }
+     
+        public void PlayerAttack()
+        {
+            if(!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+                StartCoroutine(EnableReflector());
+            }
+        }
+
+        public void DetachFromPlayer()
+        {
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
     }
 }

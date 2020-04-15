@@ -49,6 +49,19 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public Color displayColor
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start () {
             _playerMoveScript = _blockScript.owner.GetComponent<PlayerMovementBehaviour>();
@@ -245,6 +258,21 @@ namespace Lodis.GamePlay.BlockScripts
             gameObject.SetActive(false);
             _spawnRoutine.StopAllCoroutines();
             _spawnRoutine.enabled = false;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-namespace Lodis.Gameplay
+namespace Lodis.GamePlay
 {
 	public class TeleportBeamBehaviour : MonoBehaviour {
 		[FormerlySerializedAs("Target")] [SerializeField]
 		public string target;
 
-		[SerializeField] private GameObject player; 
-		public Transform playerTransform;
+		[SerializeField] private GameObject itemToTeleport; 
+		public Transform objectTransform;
+        private Vector3 objectDestination;
 		private Vector3 _beamdestination;
 		[SerializeField] private float _beamHeight;
 		[SerializeField]
@@ -23,20 +24,20 @@ namespace Lodis.Gameplay
 		[SerializeField]
 		private Event _onLanding ;
 		public bool ascending;
-		public bool landed;
+		public bool landed =true;
 		private Rigidbody _body;
 		// Use this for initialization
 		void Start()
 		{
 			_body = GetComponent<Rigidbody>();
-			playerTransform = playerTransform.transform;
+			objectTransform = itemToTeleport.transform;
 			ascending = false;
 			landed = true;
 		}
 		void MoveBeamUpwards()
 		{
 			_onAscending.Raise(gameObject);
-			_beamdestination = new Vector3(playerTransform.position.x,_beamHeight,playerTransform.position.z);
+			_beamdestination = new Vector3(objectTransform.position.x,_beamHeight,objectTransform.position.z);
 			Vector3 seekforce = _beamdestination - transform.position;
 			seekforce = (seekforce.normalized*max_speed) - velocity;
 			if (velocity.magnitude > max_speed)
@@ -46,21 +47,32 @@ namespace Lodis.Gameplay
 			transform.position += seekforce*Time.deltaTime;
 			if (transform.position.y >= _beamdestination.y)
 			{
-				player.SendMessage("ResetPositionToStartPanel");
+                if(itemToTeleport.CompareTag("Player"))
+                {
+                    itemToTeleport.SendMessage("ResetPositionToStartPanel", SendMessageOptions.DontRequireReceiver);
+                }
+                else
+                {
+                    itemToTeleport.transform.position = objectDestination;
+                }
 				@ascending = false;
 			}
 			
 		}
 		void MoveBeamDownwards()
 		{
-			Vector3 seekforce = playerTransform.position- transform.position;
+            if(objectTransform == null)
+            {
+                return;
+            }
+			Vector3 seekforce = objectTransform.position- transform.position;
 			seekforce = (seekforce.normalized*max_speed) - velocity;
 			if (velocity.magnitude > max_speed)
 			{
 				velocity=velocity.normalized*max_speed;
 			}
 			transform.position += seekforce*Time.deltaTime;
-			if (transform.position.y < playerTransform.position.y && @ascending == false)
+			if (transform.position.y < objectTransform.position.y && @ascending == false)
 			{
 				landed = true;
 				_onLanding.Raise(gameObject);
@@ -70,25 +82,29 @@ namespace Lodis.Gameplay
 
 		public void EnableAscending()
 		{
-			if (player.name == "Player1")
+			if (itemToTeleport.name == "Player1")
 			{
-				if (player.transform.position.z > 18)
+				if (itemToTeleport.transform.position.z > 18)
 				{
 					ascending = true;
 					landed = false;
 				}
 			}
-			else if(player.name =="Player2")
+			else if(itemToTeleport.name =="Player2")
 			{
-				if (player.transform.position.z < 18)
+				if (itemToTeleport.transform.position.z < 18)
 				{
 					ascending = true;
 					landed = false;
 				}
 			}
-			
 		}
-		
+		public void Teleport(Vector3 destination)
+        {
+            objectDestination = destination;
+            ascending = true;
+            landed = false;
+        }
 		// Update is called once per frame
 		
 		void Update()

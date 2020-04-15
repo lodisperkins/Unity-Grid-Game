@@ -42,6 +42,19 @@ namespace Lodis
             }
         }
 
+        public Color displayColor
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public GameObject specialFeature;
 
         private void Start()
@@ -76,7 +89,7 @@ namespace Lodis
         public void ResolveCollision(GameObject collision)
         {
             var block = collision.GetComponent<BlockBehaviour>();
-            if (block != null && !block.deleting)
+            if (block != null && !block.deleting &&block.canDelete)
             {
                 block.deleting = true;
                 PlayParticleSystems(1.5f);
@@ -86,6 +99,21 @@ namespace Lodis
         }
 
         public void ActivateDisplayMode()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
         {
             throw new System.NotImplementedException();
         }

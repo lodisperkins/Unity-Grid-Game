@@ -45,7 +45,20 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject.name;
             }
         }
-        
+
+        public Color displayColor
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public void UpgradeBlock(GameObject otherBlock)
 		{
 			BlockBehaviour _blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -135,6 +148,21 @@ namespace Lodis.GamePlay.BlockScripts
         {
             DisableOrbAttack();
             return;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

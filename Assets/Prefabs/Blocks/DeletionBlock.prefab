@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114616023834657678}
   m_Layer: 0
   m_Name: DeletionBlock
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,6 @@ MonoBehaviour:
   cost: 0
   _level: {fileID: 0}
   BlockWeightVal: 0
-  awake: 0
   canUpgrade: 0
   deleting: 0
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
@@ -116,6 +115,15 @@ MonoBehaviour:
   player1Materials: {fileID: 0}
   player2Materials: {fileID: 0}
   _blockUI: {fileID: 0}
+  shakeScript: {fileID: 0}
+  displayModeActions:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _type: 
+  types: []
+  canDelete: 0
 --- !u!114 &114616023834657678
 MonoBehaviour:
   m_ObjectHideFlags: 1

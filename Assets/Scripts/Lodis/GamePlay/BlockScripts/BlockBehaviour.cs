@@ -46,6 +46,7 @@ namespace Lodis
         [SerializeField] private UnityEvent displayModeActions;
         [SerializeField] private string _type;
         public List<string> types;
+        public bool canDelete;
         public HealthBehaviour HealthScript
         {
             get
@@ -100,6 +101,7 @@ namespace Lodis
             shakeScript = GetComponent<GamePlay.OtherScripts.ScreenShakeBehaviour>();
             canUpgrade = true;
             _currentLevel = 1;
+            canDelete = true;
         }
         //Turns off UI and disablkes any special components attached
         public void ActivateDisplayMode()
@@ -211,9 +213,16 @@ namespace Lodis
 
         public void ActivateSpecialAction()
         {
-            specialActions.Invoke();
+            if(specialActions != null)
+            {
+                specialActions.Invoke();
+            }
+            
         }
-        
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            componentList[0].UpgradePlayer(player);
+        }
         //destroys this block after a specified time
         public void DestroyBlock(float time)
         {

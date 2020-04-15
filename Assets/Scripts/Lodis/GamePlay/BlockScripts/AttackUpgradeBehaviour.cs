@@ -11,6 +11,11 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private int _bulletForceUpgradeVal;
 		[SerializeField] private int _ammoUpgradeVal;
 		[SerializeField] private HealthBehaviour _blockHealth;
+        [SerializeField] private int playerUseAmount;
+        private PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField] private Color _displayColor;
         private string _nameOfItem;
         public BlockBehaviour block
         {
@@ -37,8 +42,22 @@ namespace Lodis.GamePlay.BlockScripts
                 return gameObject;
             }
         }
-		// Use this for initialization
-		void Start ()
+
+        public Color displayColor
+        {
+            get
+            {
+                return _displayColor;
+            }
+
+            set
+            {
+                displayColor = value;
+            }
+        }
+
+        // Use this for initialization
+        void Start ()
 		{
             _nameOfItem = specialFeature.name;
 			turretScript = GetComponent<GunBehaviour>();
@@ -109,6 +128,29 @@ namespace Lodis.GamePlay.BlockScripts
             gameObject.SetActive(false);
             turretScript.StopAllCoroutines();
             turretScript.enabled = false;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            turretScript.IsTurret = false;
+            turretScript.StopAllCoroutines();
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            teleportBeam.Teleport(player.transform.position);
+            player.SetSecondaryWeapon(this, playerUseAmount);
+        }
+
+        public void PlayerAttack()
+        {
+            turretScript.FireBullet();
+        }
+
+        public void DetachFromPlayer()
+        {
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
     }
 }

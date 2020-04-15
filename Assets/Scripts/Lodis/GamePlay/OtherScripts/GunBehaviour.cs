@@ -54,10 +54,23 @@ namespace Lodis
             set { outOfAmmo = value; }
         }
 
+        public bool IsTurret
+        {
+            get
+            {
+                return _isTurret;
+            }
+
+            set
+            {
+                _isTurret = value;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
-            if (_isTurret)
+            if (IsTurret)
             {
                 StartCoroutine(Fire());
             }
@@ -69,9 +82,14 @@ namespace Lodis
         {
             for (int i = 0; i < bulletCount; i++)
             {
-                _currentAmmo = bulletCount - i;
-                FireBullet();
-                yield return new WaitForSeconds(bulletDelay);
+                if (IsTurret)
+                {
+                    _currentAmmo = bulletCount - i;
+                    FireBullet();
+                    yield return new WaitForSeconds(bulletDelay);
+                    continue;
+                }
+                yield break;
             }
             outOfAmmo.Invoke();
         }

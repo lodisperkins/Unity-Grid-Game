@@ -39,6 +39,19 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
+                return gameObject.name;
+            }
+        }
+
+        public Color displayColor
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
                 throw new System.NotImplementedException();
             }
         }
@@ -71,14 +84,31 @@ namespace Lodis.GamePlay.BlockScripts
         }
         public void Ram(object[] args)
         {
+            if(isRamming)
+            {
+                return;
+            }
             isRamming = true;
             InitializeProjectileScript();
-            transform.rotation = _blockScript.owner.transform.rotation;
+            transform.parent.rotation = _blockScript.owner.transform.rotation;
+            if(block.gameObject.name != "Ramming Block(Clone)")
+            {
+                transform.parent.position += new Vector3(0, .4f, 0);
+            }
             gameObject.tag = "Projectile";
             _blockRigidbody.isKinematic = false;
             _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
             _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter = 0;
-            _ramForce = transform.forward * _ramForceScale;
+            _ramForce = transform.parent.forward * _ramForceScale;
+            block.canDelete = false;
+            if((int)_ramForce.z != 0)
+            {
+                _blockRigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+            }
+            else
+            {
+                _blockRigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+            }
             _blockRigidbody.AddForce(_ramForce, ForceMode.Impulse);
         }
         public void TransferOwner(GameObject otherBlock)
@@ -89,6 +119,7 @@ namespace Lodis.GamePlay.BlockScripts
             _blockRigidbody.isKinematic = true;
             _blockScript.specialActions += Ram;
             transform.SetParent(otherBlock.transform,false);
+            
             GetComponent<GameEventListener>().intendedSender = otherBlock;
             GetComponent<BulletBehaviour>().Laser = otherBlock;
         }
@@ -114,6 +145,21 @@ namespace Lodis.GamePlay.BlockScripts
         public void ActivateDisplayMode()
         {
             return;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -20,4 +20,6 @@ public static class BlackBoard{
     //Set in corebehaviour in start func
     public static GameObject p1Core;
     public static GameObject p2Core;
+    public static IntVariable altAmmoAmountP1;
+    public static IntVariable altAmmoAmountP2;
 }

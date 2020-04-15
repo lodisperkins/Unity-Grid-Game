@@ -47,6 +47,19 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public Color displayColor
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start ()
 		{
@@ -131,6 +144,21 @@ namespace Lodis.GamePlay.BlockScripts
         public void ActivateDisplayMode()
         {
             return;
+        }
+
+        public void UpgradePlayer(PlayerAttackBehaviour player)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PlayerAttack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DetachFromPlayer()
+        {
+            throw new NotImplementedException();
         }
     }
 }

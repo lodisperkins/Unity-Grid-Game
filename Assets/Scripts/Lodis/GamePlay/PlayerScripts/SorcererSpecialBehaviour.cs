@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis;
-using Lodis.Gameplay;
 using UnityEngine;
 
 namespace Lodis.GamePlay

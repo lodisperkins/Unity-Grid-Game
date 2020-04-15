@@ -22,6 +22,7 @@ namespace Lodis.GamePlay
         public int numberOfActionsLeft;
         private bool _isOnActionsBeginNotNull;
         private bool _isOnActionsCompletedNotNull;
+        public bool shouldStop;
         private void OnEnable()
         {
             _isOnActionsBeginNotNull = onActionsBegin != null;
@@ -38,6 +39,10 @@ namespace Lodis.GamePlay
         {
             for (var i = 0; i <= actionLimit; i++)
             {
+                if(shouldStop)
+                {
+                    yield break;
+                }
                 numberOfActionsLeft = actionLimit - i;
                 if (_isOnActionsBeginNotNull)
                 {

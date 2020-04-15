@@ -17,6 +17,11 @@ namespace Lodis
         {
             get;set;
         }
+        Color displayColor
+        {
+            get;set;
+        }
+
         //The defining characteristic for this item. This is its ability Ex: Attack Block - Bullet Emitter
         GameObject specialFeature
         {
@@ -35,6 +40,9 @@ namespace Lodis
         void ResolveCollision(GameObject collision);
         //Disables whatever component this item has so that it may be displayed using whatever ability it has
         void ActivateDisplayMode();
+        void UpgradePlayer(PlayerAttackBehaviour player);
+        void PlayerAttack();
+        void DetachFromPlayer();
     }
 }
 

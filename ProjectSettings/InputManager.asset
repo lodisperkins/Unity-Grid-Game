@@ -13,9 +13,9 @@ InputManager:
     positiveButton: 
     altNegativeButton: a
     altPositiveButton: d
-    gravity: 3
+    gravity: 506.57
     dead: 0.6
-    sensitivity: 2.18
+    sensitivity: 927.68
     snap: 1
     invert: 0
     type: 2
@@ -29,7 +29,7 @@ InputManager:
     positiveButton: 
     altNegativeButton: a
     altPositiveButton: d
-    gravity: 3
+    gravity: 100
     dead: 0.0001
     sensitivity: 1
     snap: 0
@@ -45,10 +45,10 @@ InputManager:
     positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 1
-    snap: 0
+    gravity: 506.57
+    dead: 0.6
+    sensitivity: 927.68
+    snap: 1
     invert: 0
     type: 2
     axis: 5
@@ -61,7 +61,7 @@ InputManager:
     positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
+    gravity: 100
     dead: 0.001
     sensitivity: 1
     snap: 0
@@ -79,7 +79,7 @@ InputManager:
     altPositiveButton: w
     gravity: 100
     dead: 0.6
-    sensitivity: 2
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
@@ -109,10 +109,10 @@ InputManager:
     positiveButton: up
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 1
-    snap: 0
+    gravity: 506.57
+    dead: 0.6
+    sensitivity: 927.68
+    snap: 1
     invert: 0
     type: 2
     axis: 6
@@ -125,7 +125,7 @@ InputManager:
     positiveButton: up
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
+    gravity: 100
     dead: 0.001
     sensitivity: 1
     snap: 0
@@ -157,9 +157,9 @@ InputManager:
     positiveButton: joystick 1 button 5
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 134
-    dead: 0.42
-    sensitivity: 2.43
+    gravity: 303.04
+    dead: 0.78
+    sensitivity: 300
     snap: 1
     invert: 0
     type: 0
@@ -173,9 +173,9 @@ InputManager:
     positiveButton: joystick 2 button 5
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 134
-    dead: 0.42
-    sensitivity: 2.43
+    gravity: 303.04
+    dead: 0.78
+    sensitivity: 300
     snap: 1
     invert: 0
     type: 0
@@ -269,9 +269,9 @@ InputManager:
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
+    gravity: 122.58
     dead: 0.001
-    sensitivity: 1.58
+    sensitivity: 13.7
     snap: 1
     invert: 0
     type: 2
@@ -461,9 +461,9 @@ InputManager:
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 0
-    dead: 0
-    sensitivity: 0.1
+    gravity: 70
+    dead: 0.001
+    sensitivity: 70
     snap: 0
     invert: 0
     type: 2
@@ -733,6 +733,38 @@ InputManager:
     positiveButton: escape
     altNegativeButton: 
     altPositiveButton: joystick 2 button 1
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Overdrive1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: escape
+    altNegativeButton: 
+    altPositiveButton: joystick 1 button 9
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Overdrive2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: escape
+    altNegativeButton: 
+    altPositiveButton: joystick 2 button 9
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

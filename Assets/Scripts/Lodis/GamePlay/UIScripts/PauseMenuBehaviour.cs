@@ -156,7 +156,7 @@ namespace Lodis.GamePlay
 				_canPressButton = false;
 				GoToNextOption();
 			}
-			if (Input.GetButtonDown("Submit"))
+			if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Submit2"))
 			{
 				DoCurrentAction();
 			}

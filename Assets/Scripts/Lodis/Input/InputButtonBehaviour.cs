@@ -14,7 +14,7 @@ public class InputButtonBehaviour : MonoBehaviour
     //reference to the last input added
     [SerializeField] private InputVariable newInput;
     public float inputBuffer;
-    
+    public Vector2 inputRange;
     private bool canMove;
     //used for input buffer
     private float timer;
@@ -28,7 +28,7 @@ public class InputButtonBehaviour : MonoBehaviour
     public void CheckButton(InputVariable input)
     {
         
-        if (Input.GetAxisRaw(input.Axis) == 1 && input.canPress)
+        if (Input.GetAxis(input.Axis) >= inputRange.y && input.canPress)
         {
             input.canPress = false;
             if(input.CheckBufferTime())
@@ -36,7 +36,7 @@ public class InputButtonBehaviour : MonoBehaviour
                 SendMessage(input.ButtonDownMessage,input.Arg);
             }
         }
-        else if(Input.GetAxisRaw(input.Axis) == -1 && input.canPress)
+        else if(Input.GetAxis(input.Axis) <= inputRange.x && input.canPress)
         {
             input.canPress = false;
             if (input.CheckBufferTime())

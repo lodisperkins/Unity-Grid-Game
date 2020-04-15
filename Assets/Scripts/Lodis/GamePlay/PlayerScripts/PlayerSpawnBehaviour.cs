@@ -65,7 +65,7 @@ namespace Lodis
         [SerializeField] private int _materialsRegenVal;
         [SerializeField] private int _materialCap;
         private Vector3 BlockForward;
-        private bool DeleteEnabled;
+        private bool _deleteEnabled;
         [FormerlySerializedAs("_buildStateEnabled")] public bool buildStateEnabled;
         private PanelBehaviour _panel;
         private bool _panelSelectionInputDown;
@@ -85,6 +85,14 @@ namespace Lodis
             get
             {
                 return block_rotation;
+            }
+        }
+
+        public bool DeleteEnabled
+        {
+            get
+            {
+                return _deleteEnabled;
             }
         }
 
@@ -154,13 +162,13 @@ namespace Lodis
             blockRef.Block = DeletionBlockObject;
             SelectionColor = Color.magenta;
            PlaceBlock();
-            DeleteEnabled = true;
+            _deleteEnabled = true;
         }
         public void DisableDeletion()
         {
             OnDeleteDisabled.Raise(gameObject);
             blockRef.Block = Blocks[current_index];
-            DeleteEnabled = false;
+            _deleteEnabled = false;
         }
 
         public bool CheckBlockSpawnTimer()
@@ -194,7 +202,7 @@ namespace Lodis
                 var coordinate = _panel.Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !DeleteEnabled || _panel.IsBroken)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !_deleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -205,7 +213,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled || _panel.IsBroken)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -216,7 +224,7 @@ namespace Lodis
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled || _panel.IsBroken)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -227,7 +235,7 @@ namespace Lodis
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !DeleteEnabled || _panel.IsBroken)
+                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
                     {
                         _panel.Selected = false;
                         continue;
@@ -241,7 +249,7 @@ namespace Lodis
         //Unhighlights all selected panels
         public void UnHighlightPanels()
         {
-            if(DeleteEnabled || player.panelStealActive)
+            if(_deleteEnabled || player.panelStealActive)
             {
                 return;
             }
@@ -276,7 +284,7 @@ namespace Lodis
                     return;
                 }
             }
-            if (DeleteEnabled)
+            if (_deleteEnabled)
             {
                 return;
             }
