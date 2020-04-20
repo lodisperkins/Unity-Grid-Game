@@ -44,12 +44,14 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private bool willInteract;
     [SerializeField] private SliderBehaviour sliderScript;
     [SerializeField] private IntVariable altAmmoAmount;
+    private PlayerSpawnBehaviour spawnScript;
     // Use this for initialization
     void Start ()
 	{
 		player = GetComponent<PlayerMovementBehaviour>();
         _interactionRay = new RaycastHit();
         charged = false;
+        spawnScript = GetComponent<PlayerSpawnBehaviour>();
         InitializeBlackBoard();
 	}
     public void InitializeBlackBoard()
@@ -92,13 +94,14 @@ public class PlayerAttackBehaviour : MonoBehaviour
         if (player.canMove)
         {
             int layerMask = 1 << 9;
-            if (Physics.Raycast(transform.position, transform.forward, out _interactionRay, 2, layerMask))
+            if (Physics.Raycast(transform.position, transform.forward, out _interactionRay, 2, layerMask) && spawnScript.CheckMaterial(30) && secondaryWeapon ==null)
             {
                 _currentBlock = _interactionRay.transform.gameObject;
                 if (_currentBlock.CompareTag("Panel"))
                 {
                     return;
                 }
+                spawnScript.BuyItem(30);
                 _currentBlock.SendMessage("UpgradePlayer",this);
                 sliderScript.gameObject.SetActive(true);
                 sliderScript.Bar.maxValue = weaponUseAmount;

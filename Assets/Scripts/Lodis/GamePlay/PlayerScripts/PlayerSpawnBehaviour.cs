@@ -106,7 +106,7 @@ namespace Lodis
             blockRef.Block = Blocks[0];
             current_index = 0;
             materials.Val = 60;
-            
+            InitializeBlackboard();
             material_regen_time = Time.time + material_regen_rate;
             buildStateEnabled = true;
         }
@@ -116,6 +116,17 @@ namespace Lodis
         /// </summary>
         /// <param name="costOfItem"></param>
         /// <returns></returns>
+        private void InitializeBlackboard()
+        {
+            if(name=="Player1")
+            {
+                BlackBoard.energyAmountP1 = materials;
+            }
+            else
+            {
+                BlackBoard.energyAmountP2 = materials;
+            }
+        }
         public bool CheckMaterial(int costOfItem)
         {
             if (overdriveEnabled)

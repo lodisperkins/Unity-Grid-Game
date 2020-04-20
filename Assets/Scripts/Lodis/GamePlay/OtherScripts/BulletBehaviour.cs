@@ -16,29 +16,31 @@ namespace Lodis
         //the amount of damage this bullet does 
         public int DamageVal;
         //Temporary gameobject used to delete the bullet without deleting the prefab
-        private GameObject TempObject;
+        protected GameObject TempObject;
         //the particle system to be played when a bullet hits an obstacle
-        [SerializeField] private GameObject ps;
+        [SerializeField] protected GameObject ps;
         //Event used to play the sound of a bullet being shot
-        [SerializeField] private Event OnBulletSpawn;
+        [SerializeField] protected Event OnBulletSpawn;
         //The laser model attached to this bullet
-        [SerializeField] private Material _laserMatP1;
-        [SerializeField] private Material _laserMatP2;
-        [SerializeField] private GameObject _laser;
-        [SerializeField] private GameObject laserLight;
+        [SerializeField] protected Material _laserMatP1;
+        [SerializeField] protected Material _laserMatP2;
+        [SerializeField] protected GameObject _laser;
+        [SerializeField] protected GameObject laserLight;
         public BlockBehaviour block;
         public Vector3 bulletForce;
         public bool reflected;
         public int lifetime;
         [SerializeField]
-        private Event onReflect;
+        protected Event onReflect;
         [SerializeField]
-        private Event onPanelSet;
-        [SerializeField] private GameObjectList _bulletListP1;
-        [SerializeField] private GameObjectList _bulletListP2;
-        private bool panelSetCalled;
+        protected Event onPanelSet;
+        [SerializeField] protected GameObjectList _bulletListP1;
+        [SerializeField] protected GameObjectList _bulletListP2;
+        protected bool panelSetCalled;
         public bool active;
-        private PanelBehaviour _currentPanel;
+        public bool noColor;
+        public bool destroyOnHit = true;
+        protected PanelBehaviour _currentPanel;
         public GameObject hitTrail;
         public PanelBehaviour currentPanel
         {
@@ -78,6 +80,10 @@ namespace Lodis
         //(not working) meant to change the bullets color based on the owner
         private void ChangeColor()
         {
+            if(noColor)
+            {
+                return;
+            }
             if (Owner == "Player1")
             {
                 Laser.GetComponent<MeshRenderer>().sharedMaterial = _laserMatP1;
@@ -108,7 +114,7 @@ namespace Lodis
             DamageVal += 1;
             onReflect.Raise();
         }
-        public void ResolveCollision(GameObject other)
+        public virtual void ResolveCollision(GameObject other)
         {
             switch (other.tag)
             {
@@ -123,9 +129,13 @@ namespace Lodis
                         {
                             health.takeDamage(DamageVal);
                         }
-                        Destroy(TempObject);
-                    }
-                    break;
+                            if (destroyOnHit)
+                            {
+                                Destroy(TempObject);
+                            }
+                        }
+                        
+                        break;
                 }
                 case "Core":
                 {
@@ -136,8 +146,11 @@ namespace Lodis
                     {
                         health.takeDamage(DamageVal);
                     }
-                    Destroy(TempObject);
-                    break;
+                        if (destroyOnHit)
+                        {
+                            Destroy(TempObject);
+                        }
+                        break;
                 }
                 case "Panel":
                     {
@@ -165,8 +178,11 @@ namespace Lodis
                         health.takeDamage(DamageVal);
                         
                     }
-                    Destroy(TempObject);
-                    break;
+                        if (destroyOnHit)
+                        {
+                            Destroy(TempObject);
+                        }
+                        break;
                 }
                 case "Projectile":
                     {
@@ -179,9 +195,12 @@ namespace Lodis
                             {
                                 other.GetComponent<BlockBehaviour>().GiveMoneyForKill(Owner, DamageVal);
                                 health.takeDamage(DamageVal);
-
                             }
-                            Destroy(TempObject);
+
+                            if (destroyOnHit)
+                            {
+                                Destroy(TempObject);
+                            }
                         }
                         break;
                     }
@@ -199,10 +218,14 @@ namespace Lodis
                     {
                         playDeathParticleSystems(1);
                         ps.transform.position = other.transform.position;
-                        Destroy(TempObject);
+                        if (destroyOnHit)
+                        {
+                            Destroy(TempObject);
+                        }
                         break;
                     }
             }
+           
         }
         private void OnTriggerEnter(Collider other)
         {

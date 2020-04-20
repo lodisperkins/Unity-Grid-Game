@@ -78,7 +78,7 @@ public class OverdriveBehaviour : MonoBehaviour
         {
             StopMaterialLoss();
         }
-        Debug.Log(Input.GetAxis("PanelAction1"));
+        //Debug.Log(Input.GetAxis("PanelAction1"));
 
     }
 }

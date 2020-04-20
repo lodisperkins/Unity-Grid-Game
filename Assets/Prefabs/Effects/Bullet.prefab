@@ -362,6 +362,8 @@ MonoBehaviour:
   _bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   _bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
   active: 0
+  noColor: 0
+  destroyOnHit: 1
   hitTrail: {fileID: 1593811132524116}
 --- !u!136 &136253901550654478
 CapsuleCollider:

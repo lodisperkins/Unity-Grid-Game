@@ -384,7 +384,7 @@ MonoBehaviour:
   Owner: 
   DamageVal: 5
   ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
-  OnBulletSpawn: {fileID: 11400000, guid: cc1611370b62caf4cbbb9a13014617fb, type: 2}
+  OnBulletSpawn: {fileID: 11400000, guid: 0e761716d2644204d8b786a527ca3741, type: 2}
   _laserMatP1: {fileID: 2100000, guid: d4de37f34fa3aa74eafe46f3ba9ed200, type: 2}
   _laserMatP2: {fileID: 2100000, guid: 561790cbdf11c9c42976451f520ae915, type: 2}
   _laser: {fileID: 1263534599806752}
@@ -398,6 +398,8 @@ MonoBehaviour:
   _bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   _bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
   active: 0
+  noColor: 0
+  destroyOnHit: 1
   hitTrail: {fileID: 1055782054629894}
 --- !u!114 &114987400176186350
 MonoBehaviour:

@@ -22,4 +22,7 @@ public static class BlackBoard{
     public static GameObject p2Core;
     public static IntVariable altAmmoAmountP1;
     public static IntVariable altAmmoAmountP2;
+    public static IntVariable energyAmountP1;
+    public static IntVariable energyAmountP2;
+    public static GridBehaviour grid;
 }

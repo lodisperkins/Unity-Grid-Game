@@ -19,8 +19,10 @@ namespace Lodis
         IEnumerator Stun(float stunTime)
         {
             GetComponent<InputButtonBehaviour>().enabled = false;
+            BlackBoard.grid.onStun.Raise(gameObject);
             yield return new WaitForSeconds(stunTime);
             GetComponent<InputButtonBehaviour>().enabled = true;
+            BlackBoard.grid.onStopStun.Raise(gameObject);
         }
         public void KnockBack(Vector3 direction,float power,float stunTime = 0)
         {
@@ -49,7 +51,6 @@ namespace Lodis
                     playerMoveScript.CurrentPanel = newPanel;
                     playerMoveScript.ResetPositionToCurrentPanel();
                 }
-                
             }
             else if(CompareTag("Block"))
             {

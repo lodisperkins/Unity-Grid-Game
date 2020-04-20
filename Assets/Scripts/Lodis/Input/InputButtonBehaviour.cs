@@ -27,7 +27,11 @@ public class InputButtonBehaviour : MonoBehaviour
     //checks the list to see if any of the button are down
     public void CheckButton(InputVariable input)
     {
-        
+        if (input.Axis == "Special1")
+        {
+            Debug.Log(input.canPress);
+            Debug.Log(Input.GetAxis(input.Axis));
+        }
         if (Input.GetAxis(input.Axis) >= inputRange.y && input.canPress)
         {
             input.canPress = false;
@@ -44,8 +48,9 @@ public class InputButtonBehaviour : MonoBehaviour
                 SendMessage(input.ButtonNegativeMessage);
             }
         }
-        else if(input.ButtonUpMessage != "")
+        else if (Input.GetAxis(input.Axis) < .5 && Input.GetAxis(input.Axis) > -.5 && input.ButtonUpMessage != "")
         {
+            input.canPress = true;
             SendMessage(input.ButtonUpMessage);
         }
         else if (Input.GetAxis(input.Axis) < .5 && Input.GetAxis(input.Axis) > -.5)
@@ -152,6 +157,7 @@ public class InputButtonBehaviour : MonoBehaviour
 	void Update () {
         
         CheckInputs();
+        //Debug.Log(Input.GetAxis("Special1"));
     }
 }
 #if UNITY_EDITOR

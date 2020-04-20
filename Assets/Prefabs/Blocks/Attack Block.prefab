@@ -2692,7 +2692,7 @@ MonoBehaviour:
   _bulletForceUpgradeVal: 100
   _ammoUpgradeVal: 12
   _blockHealth: {fileID: 114964812879654380}
-  playerUseAmount: 50
+  playerUseAmount: 20
   teleportBeam: {fileID: 114819576587138308}
   _displayColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114051537721699978

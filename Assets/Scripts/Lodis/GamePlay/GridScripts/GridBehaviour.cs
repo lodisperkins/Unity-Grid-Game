@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -42,12 +43,15 @@ namespace Lodis.GamePlay.GridScripts
         public GameObject proofPanel;
         [SerializeField] private PlayerSpawnBehaviour _player1;
         [SerializeField] private PlayerSpawnBehaviour _player2;
+        public Event onStun;
+        public Event onStopStun;
         // Use this for initialization
         void Start()
         {
             globalPanelList = globalPanelListRef;
             P1AssignLists();
             P2AssignLists();
+            BlackBoard.grid = this;
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
             
@@ -67,7 +71,25 @@ namespace Lodis.GamePlay.GridScripts
             AssignPanelMaterials();
             p1PanelsRef.updateOwners();
         }
-
+        public void StunPlayer(float stunTime,string playerName)
+        {
+            if(playerName == "Player1")
+            {
+                StartCoroutine(Stun(stunTime, BlackBoard.Player1)); 
+            }
+            else if(playerName == "Player2")
+            {
+                StartCoroutine(Stun(stunTime, BlackBoard.Player2));
+            }
+        }
+        IEnumerator Stun(float stunTime,GameObject player)
+        {
+            player.GetComponent<InputButtonBehaviour>().enabled = false;
+            onStun.Raise(player);
+            yield return new WaitForSeconds(stunTime);
+            player.GetComponent<InputButtonBehaviour>().enabled = true;
+            onStopStun.Raise(player);
+        }
         public void GiveBackPanelsToP2()
         {
             for (int i = 0; i< p1PanelsRef.Count;i++)

@@ -15,7 +15,12 @@ namespace Lodis.GamePlay.BlockScripts
         public int materialUpgradeVal;
 
         public float regenTimeUpgradeVal;
-
+        [SerializeField] private int playerUseAmount;
+        private PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField] private Color _displayColor;
+        [SerializeField] private GunBehaviour bulletEmitter;
         public BlockBehaviour block
         {
             get
@@ -47,12 +52,12 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _displayColor;
             }
 
             set
             {
-                throw new System.NotImplementedException();
+                _displayColor = value;
             }
         }
 
@@ -111,17 +116,26 @@ namespace Lodis.GamePlay.BlockScripts
 
         public void UpgradePlayer(PlayerAttackBehaviour player)
         {
-            throw new System.NotImplementedException();
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            GetComponent<RoutineBehaviour>().shouldStop = true;
+            GetComponent<RoutineBehaviour>().StopAllCoroutines();
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            teleportBeam.Teleport(player.transform.position);
+            bulletEmitter.owner = player.name;
+            player.SetSecondaryWeapon(this, playerUseAmount);
         }
 
         public void PlayerAttack()
         {
-            throw new System.NotImplementedException();
+            bulletEmitter.FireBullet();
         }
 
         public void DetachFromPlayer()
         {
-            throw new System.NotImplementedException();
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
     }
 }

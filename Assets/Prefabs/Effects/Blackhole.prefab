@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114987400176186350}
   - component: {fileID: 135254806930817600}
   m_Layer: 0
-  m_Name: ChargeBullet
+  m_Name: Blackhole
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
