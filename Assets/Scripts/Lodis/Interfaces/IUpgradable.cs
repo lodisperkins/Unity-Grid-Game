@@ -32,6 +32,11 @@ namespace Lodis
         {
             get; 
         }
+        bool CanBeHeld
+        {
+            get;
+        }
+
         //Upgrades whatever block this IUpgradable item has touched
         void UpgradeBlock(GameObject otherBlock);
         //Transfers ownership of this item to the block that this item is upgrading
@@ -41,7 +46,8 @@ namespace Lodis
         //Disables whatever component this item has so that it may be displayed using whatever ability it has
         void ActivateDisplayMode();
         void UpgradePlayer(PlayerAttackBehaviour player);
-        void PlayerAttack();
+        void ActivatePowerUp();
+        void DeactivatePowerUp();
         void DetachFromPlayer();
     }
 }

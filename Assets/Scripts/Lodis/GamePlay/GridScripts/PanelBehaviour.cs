@@ -161,7 +161,7 @@ namespace Lodis.GamePlay.GridScripts
         //highlights the panel when a bullet passes through it
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Projectile"))
+            if (other.CompareTag("Projectile") || other.CompareTag("Hazard"))
             {
                 _attackHighlight = true;
                 UpdateColor();

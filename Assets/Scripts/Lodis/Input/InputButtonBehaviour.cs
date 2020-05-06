@@ -27,11 +27,6 @@ public class InputButtonBehaviour : MonoBehaviour
     //checks the list to see if any of the button are down
     public void CheckButton(InputVariable input)
     {
-        if (input.Axis == "Special1")
-        {
-            Debug.Log(input.canPress);
-            Debug.Log(Input.GetAxis(input.Axis));
-        }
         if (Input.GetAxis(input.Axis) >= inputRange.y && input.canPress)
         {
             input.canPress = false;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lodis.GamePlay.AIFolder;
 namespace Lodis.GamePlay.BlockScripts
 {
     public class RammingBlockBehaviour : MonoBehaviour,IUpgradable {
@@ -8,6 +9,7 @@ namespace Lodis.GamePlay.BlockScripts
         private BlockBehaviour _blockScript;
         [SerializeField]
         private Rigidbody _blockRigidbody;
+        private Rigidbody _playerRigidbody;
         private Vector3 _ramForce;
         [SerializeField]
         private float _ramForceScale;
@@ -16,6 +18,21 @@ namespace Lodis.GamePlay.BlockScripts
         private Quaternion playerRotation;
         public bool isRamming;
         private BulletBehaviour _projectileScript;
+        private PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private int playerUseAmount;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        private bool playerAttached;
+        [SerializeField]
+        private bool _canBeHeld;
+        [SerializeField]
+        private Color _displayColor;
+        private Vector3 positionRef;
+        private GameObject previousPanel;
+        private PlayerAnimationBehaviour playerAnimator;
+        private MeshRenderer meshRenderer;
+        bool playerInBall;
         public BlockBehaviour block
         {
             get
@@ -47,12 +64,20 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _displayColor;
             }
 
             set
             {
-                throw new System.NotImplementedException();
+                _displayColor = value;
+            }
+        }
+
+        public bool CanBeHeld
+        {
+            get
+            {
+                return _canBeHeld;
             }
         }
 
@@ -61,7 +86,9 @@ namespace Lodis.GamePlay.BlockScripts
             _blockScript.specialActions += Ram;
             _blockRigidbody.isKinematic = true;
             _projectileScript = GetComponent<BulletBehaviour>();
+            meshRenderer = GetComponent<MeshRenderer>();
         }
+       
         public void InitializeProjectileScript()
         {
             _projectileScript.enabled = true;
@@ -111,6 +138,41 @@ namespace Lodis.GamePlay.BlockScripts
             }
             _blockRigidbody.AddForce(_ramForce, ForceMode.Impulse);
         }
+        public void PlayerRam()
+        {
+            if (isRamming)
+            {
+                return;
+            }
+            isRamming = true;
+            positionRef = _playerRigidbody.position;
+            _playerRigidbody.isKinematic = false;
+            playerAttackScript.GetComponent<PlayerMovementBehaviour>().CurrentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
+            playerAttackScript.GetComponent<PlayerAnimationBehaviour>().EnableMoveAnimation();
+            _ramForce = transform.parent.forward * _ramForceScale;
+            if ((int)_ramForce.z != 0)
+            {
+                _playerRigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+            }
+            else
+            {
+                _playerRigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+            }
+            _playerRigidbody.AddForce(_ramForce, ForceMode.Impulse);
+        }
+        private void DisablePlayerRam()
+        {
+            gameObject.SetActive(false);
+            _playerRigidbody.velocity = Vector3.zero;
+            _playerRigidbody.angularVelocity = Vector3.zero;
+            _playerRigidbody.isKinematic = true;
+            _playerRigidbody.transform.rotation = Quaternion.identity;
+            _playerRigidbody.transform.position = positionRef;
+            isRamming = false;
+            _ramForceScale = 0;
+            _canBeHeld = false;
+            playerAttackScript.secondaryInputCanBeHeld = false;
+        }
         public void TransferOwner(GameObject otherBlock)
         {
             _blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -134,12 +196,38 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 return;
             }
+            if(playerAttached && !collision.CompareTag("Panel") && isRamming && !collision.CompareTag("Barrier"))
+            {
+                if(collision.CompareTag("Wall"))
+                {
+                    DisablePlayerRam();
+                    return;
+                }
+                HealthBehaviour otherHealth = collision.GetComponent<HealthBehaviour>();
+                if (otherHealth != null)
+                {
+                    otherHealth.takeDamage(DamageVal);
+                }
+                playerAttackScript.DecreaseAmmuntion(5);
+                if (playerAttackScript.SecondAbilityUseAmount.Val <= 0 || collision.CompareTag("Core"))
+                {
+                    StopAllCoroutines();
+                    DisablePlayerRam();
+                    return;
+                }
+                _playerRigidbody.transform.position -= (_playerRigidbody.velocity.normalized * 2);
+                _playerRigidbody.velocity = -_playerRigidbody.velocity;
+                return;
+            }
             _projectileScript.ResolveCollision(collision.gameObject);
         }
         private void OnDestroy()
         {
-            GameObject temp = block.gameObject;
-            Destroy(temp);
+            if(!playerAttached)
+            {
+                GameObject temp = block.gameObject;
+                Destroy(temp);
+            }
         }
 
         public void ActivateDisplayMode()
@@ -149,18 +237,56 @@ namespace Lodis.GamePlay.BlockScripts
 
         public void UpgradePlayer(PlayerAttackBehaviour player)
         {
-            throw new System.NotImplementedException();
+            _ramForceScale = 0;
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            SphereCollider collider = GetComponent<SphereCollider>();
+            collider.isTrigger = true;
+            playerAttached = true;
+            playerAnimator = player.GetComponent<PlayerAnimationBehaviour>();
+            teleportBeam.Teleport(player.transform.position);
+            player.SetSecondaryWeapon(this, playerUseAmount);
+            gameObject.SetActive(false);
+            _playerRigidbody = player.GetComponent<Rigidbody>();
+            positionRef= player.transform.position;
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
-            throw new System.NotImplementedException();
+            if(isRamming)
+            {
+                DisablePlayerRam();
+                return;
+            }
+            _ramForceScale +=.5f;
+            _canBeHeld = true;
+            playerAttackScript.secondaryInputCanBeHeld = true;
         }
 
         public void DetachFromPlayer()
         {
-            throw new System.NotImplementedException();
+            playerAttackScript.secondaryInputCanBeHeld = false;
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
+
+        public void DeactivatePowerUp()
+        {
+            gameObject.SetActive(true);
+            PlayerRam();
+            _canBeHeld = false;
+        }
+        private void Update()
+        {
+            if ((isRamming && playerAttached) || playerInBall)
+            {
+                playerAnimator.EnableMoveAnimation();
+            }
+            Debug.Log(playerInBall);
+        }
+
     }
 }
 

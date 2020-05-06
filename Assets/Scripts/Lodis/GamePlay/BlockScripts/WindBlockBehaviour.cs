@@ -87,6 +87,14 @@ namespace Lodis.GamePlay
             }
         }
 
+        public bool CanBeHeld
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public GameObject specialFeature;
 
         public void ResolveCollision(GameObject other)
@@ -250,12 +258,17 @@ namespace Lodis.GamePlay
             throw new System.NotImplementedException();
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
             throw new System.NotImplementedException();
         }
 
         public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeactivatePowerUp()
         {
             throw new System.NotImplementedException();
         }

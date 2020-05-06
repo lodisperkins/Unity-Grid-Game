@@ -2718,6 +2718,8 @@ GameObject:
   - component: {fileID: 114556029999991968}
   - component: {fileID: 54543634295214978}
   - component: {fileID: 114775061016557648}
+  - component: {fileID: 114358614246096090}
+  - component: {fileID: 114780056301946848}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -3459,6 +3461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4282074495400994}
   - component: {fileID: 114740828237069238}
+  - component: {fileID: 114770343331392972}
   m_Layer: 0
   m_Name: Bullet Emitter
   m_TagString: Untagged
@@ -8027,7 +8030,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f5da68cd484f44ced9e11ab1ad6a9c1a, type: 2}
+  - {fileID: 2100000, guid: 4d824951a8df8864d81339ced83f5d0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8692,7 +8695,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f5da68cd484f44ced9e11ab1ad6a9c1a, type: 2}
+  - {fileID: 2100000, guid: 4d824951a8df8864d81339ced83f5d0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10092,7 +10095,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f5da68cd484f44ced9e11ab1ad6a9c1a, type: 2}
+  - {fileID: 2100000, guid: 4d824951a8df8864d81339ced83f5d0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14606,7 +14609,9 @@ MonoBehaviour:
   shootAxis: Shoot1
   weaponUseAmount: 0
   sliderScript: {fileID: 114666251115084574}
-  altAmmoAmount: {fileID: 11400000, guid: d019af6b0bcc8c943b21996448d31ed5, type: 2}
+  secondAbilityUseAmount: {fileID: 11400000, guid: d019af6b0bcc8c943b21996448d31ed5,
+    type: 2}
+  secondaryInputCanBeHeld: 0
 --- !u!114 &114099383312118654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14800,6 +14805,35 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114358614246096090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114770343331392972}
+        m_MethodName: StopFlashing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 88ca7b46678a69946bd07e6b5cd7658e, type: 2}
+  intendedSender: {fileID: 1698780024816490}
 --- !u!114 &114361469955308476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15273,6 +15307,24 @@ MonoBehaviour:
   _onShotFired: {fileID: 11400000, guid: ec62923bccebb854292cf0e2d436ba90, type: 2}
   damageVal: 1
   block: {fileID: 0}
+--- !u!114 &114770343331392972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822090795246034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7613af2929f131d4cbf39b155618d633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalObject: {fileID: 1489652869712770}
+  flashObject: {fileID: 1413015193795206}
+  numberOfFlashes: 5
+  flashSpeed: 0.01
+  flashRenderers: []
+  normalRenderers: []
+  isInfinite: 1
 --- !u!114 &114775061016557648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15285,6 +15337,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onKnockback: {fileID: 11400000, guid: 93ad3a39e952c714ba296721731186a1, type: 2}
+--- !u!114 &114780056301946848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114770343331392972}
+        m_MethodName: StartFlashing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 800204a18ceb7114888219a5be31f4d5, type: 2}
+  intendedSender: {fileID: 1698780024816490}
 --- !u!114 &114796525923483752
 MonoBehaviour:
   m_ObjectHideFlags: 1

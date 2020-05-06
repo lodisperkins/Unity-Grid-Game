@@ -26,7 +26,11 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private TeleportBeamBehaviour teleportBeam;
         [SerializeField]
-        private bool canReflect; 
+        private bool canReflect;
+        [SerializeField]
+        private float shieldActiveTime;
+        [SerializeField]
+        private bool _canBeHeld;
 		// Use this for initialization
 		void Start ()
 		{
@@ -73,6 +77,14 @@ namespace Lodis.GamePlay.BlockScripts
             set
             {
                 _displayColor = value;
+            }
+        }
+
+        public bool CanBeHeld
+        {
+            get
+            {
+                return _canBeHeld;
             }
         }
 
@@ -142,7 +154,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if (collision.CompareTag("Projectile") && gameObject.activeSelf)
             {
-                if(canReflect)
+                if (canReflect)
                 {
                     collision.gameObject.GetComponent<BulletBehaviour>().Reflect();
                     return;
@@ -169,10 +181,11 @@ namespace Lodis.GamePlay.BlockScripts
             teleportBeam.transform.parent = null;
             SphereCollider collider = GetComponent<SphereCollider>();
             collider.isTrigger = false;
-            transform.localScale *= 1.2f;
+            transform.localScale *= 1.5f;
             playerAttached = true;
             teleportBeam.Teleport(player.transform.position);
             player.SetSecondaryWeapon(this, playerUseAmount);
+            canReflect = true;
         }
         private IEnumerator EnableReflector()
         {
@@ -182,19 +195,28 @@ namespace Lodis.GamePlay.BlockScripts
             canReflect = false;
         }
      
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
             if(!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
-                StartCoroutine(EnableReflector());
             }
         }
 
         public void DetachFromPlayer()
         {
+            playerAttackScript.secondaryInputCanBeHeld = false;
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+        private void Update()
+        {
+            
+        }
+
+        public void DeactivatePowerUp()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

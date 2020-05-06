@@ -16,6 +16,7 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private TeleportBeamBehaviour teleportBeam;
         [SerializeField] private Color _displayColor;
+        [SerializeField] private bool _canBeHeld;
         private string _nameOfItem;
         public BlockBehaviour block
         {
@@ -53,6 +54,14 @@ namespace Lodis.GamePlay.BlockScripts
             set
             {
                 displayColor = value;
+            }
+        }
+
+        public bool CanBeHeld
+        {
+            get
+            {
+                return _canBeHeld;
             }
         }
 
@@ -142,7 +151,7 @@ namespace Lodis.GamePlay.BlockScripts
             player.SetSecondaryWeapon(this, playerUseAmount);
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
             turretScript.FireBullet();
         }
@@ -151,6 +160,11 @@ namespace Lodis.GamePlay.BlockScripts
         {
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+
+        public void DeactivatePowerUp()
+        {
+            throw new NotImplementedException();
         }
     }
 }

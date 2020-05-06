@@ -37,14 +37,25 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private AudioSource chargingAudio;
     [SerializeField]
     private string shootAxis;
+    private string secondaryShootAxis;
     private bool charging;
     private AudioSource tempSource;
-    public int weaponUseAmount;
+    public float weaponUseAmount;
     private IUpgradable secondaryWeapon;
     private bool willInteract;
     [SerializeField] private SliderBehaviour sliderScript;
-    [SerializeField] private IntVariable altAmmoAmount;
+    [SerializeField] private IntVariable secondAbilityUseAmount;
     private PlayerSpawnBehaviour spawnScript;
+    public bool secondaryInputCanBeHeld;
+
+    public IntVariable SecondAbilityUseAmount
+    {
+        get
+        {
+            return secondAbilityUseAmount;
+        }
+    }
+
     // Use this for initialization
     void Start ()
 	{
@@ -56,14 +67,16 @@ public class PlayerAttackBehaviour : MonoBehaviour
 	}
     public void InitializeBlackBoard()
     {
-        altAmmoAmount.Val = 0;
+        SecondAbilityUseAmount.Val = 0;
         if (name == "Player1")
         {
-            BlackBoard.altAmmoAmountP1 = altAmmoAmount;
+            BlackBoard.altAmmoAmountP1 = SecondAbilityUseAmount;
+            secondaryShootAxis = "Special1";
         }
         else
         {
-            BlackBoard.altAmmoAmountP2 = altAmmoAmount;
+            BlackBoard.altAmmoAmountP2 = SecondAbilityUseAmount;
+            secondaryShootAxis = "Special2";
         }
     }
     public void TryInteract()
@@ -136,22 +149,34 @@ public class PlayerAttackBehaviour : MonoBehaviour
     public void SetSecondaryWeapon(IUpgradable weapon, int useAmount)
     {
         secondaryWeapon = weapon;
-        altAmmoAmount.Val  = useAmount;
+        SecondAbilityUseAmount.Val  = useAmount;
     }
     public void UseSecondaryWeapon()
     {
-        if(altAmmoAmount.Val > 0)
+        if (secondaryWeapon != null)
         {
-            secondaryWeapon.PlayerAttack();
-            altAmmoAmount.Val--;
-           
+            secondaryInputCanBeHeld = secondaryWeapon.CanBeHeld;
+
+            if (secondaryInputCanBeHeld)
+            {
+                return;
+            }
+            if (SecondAbilityUseAmount.Val > 0)
+            {
+                secondaryWeapon.ActivatePowerUp();
+                SecondAbilityUseAmount.Val--;
+            }
+            else
+            {
+                sliderScript.gameObject.SetActive(false);
+                secondaryWeapon.DetachFromPlayer();
+                secondaryWeapon = null;
+            }
         }
-        else if (secondaryWeapon != null)
-        {
-            sliderScript.gameObject.SetActive(false);
-            secondaryWeapon.DetachFromPlayer();
-            secondaryWeapon = null;
-        }
+    }
+    public void DecreaseAmmuntion(int amount)
+    {
+        SecondAbilityUseAmount.Val -= amount;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -160,18 +185,36 @@ public class PlayerAttackBehaviour : MonoBehaviour
             secondaryWeapon.ResolveCollision(other.gameObject); 
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (secondaryWeapon != null)
+        {
+            secondaryWeapon.ResolveCollision(collision.gameObject);
+        }
+    }
+    private void FixedUpdate()
+    {
+        if(secondaryInputCanBeHeld && Input.GetButton(secondaryShootAxis))
+        {
+            if (SecondAbilityUseAmount.Val > 0)
+            {
+                secondaryWeapon.ActivatePowerUp();
+                SecondAbilityUseAmount.Val--;
+            }
+            else if (secondaryWeapon != null)
+            {
+                sliderScript.gameObject.SetActive(false);
+                secondaryWeapon.DetachFromPlayer();
+                secondaryWeapon = null;
+            }
+        }
+        else if(secondaryInputCanBeHeld)
+        {
+            secondaryWeapon.DeactivatePowerUp();
+        }
+    }
     // Update is called once per frame
     void Update () {
-		if (_meleeHitboxActive)
-		{
-			_weaponHitbox.SetActive(true);
-			if (Time.time >=_time )
-			{
-                _weapon.SetActive(false);
-				_weaponHitbox.SetActive(false);
-				_meleeHitboxActive = false;
-			}
-		}
         if(Input.GetButtonDown(shootAxis))
         {
             tempSource = Instantiate(chargingAudio);

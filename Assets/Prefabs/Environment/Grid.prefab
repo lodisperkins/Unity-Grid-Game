@@ -221,6 +221,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1231151900998778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4602373382796544}
+  - component: {fileID: 33366014019241796}
+  - component: {fileID: 23330737609141728}
+  - component: {fileID: 65862305017638356}
+  m_Layer: 0
+  m_Name: BottomWall
+  m_TagString: Wall
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1241914785340666
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +674,24 @@ GameObject:
   m_Layer: 0
   m_Name: Panel(2,1)
   m_TagString: Panel
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1546557223184802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4666950543031018}
+  - component: {fileID: 33316549714823384}
+  - component: {fileID: 23246715820962032}
+  - component: {fileID: 65180912637985410}
+  m_Layer: 0
+  m_Name: TopWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,6 +1207,8 @@ Transform:
   - {fileID: 4110685904573078}
   - {fileID: 4977508603449362}
   - {fileID: 4962099630572184}
+  - {fileID: 4602373382796544}
+  - {fileID: 4666950543031018}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1212,6 +1250,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4542551272751064}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4602373382796544
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231151900998778}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.82, y: -0.422, z: -0.12000084}
+  m_LocalScale: {x: 1, y: 1, z: 21.68328}
+  m_Children: []
+  m_Father: {fileID: 4542551272751064}
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4626732336178538
 Transform:
@@ -1264,6 +1315,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4542551272751064}
   m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4666950543031018
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546557223184802}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 7.97, y: -0.422, z: -0.12000084}
+  m_LocalScale: {x: 1, y: 1, z: 21.68328}
+  m_Children: []
+  m_Father: {fileID: 4542551272751064}
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4671323230413342
 Transform:
@@ -1976,6 +2040,41 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23246715820962032
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546557223184802}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23258212400850178
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1992,6 +2091,41 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7d67433f2c41a274d9c0d2617e94584f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23330737609141728
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231151900998778}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3012,6 +3146,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073445908083578}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33316549714823384
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546557223184802}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33366014019241796
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231151900998778}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33377246656358274
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -3810,6 +3958,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 17, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65180912637985410
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546557223184802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65201808408334626
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4122,6 +4282,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 17, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65862305017638356
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231151900998778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65878003474760380
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4283,6 +4455,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4305,6 +4478,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4385,6 +4559,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4407,6 +4582,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4487,6 +4663,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4567,6 +4744,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4589,6 +4767,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4727,6 +4906,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4836,6 +5016,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4858,6 +5039,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4880,6 +5062,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4902,6 +5085,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4924,6 +5108,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4946,6 +5131,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -4968,6 +5154,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5048,6 +5235,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5070,6 +5258,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5197,6 +5386,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5219,6 +5409,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5241,6 +5432,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5292,6 +5484,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5314,6 +5507,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5336,6 +5530,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5358,6 +5553,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5380,6 +5576,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5402,6 +5599,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5453,6 +5651,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5533,6 +5732,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5555,6 +5755,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5577,6 +5778,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5595,7 +5797,7 @@ MonoBehaviour:
   p2PanelsRef: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
   bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
-  globalPanelList: {fileID: 11400000, guid: 80026cbfee3155043acf76d49c2fa2cb, type: 2}
+  globalPanelListRef: {fileID: 0}
   p1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
   p2Position: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
   onPanelsSwapped: {fileID: 11400000, guid: be2e3e124c3623947a79697a94633a28, type: 2}
@@ -5605,8 +5807,11 @@ MonoBehaviour:
   p2Direction: {fileID: 11400000, guid: 5813249c96ee9534abb011f53d07c5dc, type: 2}
   _p1Material: {fileID: 2100000, guid: b0311fdddf517894cbb510cf31c09b72, type: 2}
   _p2Material: {fileID: 2100000, guid: 7d67433f2c41a274d9c0d2617e94584f, type: 2}
+  proofPanel: {fileID: 0}
   _player1: {fileID: 0}
   _player2: {fileID: 0}
+  onStun: {fileID: 11400000, guid: 800204a18ceb7114888219a5be31f4d5, type: 2}
+  onStopStun: {fileID: 11400000, guid: 88ca7b46678a69946bd07e6b5cd7658e, type: 2}
 --- !u!114 &114825470100298312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5655,6 +5860,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5677,6 +5883,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5699,6 +5906,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5721,6 +5929,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5743,6 +5952,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5765,6 +5975,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5816,6 +6027,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5838,6 +6050,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5860,6 +6073,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0
@@ -5882,6 +6096,7 @@ MonoBehaviour:
   F: 0
   previousPanel: {fileID: 0}
   _blockLimit: 0
+  currentBlock: {fileID: 0}
   _explosionParticles: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 2}
   blockCounter: 0
   BlockCapacityReached: 0

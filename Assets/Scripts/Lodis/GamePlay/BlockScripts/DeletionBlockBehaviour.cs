@@ -55,6 +55,14 @@ namespace Lodis
             }
         }
 
+        public bool CanBeHeld
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public GameObject specialFeature;
 
         private void Start()
@@ -108,12 +116,17 @@ namespace Lodis
             throw new System.NotImplementedException();
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
             throw new System.NotImplementedException();
         }
 
         public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeactivatePowerUp()
         {
             throw new System.NotImplementedException();
         }

@@ -61,6 +61,14 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public bool CanBeHeld
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -127,7 +135,7 @@ namespace Lodis.GamePlay.BlockScripts
             player.SetSecondaryWeapon(this, playerUseAmount);
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
             bulletEmitter.FireBullet();
         }
@@ -136,6 +144,11 @@ namespace Lodis.GamePlay.BlockScripts
         {
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+
+        public void DeactivatePowerUp()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

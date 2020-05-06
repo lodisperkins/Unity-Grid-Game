@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
 {
@@ -18,6 +19,13 @@ namespace Lodis.GamePlay.BlockScripts
         private GameEventListener _upgradeEventListener;
         [SerializeField]
         private GameEventListener _deleteEventListener;
+        [SerializeField] private int playerUseAmount;
+        private PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField] private Color _displayColor;
+        [SerializeField] private List<HitboxBehaviour> orbHitBoxes;
+        private bool dontDeleteOrbs;
         public BlockBehaviour block
         {
             get
@@ -50,10 +58,18 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _displayColor;
             }
 
             set
+            {
+                _displayColor = value;
+            }
+        }
+
+        public bool CanBeHeld
+        {
+            get
             {
                 throw new System.NotImplementedException();
             }
@@ -74,6 +90,10 @@ namespace Lodis.GamePlay.BlockScripts
 		}
         public void DestroyOrbs()
         {
+            if(dontDeleteOrbs)
+            {
+                return;
+            }
             GameObject temp = _orb1;
             GameObject temp2 = _orb2;
             GameObject temp3 = _orb3;
@@ -109,6 +129,7 @@ namespace Lodis.GamePlay.BlockScripts
                     GameObject componentClone =Instantiate(component.specialFeature, _orb2.transform, false);
                     componentClone.transform.position =_orb2.transform.position;
                     DisableOrbAttack();
+                    DisableOrbMesh();
                     return;
                 }
             }
@@ -117,12 +138,15 @@ namespace Lodis.GamePlay.BlockScripts
         public void DisableOrbAttack()
         {
             _orb1.GetComponent<OrbBehaviour>().DamageVal = 0;
-            _orb1.GetComponent<SphereCollider>().enabled = false;
-            _orb1.GetComponent<MeshRenderer>().enabled = false;
             _orb2.GetComponent<OrbBehaviour>().DamageVal = 0;
+            _orb3.GetComponent<OrbBehaviour>().DamageVal = 0;
+        }
+        public void DisableOrbMesh()
+        {
+            _orb1.GetComponent<MeshRenderer>().enabled = false;
+            _orb1.GetComponent<SphereCollider>().enabled = false;
             _orb2.GetComponent<SphereCollider>().enabled = false;
             _orb2.GetComponent<MeshRenderer>().enabled = false;
-            _orb3.GetComponent<OrbBehaviour>().DamageVal = 0;
             _orb3.GetComponent<SphereCollider>().enabled = false;
             _orb3.GetComponent<MeshRenderer>().enabled = false;
         }
@@ -147,20 +171,40 @@ namespace Lodis.GamePlay.BlockScripts
         public void ActivateDisplayMode()
         {
             DisableOrbAttack();
+            DisableOrbMesh();
             return;
         }
 
         public void UpgradePlayer(PlayerAttackBehaviour player)
         {
-            throw new System.NotImplementedException();
+            _orb2.SetActive(true);
+            _orb3.SetActive(true);
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            transform.SetParent(player.transform, false);
+            transform.position += Vector3.up*2;
+            teleportBeam.transform.parent = null;
+            teleportBeam.Teleport(player.transform.position);
+            dontDeleteOrbs = true;
+            DisableOrbAttack();
+            player.SetSecondaryWeapon(this, playerUseAmount);
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
-            throw new System.NotImplementedException();
+            foreach(HitboxBehaviour hitbox in orbHitBoxes)
+            {
+                hitbox.MakeActive(2.0f);
+            }
         }
 
         public void DetachFromPlayer()
+        {
+            GameObject temp = gameObject;
+            Destroy(temp);
+        }
+
+        public void DeactivatePowerUp()
         {
             throw new System.NotImplementedException();
         }

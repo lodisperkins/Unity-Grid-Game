@@ -59,6 +59,14 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public bool CanBeHeld
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start() 
         {
@@ -197,12 +205,17 @@ namespace Lodis.GamePlay.BlockScripts
             throw new System.NotImplementedException();
         }
 
-        public void PlayerAttack()
+        public void ActivatePowerUp()
         {
             throw new System.NotImplementedException();
         }
 
         public void DetachFromPlayer()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeactivatePowerUp()
         {
             throw new System.NotImplementedException();
         }

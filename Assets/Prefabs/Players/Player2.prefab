@@ -12047,8 +12047,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5778446, z: 1}
-  m_Center: {x: -0, y: 0.7889223, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: -0, y: 0, z: 0}
 --- !u!95 &95294086401467006
 Animator:
   serializedVersion: 3
@@ -13082,7 +13082,9 @@ MonoBehaviour:
   shootAxis: Shoot2
   weaponUseAmount: 0
   sliderScript: {fileID: 114564066303232388}
-  altAmmoAmount: {fileID: 11400000, guid: 7bcd62530b49e6646bc7e4cdd3d2c814, type: 2}
+  secondAbilityUseAmount: {fileID: 11400000, guid: 7bcd62530b49e6646bc7e4cdd3d2c814,
+    type: 2}
+  secondaryInputCanBeHeld: 0
 --- !u!114 &114892875904558440
 MonoBehaviour:
   m_ObjectHideFlags: 1

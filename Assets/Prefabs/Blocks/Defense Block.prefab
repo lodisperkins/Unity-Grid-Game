@@ -3296,9 +3296,11 @@ MonoBehaviour:
   shieldTimer: {fileID: 114993990273059680}
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   _displayColor: {r: 0, g: 1, b: 0.122285604, a: 1}
-  playerUseAmount: 5
+  playerUseAmount: 200
   teleportBeam: {fileID: 114891729799357068}
   canReflect: 0
+  shieldActiveTime: 0
+  _canBeHeld: 1
 --- !u!114 &114671545559472948
 MonoBehaviour:
   m_ObjectHideFlags: 1

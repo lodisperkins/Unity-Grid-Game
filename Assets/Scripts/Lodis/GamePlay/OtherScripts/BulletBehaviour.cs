@@ -105,13 +105,13 @@ namespace Lodis
             panelSetCalled = false;
         }
 
-        public void Reflect()
+        public void Reflect(int damageIncrease = 2, float speedScale = 1.5f)
         {
-            GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= 1.5f);
+            GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= speedScale);
             ReverseOwner();
             reflected = true;
             lifetime = 2;
-            DamageVal += 1;
+            DamageVal *= damageIncrease;
             onReflect.Raise();
         }
         public virtual void ResolveCollision(GameObject other)

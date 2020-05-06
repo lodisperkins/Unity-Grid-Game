@@ -20,6 +20,11 @@ namespace Lodis
         {
             Event.AddListener(this);
         }
+        public void ClearListeners()
+        {
+            Event = new Event();
+        }
+
         //Invokes the actions delegate
         public void Invoke(Object Sender)
         {
