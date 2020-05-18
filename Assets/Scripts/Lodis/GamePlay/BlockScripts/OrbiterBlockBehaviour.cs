@@ -26,6 +26,8 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField] private Color _displayColor;
         [SerializeField] private List<HitboxBehaviour> orbHitBoxes;
         private bool dontDeleteOrbs;
+        [SerializeField]
+        private bool _canBeHeld;
         public BlockBehaviour block
         {
             get
@@ -71,7 +73,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _canBeHeld;
             }
         }
 

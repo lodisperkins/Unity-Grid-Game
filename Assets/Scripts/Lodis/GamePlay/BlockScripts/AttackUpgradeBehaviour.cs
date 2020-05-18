@@ -17,6 +17,7 @@ namespace Lodis.GamePlay.BlockScripts
         private TeleportBeamBehaviour teleportBeam;
         [SerializeField] private Color _displayColor;
         [SerializeField] private bool _canBeHeld;
+        [SerializeField] private GameObject smartBulletRef;
         private string _nameOfItem;
         public BlockBehaviour block
         {
@@ -144,6 +145,7 @@ namespace Lodis.GamePlay.BlockScripts
             playerAttackScript = player;
             playerAttackScript.weaponUseAmount = playerUseAmount;
             turretScript.IsTurret = false;
+            turretScript.ChangeBullet(smartBulletRef);
             turretScript.StopAllCoroutines();
             transform.SetParent(player.transform, false);
             teleportBeam.transform.parent = null;

@@ -42,7 +42,7 @@ namespace Lodis
         [FormerlySerializedAs("DamageVal")] public int damageVal;
         [SerializeField]
         public BlockBehaviour block;
-
+        private BulletBehaviour _bulletScript;
         public int CurrentAmmo
         {
             get { return _currentAmmo; }
@@ -100,23 +100,31 @@ namespace Lodis
         public void FireBullet(Vector3 position)
         {
             _tempBullet = Instantiate(bullet, position, transform.rotation);
-            _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
+            _bulletScript = _tempBullet.GetComponent<BulletBehaviour>();
+            _bulletScript.Owner = owner;
             _tempBullet.transform.Rotate(new Vector3(90, 0));
-            _tempBullet.GetComponent<BulletBehaviour>().block = block;
+            _bulletScript.block = block;
             _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
             _bulletForce = transform.forward * bulletForceScale;
-            _tempBullet.GetComponent<BulletBehaviour>().bulletForce = _bulletForce;
-            _tempRigidBody.AddForce(_bulletForce);
+            _bulletScript.bulletForce = _bulletForce;
+            if(!_bulletScript.OverrideGunForce)
+            {
+                _tempRigidBody.AddForce(_bulletForce);
+            }
             _onShotFired.Raise(gameObject);
         }
         public void FireBullet()
         {
             _tempBullet = Instantiate(bullet, transform.position, transform.rotation);
-            _tempBullet.GetComponent<BulletBehaviour>().Owner = owner;
+            _bulletScript = _tempBullet.GetComponent<BulletBehaviour>();
+            _bulletScript.Owner = owner;
             _tempBullet.transform.Rotate(new Vector3(90, 0));
             _tempRigidBody = _tempBullet.GetComponent<Rigidbody>();
             _bulletForce = transform.forward * bulletForceScale;
-            _tempRigidBody.AddForce(_bulletForce);
+            if (!_bulletScript.OverrideGunForce)
+            {
+                _tempRigidBody.AddForce(_bulletForce);
+            }
             _onShotFired.Raise(gameObject);
         }
         private void OnDisable()

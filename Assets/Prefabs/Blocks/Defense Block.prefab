@@ -189,7 +189,6 @@ GameObject:
   - component: {fileID: 114234282012569578}
   - component: {fileID: 114434985076502166}
   - component: {fileID: 114871701699628310}
-  - component: {fileID: 114127266040054976}
   m_Layer: 9
   m_Name: Defense Block
   m_TagString: Block
@@ -2768,6 +2767,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
   health: {fileID: 0}
   isAlive: 0
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -2819,27 +2819,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114127266040054976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1172816898836844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c000c8a6488eed942b2f91f3b3597f31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: 
-  itemToTeleport: {fileID: 0}
-  objectTransform: {fileID: 0}
-  _beamHeight: 0
-  velocity: {x: 0, y: 0, z: 0}
-  max_speed: 0
-  _onAscending: {fileID: 0}
-  _onLanding: {fileID: 0}
-  ascending: 0
-  landed: 0
 --- !u!114 &114133742017147760
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -128,6 +128,60 @@ namespace Lodis.GamePlay.GridScripts
                 return true;
             }
         }
+        public bool FindNeighborsForPanel(PanelBehaviour panelInFocus, out List<PanelBehaviour> panelsInRange)
+        {
+            panelsInRange = new List<PanelBehaviour>();
+            //Used to find the position the block can be placed
+            Vector2 DisplacementX = new Vector2(1, 0);
+            Vector2 DisplacementY = new Vector2(0, 1);
+            //Loops through all panels to find those whose position is the
+            //player current position combined with x or y displacement
+            foreach (GameObject panel in panels)
+            {
+                PanelBehaviour panelScript = panel.GetComponent<PanelBehaviour>();
+                var coordinate = panelScript.Position;
+                if ((panelInFocus.Position + DisplacementX) == coordinate)
+                {
+                    if (panelInFocus.IsBroken)
+                    {
+                        continue;
+                    }
+                    panelsInRange.Add(panelScript);
+                }
+                else if ((panelInFocus.Position - DisplacementX) == coordinate)
+                {
+                    if (panelInFocus.IsBroken)
+                    {
+                        continue;
+                    }
+                    panelsInRange.Add(panelScript);
+                }
+                else if ((panelInFocus.Position + DisplacementY) == coordinate)
+                {
+                    if (panelInFocus.IsBroken)
+                    {
+                        continue;
+                    }
+                    panelsInRange.Add(panelScript);
+                }
+                else if ((panelInFocus.Position - DisplacementY) == coordinate)
+                {
+                    if (panelInFocus.IsBroken)
+                    {
+                        continue;
+                    }
+                    panelsInRange.Add(panelScript);
+                }
+            }
+            if (panelsInRange.Count <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public bool GetPanels(Condition func, out List<PanelBehaviour> panelList)
         {
             panelList = new List<PanelBehaviour>();
@@ -270,6 +324,20 @@ namespace Lodis.GamePlay.GridScripts
             }
             index = -1;
             return false;
+        }
+        public static PanelList operator + (PanelList lhs,PanelList rhs)
+        {
+            PanelList newList = PanelList.CreateInstance(new List<GameObject>(),"");
+            foreach(GameObject panel in lhs)
+            {
+                newList.Add(panel);
+            }
+            foreach (GameObject panel in rhs)
+            {
+                newList.Add(panel);
+            }
+            newList.Owner = lhs.Owner;
+            return newList;
         }
         public int FindIndex(GameObject _panel)
         {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class SeekBehaviour : MonoBehaviour
 {
 
@@ -14,11 +14,11 @@ public class SeekBehaviour : MonoBehaviour
     private Rigidbody body;
     public bool isTemporary;
     public float captureRange;
+    public UnityEvent onTargetReached;
     // Use this for initialization
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        isTemporary = true;
     }
     void seek()
     {
@@ -54,10 +54,20 @@ public class SeekBehaviour : MonoBehaviour
         captureRange = rangeVal;
         isTemporary = temporary;
     }
+    public void SetTarget(Vector3 targetVal,float rangeVal = 0)
+    {
+        target = targetVal;
+        captureRange = rangeVal;
+    }
     // Update is called once per frame
     void Update()
     {
-        if(!isTemporary)
+        float distance = Vector3.Distance(transform.position, target);
+        if (distance <= captureRange)
+        {
+            onTargetReached.Invoke();
+        }
+        if (!isTemporary)
         {
             seek();
             return;

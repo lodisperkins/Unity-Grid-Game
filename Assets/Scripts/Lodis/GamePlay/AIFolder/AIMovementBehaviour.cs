@@ -29,7 +29,8 @@ namespace Lodis.GamePlay.AIFolder
         private Condition SafeSpotCheck;
         private Condition NeighboorCheck;
     	private bool shouldDodge;
-
+        InputButtonBehaviour playerInput;
+        InputAxisBehaviour playerAxisInput;
         private PanelBehaviour _currentPanelInPath;
         public GameObjectList EnemyBulletList
        {
@@ -40,8 +41,10 @@ namespace Lodis.GamePlay.AIFolder
     	{
     		playerMoveScript = GetComponent<PlayerMovementBehaviour>();
     		_currentPath = new List<PanelBehaviour>();
-    		GetComponent<InputButtonBehaviour>().enabled = false;
-    		GetComponent<InputAxisBehaviour>().enabled = false;
+            playerInput = GetComponent<InputButtonBehaviour>();
+            playerInput.enabled = false;
+            playerAxisInput = GetComponent<InputAxisBehaviour>();
+            playerAxisInput.enabled= false;
             SafeSpotCheck += CheckIfSafeSpot;
             NeighboorCheck += CheckIfNeighboor;
         }
@@ -303,9 +306,9 @@ namespace Lodis.GamePlay.AIFolder
         }
     	private void Update()
     	{
-    		GetComponent<InputButtonBehaviour>().enabled = false;
-    		GetComponent<InputAxisBehaviour>().enabled = false;
-    	}
+            playerInput.enabled = false;
+            playerAxisInput.enabled = false;
+        }
 
 
 }

@@ -17,8 +17,17 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private GameEventListener _eventListener;
         public int bulletCapacity;
-
         [SerializeField] private int _bulletCapUpgradeVal;
+        [SerializeField] private int playerUseAmount;
+        private PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField] private Color _displayColor;
+        [SerializeField]
+        private bool _canBeHeld;
+        [SerializeField]
+        private GameObject _kineticBombRef;
+        private KineticBombBehaviour _currentKineticBomb;
         public BlockBehaviour block
         {
             get
@@ -50,12 +59,12 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _displayColor;
             }
 
             set
             {
-                throw new System.NotImplementedException();
+                _displayColor = value;
             }
         }
 
@@ -63,7 +72,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _canBeHeld;
             }
         }
 
@@ -86,7 +95,7 @@ namespace Lodis.GamePlay.BlockScripts
                 if (_bullets[i] != null)
                 {
                     _bullets[i].Owner = _blockScript.owner.name;
-                    //_bullets[i].DamageVal *= 2;
+                    _bullets[i].DamageVal *= 2;
                 }
             }
             for (int i = 0; i < _rigidbodies.Count; i++)
@@ -202,17 +211,43 @@ namespace Lodis.GamePlay.BlockScripts
 
         public void UpgradePlayer(PlayerAttackBehaviour player)
         {
-            throw new System.NotImplementedException();
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            teleportBeam.Teleport(player.transform.position);
+            player.SetSecondaryWeapon(this, playerUseAmount);
+            gameObject.SetActive(false);
         }
 
         public void ActivatePowerUp()
         {
-            throw new System.NotImplementedException();
+            if (_currentKineticBomb == null)
+            {
+                _currentKineticBomb = Instantiate(_kineticBombRef,transform.position,transform.rotation).GetComponent<KineticBombBehaviour>();
+                _currentKineticBomb.owner = playerAttackScript.name;
+                _currentKineticBomb.ownerTransform = transform;
+                _currentKineticBomb.moveDirection = transform.parent.forward;
+                return;
+            }
+            else if(playerAttackScript.SecondAbilityUseAmount.Val > 1)
+            {
+                playerAttackScript.IncreaseAmmuntion(1);
+                _currentKineticBomb.Explode();
+                _currentKineticBomb = null;
+            }
+            else
+            {
+                _currentKineticBomb.Explode();
+                _currentKineticBomb = null;
+            }
         }
 
         public void DetachFromPlayer()
         {
-            throw new System.NotImplementedException();
+            playerAttackScript.secondaryInputCanBeHeld = false;
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
 
         public void DeactivatePowerUp()

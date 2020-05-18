@@ -144,7 +144,6 @@ public class PlayerAttackBehaviour : MonoBehaviour
             charged = false;
             chargeParticles.SetActive(false);
         }
-        
     }
     public void SetSecondaryWeapon(IUpgradable weapon, int useAmount)
     {
@@ -166,17 +165,16 @@ public class PlayerAttackBehaviour : MonoBehaviour
                 secondaryWeapon.ActivatePowerUp();
                 SecondAbilityUseAmount.Val--;
             }
-            else
-            {
-                sliderScript.gameObject.SetActive(false);
-                secondaryWeapon.DetachFromPlayer();
-                secondaryWeapon = null;
-            }
+            
         }
     }
     public void DecreaseAmmuntion(int amount)
     {
         SecondAbilityUseAmount.Val -= amount;
+    }
+    public void IncreaseAmmuntion(int amount)
+    {
+        SecondAbilityUseAmount.Val += amount;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -223,5 +221,11 @@ public class PlayerAttackBehaviour : MonoBehaviour
         {
             Destroy(tempSource);
         }
-	}
+        if(SecondAbilityUseAmount.Val == 0 && secondaryWeapon != null)
+        {
+            sliderScript.gameObject.SetActive(false);
+            secondaryWeapon.DetachFromPlayer();
+            secondaryWeapon = null;
+        }
+    }
 }

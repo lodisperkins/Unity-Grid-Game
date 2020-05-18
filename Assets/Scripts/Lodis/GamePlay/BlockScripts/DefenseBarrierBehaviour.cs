@@ -156,7 +156,7 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 if (canReflect)
                 {
-                    collision.gameObject.GetComponent<BulletBehaviour>().Reflect();
+                    collision.gameObject.GetComponent<BulletBehaviour>().Reflect(playerAttackScript.name);
                     return;
                 }
                 block.HealthScript.takeDamage(collision.GetComponent<BulletBehaviour>().DamageVal);
@@ -181,6 +181,7 @@ namespace Lodis.GamePlay.BlockScripts
             teleportBeam.transform.parent = null;
             SphereCollider collider = GetComponent<SphereCollider>();
             collider.isTrigger = false;
+            healthScript = player.GetComponent<HealthBehaviour>();
             transform.localScale *= 1.5f;
             playerAttached = true;
             teleportBeam.Teleport(player.transform.position);
@@ -200,6 +201,7 @@ namespace Lodis.GamePlay.BlockScripts
             if(!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
+                healthScript.isInvincible = true;
             }
         }
 
@@ -209,14 +211,11 @@ namespace Lodis.GamePlay.BlockScripts
             GameObject temp = gameObject;
             Destroy(temp);
         }
-        private void Update()
-        {
-            
-        }
 
         public void DeactivatePowerUp()
         {
             gameObject.SetActive(false);
+            healthScript.isInvincible = false;
         }
     }
 }

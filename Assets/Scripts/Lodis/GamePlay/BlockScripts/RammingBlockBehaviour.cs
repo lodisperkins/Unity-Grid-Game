@@ -126,6 +126,7 @@ namespace Lodis.GamePlay.BlockScripts
             _blockRigidbody.isKinematic = false;
             _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
             _blockScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter = 0;
+            _blockScript.GetComponent<OtherScripts.ScreenShakeBehaviour>().updatePosition = true;
             _ramForce = transform.parent.forward * _ramForceScale;
             block.canDelete = false;
             if((int)_ramForce.z != 0)
@@ -149,6 +150,7 @@ namespace Lodis.GamePlay.BlockScripts
             _playerRigidbody.isKinematic = false;
             playerAttackScript.GetComponent<PlayerMovementBehaviour>().CurrentPanel.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
             playerAttackScript.GetComponent<PlayerAnimationBehaviour>().EnableMoveAnimation();
+            playerAttackScript.GetComponent<Lodis.GamePlay.OtherScripts.ScreenShakeBehaviour>().enabled = false;
             _ramForce = transform.parent.forward * _ramForceScale;
             if ((int)_ramForce.z != 0)
             {
@@ -172,6 +174,7 @@ namespace Lodis.GamePlay.BlockScripts
             _ramForceScale = 0;
             _canBeHeld = false;
             playerAttackScript.secondaryInputCanBeHeld = false;
+            playerAttackScript.GetComponent<OtherScripts.ScreenShakeBehaviour>().enabled = false;
         }
         public void TransferOwner(GameObject otherBlock)
         {
@@ -181,7 +184,6 @@ namespace Lodis.GamePlay.BlockScripts
             _blockRigidbody.isKinematic = true;
             _blockScript.specialActions += Ram;
             transform.SetParent(otherBlock.transform,false);
-            
             GetComponent<GameEventListener>().intendedSender = otherBlock;
             GetComponent<BulletBehaviour>().Laser = otherBlock;
         }
@@ -284,7 +286,6 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 playerAnimator.EnableMoveAnimation();
             }
-            Debug.Log(playerInBall);
         }
 
     }

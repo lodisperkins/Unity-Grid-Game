@@ -18,7 +18,7 @@ namespace Lodis
         //whether or not the object is alive
         [FormerlySerializedAs("IsAlive")] [SerializeField]
         private bool isAlive;
-
+        public bool isInvincible;
         [SerializeField] private HealthBehaviour _secondaryHealthSource;
         
         public int conversionRate;
@@ -52,7 +52,7 @@ namespace Lodis
         //decrements the objects health by the damge amount given
         public void takeDamage(int damageVal)
         {
-            if(gameObject == null)
+            if(gameObject == null || isInvincible)
             {
                 return;
             }

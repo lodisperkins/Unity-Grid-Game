@@ -42,6 +42,9 @@ namespace Lodis
         public bool destroyOnHit = true;
         protected PanelBehaviour _currentPanel;
         public GameObject hitTrail;
+        [SerializeField]
+        protected bool overrideGunForce;
+        protected Rigidbody rigidbody;
         public PanelBehaviour currentPanel
         {
             get { return _currentPanel; }
@@ -60,11 +63,20 @@ namespace Lodis
             }
         }
 
-        private void Start()
+        public bool OverrideGunForce
+        {
+            get
+            {
+                return overrideGunForce;
+            }
+        }
+
+        protected void Start()
         {
             TempObject = gameObject;
             ChangeColor();
             lifetime = 1;
+            rigidbody = GetComponent<Rigidbody>();
         }
         public void ReverseOwner()
         {
@@ -105,9 +117,13 @@ namespace Lodis
             panelSetCalled = false;
         }
 
-        public void Reflect(int damageIncrease = 2, float speedScale = 1.5f)
+        public virtual void Reflect(string ownerOfReflector,int damageIncrease = 2, float speedScale = 1.5f)
         {
-            GetComponent<Rigidbody>().velocity = -(GetComponent<Rigidbody>().velocity *= speedScale);
+            if(Owner == ownerOfReflector)
+            {
+                return;
+            }
+            rigidbody.velocity = -(GetComponent<Rigidbody>().velocity *= speedScale);
             ReverseOwner();
             reflected = true;
             lifetime = 2;

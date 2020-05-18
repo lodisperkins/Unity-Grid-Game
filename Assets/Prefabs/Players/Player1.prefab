@@ -2720,6 +2720,8 @@ GameObject:
   - component: {fileID: 114775061016557648}
   - component: {fileID: 114358614246096090}
   - component: {fileID: 114780056301946848}
+  - component: {fileID: 114578573839250546}
+  - component: {fileID: 114287455048261722}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -3462,6 +3464,7 @@ GameObject:
   - component: {fileID: 4282074495400994}
   - component: {fileID: 114740828237069238}
   - component: {fileID: 114770343331392972}
+  - component: {fileID: 114529422728853658}
   m_Layer: 0
   m_Name: Bullet Emitter
   m_TagString: Untagged
@@ -14740,6 +14743,35 @@ MonoBehaviour:
   hasLimit: 1
   numberOfActionsLeft: 0
   shouldStop: 0
+--- !u!114 &114287455048261722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114529422728853658}
+        m_MethodName: StartFlashing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 800204a18ceb7114888219a5be31f4d5, type: 2}
+  intendedSender: {fileID: 1698780024816490}
 --- !u!114 &114310844724626630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15099,6 +15131,24 @@ MonoBehaviour:
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   ps2: {fileID: 0}
   healthFull: 0
+--- !u!114 &114529422728853658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822090795246034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7613af2929f131d4cbf39b155618d633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalObject: {fileID: 1489652869712770}
+  flashObject: {fileID: 1413015193795206}
+  numberOfFlashes: 5
+  flashSpeed: 0.01
+  flashRenderers: []
+  normalRenderers: []
+  isInfinite: 1
 --- !u!114 &114556029999991968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15168,6 +15218,35 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 62888b7debcd7f1488de3eb603969a5c, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114578573839250546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d6c3b7dc37d7b479a3d7680de1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114529422728853658}
+        m_MethodName: StopFlashing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Event: {fileID: 11400000, guid: 88ca7b46678a69946bd07e6b5cd7658e, type: 2}
+  intendedSender: {fileID: 1698780024816490}
 --- !u!114 &114585378869448626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15292,7 +15371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
+  bullet: {fileID: 1534226416046904, guid: a55355aadf4b86e4aa67546254cb5f35, type: 2}
   owner: Player1
   bulletForceScale: 1000
   _bulletForce: {x: 0, y: 0, z: 0}

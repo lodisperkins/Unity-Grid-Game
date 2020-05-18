@@ -21,6 +21,7 @@ namespace Lodis.GamePlay.BlockScripts
         private TeleportBeamBehaviour teleportBeam;
         [SerializeField] private Color _displayColor;
         [SerializeField] private GunBehaviour bulletEmitter;
+        [SerializeField] private bool _canBeHeld;
         public BlockBehaviour block
         {
             get
@@ -65,7 +66,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _canBeHeld;
             }
         }
 
