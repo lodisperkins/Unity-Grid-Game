@@ -2440,6 +2440,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 0fa2a1567728121429e21f2c14f1196d, type: 2}
   health: {fileID: 0}
   isAlive: 0
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -2549,7 +2550,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224239334801250242}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 3
+  m_MaxValue: 100
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -2630,6 +2631,7 @@ MonoBehaviour:
   actionLimit: 2
   hasLimit: 1
   numberOfActionsLeft: 0
+  shouldStop: 0
 --- !u!114 &114360608825215112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2682,6 +2684,11 @@ MonoBehaviour:
   MaterialAmount: 15
   materialUpgradeVal: 0
   regenTimeUpgradeVal: 0
+  playerUseAmount: 0
+  teleportBeam: {fileID: 0}
+  _displayColor: {r: 0, g: 0, b: 0, a: 0}
+  bulletEmitter: {fileID: 0}
+  _canBeHeld: 0
 --- !u!114 &114523853944676782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2926,6 +2933,7 @@ MonoBehaviour:
   actionLimit: 1
   hasLimit: 1
   numberOfActionsLeft: 0
+  shouldStop: 0
 --- !u!135 &135221966792265002
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -26,7 +26,8 @@ namespace Lodis
         public float bulletDelay;
         //the amount of bullet to fire
         [FormerlySerializedAs("Bullet_Count")] public int bulletCount;
-
+        [SerializeField]
+        private bool _hasLimitedAmmo = true;
         private int _currentAmmo;
         //unity event raised when the gun is out of ammo
         [FormerlySerializedAs("OutOfAmmo")] [SerializeField]
@@ -84,8 +85,12 @@ namespace Lodis
             {
                 if (IsTurret)
                 {
-                    _currentAmmo = bulletCount - i;
+                    if(_hasLimitedAmmo== false)
+                    {
+                        i--;
+                    }
                     FireBullet();
+                    _currentAmmo = bulletCount - i;
                     yield return new WaitForSeconds(bulletDelay);
                     continue;
                 }

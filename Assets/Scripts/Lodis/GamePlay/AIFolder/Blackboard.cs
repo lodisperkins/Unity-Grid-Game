@@ -25,4 +25,5 @@ public static class BlackBoard{
     public static IntVariable energyAmountP1;
     public static IntVariable energyAmountP2;
     public static GridBehaviour grid;
+    public static int maxBlockHealth = 75;
 }

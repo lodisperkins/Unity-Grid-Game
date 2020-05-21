@@ -92,14 +92,25 @@ namespace Lodis
                 Destroy(tempPs, duration);
             }
         }
-        //(not used) Meant for the player to heal from some secondary health source like the core
-        public void Heal(int val)
+        public void ClampedHeal(int val)
         { 
-            
            if (healthFull)
            {
                 return;
            }
+            health.Val += val;
+        }
+        public void ClampedHeal(int val,int max)
+        {
+            if (health.Val >= max)
+            {
+                health.Val = max;
+                return;
+            }
+            health.Val += val;
+        }
+        public void UnclampedHeal(int val)
+        {
             health.Val += val;
         }
         // Update is called once per frame

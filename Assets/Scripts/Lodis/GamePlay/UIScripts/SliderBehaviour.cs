@@ -37,7 +37,10 @@ namespace Lodis
         void Start ()
         {
 	        lerpVal = 1;
-
+            if(transform.parent.parent.CompareTag("Block"))
+            {
+                _bar.maxValue = BlackBoard.maxBlockHealth;
+            }
         }
 
         public void LerpHealthColor()

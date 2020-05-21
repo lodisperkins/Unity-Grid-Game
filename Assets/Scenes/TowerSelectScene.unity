@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00070712616, g: 0.004981459, b: 0.021264436, a: 1}
+  m_IndirectSpecularColor: {r: 0.000710114, g: 0.0049844263, b: 0.021260299, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -41917,6 +41917,7 @@ MonoBehaviour:
   value: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
   _healthbarImage: {fileID: 0}
   isHealthBar: 0
+  fillImage: {fileID: 0}
 --- !u!114 &1244924307
 MonoBehaviour:
   m_ObjectHideFlags: 0

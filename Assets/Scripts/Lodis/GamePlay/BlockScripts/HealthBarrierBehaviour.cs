@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
@@ -20,6 +21,16 @@ namespace Lodis.GamePlay.BlockScripts
         private bool _canHeal;
         private int _healCounter;
         private int _healLimit;
+        [SerializeField]
+        private Color _displayColor;
+        [SerializeField]
+        private int playerUseAmount;
+        private bool playerAttached;
+        PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField]
+        private bool _canBeHeld;
         public BlockBehaviour block
         {
             get
@@ -51,12 +62,12 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new NotImplementedException();
+                return _displayColor;
             }
 
             set
             {
-                throw new NotImplementedException();
+                displayColor = value;
             }
         }
 
@@ -64,7 +75,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new NotImplementedException();
+                return _canBeHeld;
             }
         }
 
@@ -72,46 +83,30 @@ namespace Lodis.GamePlay.BlockScripts
         void Start ()
 		{
             _canHeal = true;
-            _healthScript = block.gameObject.GetComponent<HealthBehaviour>();
             _nameOfItem = gameObject.name;
             _healTimer = Time.time + _timeUntilNextHeal;
             _healCounter = 0;
-            _healLimit = 10;
+        }
+        public void FindMaxHealthLimit()
+        {
+            if(_healthScript == null)
+            {
+                return;
+            }
+            _healLimit = (int)(_healthScript.HealthRef.Val + _healthScript.HealthRef.Val * 1.5f);
+            if(_healLimit > BlackBoard.maxBlockHealth)
+            {
+                _healLimit = BlackBoard.maxBlockHealth;
+            }
         }
         public void DestroyBarrier()
         {
             GameObject temp = gameObject;
             Destroy(temp);
         }
-		private void OnTriggerStay(Collider other)
-		{
-            if(!other.CompareTag("Block"))
-            {
-                return;
-            } 
-            
-			if (other.name != "Repair Block(Clone)" && other.name != "Orbiter Block(Clone)")
-			{
-                _healthScript = other.GetComponent<HealthBehaviour>();
-				TryHeal();
-			}
-		}
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Projectile"))
-            {
-                block.HealthScript.takeDamage(other.GetComponent<BulletBehaviour>().DamageVal);
-                other.GetComponent<BulletBehaviour>().Destroy();
-            }
-            if ( other.name != _blockScript.owner.name && other.CompareTag("Block") && other.name != "Orbiter Block(Clone)")
-            {
-                _healthScript = other.GetComponent<HealthBehaviour>();
-                block.HealthScript.Heal(_healVal * 2);
-            }
-        }
         private void TryHeal()
 		{
-            if(_canHeal && !_healthScript.healthFull)
+            if(_canHeal)
             {
                 _healCounter++;
                 _healthScript.health.Val +=_healVal;
@@ -125,53 +120,126 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 if (component.specialFeature.name == gameObject.name)
                 {
-                    component.specialFeature.GetComponent<HealthBarrierBehaviour>()._healLimit += _upgradeVal;
-                    component.specialFeature.GetComponent<HealthBarrierBehaviour>()._healthScript.health.Val += _upgradeVal;
-					return;
+                    component.specialFeature.GetComponent<HealthBarrierBehaviour>()._healLimit *= 2;
+                    StartCoroutine(TryToHeal());
+                    return;
 				}
 			}
 			TransferOwner(otherBlock);
 		}
 		public void TransferOwner(GameObject otherBlock)
 		{
-			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
-			blockScript.componentList.Add(this);
-            transform.parent = null;
-            transform.position = otherBlock.transform.position;
+            block = otherBlock.GetComponent<BlockBehaviour>();
+            
+            block.componentList.Add(this);
+            transform.SetParent(otherBlock.transform, false);
             _deleteEventListener.intendedSender = otherBlock;
+            if (otherBlock.name != "Repair Block(Clone)" && otherBlock.name != "Orbiter Block(Clone)")
+            {
+                _healthScript = otherBlock.GetComponent<HealthBehaviour>();
+                FindMaxHealthLimit();
+                StartCoroutine(TryToHeal());
+            }
         }
-		// Update is called once per frame
-		void Update () {
-            _canHeal = Time.time >= _healTimer;
-		}
-
+        IEnumerator TryToHeal()
+        {
+            while(_healthScript!= null)
+            {
+                if(_canHeal == false)
+                {
+                    break;
+                }
+                if(_healthScript.health.Val >= _healLimit)
+                {
+                    _healthScript.health.Val = _healLimit;
+                }
+                else
+                {
+                    _healthScript.UnclampedHeal(_healVal);
+                }
+                yield return new WaitForSeconds(_timeUntilNextHeal);
+            }
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            HealthBehaviour otherHealth = other.GetComponent<HealthBehaviour>();
+            if (playerAttached && otherHealth != null && other.CompareTag("Block") && other.name != "Repair Block(Clone)")
+            {
+                otherHealth.ClampedHeal(_healVal, _healLimit);
+                if (otherHealth.health.Val == _healLimit)
+                {
+                    Instantiate(other, other.transform.position, other.transform.rotation);
+                    otherHealth.health.Val = otherHealth.HealthRef.Val;
+                }
+                return;
+            }
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            HealthBehaviour otherHealth = other.GetComponent<HealthBehaviour>();
+            if (playerAttached)
+            {
+                return;
+            }
+            if (other.CompareTag("Projectile"))
+            {
+                BulletBehaviour bulletScript = other.GetComponent<BulletBehaviour>();
+                block.HealthScript.takeDamage(bulletScript.DamageVal);
+                bulletScript.Destroy();
+            }
+            if (other.CompareTag("Block") && other.name != "Repair Block(Clone)" && other.gameObject != block.gameObject)
+            {
+                if(otherHealth != null)
+                {
+                    FindMaxHealthLimit();
+                    otherHealth.ClampedHeal(_healVal, _healLimit);
+                }
+            }
+        }
         public void ResolveCollision(GameObject collision)
         {
-            return; 
+            return;
         }
         public void ActivateDisplayMode()
         {
             return;
         }
-
+        private void OnDestroy()
+        {
+            _canHeal = false;
+        }
         public void UpgradePlayer(PlayerAttackBehaviour player)
         {
-            throw new NotImplementedException();
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            playerAttached = true;
+            teleportBeam.Teleport(player.transform.position);
+            player.SetSecondaryWeapon(this, playerUseAmount);
+            _healLimit = BlackBoard.maxBlockHealth;
+            gameObject.SetActive(false);
+            transform.position += playerAttackScript.transform.forward * 2;
         }
 
         public void ActivatePowerUp()
         {
-            throw new NotImplementedException();
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
         }
 
         public void DetachFromPlayer()
         {
-            throw new NotImplementedException();
+            playerAttackScript.secondaryInputCanBeHeld = false;
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
 
         public void DeactivatePowerUp()
         {
-            throw new NotImplementedException();
+            gameObject.SetActive(false);
         }
     }
 }

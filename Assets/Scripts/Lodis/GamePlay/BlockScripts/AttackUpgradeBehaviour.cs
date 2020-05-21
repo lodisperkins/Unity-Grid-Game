@@ -101,9 +101,8 @@ namespace Lodis.GamePlay.BlockScripts
         {
             turretScript.damageVal += _damageUpgradeVal;
             turretScript.bulletForceScale += _bulletForceUpgradeVal;
-            turretScript.bulletCount += _ammoUpgradeVal;
             turretScript.bulletDelay -= .2f;
-            _blockHealth.health.Val = turretScript.bulletCount;
+            _blockHealth.UnclampedHeal(_ammoUpgradeVal);
         }
         /// <summary>
         /// - Sets health of other block to be current
@@ -125,7 +124,7 @@ namespace Lodis.GamePlay.BlockScripts
         //Used to decrease health everytime a shot is fired
 		public void DecreaseHealth()
 		{
-			_blockHealth.health.Val--;
+			_blockHealth.takeDamage(1);
 		}
 
         public void ResolveCollision(GameObject collision)
