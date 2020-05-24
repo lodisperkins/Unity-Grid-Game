@@ -96,6 +96,22 @@ namespace Lodis
             }
         }
 
+        public BlockBehaviour CurrentBlock
+        {
+            get
+            {
+                return _currentBlock;
+            }
+        }
+
+        public int CurrentIndex
+        {
+            get
+            {
+                return current_index;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -194,6 +210,22 @@ namespace Lodis
                 return true;
             }
         }
+        public bool CheckIfCanDeleteOnPanel(PanelBehaviour panel)
+        {
+            if(panel.CurrentBlock == null)
+            {
+                return true;
+            }
+            if(name == "Player1" && panel.CurrentBlock.owner == BlackBoard.Player2)
+            {
+                return false;
+            }
+            else if(name == "Player2" && panel.CurrentBlock.owner == BlackBoard.Player1)
+            {
+                return false;
+            }
+            return true;
+        }
         //Finds and highlights all neighboring panels in cardinal directions 
         public void FindNeighbors()
         {
@@ -218,6 +250,11 @@ namespace Lodis
                         _panel.Selected = false;
                         continue;
                     }
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
+                    {
+                        _panel.Selected = false;
+                        continue;
+                    }
                     panels_in_range.Add("Forward", panel);
                     _panel.SelectionColor = SelectionColor;
                     _panel.Selected = true;
@@ -225,6 +262,11 @@ namespace Lodis
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
                     if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
+                    {
+                        _panel.Selected = false;
+                        continue;
+                    }
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
                     {
                         _panel.Selected = false;
                         continue;
@@ -240,6 +282,11 @@ namespace Lodis
                         _panel.Selected = false;
                         continue;
                     }
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
+                    {
+                        _panel.Selected = false;
+                        continue;
+                    }
                     panels_in_range.Add("Above", panel);
                     _panel.SelectionColor = SelectionColor;
                     _panel.Selected = true;
@@ -247,6 +294,11 @@ namespace Lodis
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
                     if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
+                    {
+                        _panel.Selected = false;
+                        continue;
+                    }
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
                     {
                         _panel.Selected = false;
                         continue;

@@ -28,6 +28,7 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField]
         private GameObject _kineticBombRef;
         private KineticBombBehaviour _currentKineticBomb;
+        private List<GameObject> _ownerBullets;
         public BlockBehaviour block
         {
             get
@@ -82,6 +83,7 @@ namespace Lodis.GamePlay.BlockScripts
             _rigidbodies = new List<Rigidbody>();
             _bullets = new List<BulletBehaviour>();
             velocityVals = new List<Vector3>();
+            _ownerBullets = new List<GameObject>();
             _eventListener.intendedSender = _blockScript.owner;
             _blockHealth.health.Val = bulletCapacity;
             _blockScript.specialActions += DetonateBlock;
@@ -94,6 +96,10 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 if (_bullets[i] != null)
                 {
+                    if(_bullets[i].Owner == _blockScript.owner.name)
+                    {
+                        _ownerBullets.Add(_bullets[i].gameObject);
+                    }
                     _bullets[i].Owner = _blockScript.owner.name;
                     _bullets[i].DamageVal *= 2;
                 }
@@ -105,6 +111,11 @@ namespace Lodis.GamePlay.BlockScripts
                     _rigidbodies[i].GetComponent<Transform>().parent = null;
                     _rigidbodies[i].GetComponent<Collider>().enabled = true;
                     _rigidbodies[i].isKinematic = false;
+                    if(_ownerBullets.Contains(_rigidbodies[i].gameObject))
+                    {
+                        _rigidbodies[i].AddForce((velocityVals[i]) * 2, ForceMode.Impulse);
+                        continue;
+                    }
                     _rigidbodies[i].AddForce(-(velocityVals[i]) *2, ForceMode.Impulse); 
                 }
             }

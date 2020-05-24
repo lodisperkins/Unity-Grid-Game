@@ -17,6 +17,8 @@ namespace Lodis
         public ParticleSystem ps;
         [SerializeField]
         private int _damageVal;
+        [SerializeField]
+        private Lodis.Event _onExplosion;
         // Use this for initialization
         void Start()
         {
@@ -49,6 +51,14 @@ namespace Lodis
                     _damageVal += 2;
                 }
             }
+            else if(other.CompareTag("Panel") && _explosionActive)
+            {
+                GamePlay.GridScripts.PanelBehaviour panel = other.GetComponent<GamePlay.GridScripts.PanelBehaviour>();
+                if(panel != null)
+                {
+                    panel.BreakPanel(5);
+                }
+            }
             if (_explosionActive)
             {
                 var health = other.GetComponent<HealthBehaviour>();
@@ -65,6 +75,7 @@ namespace Lodis
             var tempPs = Instantiate(ps, transform.position, transform.rotation);
             tempPs.transform.localScale = transform.localScale;
             tempPs.Play();
+            _onExplosion.Raise();
             Destroy(tempPs, .5f);
         }
         public void Destroy()

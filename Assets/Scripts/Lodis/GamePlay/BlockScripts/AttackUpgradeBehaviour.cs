@@ -124,7 +124,11 @@ namespace Lodis.GamePlay.BlockScripts
         //Used to decrease health everytime a shot is fired
 		public void DecreaseHealth()
 		{
-			_blockHealth.takeDamage(1);
+            if(playerAttackScript == null)
+            {
+                _blockHealth.takeDamage(1);
+            }
+			
 		}
 
         public void ResolveCollision(GameObject collision)

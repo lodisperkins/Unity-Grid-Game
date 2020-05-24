@@ -5797,7 +5797,6 @@ MonoBehaviour:
   p2PanelsRef: {fileID: 11400000, guid: 5a77729ad7c4931409b1a599e938e4b5, type: 2}
   bulletListP1: {fileID: 11400000, guid: 8f1dbc1b7daa4de4aa7ec32b26970321, type: 2}
   bulletListP2: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
-  globalPanelListRef: {fileID: 0}
   p1Position: {fileID: 11400000, guid: 6a31daaaaa39ef24096f62dd594e262d, type: 2}
   p2Position: {fileID: 11400000, guid: 814d155094b1e6d49803823c193b75ec, type: 2}
   onPanelsSwapped: {fileID: 11400000, guid: be2e3e124c3623947a79697a94633a28, type: 2}
@@ -5812,6 +5811,7 @@ MonoBehaviour:
   _player2: {fileID: 0}
   onStun: {fileID: 11400000, guid: 800204a18ceb7114888219a5be31f4d5, type: 2}
   onStopStun: {fileID: 11400000, guid: 88ca7b46678a69946bd07e6b5cd7658e, type: 2}
+  _explosion: {fileID: 1939208866840938, guid: 71e3b5a5cc04559459ac1952dcd00a69, type: 2}
 --- !u!114 &114825470100298312
 MonoBehaviour:
   m_ObjectHideFlags: 1

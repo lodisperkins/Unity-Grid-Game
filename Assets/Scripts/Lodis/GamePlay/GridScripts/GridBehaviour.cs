@@ -16,8 +16,6 @@ namespace Lodis.GamePlay.GridScripts
         public  GameObjectList bulletListP2;
         private PanelList _originalP1Panels;
         private PanelList _originalP2Panels;
-        [SerializeField]
-        private  PanelList globalPanelListRef;
         public static PanelList globalPanelList;
         // player 1's current position on the grid
         [FormerlySerializedAs("P1Position")] [SerializeField]
@@ -45,16 +43,21 @@ namespace Lodis.GamePlay.GridScripts
         [SerializeField] private PlayerSpawnBehaviour _player2;
         public Event onStun;
         public Event onStopStun;
+        [SerializeField]
+        private GameObject _explosion;
+        [SerializeField]
+        private Lodis.Event _onExplosion;
         // Use this for initialization
         void Start()
         {
-            globalPanelList = globalPanelListRef;
+            
             P1AssignLists();
             P2AssignLists();
             BlackBoard.grid = this;
             _originalP1Panels = PanelList.CreateInstance(p1PanelsRef.Panels,"Player1");
             _originalP2Panels = PanelList.CreateInstance(p2PanelsRef.Panels,"Player2");
-            
+            globalPanelList = _originalP1Panels + _originalP2Panels;
+
         }
 
         private void Awake()
@@ -70,6 +73,25 @@ namespace Lodis.GamePlay.GridScripts
         {
             AssignPanelMaterials();
             p1PanelsRef.updateOwners();
+        }
+        public void ExplodePanel(PanelBehaviour panel,bool breakPanel = false,float panelBreakTime = 1)
+        {
+            Instantiate(_explosion, panel.transform);
+            if(breakPanel)
+            {
+                panel.BreakPanel(panelBreakTime);
+            }
+        }
+        public void ExplodePanel(Vector2 panelPosition, bool breakPanel = false, float panelBreakTime = 1)
+        {
+            PanelBehaviour panel;
+            globalPanelList.FindPanel(panelPosition, out panel);
+            Instantiate(_explosion, panel.transform);
+            _onExplosion.Raise();
+            if(breakPanel)
+            {
+                panel.BreakPanel(panelBreakTime);
+            }
         }
         public void StunPlayer(float stunTime,string playerName)
         {
@@ -139,6 +161,23 @@ namespace Lodis.GamePlay.GridScripts
             p2PanelsRef.updateOwners();
         }
 
+        public GameObject GetPanelFromGlobalList(int index)
+        {
+            return globalPanelList[index];
+        }
+
+        public PanelBehaviour GetPanelFromGlobalList(Vector2 position)
+        {
+            PanelBehaviour panel;
+            globalPanelList.FindPanel(position,out panel);
+            return panel;
+        }
+        public int GetPanelIndexFromGlobalList(Vector2 position)
+        {
+            int index = -1;
+            globalPanelList.FindIndex(position, out index);
+            return index;
+        }
         public GameObject GetPanelFromP1List(int index)
         {
             return p1PanelsRef[index];

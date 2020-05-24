@@ -19,13 +19,17 @@ public class HitboxBehaviour : MonoBehaviour {
     private UnityEvent onEnabled;
     [SerializeField]
     private UnityEvent onDisabled;
+    [SerializeField]
+    private bool onTriggerStay = false;
 	// Use this for initialization
 	void Start () {
         collider = GetComponent<Collider>();
 		if(!activeByDefault)
         {
             collider.enabled = false;
+            return;
         }
+        onEnabled.Invoke();
 	}
     IEnumerator MakeActiveTemporarily(float time)
     {
@@ -49,6 +53,10 @@ public class HitboxBehaviour : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(onTriggerStay)
+        {
+            return;
+        }
         HealthBehaviour objectHealth = other.GetComponent<HealthBehaviour>();
         if(objectHealth != null)
         {
@@ -68,6 +76,36 @@ public class HitboxBehaviour : MonoBehaviour {
             }
         }
         
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!onTriggerStay)
+        {
+            return;
+        }
+        HealthBehaviour objectHealth = other.GetComponent<HealthBehaviour>();
+        if (objectHealth != null)
+        {
+            objectHealth.takeDamage(damageVal);
+            if (doesKnockback)
+            {
+                Vector3 direction = other.transform.position - transform.position;
+                KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
+                if (knockBackScript != null)
+                {
+                    knockBackScript.KnockBack(direction, 100, stunTime);
+                }
+            }
+            else if (stunsOpponent && other.gameObject.CompareTag("Player"))
+            {
+                BlackBoard.grid.StunPlayer(stunTime, other.gameObject.name);
+            }
+        }
+    }
+    public void DestroyObject()
+    {
+        GameObject temp = gameObject;
+        Destroy(temp);
     }
     // Update is called once per frame
     void Update () {

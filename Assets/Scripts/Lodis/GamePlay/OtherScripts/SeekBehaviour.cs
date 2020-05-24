@@ -15,10 +15,12 @@ public class SeekBehaviour : MonoBehaviour
     public bool isTemporary;
     public float captureRange;
     public UnityEvent onTargetReached;
+    public bool seekEnabled = true;
     // Use this for initialization
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        
     }
     void seek()
     {
@@ -43,6 +45,7 @@ public class SeekBehaviour : MonoBehaviour
         float distance = Vector3.Distance(transform.position, target);
         if (distance <= captureRange && isTemporary)
         {
+            onTargetReached.Invoke();
             Destroy(GetComponent<SeekBehaviour>());
         }
     }
@@ -53,6 +56,11 @@ public class SeekBehaviour : MonoBehaviour
         max_speed = speedVal;
         captureRange = rangeVal;
         isTemporary = temporary;
+        if(onTargetReached == null)
+        {
+            onTargetReached = new UnityEvent();
+        }
+        
     }
     public void SetTarget(Vector3 targetVal,float rangeVal = 0)
     {
@@ -62,6 +70,10 @@ public class SeekBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!seekEnabled)
+        {
+            return;
+        }
         float distance = Vector3.Distance(transform.position, target);
         if (distance <= captureRange)
         {

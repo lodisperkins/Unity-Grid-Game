@@ -149,11 +149,7 @@ namespace Lodis.GamePlay.BlockScripts
                 {
                     break;
                 }
-                if(_healthScript.health.Val >= _healLimit)
-                {
-                    _healthScript.health.Val = _healLimit;
-                }
-                else
+                if(_healthScript.health.Val < _healLimit)
                 {
                     _healthScript.UnclampedHeal(_healVal);
                 }
@@ -192,7 +188,7 @@ namespace Lodis.GamePlay.BlockScripts
                 if(otherHealth != null)
                 {
                     FindMaxHealthLimit();
-                    otherHealth.ClampedHeal(_healVal, _healLimit);
+                    otherHealth.ClampedHeal(_healVal, 50);
                 }
             }
         }

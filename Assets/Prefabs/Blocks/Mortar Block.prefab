@@ -687,7 +687,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447780760735818}
   m_LocalRotation: {x: -0.00000019861236, y: -0.7071068, z: -0.7071068, w: 0.00000019861236}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: -2.0272546, y: 0.6, z: 13.058354}
   m_LocalScale: {x: 1, y: 1.04, z: 1}
   m_Children:
   - {fileID: 4819594283713272}
@@ -2444,6 +2444,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 7430f1e36fde8284d9f84e88662fc10b, type: 2}
   health: {fileID: 0}
   isAlive: 0
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -2626,6 +2627,11 @@ MonoBehaviour:
   MaterialAmount: 15
   materialUpgradeVal: 0
   regenTimeUpgradeVal: 0
+  playerUseAmount: 0
+  teleportBeam: {fileID: 0}
+  _displayColor: {r: 0, g: 0, b: 0, a: 0}
+  bulletEmitter: {fileID: 0}
+  _canBeHeld: 0
 --- !u!114 &114575009364112912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2643,6 +2649,7 @@ MonoBehaviour:
   actionLimit: 1
   hasLimit: 1
   numberOfActionsLeft: 0
+  shouldStop: 0
 --- !u!114 &114581197077317730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2751,6 +2758,7 @@ MonoBehaviour:
   _bulletForce: {x: 0, y: 0, z: 0}
   bulletDelay: 0.5
   bulletCount: 15
+  _hasLimitedAmmo: 1
   outOfAmmo:
     m_PersistentCalls:
       m_Calls:

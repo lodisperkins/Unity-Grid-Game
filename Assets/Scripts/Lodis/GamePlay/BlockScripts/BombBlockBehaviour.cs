@@ -23,7 +23,9 @@ namespace Lodis.GamePlay
             canExplode = true;
             if (_block == null)
             {
-                GetComponent<Rigidbody>().isKinematic = true;
+                
+                Rigidbody rigidbody = GetComponent<Rigidbody>();
+                Destroy(rigidbody);
                 canExplode = false;
             }
         }

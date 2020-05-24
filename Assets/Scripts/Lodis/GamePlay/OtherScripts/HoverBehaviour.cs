@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class HoverBehaviour : MonoBehaviour {
     [SerializeField]
-    private Vector3 startingPos;
-    [SerializeField]
-    private Vector3 endPos;
-    [SerializeField]
     private float intensity;
-    [SerializeField]
-    private float lerpVal;
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

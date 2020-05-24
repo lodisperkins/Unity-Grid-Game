@@ -9,8 +9,25 @@ namespace Lodis
         private GameObject currentBlock;
         [SerializeField]
         private float _blockScaleSize;
-	    // Use this for initialization
-	    public void DisplayBlock(int index)
+
+        public GameObjectList Blocks
+        {
+            get
+            {
+                return _blocks;
+            }
+        }
+
+        public GameObject CurrentBlock
+        {
+            get
+            {
+                return currentBlock;
+            }
+        }
+
+        // Use this for initialization
+        public void DisplayBlock(int index)
         {
             if(currentBlock != null)
             {

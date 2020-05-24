@@ -211,9 +211,9 @@ namespace Lodis
             BlackBoard.p2Blocks.Remove(this);
         }
 
-        public void ActivateSpecialAction()
+        public void ActivateSpecialAction(string name)
         {
-            if(specialActions != null)
+            if(specialActions != null && name == owner.name)
             {
                 specialActions.Invoke();
             }

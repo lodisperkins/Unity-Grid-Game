@@ -22,6 +22,17 @@ namespace Lodis.GamePlay.BlockScripts
         private GameObject box;
         private Material _attachedMaterial;
         private int panelIndex;
+        private RaycastHit _rayHit;
+        [SerializeField] private int playerUseAmount;
+        private PlayerAttackBehaviour playerAttackScript;
+        [SerializeField]
+        private TeleportBeamBehaviour teleportBeam;
+        [SerializeField] private Color _displayColor;
+        [SerializeField] private GameObject _blockTransporterRef;
+        private BlockTransporterBehaviour _blockTransporter;
+        [SerializeField] private bool _canBeHeld;
+        private bool _playerAttached;
+        private bool _canSpawnGlobally;
         public BlockBehaviour block
         {
             get
@@ -53,12 +64,12 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _displayColor;
             }
 
             set
             {
-                throw new System.NotImplementedException();
+                _displayColor = value;
             }
         }
 
@@ -66,7 +77,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _canBeHeld;
             }
         }
 
@@ -86,6 +97,7 @@ namespace Lodis.GamePlay.BlockScripts
             colorName = "Color_262603E3";
             _blockScript.HealthScript.health.Val = _spawnRoutine.numberOfActionsLeft;
             List<GridScripts.PanelBehaviour> panelsInRange = new List<GridScripts.PanelBehaviour>();
+            CheckCurrentPanel();
             FindNeighbors();
         }
         public bool CheckIfNeighboor(object[] arg)
@@ -104,10 +116,43 @@ namespace Lodis.GamePlay.BlockScripts
             }
             return false;
         }
+        public void FilterNeighbors()
+        {
+            if (Physics.Raycast(transform.position, -transform.forward, out _rayHit, 2))
+            {
+                GridScripts.PanelBehaviour panel = _rayHit.transform.GetComponent<GridScripts.PanelBehaviour>();
+                if(panel)
+                {
+                    panelsInRange.Remove(panel);
+                }
+            }
+        }
+        private void CheckCurrentPanel()
+        {
+            if(block.owner.name == "Player1" && BlackBoard.p2PanelList.Contains(_currentPanel.gameObject))
+            {
+                _canSpawnGlobally = true;
+            }
+            else if(block.owner.name == "Player2" && BlackBoard.p1PanelList.Contains(_currentPanel.gameObject))
+            {
+                _canSpawnGlobally = true;
+            }
+        }
         public bool FindNeighbors()
         {
+            if(_canSpawnGlobally)
+            {
+                if (GridScripts.GridBehaviour.globalPanelList.GetPanels(NeighboorCheck, out panelsInRange))
+                {
+                    FilterNeighbors();
+                    return true;
+                }
+                Debug.Log("Couldn't find neighboors");
+                return false;
+            }
             if (_playerMoveScript.Panels.GetPanels(NeighboorCheck, out panelsInRange))
             {
+                FilterNeighbors();
                 return true;
             }
             Debug.Log("Couldn't find neighboors");
@@ -126,7 +171,7 @@ namespace Lodis.GamePlay.BlockScripts
             {
                
                 var position = new Vector3(panelsInRange[panelIndex].gameObject.transform.position.x, _currentBlock.Block.transform.position.y, panelsInRange[panelIndex].gameObject.transform.position.z);
-                GameObject BlockCopy = Instantiate(_currentBlock.Block, position,rotation);
+                GameObject BlockCopy = Instantiate(_currentBlock.Block, position, _playerSpawnScript.Block_rotation);
                 BlockBehaviour copyScript = BlockCopy.GetComponent<BlockBehaviour>();
                 copyScript.currentPanel = panelsInRange[panelIndex].gameObject;
                 copyScript.owner = _blockScript.owner;
@@ -259,7 +304,19 @@ namespace Lodis.GamePlay.BlockScripts
         }
         private void Update()
         {
-            UpdateColor();
+            if(!_playerAttached)
+            {
+                UpdateColor();
+            }
+            if(_blockTransporter == null && _playerAttached)
+            {
+                Vector3 position = new Vector3(transform.position.x, _blockTransporterRef.transform.position.y, transform.position.z);
+                GameObject clone = Instantiate(_blockTransporterRef, position, _blockTransporterRef.transform.rotation);
+                _blockTransporter = clone.GetComponent<BlockTransporterBehaviour>();
+                _blockTransporter.owner = playerAttackScript.name;
+                _blockTransporter.ownerTransform = transform;
+                _blockTransporter._playerSpawnScript = _playerSpawnScript;
+            }
         }
         public void ActivateDisplayMode()
         {
@@ -270,17 +327,41 @@ namespace Lodis.GamePlay.BlockScripts
 
         public void UpgradePlayer(PlayerAttackBehaviour player)
         {
-            throw new System.NotImplementedException();
+            playerAttackScript = player;
+            playerAttackScript.weaponUseAmount = playerUseAmount;
+            _spawnRoutine.shouldStop = true;
+            _spawnRoutine.StopAllCoroutines();
+            transform.SetParent(player.transform, false);
+            teleportBeam.transform.parent = null;
+            teleportBeam.Teleport(player.transform.position);
+            player.SetSecondaryWeapon(this, playerUseAmount);
+            _playerAttached = true;
+            transform.position += Vector3.up * 6;
         }
 
         public void ActivatePowerUp()
         {
-            throw new System.NotImplementedException();
+            if(_blockTransporter.Deployed)
+            {
+                _blockTransporter.DropBlock();
+            }
+            else
+            {
+                playerAttackScript.IncreaseAmmuntion(1);
+                _blockTransporter.moveDirection = playerAttackScript.transform.forward;
+                _blockTransporter.Deploy();
+            }
+            //else
+            //{
+            //    _blockTransporter.moveDirection = playerAttackScript.transform.forward;
+            //    _blockTransporter.Deploy();
+            //}
         }
 
         public void DetachFromPlayer()
         {
-            throw new System.NotImplementedException();
+            GameObject temp = gameObject;
+            Destroy(temp);
         }
 
         public void DeactivatePowerUp()

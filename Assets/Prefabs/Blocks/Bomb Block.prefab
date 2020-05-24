@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4331929423343560}
   - component: {fileID: 33511347130079068}
   - component: {fileID: 23324944472350162}
-  - component: {fileID: 136074850944382762}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -56,7 +55,6 @@ GameObject:
   - component: {fileID: 4623800695213140}
   - component: {fileID: 33965342604679306}
   - component: {fileID: 23559841040172504}
-  - component: {fileID: 136401932463178988}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -74,7 +72,6 @@ GameObject:
   - component: {fileID: 4384968338725942}
   - component: {fileID: 33391068298237220}
   - component: {fileID: 23966419529823542}
-  - component: {fileID: 136543574177190484}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -92,7 +89,6 @@ GameObject:
   - component: {fileID: 4568355655221490}
   - component: {fileID: 33595844379481234}
   - component: {fileID: 23345880988235236}
-  - component: {fileID: 136229280776856506}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -110,7 +106,6 @@ GameObject:
   - component: {fileID: 4051779175659272}
   - component: {fileID: 33313495858233166}
   - component: {fileID: 23487948142733052}
-  - component: {fileID: 136991822116372246}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -232,7 +227,6 @@ GameObject:
   - component: {fileID: 4587381163804158}
   - component: {fileID: 33231877887758978}
   - component: {fileID: 23585554264508078}
-  - component: {fileID: 136018554438200008}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -267,7 +261,6 @@ GameObject:
   - component: {fileID: 4612662847723300}
   - component: {fileID: 33464686263198666}
   - component: {fileID: 23800429758623426}
-  - component: {fileID: 136963820041458666}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -285,7 +278,6 @@ GameObject:
   - component: {fileID: 4116932500290644}
   - component: {fileID: 33734157799770764}
   - component: {fileID: 23551496151211844}
-  - component: {fileID: 136574939738590960}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -337,7 +329,6 @@ GameObject:
   - component: {fileID: 4477140655675628}
   - component: {fileID: 33267298791767016}
   - component: {fileID: 23214360721826586}
-  - component: {fileID: 136670804232984946}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -370,7 +361,6 @@ GameObject:
   - component: {fileID: 4054920572604692}
   - component: {fileID: 33441746599449584}
   - component: {fileID: 23414053126760718}
-  - component: {fileID: 136983737671673332}
   m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
@@ -388,7 +378,6 @@ GameObject:
   - component: {fileID: 4643484967535574}
   - component: {fileID: 33650079665320252}
   - component: {fileID: 23333935638211084}
-  - component: {fileID: 136614136987466430}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -421,7 +410,6 @@ GameObject:
   - component: {fileID: 4197409335933650}
   - component: {fileID: 33652905659223832}
   - component: {fileID: 23482993604940660}
-  - component: {fileID: 136425724275576880}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -439,7 +427,6 @@ GameObject:
   - component: {fileID: 4297423948795622}
   - component: {fileID: 33776778782932804}
   - component: {fileID: 23082797508580342}
-  - component: {fileID: 136899988759822554}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -457,7 +444,6 @@ GameObject:
   - component: {fileID: 4646937815469362}
   - component: {fileID: 33918138482297990}
   - component: {fileID: 23630557891946050}
-  - component: {fileID: 136859410228902734}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -492,7 +478,6 @@ GameObject:
   - component: {fileID: 4551873788874134}
   - component: {fileID: 33683367381448778}
   - component: {fileID: 23442326052680874}
-  - component: {fileID: 136769920356475748}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -535,7 +520,6 @@ GameObject:
   - component: {fileID: 4282313526193932}
   - component: {fileID: 33003624917347830}
   - component: {fileID: 23296246978894288}
-  - component: {fileID: 136106062557554170}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -570,7 +554,6 @@ GameObject:
   - component: {fileID: 4776004385045290}
   - component: {fileID: 33130638390852236}
   - component: {fileID: 23453191565441318}
-  - component: {fileID: 136194340713665168}
   m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
@@ -622,7 +605,6 @@ GameObject:
   - component: {fileID: 4430661859465602}
   - component: {fileID: 33107900400096866}
   - component: {fileID: 23683325501598974}
-  - component: {fileID: 136556498654803010}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -640,7 +622,6 @@ GameObject:
   - component: {fileID: 4865689238630286}
   - component: {fileID: 33168755278911082}
   - component: {fileID: 23376157872256620}
-  - component: {fileID: 136053751211075346}
   m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -2946,253 +2927,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.48
   m_Center: {x: 0, y: -0.45, z: 0}
---- !u!136 &136018554438200008
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1451054372157798}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136053751211075346
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904624039823884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136074850944382762
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074423850827024}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136106062557554170
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1789834718291340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136194340713665168
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1816828861836018}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136229280776856506
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1193222523434894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136401932463178988
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146343886644196}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136425724275576880
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1645837530881952}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136543574177190484
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147091978554532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136556498654803010
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877770913901036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136574939738590960
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1494833105671582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136614136987466430
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624267420404694}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136670804232984946
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1585714501542498}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136769920356475748
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1730366763940940}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136859410228902734
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1701059659102252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136899988759822554
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663633539946476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136963820041458666
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482282759127782}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136983737671673332
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622872189158174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!136 &136991822116372246
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199496188971910}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222200662681301398
 CanvasRenderer:
   m_ObjectHideFlags: 1

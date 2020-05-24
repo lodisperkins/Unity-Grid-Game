@@ -96,7 +96,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
                     willInteract = false;
                     return;
                 }
-                _currentBlock.SendMessage("ActivateSpecialAction");
+                _currentBlock.SendMessage("ActivateSpecialAction",name);
             }
 		}
         willInteract = false;
