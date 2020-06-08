@@ -39,7 +39,6 @@ namespace Lodis
             {
                 objectRigidbody.AddForce(direction * power, ForceMode.Impulse);
                 hitTarget = ray.transform.gameObject;
-                return;
             }
             if (CompareTag("Player"))
             {

@@ -221,7 +221,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
         {
             Destroy(tempSource);
         }
-        if(SecondAbilityUseAmount.Val == 0 && secondaryWeapon != null)
+        if(SecondAbilityUseAmount.Val <= 0 && secondaryWeapon != null)
         {
             sliderScript.gameObject.SetActive(false);
             secondaryWeapon.DetachFromPlayer();

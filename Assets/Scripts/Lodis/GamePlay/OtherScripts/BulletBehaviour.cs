@@ -145,13 +145,12 @@ namespace Lodis
                         {
                             health.takeDamage(DamageVal);
                         }
-                            if (destroyOnHit)
-                            {
-                                Destroy(TempObject);
-                            }
+                        if (destroyOnHit)
+                        {
+                            Destroy(TempObject);
                         }
-                        
-                        break;
+                    }
+                    break;
                 }
                 case "Core":
                 {

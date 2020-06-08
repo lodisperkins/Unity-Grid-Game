@@ -16,6 +16,10 @@ public class RotateBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
         if(rotateOnSelf)
         {
             transform.Rotate(axis, Space.Self);
