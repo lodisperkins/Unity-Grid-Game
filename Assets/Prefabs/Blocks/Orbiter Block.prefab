@@ -2724,7 +2724,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1455435606527152}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -3461,6 +3461,7 @@ MonoBehaviour:
   - {fileID: 114855967228121684}
   - {fileID: 114317193002363672}
   - {fileID: 114137832822111316}
+  _canBeHeld: 0
 --- !u!114 &114089344093683794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3502,7 +3503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 114815086511935174}
-  DamageVal: 3
+  DamageVal: 1
   ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
 --- !u!114 &114134211248467716
 MonoBehaviour:
@@ -3601,6 +3602,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onTriggerStay: 0
 --- !u!114 &114162264303393564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3629,6 +3631,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 7430f1e36fde8284d9f84e88662fc10b, type: 2}
   health: {fileID: 0}
   isAlive: 0
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -3664,6 +3667,16 @@ MonoBehaviour:
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
   ps2: {fileID: 0}
   healthFull: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onUnstunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114317193002363672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3734,6 +3747,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onTriggerStay: 0
 --- !u!114 &114372086982346384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3796,7 +3810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 114815086511935174}
-  DamageVal: 3
+  DamageVal: 1
   ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
 --- !u!114 &114440889182419572
 MonoBehaviour:
@@ -3829,7 +3843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 114815086511935174}
-  DamageVal: 3
+  DamageVal: 1
   ps: {fileID: 1509889381424208, guid: 6a1dc603516afef4692ccd97e68f4ede, type: 2}
 --- !u!114 &114547294263425514
 MonoBehaviour:
@@ -4226,6 +4240,8 @@ MonoBehaviour:
   _type: Attack
   types: []
   canDelete: 0
+  inMotion: 0
+  _maxLevel: 3
 --- !u!114 &114833949336806034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4323,6 +4339,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onTriggerStay: 0
 --- !u!114 &114951863715265950
 MonoBehaviour:
   m_ObjectHideFlags: 1

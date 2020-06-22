@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
@@ -19,6 +20,7 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField] private bool _canBeHeld;
         [SerializeField] private GameObject smartBulletRef;
         private string _nameOfItem;
+        [SerializeField] private FlashBehaviour flashScript;
         public BlockBehaviour block
         {
             get
@@ -166,7 +168,21 @@ namespace Lodis.GamePlay.BlockScripts
             GameObject temp = gameObject;
             Destroy(temp);
         }
+        
+        public void Stun()
+        {
+            turretScript.StopAllCoroutines();
+            flashScript.isInfinite = true;
+            flashScript.StartFlashing();
+        }
 
+        public void Unstun()
+        {
+            turretScript.StartCoroutine(turretScript.Fire());
+            flashScript.isInfinite = false;
+            flashScript.StopFlashing();
+        }
+        
         public void DeactivatePowerUp()
         {
             throw new NotImplementedException();

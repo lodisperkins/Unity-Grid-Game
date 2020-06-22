@@ -270,6 +270,16 @@ namespace Lodis.GamePlay
             throw new System.NotImplementedException();
         }
 
+        public void Stun()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Unstun()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void DeactivatePowerUp()
         {
             throw new System.NotImplementedException();

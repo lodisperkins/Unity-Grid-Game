@@ -34,6 +34,8 @@ namespace Lodis
         //the current panel the player is on
         public GameObject _currentPanel;
         public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
+        [SerializeField] private FlashBehaviour _flashScript;
+        private HealthBehaviour _health;
         public GameObject CurrentPanel
         {
             get
@@ -61,6 +63,9 @@ namespace Lodis
             canMove = true;
             panelStealActive = false;
             _currentPanel = Panels[16];
+            _health = GetComponent<HealthBehaviour>();
+            _health.onStunned.AddListener(Stun);
+            _health.onUnstunned.AddListener(Unstun);
             if (name == "Player1")
             {
                 BlackBoard.Player1 = gameObject;
@@ -71,6 +76,21 @@ namespace Lodis
             }
         }
 
+        private void Stun()
+        {
+            GetComponent<InputButtonBehaviour>().enabled = false;
+            GetComponent<InputAxisBehaviour>().enabled = false;
+            _flashScript.isInfinite = true;
+            _flashScript.StartFlashing();
+        }
+        private void Unstun()
+        {
+            GetComponent<InputButtonBehaviour>().enabled = true;
+            GetComponent<InputAxisBehaviour>().enabled = true;
+            _flashScript.isInfinite = false;
+            _flashScript.StopFlashing();
+        }
+        
         private void Awake()
         {
             Panels.Init(startingPanels, name);

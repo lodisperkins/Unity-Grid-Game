@@ -48,6 +48,7 @@ namespace Lodis
         public List<string> types;
         public bool canDelete;
         public bool inMotion;
+        [SerializeField] private int _maxLevel = 3;
         public HealthBehaviour HealthScript
         {
             get
@@ -112,6 +113,8 @@ namespace Lodis
             canUpgrade = true;
             _currentLevel = 1;
             canDelete = true;
+            _health.onStunned.AddListener(StunComponents);
+            _health.onUnstunned.AddListener(UnstunComponents);
         }
         //Turns off UI and disablkes any special components attached
         public void ActivateDisplayMode()
@@ -176,13 +179,22 @@ namespace Lodis
             {
                 return;
             }
+            var destroyblock = block.GetComponent<DeletionBlockBehaviour>();
+            if (_currentLevel >= _maxLevel && destroyblock == null)
+            {
+                block.DestroyBlock();
+                block.canUpgrade = false;
+                currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
+                return;
+            }
+            
             block.actionComponent.UpgradeBlock(gameObject);
             _currentLevel++;
             onUpgrade.Raise(gameObject);
             types.Add(block._type);
             //Destroys the block placed on top after the upgrade to free up space
             block.GetComponent<BlockBehaviour>();
-            var destroyblock = block.GetComponent<DeletionBlockBehaviour>();
+            
             if (block != null && destroyblock == null)
             {
                 block.DestroyBlock();
@@ -267,7 +279,21 @@ namespace Lodis
                     player2Materials.Val += cost / 2;
                 }
             }
-            
+        }
+
+        private void StunComponents()
+        {
+            foreach (IUpgradable component in componentList)
+            {
+                component.Stun();
+            }
+        }
+        private void UnstunComponents()
+        {
+            foreach (IUpgradable component in componentList)
+            {
+                component.Unstun();
+            }
         }
 
         private void Update()

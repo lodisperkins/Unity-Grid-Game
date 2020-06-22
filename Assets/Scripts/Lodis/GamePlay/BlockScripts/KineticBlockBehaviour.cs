@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
@@ -259,6 +260,16 @@ namespace Lodis.GamePlay.BlockScripts
             playerAttackScript.secondaryInputCanBeHeld = false;
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+
+        public void Stun()
+        {
+            
+        }
+
+        public void Unstun()
+        {
+           
         }
 
         public void DeactivatePowerUp()

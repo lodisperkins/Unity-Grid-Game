@@ -156,6 +156,7 @@ namespace Lodis.GamePlay.GridScripts
             {
                 blockCounter = 0;
             }
+            
             return false;
         }
         //highlights the panel when a bullet passes through it

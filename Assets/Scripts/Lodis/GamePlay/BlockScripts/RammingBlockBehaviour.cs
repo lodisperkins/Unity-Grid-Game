@@ -275,6 +275,16 @@ namespace Lodis.GamePlay.BlockScripts
             Destroy(temp);
         }
 
+        public void Stun()
+        {
+            
+        }
+
+        public void Unstun()
+        {
+            
+        }
+
         public void DeactivatePowerUp()
         {
             gameObject.SetActive(true);

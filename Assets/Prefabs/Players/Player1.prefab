@@ -14890,6 +14890,7 @@ MonoBehaviour:
     type: 2}
   _currentPanel: {fileID: 0}
   shakeScript: {fileID: 114380673583800192}
+  _flashScript: {fileID: 114770343331392972}
   startingPanels:
   - {fileID: 0}
   - {fileID: 0}
@@ -15132,6 +15133,16 @@ MonoBehaviour:
   ps: {fileID: 19800000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 2}
   ps2: {fileID: 0}
   healthFull: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onUnstunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114529422728853658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15341,6 +15352,11 @@ MonoBehaviour:
   _blockAmountScore: 0
   _totalScore: 0
   _shootDelay: 0
+  healthScript: {fileID: 0}
+  supportScorePass: 0
+  coreScorePass: 0
+  supportDefScorePass: 0
+  gridScorePass: 0
 --- !u!114 &114722563692800334
 MonoBehaviour:
   m_ObjectHideFlags: 1

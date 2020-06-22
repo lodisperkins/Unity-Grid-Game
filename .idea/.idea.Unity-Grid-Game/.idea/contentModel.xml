@@ -21,43 +21,13 @@
               </e>
             </e>
           </e>
-          <e p="VolumetricLines" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Utils" t="Include">
-                <e p="TransformExtensionMethods.cs" t="Include" />
-              </e>
-              <e p="VolumetricLineBehavior.cs" t="Include" />
-              <e p="VolumetricLineSettings.cs" t="Include" />
-              <e p="VolumetricLineStripBehavior.cs" t="Include" />
-              <e p="VolumetricLineVertexData.cs" t="Include" />
-              <e p="VolumetricMultiLineBehavior.cs" t="Include" />
-            </e>
-            <e p="Shaders" t="Include">
-              <e p="_SimpleShader.cginc" t="Include" />
-              <e p="_StripShader.cginc" t="Include" />
-              <e p="Additive.shader" t="Include" />
-              <e p="AlphaBlended.shader" t="Include" />
-              <e p="Fast-Additive.shader" t="Include" />
-              <e p="Fast-AlphaBlended.shader" t="Include" />
-              <e p="Strip-Additive.shader" t="Include" />
-              <e p="Strip-AlphaBlended.shader" t="Include" />
-            </e>
-          </e>
-          <e p="Yurowm" t="Include">
-            <e p="Shaders" t="Include">
-              <e p="SkinShader.shader" t="Include" />
-            </e>
-          </e>
         </e>
         <e p="Materials" t="Include">
-          <e p="UI-Default-No-Alpha.shader" t="Include" />
+          <e p="OtherMaterials" t="Include">
+            <e p="UI-Default-No-Alpha.shader" t="Include" />
+          </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Emmanuel" t="Include">
-            <e p="GameObjectBehaviour.cs" t="Include" />
-            <e p="GameObjectList.cs" t="Include" />
-            <e p="UIHandlerBehaviour.cs" t="Include" />
-          </e>
           <e p="Lodis" t="Include">
             <e p="Event System" t="Include">
               <e p="Event.cs" t="Include" />
@@ -70,11 +40,13 @@
                 <e p="AIMovementBehaviour.cs" t="Include" />
                 <e p="AISpawnBehaviour.cs" t="Include" />
                 <e p="BinaryTreeBehaviour.cs" t="Include" />
+                <e p="Blackboard.cs" t="Include" />
               </e>
               <e p="BlockScripts" t="Include">
                 <e p="AttackUpgradeBehaviour.cs" t="Include" />
                 <e p="BlockBehaviour.cs" t="Include" />
                 <e p="BlockUIBehaviour.cs" t="Include" />
+                <e p="BombBlockBehaviour.cs" t="Include" />
                 <e p="DefenseBarrierBehaviour.cs" t="Include" />
                 <e p="DeletionBlockBehaviour.cs" t="Include" />
                 <e p="EnergyBlockBehaviour.cs" t="Include" />
@@ -85,6 +57,7 @@
                 <e p="OrbBehaviour.cs" t="Include" />
                 <e p="OrbiterBlockBehaviour.cs" t="Include" />
                 <e p="RammingBlockBehaviour.cs" t="Include" />
+                <e p="WindBlockBehaviour.cs" t="Include" />
               </e>
               <e p="GridScripts" t="Include">
                 <e p="GridBehaviour.cs" t="Include" />
@@ -92,16 +65,28 @@
                 <e p="PanelList.cs" t="Include" />
               </e>
               <e p="OtherScripts" t="Include">
+                <e p="BlackHoleBehaviour.cs" t="Include" />
+                <e p="BlockTransporterBehaviour.cs" t="Include" />
                 <e p="BulletBehaviour.cs" t="Include" />
                 <e p="CoreBehaviour.cs" t="Include" />
                 <e p="DestroyBehaviour.cs" t="Include" />
+                <e p="FlashBehaviour.cs" t="Include" />
                 <e p="GunBehaviour.cs" t="Include" />
                 <e p="HealthBehaviour.cs" t="Include" />
+                <e p="HitboxBehaviour.cs" t="Include" />
+                <e p="HitStopBehaviour.cs" t="Include" />
                 <e p="HoverBehaviour.cs" t="Include" />
+                <e p="KineticBombBehaviour.cs" t="Include" />
+                <e p="KnockBackBehaviour.cs" t="Include" />
+                <e p="MiniBombBehaviour.cs" t="Include" />
+                <e p="MouseMovementBehaviour.cs" t="Include" />
+                <e p="ParalyzerBulletBehaviour.cs" t="Include" />
                 <e p="RotateBehaviour.cs" t="Include" />
                 <e p="RoutineBehaviour.cs" t="Include" />
                 <e p="ScreenShakeBehaviour.cs" t="Include" />
                 <e p="SeekBehaviour.cs" t="Include" />
+                <e p="SizeLerpBehaviour.cs" t="Include" />
+                <e p="SmartBulletBehaviour.cs" t="Include" />
               </e>
               <e p="PlayerScripts" t="Include">
                 <e p="ArrowBehaviour.cs" t="Include" />
@@ -115,34 +100,40 @@
                 <e p="TeleportBeamBehaviour.cs" t="Include" />
               </e>
               <e p="UIScripts" t="Include">
+                <e p="BlockControllerBehaviour.cs" t="Include" />
+                <e p="BlockDisplayBehaviour.cs" t="Include" />
                 <e p="DisplayBehaviour.cs" t="Include" />
                 <e p="IconBehaviour.cs" t="Include" />
+                <e p="MenuBehaviour.cs" t="Include" />
                 <e p="OverdriveToggleBehaviour.cs" t="Include" />
                 <e p="PauseMenuBehaviour.cs" t="Include" />
+                <e p="SceneTransferBehaviour.cs" t="Include" />
                 <e p="SliderBehaviour.cs" t="Include" />
                 <e p="StartingUIBehaviour.cs" t="Include" />
                 <e p="TextBehaviour.cs" t="Include" />
+                <e p="UpdatableTextBehaviour.cs" t="Include" />
               </e>
             </e>
             <e p="Input" t="Include">
               <e p="InputAxisBehaviour.cs" t="Include" />
               <e p="InputButtonBehaviour.cs" t="Include" />
+              <e p="TestButtonBehaviour.cs" t="Include" />
+            </e>
+            <e p="Interfaces" t="Include">
+              <e p="IUpgradable.cs" t="Include" />
             </e>
             <e p="Movement" t="Include">
               <e p="PlayerLookBehaviour.cs" t="Include" />
               <e p="PlayerMovementBehaviour.cs" t="Include" />
             </e>
           </e>
-          <e p="Steffan" t="Include">
-            <e p="PlayerHPTextBehaviour.cs" t="Include" />
-          </e>
           <e p="VariableScripts" t="Include">
             <e p="BinaryTree.cs" t="Include" />
             <e p="BlockVariable.cs" t="Include" />
-            <e p="BoolDelegate.cs" t="Include" />
             <e p="GameObjectList.cs" t="Include" />
             <e p="InputVariable.cs" t="Include" />
             <e p="IntVariable.cs" t="Include" />
+            <e p="MenuItem.cs" t="Include" />
             <e p="Node.cs" t="Include" />
             <e p="Vector2Variable.cs" t="Include" />
           </e>

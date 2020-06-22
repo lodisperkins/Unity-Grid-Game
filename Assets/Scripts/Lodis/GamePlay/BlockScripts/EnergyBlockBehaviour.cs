@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
 {
@@ -145,6 +146,16 @@ namespace Lodis.GamePlay.BlockScripts
         {
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+
+        public void Stun()
+        {
+            
+        }
+
+        public void Unstun()
+        {
+            
         }
 
         public void DeactivatePowerUp()

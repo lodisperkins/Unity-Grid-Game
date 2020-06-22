@@ -31,6 +31,8 @@ namespace Lodis.GamePlay.BlockScripts
         private TeleportBeamBehaviour teleportBeam;
         [SerializeField]
         private bool _canBeHeld;
+
+        [SerializeField] private FlashBehaviour _flashScript;
         public BlockBehaviour block
         {
             get
@@ -231,6 +233,20 @@ namespace Lodis.GamePlay.BlockScripts
             playerAttackScript.secondaryInputCanBeHeld = false;
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+
+        public void Stun()
+        {
+            StopAllCoroutines();
+            _flashScript.isInfinite = true;
+            _flashScript.StartFlashing();
+        }
+
+        public void Unstun()
+        {
+            StartCoroutine(TryToHeal());
+            _flashScript.isInfinite = false;
+            _flashScript.StopFlashing();
         }
 
         public void DeactivatePowerUp()

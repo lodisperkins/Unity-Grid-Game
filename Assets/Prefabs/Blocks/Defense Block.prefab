@@ -3467,6 +3467,8 @@ MonoBehaviour:
   _type: Defense
   types: []
   canDelete: 0
+  inMotion: 0
+  _maxLevel: 3
 --- !u!114 &114891729799357068
 MonoBehaviour:
   m_ObjectHideFlags: 1

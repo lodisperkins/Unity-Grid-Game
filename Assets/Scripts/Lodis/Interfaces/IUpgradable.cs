@@ -49,6 +49,8 @@ namespace Lodis
         void ActivatePowerUp();
         void DeactivatePowerUp();
         void DetachFromPlayer();
+        void Stun();
+        void Unstun();
     }
 }
 

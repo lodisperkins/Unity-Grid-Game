@@ -9159,6 +9159,8 @@ MonoBehaviour:
   _type: Support
   types: []
   canDelete: 0
+  inMotion: 0
+  _maxLevel: 3
 --- !u!114 &114858185130071156
 MonoBehaviour:
   m_ObjectHideFlags: 1

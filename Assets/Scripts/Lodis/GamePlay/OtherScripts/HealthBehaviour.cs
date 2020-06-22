@@ -33,7 +33,18 @@ namespace Lodis
         [SerializeField] private ParticleSystem ps;
         [SerializeField] private ParticleSystem ps2;
         public bool healthFull;
+        public UnityEvent onStunned;
+        public UnityEvent onUnstunned;
+        private bool _stunned;
 
+        public bool Stunned
+        {
+            get
+            {
+                return _stunned;
+            }
+        }
+        
         public IntVariable HealthRef
         {
             get
@@ -56,6 +67,12 @@ namespace Lodis
             {
                 return;
             }
+
+            if (damageVal >= 5 &&!_stunned)
+            {
+                StartCoroutine(Stun(4));
+            }
+            
             health.Val -= damageVal;
             OnHit.Raise(gameObject);
             if (health.Val <= 0)
@@ -63,6 +80,16 @@ namespace Lodis
                 isAlive = false;
             }
         }
+
+        IEnumerator Stun(float duration)
+        {
+            _stunned = true;
+            onStunned.Invoke();
+            yield return  new WaitForSeconds(duration);
+            _stunned = false;
+            onUnstunned.Invoke();
+        }
+        
         //destroys the block within a given time
         public void DestroyBlock(float time)
         {

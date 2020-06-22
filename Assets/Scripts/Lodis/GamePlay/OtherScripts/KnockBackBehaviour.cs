@@ -16,27 +16,16 @@ namespace Lodis
         {
             objectRigidbody = GetComponent<Rigidbody>();
         }
-        IEnumerator Stun(float stunTime)
-        {
-            GetComponent<InputButtonBehaviour>().enabled = false;
-            BlackBoard.grid.onStun.Raise(gameObject);
-            yield return new WaitForSeconds(stunTime);
-            GetComponent<InputButtonBehaviour>().enabled = true;
-            BlackBoard.grid.onStopStun.Raise(gameObject);
-        }
         public void KnockBack(Vector3 direction,float power,float stunTime = 0)
         {
             onKnockback.Raise();
-            if (CompareTag("Player"))
-            {
-                StartCoroutine(Stun(stunTime));
-            }
             Vector3 rayDirection = new Vector3(0, 0, direction.z);
             raycastPanelHits = Physics.RaycastAll(transform.position, rayDirection, 3);
             int layerMask = 1 << 9;
            
             if(Physics.Raycast(transform.position, rayDirection, out ray, 3, layerMask))
             {
+                objectRigidbody.isKinematic = false;
                 objectRigidbody.AddForce(direction * power, ForceMode.Impulse);
                 hitTarget = ray.transform.gameObject;
             }
@@ -75,6 +64,7 @@ namespace Lodis
                     GetComponent<GamePlay.OtherScripts.ScreenShakeBehaviour>().shouldStop = true;
                     PlayerMovementBehaviour playerMoveScript = GetComponent<PlayerMovementBehaviour>();
                     playerMoveScript.ResetPositionToCurrentPanel();
+                    objectRigidbody.isKinematic = true;
                 }
                 else if (CompareTag("Block"))
                 {

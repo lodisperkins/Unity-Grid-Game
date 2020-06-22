@@ -79,7 +79,7 @@ namespace Lodis
             _currentAmmo = bulletCount;
         }
         //fires a bullet with a specified interval of time
-        private IEnumerator Fire()
+        public IEnumerator Fire()
         {
             for (int i = 0; i < bulletCount; i++)
             {

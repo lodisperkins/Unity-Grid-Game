@@ -560,19 +560,19 @@ namespace Lodis.GamePlay.AIFolder
         }
 		private void Update()
 		{
-            //if (healthScript.health.Val < healthScript.HealthRef.Val * .50)
-            //{
-            //    SendMessage("StopMaterialLoss");
-            //    if(_spawnScript.PlayerSpawnScript.overdriveEnabled)
-            //    {
-            //        _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() == 80);
-            //        _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore > 60);
-            //        _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == 100);
-            //        _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == 100);
-            //        _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", OpeningCheck());
-            //        return;
-            //    }
-            //}
+            if (healthScript.health.Val < healthScript.HealthRef.Val * .50)
+            {
+                SendMessage("StopMaterialLoss");
+                if(_spawnScript.PlayerSpawnScript.overdriveEnabled)
+                {
+                    _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() == 80);
+                    _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore > 60);
+                    _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == 100);
+                    _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == 100);
+                    _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", OpeningCheck());
+                    return;
+                }
+            }
             _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() > gridScorePass);
             _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore>coreScorePass);
             _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == supportScorePass);

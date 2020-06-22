@@ -364,6 +364,16 @@ namespace Lodis.GamePlay.BlockScripts
             Destroy(temp);
         }
 
+        public void Stun()
+        {
+            
+        }
+
+        public void Unstun()
+        {
+            
+        }
+
         public void DeactivatePowerUp()
         {
             throw new System.NotImplementedException();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Lodis.GamePlay.BlockScripts
@@ -152,6 +153,15 @@ namespace Lodis.GamePlay.BlockScripts
             _orb3.GetComponent<SphereCollider>().enabled = false;
             _orb3.GetComponent<MeshRenderer>().enabled = false;
         }
+        public void EnableOrbMesh()
+        {
+            _orb1.GetComponent<MeshRenderer>().enabled = true;
+            _orb1.GetComponent<SphereCollider>().enabled = true;
+            _orb2.GetComponent<SphereCollider>().enabled = true;
+            _orb2.GetComponent<MeshRenderer>().enabled = true;
+            _orb3.GetComponent<SphereCollider>().enabled = true;
+            _orb3.GetComponent<MeshRenderer>().enabled = true;
+        }
 		public void TransferOwner(GameObject otherBlock)
 		{
 			_blockScript = otherBlock.GetComponent<BlockBehaviour>();
@@ -204,6 +214,16 @@ namespace Lodis.GamePlay.BlockScripts
         {
             GameObject temp = gameObject;
             Destroy(temp);
+        }
+
+        public void Stun()
+        {
+            DisableOrbMesh();
+        }
+
+        public void Unstun()
+        {
+            EnableOrbMesh();
         }
 
         public void DeactivatePowerUp()
