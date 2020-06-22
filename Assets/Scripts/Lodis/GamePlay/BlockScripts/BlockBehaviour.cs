@@ -47,6 +47,7 @@ namespace Lodis
         [SerializeField] private string _type;
         public List<string> types;
         public bool canDelete;
+        public bool inMotion;
         public HealthBehaviour HealthScript
         {
             get
@@ -70,6 +71,15 @@ namespace Lodis
                 return _type;
             }
         }
+
+        public int CurrentLevel
+        {
+            get
+            {
+                return _currentLevel;
+            }
+        }
+
         private void Start()
         {
             InitializeBlock();
@@ -83,11 +93,11 @@ namespace Lodis
         //sets all values to default
         public void InitializeBlock()
         {
-            if(owner.name =="Player1")
+            if(owner.name =="Player1" && name != "DeletionBlock(Clone)")
             {
                 BlackBoard.p1Blocks.Add(this);
             }
-            else
+            else if(name != "DeletionBlock(Clone)")
             {
                 BlackBoard.p2Blocks.Add(this);
             }
@@ -129,7 +139,7 @@ namespace Lodis
             {
                 Upgrade(other.GetComponent<BlockBehaviour>());
             }
-            else if (other.CompareTag("Panel"))
+            else if (other.CompareTag("Panel") && inMotion)
             {
                 int oldWeight = Panel.blockCounter;
                 currentPanel = other.gameObject;
@@ -190,7 +200,7 @@ namespace Lodis
 
             if (canUpgrade == false && HealthScript != null)
             {
-                HealthScript.playDeathParticleSystems(2);
+                HealthScript.PlayDeathParticleSystems(2);
             }
             else if (!canUpgrade && HealthScript != null)
             {
@@ -233,7 +243,7 @@ namespace Lodis
             
             if (canUpgrade == false && HealthScript != null)
             {
-                HealthScript.playDeathParticleSystems(2);
+                HealthScript.PlayDeathParticleSystems(2);
             }
             else if(!canUpgrade&& HealthScript != null)
             {

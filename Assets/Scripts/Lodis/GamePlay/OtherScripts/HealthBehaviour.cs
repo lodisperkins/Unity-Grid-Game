@@ -66,7 +66,7 @@ namespace Lodis
         //destroys the block within a given time
         public void DestroyBlock(float time)
         {
-            playDeathParticleSystems(2);
+            PlayDeathParticleSystems(2);
             GameObject tempGameObject = gameObject;
             if (OnObjectDeath != null && hasRaised == false)
             {
@@ -80,9 +80,9 @@ namespace Lodis
             Destroy(tempGameObject,time);
         }
         //plays particles after the object has died 
-        public void playDeathParticleSystems(float duration)
+        public void PlayDeathParticleSystems(float duration)
         {
-            var tempPs = Instantiate(ps,transform.position,transform.rotation);
+            ParticleSystem tempPs = Instantiate(ps,transform.position,transform.rotation);
             tempPs.Play();
             Destroy(tempPs, duration);
             if (ps2 != null)

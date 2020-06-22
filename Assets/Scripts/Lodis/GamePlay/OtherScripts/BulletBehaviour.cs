@@ -138,7 +138,7 @@ namespace Lodis
                 {
                     if (other.name != Owner || reflected)
                     {
-                        playDeathParticleSystems(1);
+                        PlayHitParticleSystems(1);
                         ps.transform.position = other.transform.position;
                         var health = other.GetComponent<HealthBehaviour>();
                         if (health != null)
@@ -154,7 +154,7 @@ namespace Lodis
                 }
                 case "Core":
                 {
-                    playDeathParticleSystems(1);
+                    PlayHitParticleSystems(1);
                     ps.transform.position = other.transform.position;
                     var health = other.GetComponent<HealthBehaviour>();
                     if (health != null)
@@ -184,7 +184,7 @@ namespace Lodis
                     {
                         return;
                     }
-                    playDeathParticleSystems(1);
+                    PlayHitParticleSystems(1);
                     ps.transform.position = other.transform.position;
                     var health = other.GetComponent<HealthBehaviour>();
                     if (health != null)
@@ -203,7 +203,7 @@ namespace Lodis
                     {
                         if(other.name == "Ramming Block(Clone)" && other.GetComponent<BlockBehaviour>().owner.name != Owner)
                         {
-                            playDeathParticleSystems(1);
+                            PlayHitParticleSystems(1);
                             ps.transform.position = other.transform.position;
                             var health = other.GetComponent<HealthBehaviour>();
                             if (health != null)
@@ -221,7 +221,7 @@ namespace Lodis
                     }
                 case "Barrier":
                     {
-                        playDeathParticleSystems(1);
+                        PlayHitParticleSystems(1);
                         ps.transform.position = other.transform.position;
                         break;
                     }
@@ -231,7 +231,7 @@ namespace Lodis
                     }
                 default:
                     {
-                        playDeathParticleSystems(1);
+                        PlayHitParticleSystems(1);
                         ps.transform.position = other.transform.position;
                         if (destroyOnHit)
                         {
@@ -281,9 +281,9 @@ namespace Lodis
             Destroy(TempObject);
         }
         //plays the particle system after a bullet hits an object
-        public void playDeathParticleSystems(float duration)
+        public void PlayHitParticleSystems(float duration)
         {
-            var tempPs = Instantiate(ps,transform.position,transform.rotation);
+            GameObject tempPs = Instantiate(ps,transform.position,transform.rotation);
             Destroy(tempPs,.5f);
         }
         // Update is called once per frame

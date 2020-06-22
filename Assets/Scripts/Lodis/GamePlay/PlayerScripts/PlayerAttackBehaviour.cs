@@ -39,7 +39,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private string shootAxis;
     private string secondaryShootAxis;
     private bool charging;
-    private AudioSource tempSource;
+    private GameObject tempSource;
     public float weaponUseAmount;
     private IUpgradable secondaryWeapon;
     private bool willInteract;
@@ -215,7 +215,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
     void Update () {
         if(Input.GetButtonDown(shootAxis))
         {
-            tempSource = Instantiate(chargingAudio);
+            tempSource = Instantiate(chargingAudio).gameObject;
         }
         else if(Input.GetButtonUp(shootAxis))
         {

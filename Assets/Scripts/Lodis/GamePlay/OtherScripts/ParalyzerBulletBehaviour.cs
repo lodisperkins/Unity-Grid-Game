@@ -12,7 +12,7 @@ namespace Lodis
            
             if (other.CompareTag("Player") && other.name != Owner || reflected)
             {
-                playDeathParticleSystems(1);
+                PlayHitParticleSystems(1);
                 ps.transform.position = other.transform.position;
                 PlayerSpawnBehaviour enemySpawnScript = other.GetComponent<PlayerSpawnBehaviour>();
                 if(enemySpawnScript.CheckMaterial(drainAmount))

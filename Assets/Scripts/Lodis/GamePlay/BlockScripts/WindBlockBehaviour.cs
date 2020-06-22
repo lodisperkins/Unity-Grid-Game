@@ -198,6 +198,7 @@ namespace Lodis.GamePlay
                             blockInWind.AddComponent<SeekBehaviour>();
                             blockInWind.GetComponent<SeekBehaviour>().Init(safeSpot, velocity, (int)windForce, 0.1f, true);
                             blockInWind.GetComponent<BlockBehaviour>().shakeScript.isMoving = true;
+                            blockInWind.GetComponent<BlockBehaviour>().inMotion = true;
                         }
                         break;
                     }
@@ -231,6 +232,7 @@ namespace Lodis.GamePlay
                             {
                                 blockInWind.AddComponent<SeekBehaviour>();
                                 blockInWind.GetComponent<SeekBehaviour>().Init(safeSpot, velocity, (int)windForce, 0.1f, true);
+                                blockInWind.GetComponent<BlockBehaviour>().shakeScript.isMoving = true;
                                 blockInWind.GetComponent<BlockBehaviour>().shakeScript.isMoving = true;
                             }
                                 

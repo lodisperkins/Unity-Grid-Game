@@ -33,7 +33,7 @@ namespace Lodis.GamePlay
         {
             if(_block.HealthScript != null && canExplode)
             { _explosionRadius.enabled = true;
-                _block.HealthScript.playDeathParticleSystems(.5f);
+                _block.HealthScript.PlayDeathParticleSystems(.5f);
                 _block.DestroyBlock(.1f);
             }
             

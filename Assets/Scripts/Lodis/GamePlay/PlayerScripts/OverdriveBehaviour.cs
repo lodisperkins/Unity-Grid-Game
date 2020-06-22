@@ -59,10 +59,6 @@ public class OverdriveBehaviour : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if(_playerMoveScript.panelStealActive && _playerSpawnScript.DeleteEnabled)
-        {
-            StopMaterialLoss();
-        }
 		if (_playerSpawnScript.overdriveEnabled)
 		{
 			used = true;

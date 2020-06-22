@@ -12146,7 +12146,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
   m_Name: 
@@ -12158,6 +12158,12 @@ MonoBehaviour:
   _blockHealthScore: 0
   _blockAmountScore: 0
   _totalScore: 0
+  _shootDelay: 0.3
+  healthScript: {fileID: 114357151229158148}
+  supportScorePass: 100
+  coreScorePass: 50
+  supportDefScorePass: 100
+  gridScorePass: 50
 --- !u!114 &114116989126093374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12339,7 +12345,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
   m_Name: 
@@ -12481,6 +12487,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 33df85f91fb544b42acd3b9e60a4e580, type: 2}
   health: {fileID: 11400000, guid: 977adafab67a2604d929b5ee8f3bf3ea, type: 2}
   isAlive: 1
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 10
   OnDeath:
@@ -12601,6 +12608,7 @@ MonoBehaviour:
   _bulletForce: {x: 0, y: 0, z: 0}
   bulletDelay: 1
   bulletCount: 1
+  _hasLimitedAmmo: 1
   outOfAmmo:
     m_PersistentCalls:
       m_Calls: []
@@ -12656,7 +12664,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
   m_Name: 
@@ -12709,7 +12717,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
   m_Name: 

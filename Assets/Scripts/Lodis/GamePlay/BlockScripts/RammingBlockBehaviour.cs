@@ -116,6 +116,7 @@ namespace Lodis.GamePlay.BlockScripts
                 return;
             }
             isRamming = true;
+            _blockScript.inMotion = true;
             InitializeProjectileScript();
             transform.parent.rotation = _blockScript.owner.transform.rotation;
             if(block.gameObject.name != "Ramming Block(Clone)")

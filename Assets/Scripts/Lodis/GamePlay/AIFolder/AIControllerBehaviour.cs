@@ -3,6 +3,7 @@ using Lodis.GamePlay.GridScripts;
 using UnityEngine;
 using VariableScripts;
 using System.Collections.Generic;
+using System.Collections;
 namespace Lodis.GamePlay.AIFolder
 {
 	public class AIControllerBehaviour : MonoBehaviour
@@ -11,6 +12,7 @@ namespace Lodis.GamePlay.AIFolder
 		private AIMovementBehaviour _moveScript;
         private AISpawnBehaviour _spawnScript;
         private Condition CoreDefenseCheckDelegate;
+        private Condition OpponentGridCheck;
         [SerializeField]
         private float _coreScore;
         [SerializeField]
@@ -27,14 +29,30 @@ namespace Lodis.GamePlay.AIFolder
         private float _totalScore;
         private List<int> yCoords;
         private bool isAttacking;
+        private List<string> _priorityTypes;
+        private RaycastHit _interactionRay;
+        private PlayerAttackBehaviour _attackScript;
+        [SerializeField]
+        private float _shootDelay;
+        [SerializeField]
+        private HealthBehaviour healthScript;
+        [SerializeField]
+        private float supportScorePass;
+        [SerializeField]
+        private float coreScorePass;
+        [SerializeField]
+        private float supportDefScorePass;
+        [SerializeField]
+        private float gridScorePass;
         private void Start()
 		{
 			_decisionTree = GetComponent<BinaryTreeBehaviour>();
 			_moveScript = GetComponent<AIMovementBehaviour>();
             _spawnScript = GetComponent<AISpawnBehaviour>();
+            _attackScript = GetComponent<PlayerAttackBehaviour>();
             CoreDefenseCheckDelegate += GetPanelsOnBackRow;
             yCoords = new List<int>() { 0, 1, 2, 3 };
-
+            StartCoroutine(Shoot());
         }
         public void InitializeLists()
         {
@@ -100,6 +118,10 @@ namespace Lodis.GamePlay.AIFolder
             }
             _supportDefenseScore = (totalDefenseBlocks / 2f) * 100f;
             _supportBlockScore = (totalSupportBlocks / 2f) * 100f;
+            if(_supportBlockScore == 0)
+            {
+                return 0;
+            }
             return (_supportDefenseScore + _supportBlockScore) / 2f;
         }
         private bool GetPanelsOnBackRow(object[] args)
@@ -126,6 +148,19 @@ namespace Lodis.GamePlay.AIFolder
                 else
                 {
                     return false;
+                }
+            }
+            return false;
+        }
+        private bool GetPriorityPanels(object[] args)
+        {
+            GameObject panelObject = (GameObject)args[0];
+            PanelBehaviour panelScript = panelObject.GetComponent<PanelBehaviour>();
+            foreach(string type in _priorityTypes)
+            {
+                if (panelScript.CurrentBlock.types.Contains(type))
+                {
+                    return true;
                 }
             }
             return false;
@@ -254,7 +289,11 @@ namespace Lodis.GamePlay.AIFolder
                 blocktype = BlackBoard.p1Blocks[0].Type;
                 foreach (BlockBehaviour block in BlackBoard.p1Blocks)
                 {
-                    if( block.HealthScript.health.Val < temp.HealthScript.health.Val)
+                    if (block.types.Contains("Support"))
+                    {
+                        continue;
+                    }
+                    if ( block.HealthScript.health.Val < temp.HealthScript.health.Val)
                     {
                         temp = block;
                         desiredLocation = temp.Panel;
@@ -269,7 +308,7 @@ namespace Lodis.GamePlay.AIFolder
                 blocktype = BlackBoard.p2Blocks[0].Type;
                 foreach (BlockBehaviour block in BlackBoard.p2Blocks)
                 {
-                    if (block.HealthScript.health.Val < temp.HealthScript.health.Val && block.Type != "Support")
+                    if (block.HealthScript.health.Val < temp.HealthScript.health.Val && block.types.Contains("Support") == false)
                     {
                         temp = block;
                         desiredLocation = temp.Panel;
@@ -277,8 +316,43 @@ namespace Lodis.GamePlay.AIFolder
                     }
                 }
             }
-            
             return desiredLocation;
+        }
+        private IEnumerator Shoot()
+        {
+            yield return new WaitForSecondsRealtime(3);
+            while (gameObject != null)
+            {
+                int layerMask = 1 << 9;
+                if (Physics.Raycast(transform.position, transform.forward, out _interactionRay, 50,layerMask))
+                {
+                    if(_interactionRay.collider.gameObject.CompareTag("Barrier"))
+                    {
+                        IUpgradable barrier = _interactionRay.collider.gameObject.GetComponent<IUpgradable>();
+                        if(barrier.block.owner.name != name)
+                        {
+                            _attackScript.FireGun();
+                        }
+                    }
+                    else
+                    {
+                        BlockBehaviour blockScript = _interactionRay.collider.gameObject.GetComponent<BlockBehaviour>();
+                        if (blockScript != null)
+                        {
+                            if (blockScript.owner.name != name)
+                            {
+                                _attackScript.FireGun();
+                            }
+                        }
+                        else
+                        {
+                            _attackScript.FireGun();
+                        }
+                    }
+                    
+                }
+                yield return new WaitForSeconds(_shootDelay);
+            }
         }
         private void UpgradeBlock()
         {
@@ -288,17 +362,26 @@ namespace Lodis.GamePlay.AIFolder
             {
                 case("Attack"):
                     {
-                        _spawnScript.Build(0, desiredLocation);
+                        if (_spawnScript.Build(0, desiredLocation) == false && desiredLocation.CurrentBlock.types.Contains("Support") == false)
+                        {
+                            _spawnScript.Delete(desiredLocation);
+                        }
                         break;
                     }
                 case ("Defense"):
                     {
-                        _spawnScript.Build(1, desiredLocation);
+                        if (_spawnScript.Build(1, desiredLocation) ==false && desiredLocation.CurrentBlock.types.Contains("Support") == false)
+                        {
+                            _spawnScript.Delete(desiredLocation);
+                        }
                         break;
                     }
                 case ("Support"):
                     {
-                        _spawnScript.Build(2, desiredLocation);
+                        if (_spawnScript.Build(2, desiredLocation) == false)
+                        {
+                            _spawnScript.Delete(desiredLocation);
+                        }
                         break;
                     }
             }
@@ -342,7 +425,14 @@ namespace Lodis.GamePlay.AIFolder
                 characterPanelList = BlackBoard.p2PanelList;
                 weakYCoord = (int)FindLocationOfWeakBlock("Player1", out blockType).Position.y;
             }
-            yCoords[0] = weakYCoord;
+            if(yCoords.Count == 0)
+            {
+                yCoords.Add(weakYCoord);
+            }
+            else
+            {
+                yCoords[0] = weakYCoord;
+            }
             _spawnScript.Build(0, Aim());
             isAttacking = false;
         }
@@ -371,10 +461,18 @@ namespace Lodis.GamePlay.AIFolder
             float currentBlockHealth = 0;
             foreach(BlockBehaviour block in characterBlockList)
             {
+                if(block.types.Contains("Support"))
+                {
+                    continue;
+                }
                 totalBlockHealth += block.HealthScript.HealthRef.Val;
             }
             foreach (BlockBehaviour block in characterBlockList)
             {
+                if (block.types.Contains("Support"))
+                {
+                    continue;
+                }
                 currentBlockHealth += block.HealthScript.health.Val;
             }
             _blockHealthScore = (currentBlockHealth / totalBlockHealth) * 100f;
@@ -462,10 +560,23 @@ namespace Lodis.GamePlay.AIFolder
         }
 		private void Update()
 		{
-            _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() > 50);
-            _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore>50);
-            _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore ==100);
-            _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == 100);
+            //if (healthScript.health.Val < healthScript.HealthRef.Val * .50)
+            //{
+            //    SendMessage("StopMaterialLoss");
+            //    if(_spawnScript.PlayerSpawnScript.overdriveEnabled)
+            //    {
+            //        _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() == 80);
+            //        _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore > 60);
+            //        _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == 100);
+            //        _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == 100);
+            //        _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", OpeningCheck());
+            //        return;
+            //    }
+            //}
+            _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() > gridScorePass);
+            _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore>coreScorePass);
+            _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == supportScorePass);
+            _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == supportDefScorePass);
             _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", OpeningCheck());
         }
 	}
