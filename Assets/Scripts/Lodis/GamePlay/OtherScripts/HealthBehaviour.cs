@@ -36,7 +36,7 @@ namespace Lodis
         public UnityEvent onStunned;
         public UnityEvent onUnstunned;
         private bool _stunned;
-
+        
         public bool Stunned
         {
             get
@@ -70,7 +70,7 @@ namespace Lodis
 
             if (damageVal >= 5 &&!_stunned)
             {
-                StartCoroutine(Stun(4));
+                StartCoroutine(Stun(2.5f));
             }
             
             health.Val -= damageVal;

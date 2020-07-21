@@ -2784,7 +2784,7 @@ MonoBehaviour:
   _deleteEventListener: {fileID: 114688610549813648}
   _timeUntilNextHeal: 2
   _displayColor: {r: 0, g: 1, b: 0.9424863, a: 1}
-  playerUseAmount: 100
+  playerUseAmount: 50
   teleportBeam: {fileID: 114920555537194664}
   _canBeHeld: 1
   _flashScript: {fileID: 0}

@@ -18,7 +18,7 @@ namespace Lodis.GamePlay.AIFolder
         private float _movementDelay;
         public UnityAction onArrival;
         private bool isMoving;
-
+        private HealthBehaviour healthScript;
         [SerializeField] private GameObjectList _enemyBulletList;
         public PanelBehaviour Goal
         {
@@ -44,6 +44,7 @@ namespace Lodis.GamePlay.AIFolder
             playerInput = GetComponent<InputButtonBehaviour>();
             playerInput.enabled = false;
             playerAxisInput = GetComponent<InputAxisBehaviour>();
+            healthScript = GetComponent<HealthBehaviour>();
             playerAxisInput.enabled= false;
             SafeSpotCheck += CheckIfSafeSpot;
             NeighboorCheck += CheckIfNeighboor;
@@ -62,8 +63,7 @@ namespace Lodis.GamePlay.AIFolder
 
         public bool CheckIfNeighboor(object[] arg)
         {
-	        GameObject temp = (GameObject)arg[0];
-	        Vector2 position = temp.GetComponent<PanelBehaviour>().Position;
+	        Vector2 position = ((PanelBehaviour) arg[0]).Position;
 	        Vector2 displacdementX = new Vector2(1,0);
 	        Vector2 displacdementY = new Vector2(0,1);
 	        if (position == _currentPanelInPath.Position+ displacdementX || position == _currentPanelInPath.Position -displacdementX)
@@ -250,6 +250,10 @@ namespace Lodis.GamePlay.AIFolder
             isMoving = true;
     		for (int i =0; i< _currentPath.Count; i++)
             {
+                if(healthScript.Stunned)
+                {
+                    yield return new WaitForSeconds(2.5f);
+                }
 	            PanelBehaviour panel = _currentPath[i];
     			if (panel.Position.x < playerMoveScript.Position.x)
     			{

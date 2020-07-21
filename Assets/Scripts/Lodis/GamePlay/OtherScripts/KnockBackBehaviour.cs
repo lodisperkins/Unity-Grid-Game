@@ -36,8 +36,9 @@ namespace Lodis
                 PlayerMovementBehaviour playerMoveScript = GetComponent<PlayerMovementBehaviour>();
                 if(newPanel.CompareTag("Panel"))
                 {
-                    playerMoveScript.CurrentPanel = newPanel;
+                    playerMoveScript.CurrentPanel = newPanel.GetComponent<GamePlay.GridScripts.PanelBehaviour>();
                     playerMoveScript.ResetPositionToCurrentPanel();
+                    GetComponent<GamePlay.OtherScripts.ScreenShakeBehaviour>().StartPosition = transform.position;
                 }
             }
             else if(CompareTag("Block"))

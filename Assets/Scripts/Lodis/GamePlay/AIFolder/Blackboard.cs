@@ -9,8 +9,8 @@ public static class BlackBoard{
     public static List<BlockBehaviour> p1Blocks = new List<BlockBehaviour>();
     public static List<BlockBehaviour> p2Blocks = new List<BlockBehaviour>();
     //Updated in playermovementbehaviour in update func
-    public static Vector2 p1Position = new Vector2();
-    public static Vector2 p2Position = new Vector2();
+    public static PanelBehaviour p1Position = new PanelBehaviour();
+    public static PanelBehaviour p2Position = new PanelBehaviour();
     //Set in playermovementbehaviour in start func
     public static GameObject Player1;
     public static GameObject Player2;

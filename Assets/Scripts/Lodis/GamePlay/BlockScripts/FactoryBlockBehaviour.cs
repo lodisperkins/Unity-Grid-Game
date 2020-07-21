@@ -102,8 +102,8 @@ namespace Lodis.GamePlay.BlockScripts
         }
         public bool CheckIfNeighboor(object[] arg)
         {
-            GameObject temp = (GameObject)arg[0];
-            Vector2 position = temp.GetComponent<GridScripts.PanelBehaviour>().Position;
+            GridScripts.PanelBehaviour temp = (GridScripts.PanelBehaviour)arg[0];
+            Vector2 position = temp.Position;
             Vector2 displacdementX = new Vector2(1, 0);
             Vector2 displacdementY = new Vector2(0, 1);
             if (position == _currentPanel.Position + displacdementX || position == _currentPanel.Position - displacdementX)
@@ -129,11 +129,11 @@ namespace Lodis.GamePlay.BlockScripts
         }
         private void CheckCurrentPanel()
         {
-            if(block.owner.name == "Player1" && BlackBoard.p2PanelList.Contains(_currentPanel.gameObject))
+            if(block.owner.name == "Player1" && BlackBoard.p2PanelList.Contains(_currentPanel))
             {
                 _canSpawnGlobally = true;
             }
-            else if(block.owner.name == "Player2" && BlackBoard.p1PanelList.Contains(_currentPanel.gameObject))
+            else if(block.owner.name == "Player2" && BlackBoard.p1PanelList.Contains(_currentPanel))
             {
                 _canSpawnGlobally = true;
             }

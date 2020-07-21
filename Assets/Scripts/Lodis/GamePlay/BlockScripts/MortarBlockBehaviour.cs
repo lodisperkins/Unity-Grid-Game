@@ -15,7 +15,7 @@ public class MortarBlockBehaviour : MonoBehaviour
 	//This will spawn bullets over the opponents panel
 	[SerializeField]
 	private GameObject _bulletEmitter;
-	private GameObject _targetPanel;
+	private PanelBehaviour _targetPanel;
 	[SerializeField]
 	private Vector3 _bulletEmitterPosition;
 	private PanelBehaviour _firstPanelFound;
@@ -38,10 +38,10 @@ public class MortarBlockBehaviour : MonoBehaviour
 	public void AimAtOpponentPanelP1()
 	{
 		//First find the panel that shares the same y coordinate on the grid
-		_yPosition = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.y;
+		_yPosition = (int)_block.Panel.Position.y;
 		for (int i = 0; i < _grid.CountP2; i++)
 		{
-			 _firstPanelFound = _grid.GetPanelFromP2List(i).GetComponent<PanelBehaviour>();
+			 _firstPanelFound = _grid.GetPanelFromP2List(i);
 			int targetPositionY = (int)_firstPanelFound.Position.y;
 			if (targetPositionY != _yPosition)
 			{
@@ -56,9 +56,9 @@ public class MortarBlockBehaviour : MonoBehaviour
 			return;
 		}
 		//If a panel is found, get the current panels position and the y posoition of the panel that was found
-		int fp = (int)_firstPanelFound.GetComponent<PanelBehaviour>().Position.x;
-		int cp = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.x;
-		int yPos = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.y;
+		int fp = (int)_firstPanelFound.Position.x;
+		int cp = (int)_block.Panel.Position.x;
+		int yPos = (int)_block.Panel.Position.y;
 		//With this information, solve to find the target position
 		int tp = fp + (fp - cp) - 1;
 		//if the target position is greater than the highest possible x coordinate set the target to be the 
@@ -87,10 +87,10 @@ public class MortarBlockBehaviour : MonoBehaviour
     public void AimAtOpponentPanelP2()
     {
         //First find the panel that shares the same y coordinate on the grid
-        _yPosition = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.y;
+        _yPosition = (int)_block.Panel.Position.y;
         for (int i = 0; i < _grid.CountP1; i++)
         {
-            _firstPanelFound = _grid.GetPanelFromP1List(i).GetComponent<PanelBehaviour>();
+            _firstPanelFound = _grid.GetPanelFromP1List(i);
             int targetPositionY = (int)_firstPanelFound.Position.y;
             if (targetPositionY != _yPosition)
             {
@@ -105,9 +105,9 @@ public class MortarBlockBehaviour : MonoBehaviour
             return;
         }
         //If a panel is found, get the current panels position and the y posoition of the panel that was found
-        int fp = (int)_firstPanelFound.GetComponent<PanelBehaviour>().Position.x;
-        int cp = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.x;
-        int yPos = (int)_block.currentPanel.GetComponent<PanelBehaviour>().Position.y;
+        int fp = (int)_firstPanelFound.Position.x;
+        int cp = (int)_block.Panel.Position.x;
+        int yPos = (int)_block.Panel.Position.y;
         //With this information, solve to find the target position
         int tp = fp + (fp - cp) + 1;
         //if the target position is greater than the highest possible x coordinate set the target to be the 

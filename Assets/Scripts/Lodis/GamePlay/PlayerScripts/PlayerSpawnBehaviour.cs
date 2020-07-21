@@ -238,74 +238,73 @@ namespace Lodis
             Vector2 DisplacementY = new Vector2(0, 1);
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in player.Panels)
+            foreach (PanelBehaviour panel in player.Panels)
             {
-                _panel = panel .GetComponent<PanelBehaviour>();
                 _currentBlock = Blocks[current_index].GetComponent<BlockBehaviour>();
-                var coordinate = _panel.Position;
+                var coordinate = panel.Position;
                 if ((player.Position + DisplacementX) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !_deleteEnabled || _panel.IsBroken)
+                    if (panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled && !_deleteEnabled || panel.IsBroken)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(panel) == false)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    panels_in_range.Add("Forward", panel);
-                    _panel.SelectionColor = SelectionColor;
-                    _panel.Selected = true;
+                    panels_in_range.Add("Forward", panel.gameObject);
+                    panel.SelectionColor = SelectionColor;
+                    panel.Selected = true;
                 }
                 else if ((player.Position - DisplacementX) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
+                    if (panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || panel.IsBroken)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(panel) == false)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    panels_in_range.Add("Behind", panel);
-                    _panel.SelectionColor = SelectionColor;
-                    _panel.Selected = true;
+                    panels_in_range.Add("Behind", panel.gameObject);
+                    panel.SelectionColor = SelectionColor;
+                    panel.Selected = true;
                 }
                 else if ((player.Position + DisplacementY) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
+                    if (panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || panel.IsBroken)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(panel) == false)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    panels_in_range.Add("Above", panel);
-                    _panel.SelectionColor = SelectionColor;
-                    _panel.Selected = true;
+                    panels_in_range.Add("Above", panel.gameObject);
+                    panel.SelectionColor = SelectionColor;
+                    panel.Selected = true;
                 }
                 else if ((player.Position - DisplacementY) == coordinate)
                 {
-                    if (_panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || _panel.IsBroken)
+                    if (panel.CheckPanelCapacity(_currentBlock) && buildStateEnabled&& !_deleteEnabled || panel.IsBroken)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(_panel) == false)
+                    else if (DeleteEnabled && CheckIfCanDeleteOnPanel(panel) == false)
                     {
-                        _panel.Selected = false;
+                        panel.Selected = false;
                         continue;
                     }
-                    panels_in_range.Add("Below", panel);
-                    _panel.SelectionColor = SelectionColor;
-                    _panel.Selected = true;
+                    panels_in_range.Add("Below", panel.gameObject);
+                    panel.SelectionColor = SelectionColor;
+                    panel.Selected = true;
                 }
             }
         }

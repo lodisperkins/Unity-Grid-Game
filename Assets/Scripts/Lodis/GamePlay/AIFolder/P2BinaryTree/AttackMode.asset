@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28198989cec70874eb4acbd17ca0a23b, type: 3}
   m_Name: AttackMode
   m_EditorClassIdentifier: 
-  parent: {fileID: 11400000, guid: 2399b12a9d54c474ea73b97b7599d52b, type: 2}
-  _childLeft: {fileID: 11400000, guid: 95e3d97be8745e442a52cbf8293671e3, type: 2}
-  _childRight: {fileID: 11400000, guid: 74dcb9eb472677745a63d1884f9b7f4f, type: 2}
+  parent: {fileID: 11400000, guid: f2eb10a2e315bc245bdcf04ecdddc493, type: 2}
+  _childLeft: {fileID: 11400000, guid: 74dcb9eb472677745a63d1884f9b7f4f, type: 2}
+  _childRight: {fileID: 11400000, guid: 7c3a0f63fb9afff4b82af5b620318657, type: 2}
   conditionName: OpponentOpeningCheck
-  actionNames: []
+  actionNames:
+  - FindOpponentOpenings

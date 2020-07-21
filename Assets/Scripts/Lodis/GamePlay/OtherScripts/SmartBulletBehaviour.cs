@@ -122,13 +122,13 @@ namespace Lodis
             
             if(Owner == "Player1")
             {
-                BlackBoard.p2PanelList.FindPanel(BlackBoard.p2Position,out _goal);
-                BlackBoard.p1PanelList.FindPanel(BlackBoard.p1Position, out _currentPanel);
+                _goal = BlackBoard.p2Position;
+                _currentPanel = BlackBoard.p1Position;
             }
             else
             {
-                BlackBoard.p1PanelList.FindPanel(BlackBoard.p1Position, out _goal);
-                BlackBoard.p2PanelList.FindPanel(BlackBoard.p2Position, out _currentPanel);
+                _goal = BlackBoard.p1Position;
+                _currentPanel = BlackBoard.p2Position;
             }
             FindBestPath();
         }

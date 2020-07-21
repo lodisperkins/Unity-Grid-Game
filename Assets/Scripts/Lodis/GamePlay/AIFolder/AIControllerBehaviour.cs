@@ -27,6 +27,20 @@ namespace Lodis.GamePlay.AIFolder
         private float _blockAmountScore;
         [SerializeField]
         private float _totalScore;
+        [SerializeField]
+        private float _opponentCoreScore;
+        [SerializeField]
+        private float _opponentSupportScore;
+        [SerializeField]
+        private float _opponentSupportBlockScore;
+        [SerializeField]
+        private float _opponentSupportDefenseScore;
+        [SerializeField]
+        private float _opponentBlockHealthScore;
+        [SerializeField]
+        private float _opponentBlockAmountScore;
+        [SerializeField]
+        private float _opponentTotalScore;
         private List<int> yCoords;
         private bool isAttacking;
         private List<string> _priorityTypes;
@@ -44,47 +58,71 @@ namespace Lodis.GamePlay.AIFolder
         private float supportDefScorePass;
         [SerializeField]
         private float gridScorePass;
+        private List<BlockBehaviour> characterBlockList;
+        private List<BlockBehaviour> opponentBlockList;
+        private List<Vector2> defensePositions;
+        private List<Vector2> supportDefensePositions;
+        private List<Vector2> supportPositions;
+        private PanelList characterPanelList;
+        private PanelList opponentPanelList;
+        private PanelBehaviour priorityPanel;
         private void Start()
 		{
 			_decisionTree = GetComponent<BinaryTreeBehaviour>();
 			_moveScript = GetComponent<AIMovementBehaviour>();
             _spawnScript = GetComponent<AISpawnBehaviour>();
             _attackScript = GetComponent<PlayerAttackBehaviour>();
+            
             CoreDefenseCheckDelegate += GetPanelsOnBackRow;
             yCoords = new List<int>() { 0, 1, 2, 3 };
             StartCoroutine(Shoot());
+            InitializeLists();
         }
         public void InitializeLists()
         {
             //I can use this to initialize all list values instead of checking for which player in each func
-        }
-        private float ResourceStatusCheck()
-        {
-            //Initiialize values
-            List<BlockBehaviour> characterBlockList = new List<BlockBehaviour>();
-            List<Vector2> defensePositions = new List<Vector2>();
-            PanelList characterPanelList = new PanelList();
-            float totalDefenseBlocks = 0;
-            float totalSupportBlocks = 0;
+            characterBlockList = new List<BlockBehaviour>();
+            defensePositions = new List<Vector2>();
+            characterPanelList = new PanelList();
+            supportDefensePositions = new List<Vector2>();
+            supportPositions = new List<Vector2>();
             //Check player tag
             if (name == "Player1")
             {
                 characterBlockList = BlackBoard.p1Blocks;
+                opponentBlockList = BlackBoard.p2Blocks;
                 characterPanelList = BlackBoard.p1PanelList;
-                defensePositions.Add(new Vector2(1,0));
-                defensePositions.Add(new Vector2(2,0));
-                defensePositions.Add(new Vector2(1,1));
-                defensePositions.Add(new Vector2(2,1));
+                opponentPanelList = BlackBoard.p2PanelList;
+                defensePositions.Add(new Vector2(1, 0));
+                defensePositions.Add(new Vector2(2, 0));
+                defensePositions.Add(new Vector2(1, 1));
+                defensePositions.Add(new Vector2(2, 1));
+                supportDefensePositions.Add(new Vector2(2, 0));
+                supportDefensePositions.Add(new Vector2(2, 1));
+                supportPositions.Add(new Vector2(0, 1));
+                supportPositions.Add(new Vector2(0, 0));
             }
             else
             {
                 characterBlockList = BlackBoard.p2Blocks;
+                opponentBlockList = BlackBoard.p1Blocks;
                 characterPanelList = BlackBoard.p2PanelList;
+                opponentPanelList = BlackBoard.p1PanelList;
                 defensePositions.Add(new Vector2(8, 0));
                 defensePositions.Add(new Vector2(7, 0));
                 defensePositions.Add(new Vector2(7, 1));
                 defensePositions.Add(new Vector2(8, 1));
+                supportDefensePositions.Add(new Vector2(7, 0));
+                supportDefensePositions.Add(new Vector2(7, 1));
+                supportPositions.Add(new Vector2(9, 0));
+                supportPositions.Add(new Vector2(9, 1));
             }
+        }
+        private float ResourceStatusCheck()
+        {
+            float totalDefenseBlocks = 0;
+            float totalSupportBlocks = 0;
+            
             //Check amount of support blocks
             foreach (BlockBehaviour block in characterBlockList)
             {
@@ -124,10 +162,50 @@ namespace Lodis.GamePlay.AIFolder
             }
             return (_supportDefenseScore + _supportBlockScore) / 2f;
         }
+        private float OpponentResourceStatusCheck()
+        {
+            float totalDefenseBlocks = 0;
+            float totalSupportBlocks = 0;
+            List<Vector2> supportBlockPositions = new List<Vector2>();
+            //Check amount of support blocks
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                foreach (string type in block.types)
+                {
+                    if (type == "Support")
+                    {
+                        totalSupportBlocks++;
+                        supportBlockPositions.Add(block.Panel.Position);
+                    }
+                }
+
+            }
+            //check if there are defense blocks in front of support blocks
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                if (block.types.Contains("Defense"))
+                {
+                    foreach(Vector2 position in supportBlockPositions)
+                    {
+                        if(position.y == block.Panel.Position.y)
+                        {
+                            totalDefenseBlocks++;
+                        }
+                    }
+                    
+                }
+            }
+            _supportDefenseScore = (totalDefenseBlocks / 2f) * 100f;
+            _supportBlockScore = (totalSupportBlocks / 2f) * 100f;
+            if (_supportBlockScore == 0)
+            {
+                return 0;
+            }
+            return (_supportDefenseScore + _supportBlockScore) / 2f;
+        }
         private bool GetPanelsOnBackRow(object[] args)
         {
-            GameObject panelObject = (GameObject)args[0];
-            PanelBehaviour panelScript = panelObject.GetComponent<PanelBehaviour>();
+            PanelBehaviour panelScript = (PanelBehaviour)args[0];
             if(name == "Player1")
             {
                 if(panelScript.Position.x == 0)
@@ -154,8 +232,7 @@ namespace Lodis.GamePlay.AIFolder
         }
         private bool GetPriorityPanels(object[] args)
         {
-            GameObject panelObject = (GameObject)args[0];
-            PanelBehaviour panelScript = panelObject.GetComponent<PanelBehaviour>();
+            PanelBehaviour panelScript =(PanelBehaviour)args[0]; 
             foreach(string type in _priorityTypes)
             {
                 if (panelScript.CurrentBlock.types.Contains(type))
@@ -165,27 +242,31 @@ namespace Lodis.GamePlay.AIFolder
             }
             return false;
         }
+        public void NotifyOfBulletHit(PanelBehaviour panelToBuild,string notifyType)
+        {
+            priorityPanel = panelToBuild;
+            if(notifyType == "Core")
+            {
+                _coreScore -= 5;
+            }
+            else if(notifyType == "SupportDefense")
+            {
+                _supportDefenseScore -= 10;
+            }
+        }
         private float CoreDefenseCheck()
         {
             List<PanelBehaviour> panelsOnBack = new List<PanelBehaviour>();
-            PanelList characterPanels = null;
             float CoreDefenseVal = 0f;
-            if (name == "Player1")
+            
+            if (characterPanelList != null)
             {
-                characterPanels = BlackBoard.p1PanelList;
-            }
-            else
-            {
-                characterPanels = BlackBoard.p2PanelList;
-            }
-            if (characterPanels != null)
-            {
-                characterPanels.GetPanels(CoreDefenseCheckDelegate, out panelsOnBack);
+                characterPanelList.GetPanels(CoreDefenseCheckDelegate, out panelsOnBack);
             }
 
             foreach (var panel in panelsOnBack)
             {
-                if (panel.Occupied)
+                if (panel.Occupied && panel.CurrentBlock != null)
                 {
                     CoreDefenseVal++;
                 }
@@ -195,23 +276,20 @@ namespace Lodis.GamePlay.AIFolder
         private void BuildCoreDefense()
         {
             List<PanelBehaviour> panelsOnBack = new List<PanelBehaviour>();
-            PanelList characterPanels = null;
-            if(name == "Player1")
+            if(characterPanelList != null)
             {
-                characterPanels = BlackBoard.p1PanelList;
+                characterPanelList.GetPanels(CoreDefenseCheckDelegate, out panelsOnBack);
             }
-            else
+            if(priorityPanel != null)
             {
-                characterPanels = BlackBoard.p2PanelList;
+                if(!priorityPanel.Occupied)
+                {
+                    _spawnScript.Build(1, priorityPanel);
+                }
             }
-            if(characterPanels != null)
-            {
-                characterPanels.GetPanels(CoreDefenseCheckDelegate, out panelsOnBack);
-            }
-            
             foreach(var panel in panelsOnBack)
             {
-                if(!panel.Occupied)
+                if(!panel.Occupied && panel != priorityPanel)
                 {
                     _spawnScript.Build(1, panel);
                 }
@@ -219,54 +297,45 @@ namespace Lodis.GamePlay.AIFolder
         }
         private void BuildSupportDefense()
         {
-            List<Vector2> defensePositions = new List<Vector2>();
-            PanelList characterPanelList = new PanelList();
-            if (name == "Player1")
-            {
-                characterPanelList = BlackBoard.p1PanelList;
-                defensePositions.Add(new Vector2(2, 0));
-                defensePositions.Add(new Vector2(2, 1));
-            }
-            else
-            {
-                characterPanelList = BlackBoard.p2PanelList;
-                defensePositions.Add(new Vector2(7, 0));
-                defensePositions.Add(new Vector2(7, 1));
-            }
             PanelBehaviour buildPanel;
             int buildCounter =0;
-            foreach(var position in defensePositions)
+
+            if (characterPanelList == null)
             {
-                if (characterPanelList != null)
+                return;
+            }
+            foreach (var position in supportDefensePositions)
+            {
+                if (characterPanelList.FindPanel(position, out buildPanel) && buildCounter < 2)
                 {
-                    if (characterPanelList.FindPanel(position, out buildPanel) && buildCounter < 2)
+                    if(buildPanel.Occupied && CheckIfOpponentAttackingPanel(buildPanel))
                     {
-                        if (_spawnScript.Build(1, buildPanel))
-                        {
-                            buildCounter++;
-                        }
+                        buildPanel = Aim((int)buildPanel.Position.y);
+                        _spawnScript.Build(1, buildPanel);
+                    }
+                    else if (_spawnScript.Build(1, buildPanel))
+                    {
+                        buildCounter++;
                     }
                 }
+               
             }
+        }
+        private bool CheckIfOpponentAttackingPanel(PanelBehaviour panel)
+        {
+            foreach(BlockBehaviour block in opponentBlockList)
+            {
+                if(block.types.Contains("Attack") && block.Panel.Position.y == panel.Position.y)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         private void BuildSupport()
         {
-            List<Vector2> defensePositions = new List<Vector2>();
-            PanelList characterPanelList = new PanelList();
-            if (name == "Player1")
-            {
-                characterPanelList = BlackBoard.p1PanelList;
-                defensePositions.Add(new Vector2(0, 1));
-                defensePositions.Add(new Vector2(0, 0));
-            }
-            else
-            {
-                characterPanelList = BlackBoard.p2PanelList;
-                defensePositions.Add(new Vector2(9, 0));
-                defensePositions.Add(new Vector2(9, 1));
-            }
             PanelBehaviour buildPanel;
-            foreach (var position in defensePositions)
+            foreach (var position in supportPositions)
             {
                 if (characterPanelList != null)
                 {
@@ -279,10 +348,10 @@ namespace Lodis.GamePlay.AIFolder
         }
         private PanelBehaviour FindLocationOfWeakBlock(string Name,out string blocktype)
         {
-            PanelBehaviour desiredLocation = new PanelBehaviour();
+            PanelBehaviour desiredLocation = null;
             BlockBehaviour temp = new BlockBehaviour();
             blocktype = "";
-            if (Name == "Player1")
+            if (Name == "Player1" && BlackBoard.p1Blocks.Count>0)
             {
                 temp = BlackBoard.p1Blocks[0];
                 desiredLocation = temp.Panel;
@@ -293,6 +362,13 @@ namespace Lodis.GamePlay.AIFolder
                     {
                         continue;
                     }
+                    if (temp.Type== "Support")
+                    {
+                        temp = block;
+                        desiredLocation = temp.Panel;
+                        blocktype = block.Type;
+                    }
+                    
                     if ( block.HealthScript.health.Val < temp.HealthScript.health.Val)
                     {
                         temp = block;
@@ -301,14 +377,24 @@ namespace Lodis.GamePlay.AIFolder
                     }
                 }
             }
-            else
+            else if(Name == "Player2" && BlackBoard.p2Blocks.Count > 0)
             {
                 temp = BlackBoard.p2Blocks[0];
                 desiredLocation = temp.Panel;
                 blocktype = BlackBoard.p2Blocks[0].Type;
                 foreach (BlockBehaviour block in BlackBoard.p2Blocks)
                 {
-                    if (block.HealthScript.health.Val < temp.HealthScript.health.Val && block.types.Contains("Support") == false)
+                    if (block.types.Contains("Support"))
+                    {
+                        continue;
+                    }
+                    if (temp.Type == "Support")
+                    {
+                        temp = block;
+                        desiredLocation = temp.Panel;
+                        blocktype = block.Type;
+                    }
+                    if (block.HealthScript.health.Val < temp.HealthScript.health.Val)
                     {
                         temp = block;
                         desiredLocation = temp.Panel;
@@ -358,13 +444,21 @@ namespace Lodis.GamePlay.AIFolder
         {
             string blockType;
             PanelBehaviour desiredLocation = FindLocationOfWeakBlock(name,out blockType);
+            if(!desiredLocation)
+            {
+                Debug.Log("Wanted to upgrade blocks, but I cant find any");
+                return;
+            }
             switch (blockType)
             {
                 case("Attack"):
                     {
                         if (_spawnScript.Build(0, desiredLocation) == false && desiredLocation.CurrentBlock.types.Contains("Support") == false)
                         {
-                            _spawnScript.Delete(desiredLocation);
+                            if(desiredLocation.BlockCapacityReached)
+                            {
+                                _spawnScript.Delete(desiredLocation);
+                            }
                         }
                         break;
                     }
@@ -372,18 +466,21 @@ namespace Lodis.GamePlay.AIFolder
                     {
                         if (_spawnScript.Build(1, desiredLocation) ==false && desiredLocation.CurrentBlock.types.Contains("Support") == false)
                         {
-                            _spawnScript.Delete(desiredLocation);
+                            if (desiredLocation.BlockCapacityReached)
+                            {
+                                _spawnScript.Delete(desiredLocation);
+                            }
                         }
                         break;
                     }
-                case ("Support"):
-                    {
-                        if (_spawnScript.Build(2, desiredLocation) == false)
-                        {
-                            _spawnScript.Delete(desiredLocation);
-                        }
-                        break;
-                    }
+                //case ("Support"):
+                //    {
+                //        if (_spawnScript.Build(2, desiredLocation) == false)
+                //        {
+                //            _spawnScript.Delete(desiredLocation);
+                //        }
+                //        break;
+                //    }
             }
         }
         private void AttackOpponentOpening()
@@ -393,17 +490,10 @@ namespace Lodis.GamePlay.AIFolder
                 return;
             }
             isAttacking = true;
-            PanelList characterPanelList = new PanelList();
-            if (name == "Player1")
-            {
-                characterPanelList = BlackBoard.p1PanelList;
-            }
-            else
-            {
-                characterPanelList = BlackBoard.p2PanelList;
-            }
-            _spawnScript.Build(0, Aim());
+            PanelBehaviour target = Aim();
+            _spawnScript.Build(0, target);
             isAttacking = false;
+            yCoords = new List<int>() { 0, 1, 2, 3 };
         }
         private void AttackOpponentWeakSpot()
         {
@@ -412,45 +502,54 @@ namespace Lodis.GamePlay.AIFolder
                 return;
             }
             isAttacking = true;
-            PanelList characterPanelList = new PanelList();
             int weakYCoord;
             string blockType;
+            PanelBehaviour desiredLocation = null;
             if (name == "Player1")
             {
-                characterPanelList = BlackBoard.p1PanelList;
-                weakYCoord = (int)FindLocationOfWeakBlock("Player2", out blockType).Position.y;
+                desiredLocation = FindLocationOfWeakBlock("Player2", out blockType);
+                if(!desiredLocation)
+                {
+                    Debug.Log("Opponent has no weak defenses");
+                    isAttacking = false;
+                    return;
+                }
+                weakYCoord = (int)desiredLocation.Position.y;
             }
             else
             {
-                characterPanelList = BlackBoard.p2PanelList;
-                weakYCoord = (int)FindLocationOfWeakBlock("Player1", out blockType).Position.y;
+                desiredLocation = FindLocationOfWeakBlock("Player1", out blockType);
+                if (!desiredLocation)
+                {
+                    Debug.Log("Opponent has no weak defenses");
+                    isAttacking = false;
+                    return;
+                }
+                weakYCoord = (int)desiredLocation.Position.y;
             }
-            if(yCoords.Count == 0)
-            {
-                yCoords.Add(weakYCoord);
-            }
-            else
-            {
-                yCoords[0] = weakYCoord;
-            }
-            _spawnScript.Build(0, Aim());
+            //if(yCoords.Count == 0)
+            //{
+            //    yCoords.Add(weakYCoord);
+            //}
+            //else
+            //{
+            //    yCoords[0] = weakYCoord;
+            //}
+            PanelBehaviour target = Aim(weakYCoord);
+            _spawnScript.Build(0, target);
             isAttacking = false;
+            yCoords = new List<int>() { 0, 1, 2, 3 };
         }
         private float GradeFriendlyGrid()
         {
-            List<BlockBehaviour> characterBlockList =new List<BlockBehaviour>();
-            PanelList characterPanelList= new PanelList();
+            
             HealthBehaviour characterCoreHealth = new HealthBehaviour();
             if(name == "Player1")
             {
-                characterBlockList = BlackBoard.p1Blocks;
-                characterPanelList = BlackBoard.p1PanelList;
                 characterCoreHealth = BlackBoard.p1Core.GetComponent<HealthBehaviour>();
             }
             else
             {
-                characterBlockList = BlackBoard.p2Blocks;
-                characterPanelList = BlackBoard.p2PanelList;
                 characterCoreHealth = BlackBoard.p2Core.GetComponent<HealthBehaviour>();
             }
             if(characterPanelList != null)
@@ -475,30 +574,83 @@ namespace Lodis.GamePlay.AIFolder
                 }
                 currentBlockHealth += block.HealthScript.health.Val;
             }
+            if(characterCoreHealth.health.Val < characterCoreHealth.health.Val/2)
+            {
+                coreScorePass = 50;
+            }
             _blockHealthScore = (currentBlockHealth / totalBlockHealth) * 100f;
             _coreScore = ((((float)characterCoreHealth.health.Val / 200f) * 100f) + CoreDefenseCheck())/2;
             _supportScore= ResourceStatusCheck();
             _totalScore = (_blockAmountScore + _blockHealthScore+_coreScore+_supportScore) / 4f;
             return _totalScore;
         }
+        private float GradeOpponentGrid()
+        {
+
+            HealthBehaviour opponentCoreHealth = new HealthBehaviour();
+            List<BlockBehaviour> opponentBlockList = new List<BlockBehaviour>();
+            if (name == "Player1")
+            {
+                opponentCoreHealth = BlackBoard.p2Core.GetComponent<HealthBehaviour>();
+                opponentBlockList = BlackBoard.p2Blocks;
+            }
+            else
+            {
+                opponentCoreHealth = BlackBoard.p1Core.GetComponent<HealthBehaviour>();
+                opponentBlockList = BlackBoard.p1Blocks;
+            }
+            if (opponentPanelList != null)
+            {
+                _opponentBlockAmountScore = ((float)opponentBlockList.Count / (float)opponentPanelList.Count) * 100f;
+            }
+            float totalBlockHealth = 0;
+            float currentBlockHealth = 0;
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                if (block.types.Contains("Support"))
+                {
+                    continue;
+                }
+                totalBlockHealth += block.HealthScript.HealthRef.Val;
+            }
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                if (block.types.Contains("Support"))
+                {
+                    continue;
+                }
+                currentBlockHealth += block.HealthScript.health.Val;
+            }
+            if(totalBlockHealth == 0)
+            {
+                _opponentBlockHealthScore = 0;
+            }
+            else
+            {
+                _opponentBlockHealthScore = (currentBlockHealth / totalBlockHealth) * 100f;
+            }
+            _opponentCoreScore = ((((float)opponentCoreHealth.health.Val / 200f) * 100f) + GradeOpponentOpenings()) / 2;
+            _opponentSupportScore = OpponentResourceStatusCheck();
+            _opponentTotalScore = (_opponentBlockAmountScore + _opponentBlockHealthScore + _opponentCoreScore + _opponentSupportScore) / 4f;
+            return _opponentTotalScore;
+        }
         private PanelBehaviour Aim()
         {
-            List<BlockBehaviour> characterBlockList = new List<BlockBehaviour>();
-            PanelList characterPanelList = new PanelList();
             PanelBehaviour targetPanel = new PanelBehaviour();
             Vector2 location = new Vector2();
             
             if (name == "Player1")
             {
-                characterBlockList = BlackBoard.p1Blocks;
-                characterPanelList = BlackBoard.p1PanelList;
                 location.x = 4;
             }
             else
             {
-                characterBlockList = BlackBoard.p2Blocks;
-                characterPanelList = BlackBoard.p2PanelList;
                 location.x = 5;
+            }
+            if(yCoords.Count == 0)
+            {
+                Debug.Log("Can't Aim! No valid spots!");
+                return new PanelBehaviour();
             }
             foreach (BlockBehaviour block in characterBlockList)
             {
@@ -506,7 +658,14 @@ namespace Lodis.GamePlay.AIFolder
                 {
                     if (name == "Player1")
                     {
-                        location.x = block.Panel.Position.x + 1;
+                        if (block.Panel.Position.x + 1 > 4)
+                        {
+                            location.x = block.Panel.Position.x;
+                        }
+                        else if (block.Panel.Position.x > location.x)
+                        {
+                            location.x = block.Panel.Position.x + 1;
+                        }
                     }
                     else
                     {
@@ -514,7 +673,7 @@ namespace Lodis.GamePlay.AIFolder
                         {
                             location.x = block.Panel.Position.x;
                         }
-                        else
+                        else if(block.Panel.Position.x < location.x)
                         {
                             location.x = block.Panel.Position.x - 1;
                         }
@@ -527,57 +686,241 @@ namespace Lodis.GamePlay.AIFolder
             characterPanelList.FindPanel(location, out targetPanel);
             return targetPanel;
         }
-        private bool OpeningCheck()
+        private PanelBehaviour Aim(int yCoordIndex)
         {
-            
-            List<BlockBehaviour> characterBlockList = new List<BlockBehaviour>();
-            PanelList characterPanelList = new PanelList();
+            PanelBehaviour targetPanel = new PanelBehaviour();
+            Vector2 location = new Vector2();
+
             if (name == "Player1")
             {
-                characterBlockList = BlackBoard.p2Blocks;
-                characterPanelList = BlackBoard.p2PanelList;
+                location.x = 1;
             }
             else
             {
-                characterBlockList = BlackBoard.p1Blocks;
-                characterPanelList = BlackBoard.p1PanelList;
+                location.x = 8;
             }
             foreach (BlockBehaviour block in characterBlockList)
+            {
+                if (yCoordIndex == block.Panel.Position.y)
+                {
+                    if (name == "Player1")
+                    {
+                        if (block.Panel.Position.x + 1 > 4)
+                        {
+                            location.x = block.Panel.Position.x;
+                        }
+                        else if(block.Panel.Position.x + 1 > location.x)
+                        {
+                            location.x = block.Panel.Position.x + 1;
+                        }
+                    }
+                    else
+                    {
+                        if (block.Panel.Position.x - 1 < 5)
+                        {
+                            location.x = block.Panel.Position.x;
+                        }
+                        else if(block.Panel.Position.x - 1 < location.x)
+                        {
+                            location.x = block.Panel.Position.x - 1;
+                        }
+
+                    }
+
+                }
+            }
+            location.y = yCoordIndex;
+            characterPanelList.FindPanel(location, out targetPanel);
+            return targetPanel;
+        }
+        private float GradeOpponentOpenings()
+        {
+            List<int> opponentYCoords = new List<int> { 0, 1, 2, 3 };
+            List<BlockBehaviour> opponentBlockList = new List<BlockBehaviour>();
+            PanelList opponentPanelList = new PanelList();
+            List<BlockBehaviour> attackBlocks = new List<BlockBehaviour>();
+            float score =0;
+            if (name == "Player1")
+            {
+                opponentBlockList = BlackBoard.p2Blocks;
+                opponentPanelList = BlackBoard.p2PanelList;
+            }
+            else
+            {
+                opponentBlockList = BlackBoard.p1Blocks;
+                opponentPanelList = BlackBoard.p1PanelList;
+            }
+
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                if (opponentYCoords.Contains((int)block.Panel.Position.y))
+                {
+                    score++;
+                }
+            }
+            return (score/4) * 100;
+        }
+        private bool FindOpponentOpenings()
+        {
+            yCoords = new List<int>() { 0, 1, 2, 3 };
+            List<BlockBehaviour> opponentBlockList = new List<BlockBehaviour>();
+            PanelList opponentPanelList = new PanelList();
+            List<BlockBehaviour> attackBlocks = new List<BlockBehaviour>();
+            if (name == "Player1")
+            {
+                opponentBlockList = BlackBoard.p2Blocks;
+                opponentPanelList = BlackBoard.p2PanelList;
+            }
+            else
+            {
+                opponentBlockList = BlackBoard.p1Blocks;
+                opponentPanelList = BlackBoard.p1PanelList;
+            }
+            
+            foreach (BlockBehaviour block in opponentBlockList)
             {
                 if(yCoords.Contains((int)block.Panel.Position.y))
                 {
                     yCoords.Remove((int)block.Panel.Position.y);
                 }
             }
+            foreach(BlockBehaviour block in  characterBlockList)
+            {
+                if (yCoords.Contains((int)block.Panel.Position.y) && block.types.Contains("Attack"))
+                {
+                    yCoords.Remove((int)block.Panel.Position.y);
+                }
+            }
             if(yCoords.Count == 0)
             {
-                return false;
+                _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", true);
+                return true;
             }
             else
             {
-                return true;
+                _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", false);
+                return false;
             }
         }
-		private void Update()
+        private bool OpponentAttackBlockCheck()
+        {
+            List<BlockBehaviour> opponentBlockList = new List<BlockBehaviour>();
+            PanelList opponentPanelList = new PanelList();
+            yCoords.Clear();
+            if (name == "Player1")
+            {
+                opponentBlockList = BlackBoard.p2Blocks;
+                opponentPanelList = BlackBoard.p2PanelList;
+            }
+            else
+            {
+                opponentBlockList = BlackBoard.p1Blocks;
+                opponentPanelList = BlackBoard.p1PanelList;
+            }
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                if (block.types.Contains("Attack"))
+                {
+                    yCoords.Add((int)block.Panel.Position.y);
+                }
+            }
+            foreach (BlockBehaviour block in characterBlockList)
+            {
+                if (yCoords.Contains((int)block.Panel.Position.y) && block.types.Contains("Attack"))
+                {
+                    yCoords.Remove((int)block.Panel.Position.y);
+                }
+            }
+            if (yCoords.Count == 0)
+            {
+                _decisionTree.Decisions.SetCondition("OpponentAttackBlockCheck", true);
+                return true;
+            }
+            else
+            {
+                _decisionTree.Decisions.SetCondition("OpponentAttackBlockCheck", false);
+                return false;
+            }
+        }
+        private void AttackPriorityBlocks()
+        {
+            if (isAttacking)
+            {
+                return;
+            }
+            isAttacking = true;
+            for(int i =0; i< yCoords.Count;i++)
+            {
+                PanelBehaviour target = Aim(yCoords[i]);
+                if(target.BlockCapacityReached)
+                {
+                    _spawnScript.Delete(target);
+                }
+                _spawnScript.Build(0, target);
+            }
+            isAttacking = false;
+            yCoords = new List<int>() { 0, 1, 2, 3 };
+        }
+        private bool OpponentSupportBlockCheck()
+        {
+            List<BlockBehaviour> opponentBlockList = new List<BlockBehaviour>();
+            PanelList opponentPanelList = new PanelList();
+            yCoords.Clear();
+            if (name == "Player1")
+            {
+                opponentBlockList = BlackBoard.p2Blocks;
+                opponentPanelList = BlackBoard.p2PanelList;
+            }
+            else
+            {
+                opponentBlockList = BlackBoard.p1Blocks;
+                opponentPanelList = BlackBoard.p1PanelList;
+            }
+            foreach (BlockBehaviour block in opponentBlockList)
+            {
+                if (block.types.Contains("Support"))
+                {
+                    yCoords.Add((int)block.Panel.Position.y);
+                }
+            }
+            foreach(BlockBehaviour block in characterBlockList)
+            {
+                if (yCoords.Contains((int)block.Panel.Position.y) && block.types.Contains("Attack"))
+                {
+                    yCoords.Remove((int)block.Panel.Position.y);
+                }
+            }
+            if (yCoords.Count == 0)
+            {
+                _decisionTree.Decisions.SetCondition("OpponentSupportBlockCheck", true);
+                return true;
+            }
+            else
+            {
+                _decisionTree.Decisions.SetCondition("OpponentSupportBlockCheck", false);
+                return false;
+            }
+        }
+        private void Update()
 		{
             if (healthScript.health.Val < healthScript.HealthRef.Val * .50)
             {
                 SendMessage("StopMaterialLoss");
                 if(_spawnScript.PlayerSpawnScript.overdriveEnabled)
                 {
-                    _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() == 80);
-                    _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore > 60);
+                    _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() >= 60);
+                    _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore >= 50);
                     _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == 100);
                     _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == 100);
-                    _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", OpeningCheck());
                     return;
                 }
             }
+            
             _decisionTree.Decisions.SetCondition("GridStatusCheck", GradeFriendlyGrid() > gridScorePass);
             _decisionTree.Decisions.SetCondition("CoreStatusCheck", _coreScore>coreScorePass);
             _decisionTree.Decisions.SetCondition("SupportStatusCheck", _supportScore == supportScorePass);
             _decisionTree.Decisions.SetCondition("SupportDefenseCheck", _supportDefenseScore == supportDefScorePass);
-            _decisionTree.Decisions.SetCondition("OpponentOpeningCheck", OpeningCheck());
+            
         }
 	}
 }

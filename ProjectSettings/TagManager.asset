@@ -16,6 +16,7 @@ TagManager:
   - Wind
   - Hazard
   - Wall
+  - BulletNotifier
   layers:
   - Default
   - TransparentFX

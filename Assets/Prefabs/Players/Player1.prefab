@@ -15070,8 +15070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Decisions: {fileID: 0}
-  nodeCount: 0
+  Decisions: {fileID: 11400000, guid: 3cd817f9a95d4c94999b79441db56393, type: 2}
+  nodeCount: 11
 --- !u!114 &114476793149227368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15272,7 +15272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMoveScript: {fileID: 0}
   _testGoal: {fileID: 0}
-  _movementDelay: 0.3
+  _movementDelay: 0.1
   _enemyBulletList: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
 --- !u!114 &114635915937980974
 MonoBehaviour:
@@ -15351,12 +15351,12 @@ MonoBehaviour:
   _blockHealthScore: 0
   _blockAmountScore: 0
   _totalScore: 0
-  _shootDelay: 0
-  healthScript: {fileID: 0}
-  supportScorePass: 0
-  coreScorePass: 0
-  supportDefScorePass: 0
-  gridScorePass: 0
+  _shootDelay: 0.3
+  healthScript: {fileID: 114476793149227368}
+  supportScorePass: 100
+  coreScorePass: 50
+  supportDefScorePass: 100
+  gridScorePass: 50
 --- !u!114 &114722563692800334
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -32,11 +32,11 @@ namespace Lodis
         [SerializeField]
         public Event OnPanelStealEnabled;
         //the current panel the player is on
-        public GameObject _currentPanel;
+        public PanelBehaviour _currentPanel;
         public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
         [SerializeField] private FlashBehaviour _flashScript;
         private HealthBehaviour _health;
-        public GameObject CurrentPanel
+        public PanelBehaviour CurrentPanel
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Lodis
         }
         
         //Used to store the value of the panel the player will be traveling to
-        GameObject NewPanel;
+        PanelBehaviour NewPanel;
         //The list of all panels available to the player
         [SerializeField]
         private List<GameObject> startingPanels;
@@ -62,7 +62,7 @@ namespace Lodis
             Destination = new Vector2(0,0);
             canMove = true;
             panelStealActive = false;
-            _currentPanel = Panels[16];
+            _currentPanel = Panels[16].GetComponent<PanelBehaviour>();
             _health = GetComponent<HealthBehaviour>();
             _health.onStunned.AddListener(Stun);
             _health.onUnstunned.AddListener(Unstun);
@@ -127,14 +127,14 @@ namespace Lodis
         public void ResetPositionToCurrentPanel()
         {
             transform.position = new Vector3(CurrentPanel.transform.position.x, transform.position.y, CurrentPanel.transform.position.z);
-            Position = _currentPanel.GetComponent<PanelBehaviour>().Position;
+            Position = _currentPanel.Position;
         }
         public void ResetPositionToStartPanel()
         {
             transform.position = new Vector3(Panels[0].transform.position.x, transform.position.y, Panels[0].transform.position.z);
             _currentPanel.GetComponent<PanelBehaviour>().Occupied = false;
-            _currentPanel = Panels[0];
-            Position = _currentPanel.GetComponent<PanelBehaviour>().Position;
+            _currentPanel = Panels[0].GetComponent<PanelBehaviour>();
+            Position = _currentPanel.Position;
         }
         //enables the players movement
         public void EnableMovement()
@@ -151,16 +151,16 @@ namespace Lodis
         {
             if (CheckPanels(Destination, out NewPanel))
             {
-                if (NewPanel.GetComponent<PanelBehaviour>().Occupied == true)
+                if (NewPanel.Occupied == true)
                 {
                     Destination = new Vector2(0, 0);
                     return;
                 }
                 transform.position = new Vector3(NewPanel.transform.position.x, transform.position.y, NewPanel.transform.position.z);
                 shakeScript.StartPosition = transform.position;
-                _currentPanel.GetComponent<PanelBehaviour>().Occupied = false;
+                _currentPanel.Occupied = false;
                 _currentPanel = NewPanel;
-                _currentPanel.GetComponent<PanelBehaviour>().Occupied = true;
+                _currentPanel.Occupied = true;
                 Position += Destination;
                 Destination = new Vector2(0, 0);
                 _onMove.Raise(gameObject);
@@ -169,14 +169,14 @@ namespace Lodis
             Destination = new Vector2(0, 0);
         }
         //Checks to see if a panel is accessible
-        public bool CheckPanels(Vector2 PanelPosition, out GameObject ReturnPanel)
+        public bool CheckPanels(Vector2 PanelPosition, out PanelBehaviour ReturnPanel)
         {
-            foreach (GameObject panel in Panels.Panels)
+            foreach (PanelBehaviour panel in Panels.Panels)
             {
-                var coordinate = panel.GetComponent<PanelBehaviour>().Position;
-                if (Position + PanelPosition == coordinate)
+                PanelBehaviour potentialPanel = panel.GetComponent<PanelBehaviour>();
+                if (Position + PanelPosition == potentialPanel.Position)
                 {
-                    ReturnPanel = panel;
+                    ReturnPanel = potentialPanel;
                     return true;
                 }
             } 
@@ -186,7 +186,7 @@ namespace Lodis
         //Checks to see if a panel is accessible
         public bool CheckPanels(Vector2 PanelPosition)
         {
-            foreach (GameObject panel in Panels.Panels)
+            foreach (PanelBehaviour panel in Panels.Panels)
             {
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if (Position + PanelPosition == coordinate)
@@ -261,11 +261,11 @@ namespace Lodis
             PositionRef.Val = Position;
             if(name =="Player1")
             {
-                BlackBoard.p1Position = Position;
+                BlackBoard.p1Position = _currentPanel;
             }
             else
             {
-                BlackBoard.p2Position = Position;
+                BlackBoard.p2Position = _currentPanel;
             }
         }
     }

@@ -229,6 +229,10 @@ namespace Lodis
                     {
                         break;
                     }
+                case "BulletNotifier":
+                    {
+                        break;
+                    }
                 default:
                     {
                         PlayHitParticleSystems(1);

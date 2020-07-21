@@ -38,7 +38,7 @@ namespace Lodis
         {
             get
             {
-                throw new System.NotImplementedException();
+                return "DeletionBlock";
             }
         }
 

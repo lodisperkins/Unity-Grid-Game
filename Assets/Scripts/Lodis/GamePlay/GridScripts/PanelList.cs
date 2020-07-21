@@ -13,8 +13,8 @@ namespace Lodis.GamePlay.GridScripts
         [SerializeField] private Event OnPanelAssignmentFailed;
         //the list of panels tthis object holds
         [SerializeField]
-        private List<GameObject> panels;
-        public List<GameObject> Panels
+        private List<PanelBehaviour> panels;
+        public List<PanelBehaviour> Panels
         {
             get
             {
@@ -26,22 +26,32 @@ namespace Lodis.GamePlay.GridScripts
             }
         }
         //a list of panels meant to be in the players possesion only temporarily
-        public List<GameObject> tempPanels;
+        public List<PanelBehaviour> tempPanels;
         //the owner of the list of panels
         public string Owner;
         //initializes this panel list to have a populated list and an owner
-        public void Init(List<GameObject> startPanels, string playername)
+        public void Init(List<PanelBehaviour> startPanels, string playername)
         {
-            panels = new List<GameObject>();
-            foreach (GameObject panel in startPanels)
+            panels = new List<PanelBehaviour>();
+            foreach (PanelBehaviour panel in startPanels)
             {
                 panels.Add(panel);
             }
             Owner = playername;
             updateOwners();
         }
+        public void Init(List<GameObject> startPanels, string playername)
+        {
+            panels = new List<PanelBehaviour>();
+            foreach (GameObject panel in startPanels)
+            {
+                panels.Add(panel.GetComponent<PanelBehaviour>());
+            }
+            Owner = playername;
+            updateOwners();
+        }
         //creates an instance of this scriptable object
-        public static PanelList CreateInstance(List<GameObject> startpanels, string playername)
+        public static PanelList CreateInstance(List<PanelBehaviour> startpanels, string playername)
         {
             var data = ScriptableObject.CreateInstance<PanelList>();
             data.Init(startpanels, playername);
@@ -49,7 +59,7 @@ namespace Lodis.GamePlay.GridScripts
             return data;
         }
         //Adds a panel to the list
-        public void Add(GameObject panel)
+        public void Add(PanelBehaviour panel)
         {
             panels.Add(panel);
         }
@@ -70,7 +80,7 @@ namespace Lodis.GamePlay.GridScripts
                 counter++;
             }
         }
-        public bool Contains(GameObject panel)
+        public bool Contains(PanelBehaviour panel)
         {
             return panels.Contains(panel);
         }
@@ -82,17 +92,16 @@ namespace Lodis.GamePlay.GridScripts
             Vector2 DisplacementY = new Vector2(0, 1);
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in panels)
+            foreach (PanelBehaviour panel in panels)
             {
-                PanelBehaviour panelScript = panel.GetComponent<PanelBehaviour>();
-                var coordinate = panelScript.Position;
+                var coordinate = panel.Position;
                 if ((panelInFocus.Position + DisplacementX) == coordinate)
                 {
                     if (panelInFocus.IsBroken)
                     {
                         continue;
                     }
-                    panelsInRange.Add("Forward", panelScript);
+                    panelsInRange.Add("Forward", panel);
                 }
                 else if ((panelInFocus.Position - DisplacementX) == coordinate)
                 {
@@ -100,7 +109,7 @@ namespace Lodis.GamePlay.GridScripts
                     {
                         continue;
                     }
-                    panelsInRange.Add("Behind", panelScript);
+                    panelsInRange.Add("Behind", panel);
                 }
                 else if ((panelInFocus.Position + DisplacementY) == coordinate)
                 {
@@ -108,7 +117,7 @@ namespace Lodis.GamePlay.GridScripts
                     {
                         continue;
                     }
-                    panelsInRange.Add("Above", panelScript);
+                    panelsInRange.Add("Above", panel);
                 }
                 else if ((panelInFocus.Position - DisplacementY) == coordinate)
                 {
@@ -116,7 +125,7 @@ namespace Lodis.GamePlay.GridScripts
                     {
                         continue;
                     }
-                    panelsInRange.Add("Below", panelScript);
+                    panelsInRange.Add("Below", panel);
                 }
             }
             if(panelsInRange.Count <= 0)
@@ -136,17 +145,16 @@ namespace Lodis.GamePlay.GridScripts
             Vector2 DisplacementY = new Vector2(0, 1);
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in panels)
+            foreach (PanelBehaviour panel in panels)
             {
-                PanelBehaviour panelScript = panel.GetComponent<PanelBehaviour>();
-                var coordinate = panelScript.Position;
+                var coordinate = panel.Position;
                 if ((panelInFocus.Position + DisplacementX) == coordinate)
                 {
                     if (panelInFocus.IsBroken)
                     {
                         continue;
                     }
-                    panelsInRange.Add(panelScript);
+                    panelsInRange.Add(panel);
                 }
                 else if ((panelInFocus.Position - DisplacementX) == coordinate)
                 {
@@ -154,7 +162,7 @@ namespace Lodis.GamePlay.GridScripts
                     {
                         continue;
                     }
-                    panelsInRange.Add(panelScript);
+                    panelsInRange.Add(panel);
                 }
                 else if ((panelInFocus.Position + DisplacementY) == coordinate)
                 {
@@ -162,7 +170,7 @@ namespace Lodis.GamePlay.GridScripts
                     {
                         continue;
                     }
-                    panelsInRange.Add(panelScript);
+                    panelsInRange.Add(panel);
                 }
                 else if ((panelInFocus.Position - DisplacementY) == coordinate)
                 {
@@ -170,7 +178,44 @@ namespace Lodis.GamePlay.GridScripts
                     {
                         continue;
                     }
-                    panelsInRange.Add(panelScript);
+                    panelsInRange.Add(panel);
+                }
+            }
+            if (panelsInRange.Count <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool FindPanelsInRange(PanelBehaviour panelInFocus, out List<PanelBehaviour> panelsInRange,int range =1)
+        {
+            panelsInRange = new List<PanelBehaviour>();
+            //Loops through all panels to find those whose position is the
+            //player current position combined with x or y displacement
+            foreach (PanelBehaviour panel in panels)
+            {
+                if(panel == panelInFocus)
+                {
+                    continue;
+                }
+                if (Mathf.Abs(panel.Position.x - panelInFocus.Position.x) <= range)
+                {
+                    if (panelInFocus.IsBroken)
+                    {
+                        continue;
+                    }
+                    panelsInRange.Add(panel);
+                }
+                else if (Mathf.Abs(panel.Position.y - panelInFocus.Position.y) <= range)
+                {
+                    if (panelInFocus.IsBroken)
+                    {
+                        continue;
+                    }
+                    panelsInRange.Add(panel);
                 }
             }
             if (panelsInRange.Count <= 0)
@@ -185,7 +230,7 @@ namespace Lodis.GamePlay.GridScripts
         public bool GetPanels(Condition func, out List<PanelBehaviour> panelList)
         {
             panelList = new List<PanelBehaviour>();
-            foreach (GameObject panel in panels)
+            foreach (PanelBehaviour panel in panels)
             {
                 object[] arg = { panel};
                 if (func(arg))
@@ -205,7 +250,7 @@ namespace Lodis.GamePlay.GridScripts
         /// </summary>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public bool RemovePanel(GameObject panel)
+        public bool RemovePanel(PanelBehaviour panel)
         {
             if (panels.Remove(panel))
             {
@@ -221,15 +266,23 @@ namespace Lodis.GamePlay.GridScripts
         /// <param name="panel_Index"></param>
         public void TransferPanel(PanelList opponent_Panel_List, int panel_Index)
         {
-            GameObject temp  = panels[panel_Index];
+            PanelBehaviour temp  = panels[panel_Index];
             if (RemovePanel(panels[panel_Index]))
             {
                 opponent_Panel_List.panels.Insert(0,temp);
             }
         }
+        public void TransferPanel(PanelList opponent_Panel_List, PanelBehaviour panel)
+        {
+            PanelBehaviour temp = panel;
+            if (RemovePanel(panel))
+            {
+                opponent_Panel_List.panels.Insert(0, temp);
+            }
+        }
         public void TransferPanel(PanelList opponent_Panel_List, int panel_Index,int insertionIndex)
         {
-            GameObject temp  = panels[panel_Index];
+            PanelBehaviour temp  = panels[panel_Index];
             if (RemovePanel(panels[panel_Index]))
             {
                 opponent_Panel_List.panels.Insert(insertionIndex,temp);
@@ -240,7 +293,7 @@ namespace Lodis.GamePlay.GridScripts
         {
             int count = 0;
             int index;
-            GameObject temp;
+            PanelBehaviour temp;
             for (int i = 4; i >= 0; i--)
             {
                 for (int j = 0; j <= 3; j++)
@@ -257,7 +310,7 @@ namespace Lodis.GamePlay.GridScripts
         {
             int count = 0;
             int index;
-            GameObject temp;
+            PanelBehaviour temp;
             for (int i = 5; i<= 9; i++)
             {
                 for (int j = 0; j <= 3; j++)
@@ -289,7 +342,7 @@ namespace Lodis.GamePlay.GridScripts
             }
         }
         //Returns a panel at the given index
-        public GameObject this[int index]
+        public PanelBehaviour this[int index]
         {
             get
             {
@@ -327,19 +380,19 @@ namespace Lodis.GamePlay.GridScripts
         }
         public static PanelList operator + (PanelList lhs,PanelList rhs)
         {
-            PanelList newList = PanelList.CreateInstance(new List<GameObject>(),"");
-            foreach(GameObject panel in lhs)
+            PanelList newList = PanelList.CreateInstance(new List<PanelBehaviour>(),"");
+            foreach(PanelBehaviour panel in lhs)
             {
                 newList.Add(panel);
             }
-            foreach (GameObject panel in rhs)
+            foreach (PanelBehaviour panel in rhs)
             {
                 newList.Add(panel);
             }
             newList.Owner = lhs.Owner;
             return newList;
         }
-        public int FindIndex(GameObject _panel)
+        public int FindIndex(PanelBehaviour _panel)
         {
             return panels.IndexOf(_panel);
         }

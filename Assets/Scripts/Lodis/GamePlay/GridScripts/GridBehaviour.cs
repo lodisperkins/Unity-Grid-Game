@@ -66,6 +66,8 @@ namespace Lodis.GamePlay.GridScripts
             bulletListP1.Init();
             bulletListP2 =ScriptableObject.CreateInstance<GameObjectList>();
             bulletListP2.Init();
+            BlackBoard.p1PanelList = p1PanelsRef;
+            BlackBoard.p2PanelList = p2PanelsRef;
         }
 
         //Sets player1 panels to the appropriate material and sets their owner to be player 1
@@ -161,7 +163,7 @@ namespace Lodis.GamePlay.GridScripts
             p2PanelsRef.updateOwners();
         }
 
-        public GameObject GetPanelFromGlobalList(int index)
+        public PanelBehaviour GetPanelFromGlobalList(int index)
         {
             return globalPanelList[index];
         }
@@ -178,7 +180,7 @@ namespace Lodis.GamePlay.GridScripts
             globalPanelList.FindIndex(position, out index);
             return index;
         }
-        public GameObject GetPanelFromP1List(int index)
+        public PanelBehaviour GetPanelFromP1List(int index)
         {
             return p1PanelsRef[index];
         }
@@ -199,7 +201,7 @@ namespace Lodis.GamePlay.GridScripts
             get { return p2PanelsRef.Count; }
         }
         
-        public GameObject GetPanelFromP2List(int index)
+        public PanelBehaviour GetPanelFromP2List(int index)
         {
             return p2PanelsRef[index];
         }
@@ -213,7 +215,7 @@ namespace Lodis.GamePlay.GridScripts
         //Sets both players materials to either their red or blue variants
         public void AssignPanelMaterials()
         {
-            foreach (GameObject panel in p1PanelsRef)
+            foreach (PanelBehaviour panel in p1PanelsRef)
             {
                 int counter = 0;
                 if (panel == null)
@@ -221,10 +223,10 @@ namespace Lodis.GamePlay.GridScripts
                     counter++;
                     continue;
                 }
-                panel.GetComponent<PanelBehaviour>().Init(_p1Material,_p2Material);
+                panel.Init(_p1Material,_p2Material);
                 counter++;
             }
-            foreach (GameObject panel in p2PanelsRef)
+            foreach (PanelBehaviour panel in p2PanelsRef)
             {
                 int counter = 0;
                 if (panel == null)
@@ -232,7 +234,7 @@ namespace Lodis.GamePlay.GridScripts
                     counter++;
                     continue;
                 }
-                panel.GetComponent<PanelBehaviour>().Init(_p1Material,_p2Material);
+                panel.Init(_p1Material,_p2Material);
                 counter++;
             }
         }
@@ -294,42 +296,42 @@ namespace Lodis.GamePlay.GridScripts
             //Used to find the position the block can be placed
             Vector2 DisplacementX = new Vector2(1, 0);
             Vector2 DisplacementY = new Vector2(0, 1);
-            p1PanelsRef.tempPanels = new List<GameObject>();
+            p1PanelsRef.tempPanels = new List<PanelBehaviour>();
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in p2PanelsRef)
+            foreach (PanelBehaviour panel in p2PanelsRef)
             {
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if ((p1Position.Val + DisplacementX) == coordinate)
                 {
                     p1PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
                 else if ((p1Position.Val - DisplacementX) == coordinate)
                 {
                     p1PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
                 else if ((p1Position.Val + DisplacementY) == coordinate)
                 {
                     p1PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
                 else if ((p1Position.Val - DisplacementY) == coordinate)
                 {
                     p1PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
             }
         }
         //unhighlights all previously highlighted panels for player1
         public void UnHighlightPanelsP1()
         {
-            foreach (GameObject panel in p1PanelsRef.tempPanels)
+            foreach (PanelBehaviour panel in p1PanelsRef.tempPanels)
             {
                 panel.GetComponent<PanelBehaviour>().SelectionColor = Color.green;
                 panel.GetComponent<PanelBehaviour>().Selected = false;
@@ -338,7 +340,7 @@ namespace Lodis.GamePlay.GridScripts
         //unhighlights all previously highlighted panels for player1
         public void UnHighlightPanelsP2()
         {
-            foreach (GameObject panel in p2PanelsRef.tempPanels)
+            foreach (PanelBehaviour panel in p2PanelsRef.tempPanels)
             {
                 panel.GetComponent<PanelBehaviour>().SelectionColor = Color.green;
                 panel.GetComponent<PanelBehaviour>().Selected = false;
@@ -350,35 +352,35 @@ namespace Lodis.GamePlay.GridScripts
             //Used to find the position the block can be placed
             Vector2 DisplacementX = new Vector2(1, 0);
             Vector2 DisplacementY = new Vector2(0, 1);
-            p2PanelsRef.tempPanels = new List<GameObject>();
+            p2PanelsRef.tempPanels = new List<PanelBehaviour>();
             //Loops through all panels to find those whose position is the
             //player current position combined with x or y displacement
-            foreach (GameObject panel in p1PanelsRef)
+            foreach (PanelBehaviour panel in p1PanelsRef)
             {
                 var coordinate = panel.GetComponent<PanelBehaviour>().Position;
                 if ((p2Position.Val + DisplacementX) == coordinate)
                 {
                     p2PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
                 else if ((p2Position.Val - DisplacementX) == coordinate)
                 {
                     p2PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
                 else if ((p2Position.Val + DisplacementY) == coordinate)
                 {
                     p2PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
                 else if ((p2Position.Val - DisplacementY) == coordinate)
                 {
                     p2PanelsRef.tempPanels.Add(panel);
-                    panel.GetComponent<PanelBehaviour>().SelectionColor = Color.magenta;
-                    panel.GetComponent<PanelBehaviour>().Selected = true;
+                    panel.SelectionColor = Color.magenta;
+                    panel.Selected = true;
                 }
             }
         }

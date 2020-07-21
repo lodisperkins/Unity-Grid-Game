@@ -118,7 +118,6 @@ namespace Lodis.GamePlay.BlockScripts
 		{
 			BlockBehaviour blockScript = otherBlock.GetComponent<BlockBehaviour>();
             _blockHealth = otherBlock.GetComponent<HealthBehaviour>();
-            _blockHealth.health.Val = turretScript.bulletCount;
 			turretScript.OutOfAmmo.AddListener(blockScript.DestroyBlock);
 			blockScript.componentList.Add(this);
 			transform.SetParent(otherBlock.transform,false);

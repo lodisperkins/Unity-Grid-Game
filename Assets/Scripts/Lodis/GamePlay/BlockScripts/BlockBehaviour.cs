@@ -113,8 +113,12 @@ namespace Lodis
             canUpgrade = true;
             _currentLevel = 1;
             canDelete = true;
-            _health.onStunned.AddListener(StunComponents);
-            _health.onUnstunned.AddListener(UnstunComponents);
+            if(_health != null)
+            {
+                _health.onStunned.AddListener(StunComponents);
+                _health.onUnstunned.AddListener(UnstunComponents);
+            }
+            
         }
         //Turns off UI and disablkes any special components attached
         public void ActivateDisplayMode()
