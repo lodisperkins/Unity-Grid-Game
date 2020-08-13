@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28198989cec70874eb4acbd17ca0a23b, type: 3}
-  m_Name: AttackMode
+  m_Name: AttackMode 1
   m_EditorClassIdentifier: 
   parent: {fileID: 11400000, guid: 2399b12a9d54c474ea73b97b7599d52b, type: 2}
   _childLeft: {fileID: 11400000, guid: 95e3d97be8745e442a52cbf8293671e3, type: 2}

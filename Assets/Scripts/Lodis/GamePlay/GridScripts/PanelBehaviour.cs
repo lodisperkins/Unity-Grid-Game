@@ -35,6 +35,7 @@ namespace Lodis.GamePlay.GridScripts
         private float xAbsolute;
         private float yAbsolute;
         private float zAbsolute;
+        [SerializeField]
         private bool _isBroken;
         [SerializeField] private BlockBehaviour currentBlock;
         private RaycastHit _detectionRay;
@@ -228,8 +229,8 @@ namespace Lodis.GamePlay.GridScripts
             _panelMat = GetComponent<MeshRenderer>().material;
             if(_attackHighlight)
              {
-                 _panelMat.color = Color.yellow;
-                 _currentColor = Color.yellow;
+                 _panelMat.color = Color.grey;
+                 _currentColor = Color.grey;
              }
             else if (Owner == "Player1")
             {
