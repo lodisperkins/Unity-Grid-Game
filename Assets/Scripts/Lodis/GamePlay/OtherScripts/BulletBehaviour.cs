@@ -255,11 +255,15 @@ namespace Lodis
             }
             if (DamageVal >= 5)
             {
-                Vector3 direction = other.transform.position - transform.position;
+                Vector3 direction = rigidbody.velocity.normalized;
+                //direction.z = -direction.z;
                 KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
-                if (knockBackScript != null)
+                Movement.GridPhysicsBehaviour physicsBehaviour = other.GetComponent<Movement.GridPhysicsBehaviour>();
+                if (physicsBehaviour != null)
                 {
-                    knockBackScript.KnockBack(direction, 100, 1);
+                    //knockBackScript.KnockBack(direction, 100, 1);
+                    Vector2 direction2D = new Vector2(direction.z, direction.x);
+                    physicsBehaviour.AddForce(direction2D * 3);
                 }
                 
             }

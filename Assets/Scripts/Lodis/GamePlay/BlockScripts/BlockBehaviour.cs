@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 namespace Lodis
 {
-    
+    [RequireComponent(typeof(Movement.GridPhysicsBehaviour))]
     public class BlockBehaviour : MonoBehaviour
     {
         public delegate void BlockAction(object[] arg = null);
@@ -110,6 +110,7 @@ namespace Lodis
             componentList.Add(actionComponent);
             _health = GetComponent<HealthBehaviour>();
             shakeScript = GetComponent<GamePlay.OtherScripts.ScreenShakeBehaviour>();
+            GetComponent<Movement.GridPhysicsBehaviour>().currentPanel = currentPanel.GetComponent<PanelBehaviour>();
             canUpgrade = true;
             _currentLevel = 1;
             canDelete = true;

@@ -367,6 +367,8 @@ GameObject:
   - component: {fileID: 54604026786006182}
   - component: {fileID: 114326363979038618}
   - component: {fileID: 114115907556720234}
+  - component: {fileID: 114920994965684862}
+  - component: {fileID: 114402319370213170}
   m_Layer: 9
   m_Name: Material Block
   m_TagString: Block
@@ -8525,7 +8527,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
   health: {fileID: 0}
   isAlive: 0
-  isInvincible: 0
+  isInvincible: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -8834,6 +8836,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
   intendedSender: {fileID: 1414673357640282}
+--- !u!114 &114402319370213170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
 --- !u!114 &114436050809686000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9228,6 +9242,29 @@ MonoBehaviour:
   axis: {x: 0, y: 1, z: 0}
   speed: 4
   rotateOnSelf: 0
+--- !u!114 &114920994965684862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  seekEnabled: 1
+  destroyOnCompletion: 1
 --- !u!114 &114973269990828304
 MonoBehaviour:
   m_ObjectHideFlags: 1

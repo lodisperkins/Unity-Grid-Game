@@ -16,6 +16,7 @@ public class SeekBehaviour : MonoBehaviour
     public float captureRange;
     public UnityEvent onTargetReached;
     public bool seekEnabled = true;
+    public bool destroyOnCompletion = true;
     // Use this for initialization
     void Start()
     {
@@ -46,16 +47,24 @@ public class SeekBehaviour : MonoBehaviour
         if (distance <= captureRange && isTemporary)
         {
             onTargetReached.Invoke();
-            Destroy(GetComponent<SeekBehaviour>());
+            if(destroyOnCompletion)
+            {
+                Destroy(GetComponent<SeekBehaviour>());
+            }
+            else
+            {
+                seekEnabled = false;
+            }
         }
     }
-    public void Init(Vector3 targetVal, Vector3 velocityVal, int speedVal, float rangeVal = 0,bool temporary = false)
+    public void Init(Vector3 targetVal, Vector3 velocityVal, int speedVal, float rangeVal = 0,bool temporary = false, bool destroyOnTemp = true)
     {
         target = targetVal;
         velocity = velocityVal;
         max_speed = speedVal;
         captureRange = rangeVal;
         isTemporary = temporary;
+        destroyOnCompletion = destroyOnTemp;
         if(onTargetReached == null)
         {
             onTargetReached = new UnityEvent();
