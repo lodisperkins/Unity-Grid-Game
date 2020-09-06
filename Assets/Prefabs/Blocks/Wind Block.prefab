@@ -7880,8 +7880,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  seekEnabled: 1
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!114 &114175541505623278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7894,6 +7899,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPanel: {fileID: 0}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  collisions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  damagesOnHit: 1
 --- !u!114 &114185480616679614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7921,6 +7952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockScript: {fileID: 0}
   MaterialAmount: 15
+  blackHole: {fileID: 0}
   materialUpgradeVal: 0
   regenTimeUpgradeVal: 0
   playerUseAmount: 0

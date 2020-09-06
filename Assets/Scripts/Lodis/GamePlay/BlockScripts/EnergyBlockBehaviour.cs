@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Lodis.Movement;
+using Lodis.GamePlay.GridScripts;
+using UnityEngine.Networking;
 
 namespace Lodis.GamePlay.BlockScripts
 {
@@ -12,7 +15,8 @@ namespace Lodis.GamePlay.BlockScripts
         private PlayerSpawnBehaviour PlayerSpawner;
         //the amount of materials the block increases the players by
         public int MaterialAmount;
-
+        [SerializeField]
+        private BlackHoleBehaviour blackHole;
         public int materialUpgradeVal;
 
         public float regenTimeUpgradeVal;
@@ -23,6 +27,7 @@ namespace Lodis.GamePlay.BlockScripts
         [SerializeField] private Color _displayColor;
         [SerializeField] private GunBehaviour bulletEmitter;
         [SerializeField] private bool _canBeHeld;
+        private GridPhysicsBehaviour physicsBehaviour;
         public BlockBehaviour block
         {
             get
@@ -71,11 +76,25 @@ namespace Lodis.GamePlay.BlockScripts
             }
         }
 
+        public GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
             Player = _blockScript.owner;
             PlayerSpawner = Player.GetComponent<PlayerSpawnBehaviour>();
+            physicsBehaviour = block.GetComponent<GridPhysicsBehaviour>();
         }
         //Adds materials to the players material pool
         public void AddMaterials()
@@ -136,10 +155,43 @@ namespace Lodis.GamePlay.BlockScripts
             bulletEmitter.owner = player.name;
             player.SetSecondaryWeapon(this, playerUseAmount);
         }
-
+        private void GetSpawnPosition(out PanelBehaviour blackHolePanel)
+        {
+            Vector3 spawnPosition = new Vector3();
+            PanelBehaviour spawnPanel = new PanelBehaviour();
+            Vector2 spawnOffset = GridPhysicsBehaviour.ConvertToGridVector(transform.parent.forward);
+            if (block.owner.name == "Player1")
+            {
+                if (GridBehaviour.globalPanelList.FindPanel(BlackBoard.p1Position.Position + spawnOffset, out spawnPanel) == false)
+                {
+                    Debug.Log("Blackhole can't find offset panel P1");
+                }
+            }
+            else if (block.owner.name == "Player2")
+            {   
+                if (GridBehaviour.globalPanelList.FindPanel(BlackBoard.p2Position.Position + spawnOffset, out spawnPanel) == false)
+                {
+                    Debug.Log("Blackhole can't find offset panel P2");
+                }
+            }
+            else
+            {
+                Debug.Log("BlackHole owner not set or invalid");
+            }
+            blackHolePanel = spawnPanel;
+        }
         public void ActivatePowerUp()
         {
-            bulletEmitter.FireBullet();
+            PanelBehaviour spawnPanel = new PanelBehaviour();
+            GetSpawnPosition(out spawnPanel);
+            if(spawnPanel)
+            {
+                Vector3 yOffset = new Vector3(0, 1.16f, 0);
+                blackHole = Instantiate(blackHole.gameObject, spawnPanel.transform.position + yOffset, transform.rotation).GetComponent<BlackHoleBehaviour>();
+                blackHole.Owner = block.owner.name;
+                blackHole.SetCurrentPanel(spawnPanel);
+            }
+            
         }
 
         public void DetachFromPlayer()

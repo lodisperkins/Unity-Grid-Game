@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis.GamePlay.BlockScripts
@@ -78,6 +79,19 @@ namespace Lodis.GamePlay.BlockScripts
             get
             {
                 return _canBeHeld;
+            }
+        }
+
+        public GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
             }
         }
 

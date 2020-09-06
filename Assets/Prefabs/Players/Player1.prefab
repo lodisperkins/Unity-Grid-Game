@@ -2722,6 +2722,8 @@ GameObject:
   - component: {fileID: 114780056301946848}
   - component: {fileID: 114578573839250546}
   - component: {fileID: 114287455048261722}
+  - component: {fileID: 114712191321670744}
+  - component: {fileID: 114624916546752298}
   m_Layer: 9
   m_Name: Player1
   m_TagString: Player
@@ -14987,7 +14989,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698780024816490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
   m_Name: 
@@ -14997,7 +14999,7 @@ MonoBehaviour:
   updatePosition: 0
   isMoving: 0
   shouldStop: 0
-  shakeRange: 0.7
+  shakeRange: 0.4
   shakeLength: 0
 --- !u!114 &114400500004974856
 MonoBehaviour:
@@ -15274,6 +15276,78 @@ MonoBehaviour:
   _testGoal: {fileID: 0}
   _movementDelay: 0.1
   _enemyBulletList: {fileID: 11400000, guid: 2f518cf9ed679c847aab4b37aa786576, type: 2}
+--- !u!114 &114624916546752298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114878015514341180}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114851877076358748}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114878015514341180}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114851877076358748}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 1
+  snapToDestination: 1
 --- !u!114 &114635915937980974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15333,6 +15407,44 @@ MonoBehaviour:
   _healthbarImage: {fileID: 0}
   isHealthBar: 0
   fillImage: {fileID: 114318284502099676}
+--- !u!114 &114712191321670744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  collisions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  damagesOnHit: 1
 --- !u!114 &114716332770902410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15351,6 +15463,13 @@ MonoBehaviour:
   _blockHealthScore: 0
   _blockAmountScore: 0
   _totalScore: 0
+  _opponentCoreScore: 0
+  _opponentSupportScore: 0
+  _opponentSupportBlockScore: 0
+  _opponentSupportDefenseScore: 0
+  _opponentBlockHealthScore: 0
+  _opponentBlockAmountScore: 0
+  _opponentTotalScore: 0
   _shootDelay: 0.3
   healthScript: {fileID: 114476793149227368}
   supportScorePass: 100

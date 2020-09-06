@@ -44,7 +44,7 @@ namespace Lodis.GamePlay
         }
         public void Idle()
         {
-            seekScript.seekEnabled = false;
+            seekScript.SeekEnabled = false;
         }
         public void ExplodePanel()
         {
@@ -75,7 +75,7 @@ namespace Lodis.GamePlay
         }
         public void Deploy()
         {
-            seekScript.seekEnabled = false;
+            seekScript.SeekEnabled = false;
             transform.position = ownerTransform.position;
             rigidbody.AddForce(moveDirection * flyForce, ForceMode.Acceleration);
             _deployed = true;

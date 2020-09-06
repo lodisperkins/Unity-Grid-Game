@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis.GamePlay
@@ -90,6 +91,19 @@ namespace Lodis.GamePlay
         public bool CanBeHeld
         {
             get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
+        public GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
             {
                 throw new System.NotImplementedException();
             }

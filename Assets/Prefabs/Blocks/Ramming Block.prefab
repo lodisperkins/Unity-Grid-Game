@@ -766,6 +766,8 @@ GameObject:
   - component: {fileID: 65073090732195306}
   - component: {fileID: 114179189713851282}
   - component: {fileID: 114964730228050476}
+  - component: {fileID: 114432108415828204}
+  - component: {fileID: 114669023722468020}
   m_Layer: 9
   m_Name: Ramming Block
   m_TagString: Block
@@ -2912,6 +2914,8 @@ MonoBehaviour:
   _type: Attack
   types: []
   canDelete: 0
+  inMotion: 0
+  _maxLevel: 3
 --- !u!114 &114366839666029644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2945,6 +2949,34 @@ MonoBehaviour:
   _healthbarImage: {fileID: 114588033832277480}
   isHealthBar: 1
   fillImage: {fileID: 0}
+--- !u!114 &114432108415828204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893602849636482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!114 &114479458642089808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3221,6 +3253,44 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114669023722468020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893602849636482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  collisions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  damagesOnHit: 1
 --- !u!114 &114705115550392324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3235,6 +3305,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 305a07550964e454ebc34eb647acab3c, type: 2}
   health: {fileID: 0}
   isAlive: 0
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -3270,6 +3341,16 @@ MonoBehaviour:
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
   ps2: {fileID: 0}
   healthFull: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onUnstunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114804881448714462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3301,6 +3382,7 @@ MonoBehaviour:
   noColor: 0
   destroyOnHit: 1
   hitTrail: {fileID: 1046898937792080}
+  overrideGunForce: 0
 --- !u!114 &114829288299332026
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,8 @@ namespace Lodis.GamePlay.OtherScripts
         public bool isMoving;
 		private Vector3 _startPosition;
         public bool shouldStop;
+		private GridPhysicsBehaviour physicsBehaviour;
+		private Vector3 yOffset;
 		public Vector3 StartPosition
 		{
 			get { return _startPosition; }
@@ -25,6 +28,8 @@ namespace Lodis.GamePlay.OtherScripts
 		private void Start()
 		{
 			_startPosition = transform.position;
+			yOffset = new Vector3(0, transform.position.y, 0);
+			physicsBehaviour = GetComponent<GridPhysicsBehaviour>();
 		}
 
 		IEnumerator Shake()
@@ -89,6 +94,14 @@ namespace Lodis.GamePlay.OtherScripts
 			{
 				StartCoroutine(Shake());
 			}
+			if(physicsBehaviour)
+            {
+				if(physicsBehaviour.currentPanel)
+                {
+					_startPosition = physicsBehaviour.currentPanel.transform.position + yOffset;
+				}
+				
+            }
 		}
 	}
 }

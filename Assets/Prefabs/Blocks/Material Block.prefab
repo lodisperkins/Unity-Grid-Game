@@ -8527,7 +8527,7 @@ MonoBehaviour:
   healthRef: {fileID: 11400000, guid: 20db18aaffad9e14fb45c7a1d711695f, type: 2}
   health: {fileID: 0}
   isAlive: 0
-  isInvincible: 1
+  isInvincible: 0
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -8848,6 +8848,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPanel: {fileID: 0}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  collisions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  damagesOnHit: 1
 --- !u!114 &114436050809686000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8953,9 +8979,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockScript: {fileID: 114857136097773770}
   MaterialAmount: 4
+  blackHole: {fileID: 114158599784770334, guid: c9151c532d0f5384796d25d4b664ddfb,
+    type: 2}
   materialUpgradeVal: 3
   regenTimeUpgradeVal: 0.5
-  playerUseAmount: 5
+  playerUseAmount: 1
   teleportBeam: {fileID: 114298167921664070}
   _displayColor: {r: 1, g: 0.93442965, b: 0, a: 1}
   bulletEmitter: {fileID: 114068404583344888}
@@ -9263,8 +9291,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  seekEnabled: 1
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!114 &114973269990828304
 MonoBehaviour:
   m_ObjectHideFlags: 1

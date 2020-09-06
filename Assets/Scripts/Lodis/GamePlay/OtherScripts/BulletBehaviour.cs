@@ -262,8 +262,8 @@ namespace Lodis
                 if (physicsBehaviour != null)
                 {
                     //knockBackScript.KnockBack(direction, 100, 1);
-                    Vector2 direction2D = new Vector2(direction.z, direction.x);
-                    physicsBehaviour.AddForce(direction2D * 3);
+                    Vector2 direction2D = Movement.GridPhysicsBehaviour.ConvertToGridVector(direction);
+                    physicsBehaviour.AddForce(direction2D * 50, 1);
                 }
                 
             }

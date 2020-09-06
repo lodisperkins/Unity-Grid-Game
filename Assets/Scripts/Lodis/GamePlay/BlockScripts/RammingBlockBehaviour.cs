@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Lodis.GamePlay.AIFolder;
+using Lodis.Movement;
+
 namespace Lodis.GamePlay.BlockScripts
 {
     public class RammingBlockBehaviour : MonoBehaviour,IUpgradable {
@@ -78,6 +80,19 @@ namespace Lodis.GamePlay.BlockScripts
             get
             {
                 return _canBeHeld;
+            }
+        }
+
+        public GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
             }
         }
 

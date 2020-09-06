@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -168,7 +169,26 @@ namespace Lodis.GamePlay.GridScripts
                 _attackHighlight = true;
                 UpdateColor();
             }
-            
+            switch (other.tag)
+            {
+                case ("Block"):
+                    {
+                        BlockBehaviour blockScript = other.GetComponent<BlockBehaviour>();
+                        GridPhysicsBehaviour gridPhysicsScript = other.GetComponent<GridPhysicsBehaviour>();
+                        if (blockScript != null)
+                        {
+                            currentBlock = blockScript;
+                            blockCounter = currentBlock.CurrentLevel;
+                        }
+                        Occupied = true;
+                        break;
+                    }
+                case ("Player"):
+                    {
+                        Occupied = true;
+                        break;
+                    }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -222,6 +242,15 @@ namespace Lodis.GamePlay.GridScripts
                 TimerSet = false;
                 UpdateColor();
             }
+        }
+        private void FixedUpdate()
+        {
+            if (currentBlock == null)
+            {
+                blockCounter = 0;
+            }
+
+            Occupied = false;
         }
         //Updates the coor of the panel to be that of its current owner
         public void UpdateColor()
@@ -315,7 +344,7 @@ namespace Lodis.GamePlay.GridScripts
         private void Update()
         {
             BlockCapacityReached = blockCounter == BlockLimit;
-            Occupied = CheckIfOccupied();
+            //Occupied = CheckIfOccupied();
             if(IsBroken)
             {
                 BlockCapacityReached = true;
