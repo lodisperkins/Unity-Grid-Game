@@ -71,7 +71,8 @@ namespace Lodis
         private bool _panelSelectionInputDown;
         private bool _towerSelectionInputDown;
         [SerializeField] private ArrowBehaviour _arrow;
-
+        [SerializeField]
+        private PlayerAbilityBehaviour playerAbilityScript;
         public List<GameObject> Blocks
         {
             get
@@ -361,8 +362,12 @@ namespace Lodis
         }
         public void PlaceBlock()
         {
-           
+            if(blockRef.BlockScript.Type != "Special")
+            {
+                return;
+            }
             FindNeighbors();
+            
             if(buildStateEnabled)
             { 
                 if ( direction.Val.x== -1)
@@ -520,7 +525,7 @@ namespace Lodis
 
         public void SelectBlock0()
         {
-            player.canMove = false;
+            playerAbilityScript.UseAbility(0);
             _towerSelectionInputDown = true;
             SelectionColor = Color.red;
             blockRef.Block = Blocks[0];
@@ -530,7 +535,7 @@ namespace Lodis
         }
         public void SelectBlock1()
         {
-            player.canMove = false;
+            playerAbilityScript.UseAbility(1);
             _towerSelectionInputDown = true;
             SelectionColor = Color.green;
             blockRef.Block = Blocks[1];
@@ -540,7 +545,7 @@ namespace Lodis
         }
         public void SelectBlock2()
         {
-            player.canMove = false;
+            playerAbilityScript.UseAbility(2);
             _towerSelectionInputDown = true;
             SelectionColor = Color.yellow;
             blockRef.Block = Blocks[2];

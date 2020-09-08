@@ -10,7 +10,7 @@ namespace Lodis
 {
     public class BulletBehaviour : MonoBehaviour
     {
-        
+
         //The player that shot this bullet
         public string Owner;
         //the amount of damage this bullet does 
@@ -80,7 +80,7 @@ namespace Lodis
         }
         public void ReverseOwner()
         {
-            if(Owner == "Player1")
+            if (Owner == "Player1")
             {
                 Owner = "Player2";
             }
@@ -92,7 +92,7 @@ namespace Lodis
         //(not working) meant to change the bullets color based on the owner
         private void ChangeColor()
         {
-            if(noColor)
+            if (noColor)
             {
                 return;
             }
@@ -109,7 +109,7 @@ namespace Lodis
                 _bulletListP2.Add(gameObject);
             }
         }
-        
+
         private void Awake()
         {
             ChangeColor();
@@ -117,9 +117,9 @@ namespace Lodis
             panelSetCalled = false;
         }
 
-        public virtual void Reflect(string ownerOfReflector,int damageIncrease = 2, float speedScale = 1.5f)
+        public virtual void Reflect(string ownerOfReflector, int damageIncrease = 2, float speedScale = 1.5f)
         {
-            if(Owner == ownerOfReflector)
+            if (Owner == ownerOfReflector)
             {
                 return;
             }
@@ -135,8 +135,24 @@ namespace Lodis
             switch (other.tag)
             {
                 case "Player":
-                {
-                    if (other.name != Owner || reflected)
+                    {
+                        if (other.name != Owner || reflected)
+                        {
+                            PlayHitParticleSystems(1);
+                            ps.transform.position = other.transform.position;
+                            var health = other.GetComponent<HealthBehaviour>();
+                            if (health != null)
+                            {
+                                health.takeDamage(DamageVal);
+                            }
+                            if (destroyOnHit)
+                            {
+                                Destroy(TempObject);
+                            }
+                        }
+                        break;
+                    }
+                case "Core":
                     {
                         PlayHitParticleSystems(1);
                         ps.transform.position = other.transform.position;
@@ -149,24 +165,8 @@ namespace Lodis
                         {
                             Destroy(TempObject);
                         }
-                    }
-                    break;
-                }
-                case "Core":
-                {
-                    PlayHitParticleSystems(1);
-                    ps.transform.position = other.transform.position;
-                    var health = other.GetComponent<HealthBehaviour>();
-                    if (health != null)
-                    {
-                        health.takeDamage(DamageVal);
-                    }
-                        if (destroyOnHit)
-                        {
-                            Destroy(TempObject);
-                        }
                         break;
-                }
+                    }
                 case "Panel":
                     {
                         _currentPanel = other.GetComponent<PanelBehaviour>();
@@ -175,33 +175,36 @@ namespace Lodis
                             onPanelSet.Raise();
                             panelSetCalled = true;
                         }
-
+                        if (name == "ExplosiveBullet(Clone)")
+                        {
+                            BlackBoard.grid.ExplodePanel(currentPanel, true, 5);
+                        }
                         break;
                     }
                 case "Block":
-                {
-                    if(other.name == "DeletionBlock(Clone)")
                     {
-                        return;
-                    }
-                    PlayHitParticleSystems(1);
-                    ps.transform.position = other.transform.position;
-                    var health = other.GetComponent<HealthBehaviour>();
-                    if (health != null)
-                    {
-                        other.GetComponent<BlockBehaviour>().GiveMoneyForKill(Owner,DamageVal);
-                        health.takeDamage(DamageVal);
-                        
-                    }
+                        if (other.name == "DeletionBlock(Clone)")
+                        {
+                            return;
+                        }
+                        PlayHitParticleSystems(1);
+                        ps.transform.position = other.transform.position;
+                        var health = other.GetComponent<HealthBehaviour>();
+                        if (health != null)
+                        {
+                            other.GetComponent<BlockBehaviour>().GiveMoneyForKill(Owner, DamageVal);
+                            health.takeDamage(DamageVal);
+
+                        }
                         if (destroyOnHit)
                         {
                             Destroy(TempObject);
                         }
                         break;
-                }
+                    }
                 case "Projectile":
                     {
-                        if(other.name == "Ramming Block(Clone)" && other.GetComponent<BlockBehaviour>().owner.name != Owner)
+                        if (other.name == "Ramming Block(Clone)" && other.GetComponent<BlockBehaviour>().owner.name != Owner)
                         {
                             PlayHitParticleSystems(1);
                             ps.transform.position = other.transform.position;
@@ -244,7 +247,7 @@ namespace Lodis
                         break;
                     }
             }
-           
+
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -265,10 +268,10 @@ namespace Lodis
                     Vector2 direction2D = Movement.GridPhysicsBehaviour.ConvertToGridVector(direction);
                     physicsBehaviour.AddForce(direction2D * 50, 1);
                 }
-                
+
             }
             ResolveCollision(other.gameObject);
-            
+
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -291,8 +294,8 @@ namespace Lodis
         //plays the particle system after a bullet hits an object
         public void PlayHitParticleSystems(float duration)
         {
-            GameObject tempPs = Instantiate(ps,transform.position,transform.rotation);
-            Destroy(tempPs,.5f);
+            GameObject tempPs = Instantiate(ps, transform.position, transform.rotation);
+            Destroy(tempPs, .5f);
         }
         // Update is called once per frame
         void Update()
@@ -309,5 +312,5 @@ namespace Lodis
             _bulletListP2.RemoveItem(gameObject);
         }
     }
-    
+
 }

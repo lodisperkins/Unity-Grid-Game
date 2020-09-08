@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using Lodis.Movement;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace Lodis.GamePlay.BlockScripts
 {
@@ -25,6 +26,7 @@ namespace Lodis.GamePlay.BlockScripts
         private int playerUseAmount;
         private bool playerAttached;
         PlayerAttackBehaviour playerAttackScript;
+        PlayerSpawnBehaviour _spawnScript;
         [SerializeField]
         private TeleportBeamBehaviour teleportBeam;
         [SerializeField]
@@ -41,6 +43,7 @@ namespace Lodis.GamePlay.BlockScripts
 			colorName = "Color_262603E3";
 			_attachedMaterial = GetComponent<MeshRenderer>().material;
             _nameOfItem = gameObject.name;
+            _spawnScript = playerAttackScript.gameObject.GetComponent<PlayerSpawnBehaviour>();
 		}
         public BlockBehaviour block
         {
@@ -193,13 +196,10 @@ namespace Lodis.GamePlay.BlockScripts
             shieldTimer.shouldStop = true;
             shieldTimer.StopAllCoroutines();
             transform.SetParent(player.transform, false);
-            teleportBeam.transform.parent = null;
             SphereCollider collider = GetComponent<SphereCollider>();
-            collider.isTrigger = false;
             healthScript = player.GetComponent<HealthBehaviour>();
             transform.localScale *= 1.5f;
             playerAttached = true;
-            teleportBeam.Teleport(player.transform.position);
             player.SetSecondaryWeapon(this, playerUseAmount);
             canReflect = true;
         }
@@ -215,7 +215,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if(!gameObject.activeSelf)
             {
-                gameObject.SetActive(true);
+                StartCoroutine(EnableReflector());
                 healthScript.isInvincible = true;
             }
         }
@@ -241,6 +241,18 @@ namespace Lodis.GamePlay.BlockScripts
         {
             gameObject.SetActive(false);
             healthScript.isInvincible = false;
+        }
+        public void Update()
+        {
+            if (_spawnScript.CheckMaterial((int)playerAttackScript.weaponUseAmount))
+            {
+                Debug.Log("hold");
+                _spawnScript.BuyItem((int)playerAttackScript.weaponUseAmount);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

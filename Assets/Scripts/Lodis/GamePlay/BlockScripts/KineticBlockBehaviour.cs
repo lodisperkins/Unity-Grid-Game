@@ -240,8 +240,6 @@ namespace Lodis.GamePlay.BlockScripts
             playerAttackScript = player;
             playerAttackScript.weaponUseAmount = playerUseAmount;
             transform.SetParent(player.transform, false);
-            teleportBeam.transform.parent = null;
-            teleportBeam.Teleport(player.transform.position);
             player.SetSecondaryWeapon(this, playerUseAmount);
             gameObject.SetActive(false);
         }

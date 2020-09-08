@@ -209,8 +209,6 @@ namespace Lodis.GamePlay.BlockScripts
             playerAttackScript.weaponUseAmount = playerUseAmount;
             transform.SetParent(player.transform, false);
             transform.position += Vector3.up*2;
-            teleportBeam.transform.parent = null;
-            teleportBeam.Teleport(player.transform.position);
             dontDeleteOrbs = true;
             DisableOrbAttack();
             player.SetSecondaryWeapon(this, playerUseAmount);

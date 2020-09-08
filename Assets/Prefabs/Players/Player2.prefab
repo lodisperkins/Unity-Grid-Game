@@ -1687,6 +1687,7 @@ GameObject:
   - component: {fileID: 114742611572843894}
   - component: {fileID: 114436085678668900}
   - component: {fileID: 114219878064433040}
+  - component: {fileID: 114700433841939328}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -12391,29 +12392,7 @@ MonoBehaviour:
   captureRange: 0
   onTargetReached:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114840264315933764}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 114124990190854086}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onMove:
@@ -13063,6 +13042,22 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 530e37c93af3dee468b76af166eec765, type: 2}
   intendedSender: {fileID: 0}
+--- !u!114 &114700433841939328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecfb2a14c2f593469a686a728333420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilities: []
+  _spawnScript: {fileID: 114928660566369492}
+  _blockList: {fileID: 11400000, guid: f80a202cb61de8a4caf3d1494b7bf48a, type: 2}
+  _axis: []
+  player: 2
 --- !u!114 &114742611572843894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13299,6 +13294,7 @@ MonoBehaviour:
   _materialCap: 60
   buildStateEnabled: 0
   _arrow: {fileID: 114488790905741872}
+  playerAbilityScript: {fileID: 114700433841939328}
 --- !u!114 &114943934011144190
 MonoBehaviour:
   m_ObjectHideFlags: 1

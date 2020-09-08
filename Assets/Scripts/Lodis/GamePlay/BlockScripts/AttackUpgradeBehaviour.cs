@@ -13,7 +13,7 @@ namespace Lodis.GamePlay.BlockScripts
 		[SerializeField] private int _bulletForceUpgradeVal;
 		[SerializeField] private int _ammoUpgradeVal;
 		[SerializeField] private HealthBehaviour _blockHealth;
-        [SerializeField] private int playerUseAmount;
+        [SerializeField] public int playerUseAmount;
         private PlayerAttackBehaviour playerAttackScript;
         [SerializeField]
         private TeleportBeamBehaviour teleportBeam;
@@ -88,8 +88,7 @@ namespace Lodis.GamePlay.BlockScripts
             _nameOfItem = specialFeature.name;
 			turretScript = GetComponent<GunBehaviour>();
             turretScript.OutOfAmmo.AddListener(_blockScript.DestroyBlock);
-            turretScript.owner = _blockScript.owner.name;
-            _blockHealth.health.Val = turretScript.CurrentAmmo;
+            turretScript.owner = playerAttackScript.name;
 		}
         
 		public void UpgradeBlock(GameObject otherBlock)
@@ -166,8 +165,6 @@ namespace Lodis.GamePlay.BlockScripts
             turretScript.ChangeBullet(smartBulletRef);
             turretScript.StopAllCoroutines();
             transform.SetParent(player.transform, false);
-            teleportBeam.transform.parent = null;
-            teleportBeam.Teleport(player.transform.position);
             player.SetSecondaryWeapon(this, playerUseAmount);
         }
 
@@ -198,7 +195,7 @@ namespace Lodis.GamePlay.BlockScripts
         
         public void DeactivatePowerUp()
         {
-            throw new NotImplementedException();
+            return;
         }
     }
 }

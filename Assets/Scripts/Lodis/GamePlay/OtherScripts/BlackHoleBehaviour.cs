@@ -62,7 +62,7 @@ public class BlackHoleBehaviour : MonoBehaviour {
     }
     public void AddForce(GridPhysicsBehaviour other)
     {
-        if(other.IsMoving || other.name == Owner || Owner == "")
+        if(/*other.IsMoving || */other.name == Owner || Owner == "")
         {
             return;
         }

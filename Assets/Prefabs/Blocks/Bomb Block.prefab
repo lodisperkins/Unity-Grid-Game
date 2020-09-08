@@ -497,7 +497,6 @@ GameObject:
   - component: {fileID: 23778198731704630}
   - component: {fileID: 114619212970571492}
   - component: {fileID: 114022865585452640}
-  - component: {fileID: 114489289000678462}
   - component: {fileID: 54500866078950394}
   - component: {fileID: 114994553809085892}
   - component: {fileID: 114194448899644008}
@@ -2700,27 +2699,6 @@ MonoBehaviour:
     type: 2}
   _bulletEmitterPosition: {x: 0, y: 20, z: 0}
   _gun: {fileID: 0}
---- !u!114 &114489289000678462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772094693998044}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ede83023ae3b0f4584efdb167208cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockScript: {fileID: 0}
-  MaterialAmount: 15
-  blackHole: {fileID: 0}
-  materialUpgradeVal: 0
-  regenTimeUpgradeVal: 0
-  playerUseAmount: 0
-  teleportBeam: {fileID: 0}
-  _displayColor: {r: 0, g: 0, b: 0, a: 0}
-  bulletEmitter: {fileID: 0}
-  _canBeHeld: 0
 --- !u!114 &114523853944676782
 MonoBehaviour:
   m_ObjectHideFlags: 1

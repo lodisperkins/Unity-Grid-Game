@@ -305,7 +305,6 @@ GameObject:
   - component: {fileID: 65760197354081792}
   - component: {fileID: 114025331205045028}
   - component: {fileID: 114264179564565822}
-  - component: {fileID: 114525333718756852}
   - component: {fileID: 54002738438247232}
   - component: {fileID: 114575009364112912}
   - component: {fileID: 114516213190910178}
@@ -2626,27 +2625,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0ac8123049fca3542a390e375b11d76b, type: 2}
   intendedSender: {fileID: 1447780760735818}
---- !u!114 &114525333718756852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447780760735818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ede83023ae3b0f4584efdb167208cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockScript: {fileID: 0}
-  MaterialAmount: 15
-  blackHole: {fileID: 0}
-  materialUpgradeVal: 0
-  regenTimeUpgradeVal: 0
-  playerUseAmount: 0
-  teleportBeam: {fileID: 0}
-  _displayColor: {r: 0, g: 0, b: 0, a: 0}
-  bulletEmitter: {fileID: 0}
-  _canBeHeld: 0
 --- !u!114 &114575009364112912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2790,8 +2768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 114804898863985258, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
-  _bulletEmitter: {fileID: 1734885017088298, guid: 5af92e9293549e74a9da26c51e5abfd4,
-    type: 2}
+  _bulletEmitter: {fileID: 1738925671840322}
   _bulletEmitterPosition: {x: 0, y: 20, z: 0}
   _gun: {fileID: 114913433600047622}
 --- !u!114 &114913433600047622
@@ -2805,7 +2782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
+  bullet: {fileID: 1263534599806752, guid: 3c715578c73e8fe45a8222db373e9eb5, type: 2}
   owner: 
   bulletForceScale: 1500
   _bulletForce: {x: 0, y: 0, z: 0}

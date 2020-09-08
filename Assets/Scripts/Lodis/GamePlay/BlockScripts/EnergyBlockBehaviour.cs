@@ -16,6 +16,7 @@ namespace Lodis.GamePlay.BlockScripts
         //the amount of materials the block increases the players by
         public int MaterialAmount;
         [SerializeField]
+        private BlackHoleBehaviour blackHoleRef;
         private BlackHoleBehaviour blackHole;
         public int materialUpgradeVal;
 
@@ -92,8 +93,8 @@ namespace Lodis.GamePlay.BlockScripts
         // Use this for initialization
         void Start()
         {
-            Player = _blockScript.owner;
-            PlayerSpawner = Player.GetComponent<PlayerSpawnBehaviour>();
+            //Player = _blockScript.owner;
+            //PlayerSpawner = Player.GetComponent<PlayerSpawnBehaviour>();
             physicsBehaviour = block.GetComponent<GridPhysicsBehaviour>();
         }
         //Adds materials to the players material pool
@@ -150,9 +151,7 @@ namespace Lodis.GamePlay.BlockScripts
             GetComponent<RoutineBehaviour>().shouldStop = true;
             GetComponent<RoutineBehaviour>().StopAllCoroutines();
             transform.SetParent(player.transform, false);
-            teleportBeam.transform.parent = null;
-            teleportBeam.Teleport(player.transform.position);
-            bulletEmitter.owner = player.name;
+            //bulletEmitter.owner = player.name;
             player.SetSecondaryWeapon(this, playerUseAmount);
         }
         private void GetSpawnPosition(out PanelBehaviour blackHolePanel)
@@ -160,14 +159,14 @@ namespace Lodis.GamePlay.BlockScripts
             Vector3 spawnPosition = new Vector3();
             PanelBehaviour spawnPanel = new PanelBehaviour();
             Vector2 spawnOffset = GridPhysicsBehaviour.ConvertToGridVector(transform.parent.forward);
-            if (block.owner.name == "Player1")
+            if (playerAttackScript.name == "Player1")
             {
                 if (GridBehaviour.globalPanelList.FindPanel(BlackBoard.p1Position.Position + spawnOffset, out spawnPanel) == false)
                 {
                     Debug.Log("Blackhole can't find offset panel P1");
                 }
             }
-            else if (block.owner.name == "Player2")
+            else if (playerAttackScript.name == "Player2")
             {   
                 if (GridBehaviour.globalPanelList.FindPanel(BlackBoard.p2Position.Position + spawnOffset, out spawnPanel) == false)
                 {
@@ -187,11 +186,10 @@ namespace Lodis.GamePlay.BlockScripts
             if(spawnPanel)
             {
                 Vector3 yOffset = new Vector3(0, 1.16f, 0);
-                blackHole = Instantiate(blackHole.gameObject, spawnPanel.transform.position + yOffset, transform.rotation).GetComponent<BlackHoleBehaviour>();
-                blackHole.Owner = block.owner.name;
+                blackHole = Instantiate(blackHoleRef.gameObject, spawnPanel.transform.position + yOffset, transform.rotation).GetComponent<BlackHoleBehaviour>();
+                blackHole.Owner = playerAttackScript.name;
                 blackHole.SetCurrentPanel(spawnPanel);
             }
-            
         }
 
         public void DetachFromPlayer()
@@ -212,7 +210,7 @@ namespace Lodis.GamePlay.BlockScripts
 
         public void DeactivatePowerUp()
         {
-            throw new System.NotImplementedException();
+            return;
         }
     }
 }

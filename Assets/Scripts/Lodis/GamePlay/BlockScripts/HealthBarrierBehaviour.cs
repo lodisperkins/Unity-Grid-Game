@@ -225,9 +225,7 @@ namespace Lodis.GamePlay.BlockScripts
             playerAttackScript = player;
             playerAttackScript.weaponUseAmount = playerUseAmount;
             transform.SetParent(player.transform, false);
-            teleportBeam.transform.parent = null;
             playerAttached = true;
-            teleportBeam.Teleport(player.transform.position);
             player.SetSecondaryWeapon(this, playerUseAmount);
             _healLimit = BlackBoard.maxBlockHealth;
             gameObject.SetActive(false);

@@ -346,8 +346,6 @@ namespace Lodis.GamePlay.BlockScripts
             _spawnRoutine.shouldStop = true;
             _spawnRoutine.StopAllCoroutines();
             transform.SetParent(player.transform, false);
-            teleportBeam.transform.parent = null;
-            teleportBeam.Teleport(player.transform.position);
             player.SetSecondaryWeapon(this, playerUseAmount);
             _playerAttached = true;
             transform.position += Vector3.up * 6;

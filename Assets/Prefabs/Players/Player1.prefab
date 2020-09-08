@@ -2724,6 +2724,7 @@ GameObject:
   - component: {fileID: 114287455048261722}
   - component: {fileID: 114712191321670744}
   - component: {fileID: 114624916546752298}
+  - component: {fileID: 114187325699031106}
   m_Layer: 9
   m_Name: Player1
   m_TagString: Player
@@ -14650,6 +14651,7 @@ MonoBehaviour:
   _materialCap: 60
   buildStateEnabled: 0
   _arrow: {fileID: 114913368708520014}
+  playerAbilityScript: {fileID: 114187325699031106}
 --- !u!114 &114172036891939358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14701,6 +14703,22 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 0d885f0989823b84c8e532faf50f0ec5, type: 2}
   intendedSender: {fileID: 1688152834628444}
+--- !u!114 &114187325699031106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698780024816490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecfb2a14c2f593469a686a728333420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilities: []
+  _spawnScript: {fileID: 114099383312118654}
+  _blockList: {fileID: 11400000, guid: 5356464b385584b45a5963fe7fbc8c7c, type: 2}
+  _axis: []
+  player: 1
 --- !u!114 &114226752431750920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15294,29 +15312,7 @@ MonoBehaviour:
   captureRange: 0
   onTargetReached:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114878015514341180}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 114851877076358748}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onMove:

@@ -8747,7 +8747,7 @@ MonoBehaviour:
   max_speed: 80
   _onAscending: {fileID: 11400000, guid: 0d885f0989823b84c8e532faf50f0ec5, type: 2}
   _onLanding: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
-  ascending: 0
+  ascending: 1
   landed: 0
 --- !u!114 &114326363979038618
 MonoBehaviour:
@@ -8979,7 +8979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockScript: {fileID: 114857136097773770}
   MaterialAmount: 4
-  blackHole: {fileID: 114158599784770334, guid: c9151c532d0f5384796d25d4b664ddfb,
+  blackHoleRef: {fileID: 114158599784770334, guid: c9151c532d0f5384796d25d4b664ddfb,
     type: 2}
   materialUpgradeVal: 3
   regenTimeUpgradeVal: 0.5
