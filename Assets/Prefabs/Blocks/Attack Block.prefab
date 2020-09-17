@@ -2722,7 +2722,7 @@ MonoBehaviour:
   _bulletForceUpgradeVal: 100
   _ammoUpgradeVal: 12
   _blockHealth: {fileID: 114964812879654380}
-  playerUseAmount: 20
+  playerUseAmount: 5
   teleportBeam: {fileID: 114819576587138308}
   _displayColor: {r: 1, g: 0, b: 0, a: 1}
   _canBeHeld: 0
@@ -3173,7 +3173,7 @@ MonoBehaviour:
   max_speed: 80
   _onAscending: {fileID: 11400000, guid: 0d885f0989823b84c8e532faf50f0ec5, type: 2}
   _onLanding: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
-  ascending: 0
+  ascending: 1
   landed: 0
 --- !u!114 &114853325703285710
 MonoBehaviour:

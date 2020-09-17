@@ -8983,7 +8983,7 @@ MonoBehaviour:
     type: 2}
   materialUpgradeVal: 3
   regenTimeUpgradeVal: 0.5
-  playerUseAmount: 1
+  playerUseAmount: 30
   teleportBeam: {fileID: 114298167921664070}
   _displayColor: {r: 1, g: 0.93442965, b: 0, a: 1}
   bulletEmitter: {fileID: 114068404583344888}

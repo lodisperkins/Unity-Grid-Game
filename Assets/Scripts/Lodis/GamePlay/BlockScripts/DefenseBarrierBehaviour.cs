@@ -198,7 +198,7 @@ namespace Lodis.GamePlay.BlockScripts
             transform.SetParent(player.transform, false);
             SphereCollider collider = GetComponent<SphereCollider>();
             healthScript = player.GetComponent<HealthBehaviour>();
-            transform.localScale *= 1.5f;
+            //transform.localScale *= 1.5f;
             playerAttached = true;
             player.SetSecondaryWeapon(this, playerUseAmount);
             canReflect = true;
@@ -242,7 +242,8 @@ namespace Lodis.GamePlay.BlockScripts
             gameObject.SetActive(false);
             healthScript.isInvincible = false;
         }
-        public void Update()
+
+        public void FixedUpdate()
         {
             if (_spawnScript.CheckMaterial((int)playerAttackScript.weaponUseAmount))
             {
@@ -253,6 +254,11 @@ namespace Lodis.GamePlay.BlockScripts
             {
                 gameObject.SetActive(false);
             }
+        }
+
+        public void Update()
+        {
+            
         }
     }
 }

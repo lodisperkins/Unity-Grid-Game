@@ -1173,7 +1173,7 @@ Transform:
   m_GameObject: {fileID: 1419338390495314}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: -0.04000002, z: -0.042123795}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4394250039219412}
   m_Father: {fileID: 4414898728469390}
@@ -3315,7 +3315,7 @@ MonoBehaviour:
   shieldTimer: {fileID: 114993990273059680}
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   _displayColor: {r: 0, g: 1, b: 0.122285604, a: 1}
-  playerUseAmount: 200
+  playerUseAmount: 1
   teleportBeam: {fileID: 114891729799357068}
   canReflect: 0
   shieldActiveTime: 0
