@@ -259,11 +259,11 @@ namespace Lodis
                 //direction.z = -direction.z;
                 KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
                 Movement.GridPhysicsBehaviour physicsBehaviour = other.GetComponent<Movement.GridPhysicsBehaviour>();
-                if (physicsBehaviour != null)
+                if (physicsBehaviour != null/* && !other.CompareTag("Block")*/)
                 {
                     //knockBackScript.KnockBack(direction, 100, 1);
                     Vector2 direction2D = Movement.GridPhysicsBehaviour.ConvertToGridVector(direction);
-                    physicsBehaviour.AddForce(direction2D * 50, 1);
+                    physicsBehaviour.AddForce(direction2D * 10, 1);
                 }
                 
             }

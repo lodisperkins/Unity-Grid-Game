@@ -6,6 +6,12 @@ using Lodis.GamePlay.OtherScripts;
 using UnityEditor;
 using Lodis.Movement;
 using UnityEngine.Experimental;
+using System.Xml.Serialization;
+using System.IO;
+using System;
+using System.Xml;
+using System.Text;
+using UnityEditor.Build.Content;
 
 namespace Lodis.Movement
 {
@@ -22,15 +28,15 @@ namespace Lodis.Movement
         private PanelBehaviour targetPanel;
         private ScreenShakeBehaviour shakeScript;
         [SerializeField]
+        public ObjectList _collisions;
+        [SerializeField]
         private bool isMoving;
         [SerializeField]
         private Lodis.Event onHit;
         [SerializeField]
         private bool stopsWhenHit = true;
-        public List<CollisionChannel> collisions;
         [SerializeField]
         private bool damagesOnHit = true;
-
         public bool IsMoving
         {
             get
@@ -55,7 +61,7 @@ namespace Lodis.Movement
         // Use this for initialization
         void Start()
         {
-            
+            LoadCollisionData();
         }
         private void Awake()
         {
@@ -77,6 +83,7 @@ namespace Lodis.Movement
             seekScript.SeekEnabled = true;
         
         }
+
         public void AddForce(float speed, PanelBehaviour destination, float distance = 0.3f)
         {
             targetPanel = destination;
@@ -92,7 +99,7 @@ namespace Lodis.Movement
         }
         public bool CheckCollisions(string tag)
         {
-            foreach(var channel in collisions)
+            foreach(CollisionChannel channel in _collisions)
             {
                 if(channel)
                 {
@@ -142,27 +149,45 @@ namespace Lodis.Movement
         }
         public void CleanList()
         {
-            if(collisions != null)
+            if(_collisions != null)
             {
-                if(collisions[0] == null)
+                if(_collisions[0] == null)
                 {
-                    collisions.Clear();
+                    _collisions.Clear();
                     return;
                 }
             }
             else
             {
-                collisions = new List<CollisionChannel>();
+                Debug.LogError("Collision channel list has no value!");
             }
         }
+
+        public void LoadCollisionData()
+        {
+            List<bool> collisions = new List<bool>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<bool>));
+            string clone = "(Clone)";
+            string newName = name.Trim(clone.ToCharArray());
+            string filePath = "CollisionData/" + newName + "CollisionData.xml";
+            if (File.Exists(filePath))
+            {
+                StreamReader reader = new StreamReader(filePath);
+                collisions = (List<bool>)serializer.Deserialize(reader);
+                UpdateCollisionChannels(collisions);
+                reader.Close();
+            }
+        }
+
         public List<bool> GetCollisionValues()
         {
             List<bool> collisionValues = new List<bool>();
-            if(collisions == null)
+            if(_collisions == null)
             {
-                collisions = new List<CollisionChannel>();
+                Debug.LogError("Collision channel list has no value!");
+                return new List<bool>();
             }
-            foreach(var channel in collisions)
+            foreach(CollisionChannel channel in _collisions)
             {
                 if(channel)
                     collisionValues.Add(channel.collisionEnabled);
@@ -171,12 +196,19 @@ namespace Lodis.Movement
         }
         public void UpdateCollisionChannels(List<bool> newValues)
         {
-            collisions.Clear();
+            if (_collisions == null)
+            {
+                Debug.LogError("Collision channel list has no value!");
+                return;
+            }
+            _collisions.Clear();
             for(int i =0; i< UnityEditorInternal.InternalEditorUtility.tags.Length; i++)
             {
-                collisions.Add(CollisionChannel.CreateInstance(UnityEditorInternal.InternalEditorUtility.tags[i], newValues[i]));
+                _collisions.Add(CollisionChannel.CreateInstance(UnityEditorInternal.InternalEditorUtility.tags[i], newValues[i]));
             }
         }
+
+        
         // Update is called once per frame
         void Update()
         {
@@ -188,17 +220,56 @@ namespace Lodis.Movement
         }
     }
 }
+
+public class TestClass
+{
+    public int health = 100;
+    public int armor = 22;
+    public bool testBool = true;
+}
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(GridPhysicsBehaviour))]
 public class GridPhysicsEditor : Editor
 {
+    XmlSerializer serializer = new XmlSerializer(typeof(List<bool>));
+    public List<bool> collisions = new List<bool>(10);
+    TestClass test = new TestClass();
+    public void SaveCollisionData()
+    {
+        string clone = "(Clone)";
+        string newName = target.name.Trim(clone.ToCharArray());
+        string filePath = "CollisionData/" + newName + "CollisionData.xml";
+        StreamWriter writer = new StreamWriter(filePath);
+        serializer.Serialize(writer, collisions);
+        writer.Close();
+    }
 
-    List<bool> collisions = new List<bool>(10);
+    public void LoadCollisionData()
+    {
+        string clone = "(Clone)";
+        string newName = target.name.Trim(clone.ToCharArray());
+        string filePath = "CollisionData/" + newName + "CollisionData.xml";
+        if (File.Exists(filePath))
+        {
+            
+            StreamReader reader = new StreamReader(filePath);
+            collisions = (List<bool>)serializer.Deserialize(reader);
+            reader.Close();
+        }
+    }
     public override void OnInspectorGUI()
     {
         GridPhysicsBehaviour myscript = (GridPhysicsBehaviour)target;
-        collisions = myscript.GetCollisionValues();
         DrawDefaultInspector();
+
+        if(collisions == null)
+        {
+            return;
+        }
+
+        LoadCollisionData();
+
         for (int i =0; i< UnityEditorInternal.InternalEditorUtility.tags.Length; i++)
         {
             if(i >= collisions.Count)
@@ -207,14 +278,9 @@ public class GridPhysicsEditor : Editor
             }
             collisions[i] = EditorGUILayout.Toggle(UnityEditorInternal.InternalEditorUtility.tags[i], collisions[i]);
         }
-        
-        myscript.UpdateCollisionChannels(collisions);
-        if(GUILayout.Button("Clean List"))
-        {
-            myscript.CleanList();
-        }
-    }
 
+        SaveCollisionData();
+    }
 }
 #endif
 
