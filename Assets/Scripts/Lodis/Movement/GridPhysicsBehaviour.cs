@@ -79,7 +79,7 @@ namespace Lodis.Movement
             destination.Set(Mathf.Clamp(destination.x,0,9),Mathf.Clamp(destination.y,0,3));
             targetPanel = BlackBoard.grid.GetPanelFromGlobalList(destination);
             //rigidbody is null for blackhole
-            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, (int)currentVelocity.magnitude, distance, true, false,true);
+            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, distance, true, false,true);
             seekScript.SeekEnabled = true;
         
         }
@@ -89,7 +89,7 @@ namespace Lodis.Movement
             targetPanel = destination;
             currentVelocity = (targetPanel.Position - currentPanel.Position).normalized * speed;
             //rigidbody is null for blackhole
-            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, (int)currentVelocity.magnitude, distance, true, false, true);
+            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, distance, true, false, true);
             seekScript.SeekEnabled = true;
 
         }
