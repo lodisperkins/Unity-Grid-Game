@@ -401,6 +401,8 @@ MonoBehaviour:
   noColor: 0
   destroyOnHit: 1
   hitTrail: {fileID: 1055782054629894}
+  overrideGunForce: 0
+  addsForceToTarget: 1
 --- !u!114 &114987400176186350
 MonoBehaviour:
   m_ObjectHideFlags: 1

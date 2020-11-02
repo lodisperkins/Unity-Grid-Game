@@ -37,6 +37,11 @@ namespace Lodis.Movement
         private bool stopsWhenHit = true;
         [SerializeField]
         private bool damagesOnHit = true;
+        [SerializeField]
+        private float _snapDistance = 0.3f;
+        [SerializeField]
+        private bool _isMovable = true;
+
         public bool IsMoving
         {
             get
@@ -58,6 +63,19 @@ namespace Lodis.Movement
             }
         }
 
+        public bool IsMovable
+        {
+            get
+            {
+                return _isMovable;
+            }
+
+            set
+            {
+                _isMovable = value;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -72,24 +90,28 @@ namespace Lodis.Movement
             heightOffset = new Vector3(0, transform.position.y, 0);
             shakeScript = GetComponent<ScreenShakeBehaviour>();
         }
-        public void AddForce(Vector2 force,float distance = 0.3f)
+        public void AddForce(Vector2 force)
         {
+            if (!IsMovable)
+                return;
+
             currentVelocity = force;
             Vector2 destination = currentPanel.Position + force;
             destination.Set(Mathf.Clamp(destination.x,0,9),Mathf.Clamp(destination.y,0,3));
             targetPanel = BlackBoard.grid.GetPanelFromGlobalList(destination);
-            //rigidbody is null for blackhole
-            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, distance, true, false,true);
+            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, _snapDistance, true, false,true);
             seekScript.SeekEnabled = true;
         
         }
 
-        public void AddForce(float speed, PanelBehaviour destination, float distance = 0.3f)
+        public void AddForce(float speed, PanelBehaviour destination)
         {
+            if (!IsMovable)
+                return;
+
             targetPanel = destination;
             currentVelocity = (targetPanel.Position - currentPanel.Position).normalized * speed;
-            //rigidbody is null for blackhole
-            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, distance, true, false, true);
+            seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, _snapDistance, true, false, true);
             seekScript.SeekEnabled = true;
 
         }
@@ -99,6 +121,9 @@ namespace Lodis.Movement
         }
         public bool CheckCollisions(string tag)
         {
+            if (!_collisions)
+                return false;
+
             foreach(CollisionChannel channel in _collisions)
             {
                 if(channel)
@@ -134,7 +159,7 @@ namespace Lodis.Movement
             if (stopsWhenHit)
             {
                 targetPanel = trailingPanel;
-                seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, (int)currentVelocity.magnitude, 0.1f, true, false);
+                seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, (int)currentVelocity.magnitude, _snapDistance, true, false,true);
                 seekScript.SeekEnabled = true;
                 currentPanel = trailingPanel;
             }
@@ -198,7 +223,7 @@ namespace Lodis.Movement
         {
             if (_collisions == null)
             {
-                Debug.LogError("Collision channel list has no value!");
+                Debug.LogWarning("Collision channel list has no value!");
                 return;
             }
             _collisions.Clear();

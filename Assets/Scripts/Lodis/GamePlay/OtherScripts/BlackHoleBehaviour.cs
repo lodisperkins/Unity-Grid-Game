@@ -1,4 +1,5 @@
-﻿using Lodis.GamePlay.GridScripts;
+﻿using Lodis;
+using Lodis.GamePlay.GridScripts;
 using Lodis.Movement;
 using System;
 using System.Collections;
@@ -14,6 +15,15 @@ public class BlackHoleBehaviour : MonoBehaviour {
     private float pullForceScale;
     [SerializeField]
     private float timeActive;
+    [SerializeField]
+    private GameObject _effects;
+    [SerializeField]
+    private GameObject _suctionCollider;
+    [SerializeField]
+    private float _travelDistance;
+    [SerializeField]
+    private SeekBehaviour _seekScript;
+    private HealthBehaviour _playerHealth;
     public string Owner
     {
         get
@@ -29,14 +39,15 @@ public class BlackHoleBehaviour : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GameObject temp = gameObject;
-        Destroy(temp, timeActive);
+        
 	}
+
     public void DestroySelf()
     {
         GameObject temp = gameObject;
         Destroy(temp);
     }
+
 	private void GetPosition()
     {
         if(Owner == "Player1")
@@ -60,6 +71,16 @@ public class BlackHoleBehaviour : MonoBehaviour {
             Debug.Log("BlackHole owner not set or invalid");
         }
     }
+
+    public void ActivateSuction()
+    {
+        _effects.SetActive(true);
+        _suctionCollider.SetActive(true);
+        _seekScript.SeekEnabled = false;
+        GameObject temp = gameObject;
+        Destroy(temp, timeActive);
+    }
+
     public void AddForce(GridPhysicsBehaviour other)
     {
         if(other.IsMoving || other.name == Owner || Owner == "")
@@ -73,9 +94,20 @@ public class BlackHoleBehaviour : MonoBehaviour {
     {
         physicsBehaviour.currentPanel = panel;
         physicsBehaviour.StopsWhenHit = false;
-        Vector3 reference = transform.forward * 3;
+        Vector3 reference = transform.forward * _travelDistance;
         physicsBehaviour.AddForce(GridPhysicsBehaviour.ConvertToGridVector(reference));
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name != _owner && other.CompareTag("Player") && !_suctionCollider.activeSelf)
+        {
+            _playerHealth = other.GetComponent<HealthBehaviour>();
+            _playerHealth.CanStun = false;
+            ActivateSuction();
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         GridPhysicsBehaviour gridPhysics = other.GetComponent<GridPhysicsBehaviour>();
@@ -84,7 +116,13 @@ public class BlackHoleBehaviour : MonoBehaviour {
             AddForce(gridPhysics);
         }
     }
-    // Update is called once per frame
-    void Update () {
-	}
+    private void OnDestroy()
+    {
+        if (_playerHealth)
+        {
+            _playerHealth.CanStun = false;
+            _playerHealth.SendMessage("EnableControls");
+        }
+            
+    }
 }

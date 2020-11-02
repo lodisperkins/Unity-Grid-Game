@@ -37,6 +37,9 @@ namespace Lodis
         public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
         [SerializeField] private FlashBehaviour _flashScript;
         private HealthBehaviour _health;
+        [SerializeField]
+        private List<MonoBehaviour> _inputScripts;
+
         public PanelBehaviour CurrentPanel
         {
             get
@@ -258,6 +261,23 @@ namespace Lodis
             }
             UpdatePosition();
         }
+
+        public void DisableControls()
+        {
+            foreach(var script in _inputScripts)
+            {
+                script.enabled = false;
+            }
+        }
+
+        public void EnableControls()
+        {
+            foreach (var script in _inputScripts)
+            {
+                script.enabled = true;
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.CompareTag("Panel") && physicsBehaviour.IsMoving)

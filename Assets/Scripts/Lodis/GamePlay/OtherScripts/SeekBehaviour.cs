@@ -10,7 +10,7 @@ public class SeekBehaviour : MonoBehaviour
     [SerializeField]
     private Vector3 velocity;
     [SerializeField]
-    private int max_speed;
+    private float max_speed;
     private Rigidbody body;
     public bool isTemporary;
     public float captureRange;

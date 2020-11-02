@@ -79,7 +79,8 @@ namespace Lodis.GamePlay.GridScripts
         public void ExplodePanel(PanelBehaviour panel,bool breakPanel = false,float panelBreakTime = 1)
         {
             Instantiate(_explosion, panel.transform);
-            if(breakPanel)
+            _onExplosion.Raise();
+            if (breakPanel)
             {
                 panel.BreakPanel(panelBreakTime);
             }

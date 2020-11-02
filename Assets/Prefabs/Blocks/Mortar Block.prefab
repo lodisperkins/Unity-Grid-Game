@@ -2449,6 +2449,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -2757,6 +2758,8 @@ MonoBehaviour:
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   stopsWhenHit: 1
   damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114907662371916106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2769,8 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 114804898863985258, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
-  _bulletEmitter: {fileID: 1734885017088298, guid: 5af92e9293549e74a9da26c51e5abfd4,
-    type: 2}
+  _bulletEmitter: {fileID: 1738925671840322}
   _bulletEmitterPosition: {x: 0, y: 20, z: 0}
   _gun: {fileID: 114913433600047622}
 --- !u!114 &114913433600047622
@@ -2784,12 +2786,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
+  bullet: {fileID: 1263534599806752, guid: 6ec6c2e2143efab4d8ca5d46450883da, type: 2}
   owner: 
   bulletForceScale: 1500
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 0.5
-  bulletCount: 15
+  bulletDelay: 2
+  bulletCount: 1
   _hasLimitedAmmo: 1
   outOfAmmo:
     m_PersistentCalls:

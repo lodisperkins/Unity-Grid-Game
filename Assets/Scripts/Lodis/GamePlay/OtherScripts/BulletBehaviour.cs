@@ -45,6 +45,8 @@ namespace Lodis
         [SerializeField]
         protected bool overrideGunForce;
         protected Rigidbody rigidbody;
+        [SerializeField]
+        private bool addsForceToTarget;
         public PanelBehaviour currentPanel
         {
             get { return _currentPanel; }
@@ -253,17 +255,17 @@ namespace Lodis
                 Destroy();
                 return;
             }
-            if (DamageVal >= 5)
+            if (addsForceToTarget)
             {
                 Vector3 direction = rigidbody.velocity.normalized;
                 //direction.z = -direction.z;
                 KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
                 Movement.GridPhysicsBehaviour physicsBehaviour = other.GetComponent<Movement.GridPhysicsBehaviour>();
-                if (physicsBehaviour != null/* && !other.CompareTag("Block")*/)
+                if (physicsBehaviour != null && other.name != Owner)
                 {
                     //knockBackScript.KnockBack(direction, 100, 1);
                     Vector2 direction2D = Movement.GridPhysicsBehaviour.ConvertToGridVector(direction);
-                    physicsBehaviour.AddForce(direction2D * 10, 1);
+                    physicsBehaviour.AddForce(direction2D * 10);
                 }
                 
             }

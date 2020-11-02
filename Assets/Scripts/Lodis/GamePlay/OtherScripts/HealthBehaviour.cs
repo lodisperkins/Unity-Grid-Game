@@ -19,6 +19,8 @@ namespace Lodis
         [FormerlySerializedAs("IsAlive")] [SerializeField]
         private bool isAlive;
         public bool isInvincible;
+        [SerializeField]
+        private bool _canStun = true;
         [SerializeField] private HealthBehaviour _secondaryHealthSource;
         
         public int conversionRate;
@@ -53,6 +55,19 @@ namespace Lodis
             }
         }
 
+        public bool CanStun
+        {
+            get
+            {
+                return _canStun;
+            }
+
+            set
+            {
+                _canStun = value;
+            }
+        }
+
         // Use this for initialization
         public void Start()
         {
@@ -68,7 +83,7 @@ namespace Lodis
                 return;
             }
 
-            if (damageVal >= 5 &&!_stunned)
+            if (damageVal >= 5 &&!_stunned && CanStun)
             {
                 StartCoroutine(Stun(2.5f));
             }
@@ -83,6 +98,9 @@ namespace Lodis
 
         IEnumerator Stun(float duration)
         {
+            if (!CanStun)
+                yield break;
+
             _stunned = true;
             onStunned.Invoke();
             yield return  new WaitForSeconds(duration);

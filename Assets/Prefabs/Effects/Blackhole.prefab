@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 33473953376514124}
   - component: {fileID: 23627872775801248}
   - component: {fileID: 114408793177385064}
+  - component: {fileID: 135564520258614510}
   m_Layer: 0
   m_Name: ParalyzerBullet
   m_TagString: Projectile
@@ -246,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1422884230452548
 GameObject:
   m_ObjectHideFlags: 1
@@ -1147,6 +1148,10 @@ MonoBehaviour:
   physicsBehaviour: {fileID: 114316492155546588}
   pullForceScale: 5
   timeActive: 6
+  _effects: {fileID: 1261068305593538}
+  _suctionCollider: {fileID: 1146613027965452}
+  _travelDistance: 5
+  _seekScript: {fileID: 114637307665178408}
 --- !u!114 &114316492155546588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1159,32 +1164,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPanel: {fileID: 0}
+  _collisions: {fileID: 0}
   isMoving: 0
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   stopsWhenHit: 1
-  collisions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   damagesOnHit: 1
+  _snapDistance: 0.31
+  _isMovable: 1
 --- !u!114 &114408793177385064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,24 +1200,13 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   max_speed: 0
   isTemporary: 0
-  captureRange: 0
+  captureRange: 0.8
   onTargetReached:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1261068305593538}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1351574180827594}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 114158599784770334}
+        m_MethodName: DestroySelf
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1240,17 +1215,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1146613027965452}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onMove:
@@ -1258,8 +1222,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  destroyOnCompletion: 1
-  snapToDestination: 0
+  destroyOnCompletion: 0
+  snapToDestination: 1
 --- !u!114 &114793765490268042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1328,6 +1292,18 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.21
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135564520258614510
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351574180827594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198075605273781358
 ParticleSystem:
