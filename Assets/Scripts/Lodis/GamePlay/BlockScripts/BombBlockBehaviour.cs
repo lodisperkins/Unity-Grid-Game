@@ -47,7 +47,7 @@ namespace Lodis.GamePlay
                 {
                     other.GetComponent<GridScripts.PanelBehaviour>().Occupied = false;
                 }
-                other.GetComponent<GridScripts.PanelBehaviour>().BreakPanel(5);
+                other.GetComponent<GridScripts.PanelBehaviour>().BreakPanel(10);
             }
             //damages everything else 
             else if(other.gameObject != _block.gameObject)

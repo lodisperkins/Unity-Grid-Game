@@ -47,6 +47,8 @@ namespace Lodis
         protected Rigidbody rigidbody;
         [SerializeField]
         private bool addsForceToTarget;
+        [SerializeField]
+        private int _knockbackForce = 1;
         public PanelBehaviour currentPanel
         {
             get { return _currentPanel; }
@@ -265,7 +267,7 @@ namespace Lodis
                 {
                     //knockBackScript.KnockBack(direction, 100, 1);
                     Vector2 direction2D = Movement.GridPhysicsBehaviour.ConvertToGridVector(direction);
-                    physicsBehaviour.AddForce(direction2D * 10);
+                    physicsBehaviour.AddForce(direction2D * _knockbackForce);
                 }
                 
             }

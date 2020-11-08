@@ -159,7 +159,7 @@ namespace Lodis.Movement
             if (stopsWhenHit)
             {
                 targetPanel = trailingPanel;
-                seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, (int)currentVelocity.magnitude, _snapDistance, true, false,true);
+                seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, _snapDistance, true, false,true);
                 seekScript.SeekEnabled = true;
                 currentPanel = trailingPanel;
             }

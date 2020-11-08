@@ -497,11 +497,9 @@ GameObject:
   - component: {fileID: 23778198731704630}
   - component: {fileID: 114619212970571492}
   - component: {fileID: 114022865585452640}
-  - component: {fileID: 114489289000678462}
   - component: {fileID: 54500866078950394}
   - component: {fileID: 114994553809085892}
   - component: {fileID: 114194448899644008}
-  - component: {fileID: 114367536307216524}
   - component: {fileID: 65850977811881344}
   - component: {fileID: 114896170280813750}
   - component: {fileID: 114017438693909028}
@@ -2666,43 +2664,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114367536307216524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772094693998044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f99ffb41a65e674cb280db76a1fecdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _grid: {fileID: 114804898863985258, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
-  _bulletEmitter: {fileID: 1734885017088298, guid: 5af92e9293549e74a9da26c51e5abfd4,
-    type: 2}
-  _bulletEmitterPosition: {x: 0, y: 20, z: 0}
-  _gun: {fileID: 0}
---- !u!114 &114489289000678462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772094693998044}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ede83023ae3b0f4584efdb167208cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockScript: {fileID: 0}
-  MaterialAmount: 15
-  blackHole: {fileID: 0}
-  materialUpgradeVal: 0
-  regenTimeUpgradeVal: 0
-  playerUseAmount: 0
-  teleportBeam: {fileID: 0}
-  _displayColor: {r: 0, g: 0, b: 0, a: 0}
-  bulletEmitter: {fileID: 0}
-  _canBeHeld: 0
 --- !u!114 &114523853944676782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2736,7 +2697,7 @@ MonoBehaviour:
   onUpgrade: {fileID: 11400000, guid: 5e9b1d959308f2a4e87ec8cc3fb53dd0, type: 2}
   onBlockSpawn: {fileID: 11400000, guid: 7f1b20035c6756742a6ac677965f4d91, type: 2}
   onBlockDelete: {fileID: 11400000, guid: 24ece84c14814364f931930cc51947a9, type: 2}
-  specialFeature: {fileID: 114367536307216524}
+  specialFeature: {fileID: 0}
   player1Materials: {fileID: 11400000, guid: 87b57fe5c39f9ed4ca41fc9b73c03995, type: 2}
   player2Materials: {fileID: 11400000, guid: c165282c0996c14438c2115f66170b29, type: 2}
   _blockUI: {fileID: 0}

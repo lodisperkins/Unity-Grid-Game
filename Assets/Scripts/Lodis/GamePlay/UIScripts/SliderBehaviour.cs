@@ -16,7 +16,7 @@ namespace Lodis
         private Color _overdriveColor;
         [SerializeField] private Color _defaultColor;
         private float lerpVal;
-        [SerializeField] private IntVariable value;
+        [SerializeField] private IntVariable _value;
         [SerializeField] private Image _healthbarImage;
         public bool isHealthBar;
         public Image fillImage;
@@ -69,6 +69,10 @@ namespace Lodis
 	        _healthbarImage.color = Color.cyan;
         }
         
+        public void SetValue(int value)
+        {
+            _value.Val = value;
+        }
     	void Update ()
     	{
 	        if (isHealthBar)
@@ -78,7 +82,7 @@ namespace Lodis
 	        }
 	        else
 	        {
-		        Bar.value = value.Val;
+		        Bar.value = _value.Val;
 		        
 	        }
     		
