@@ -501,6 +501,7 @@ GameObject:
   - component: {fileID: 54859202972624146}
   - component: {fileID: 114152237484047676}
   - component: {fileID: 65657923399342400}
+  - component: {fileID: 114544927796069842}
   m_Layer: 0
   m_Name: BlockTransporter
   m_TagString: Wind
@@ -6061,7 +6062,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  seekEnabled: 1
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!114 &114152237484047676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6087,6 +6094,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blocks: {fileID: 11400000, guid: 5356464b385584b45a5963fe7fbc8c7c, type: 2}
   _blockScaleSize: 1
+--- !u!114 &114544927796069842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267100474214724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325bdacaaa83ceb4d822bc3df699bd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthRef: {fileID: 11400000, guid: 7430f1e36fde8284d9f84e88662fc10b, type: 2}
+  health: {fileID: 11400000, guid: e857600695b4b0c46818ad472ec40c93, type: 2}
+  isAlive: 1
+  isInvincible: 0
+  _canStun: 1
+  _secondaryHealthSource: {fileID: 0}
+  conversionRate: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  hasRaised: 0
+  OnObjectDeath: {fileID: 11400000, guid: f4fae07ab9b6daf4299616c0b504e3f7, type: 2}
+  OnHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  ps: {fileID: 0}
+  ps2: {fileID: 0}
+  healthFull: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onUnstunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114642631916761942
 MonoBehaviour:
   m_ObjectHideFlags: 1

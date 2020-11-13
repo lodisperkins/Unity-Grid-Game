@@ -260,8 +260,6 @@ namespace Lodis
             if (addsForceToTarget)
             {
                 Vector3 direction = rigidbody.velocity.normalized;
-                //direction.z = -direction.z;
-                KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
                 Movement.GridPhysicsBehaviour physicsBehaviour = other.GetComponent<Movement.GridPhysicsBehaviour>();
                 if (physicsBehaviour != null && other.name != Owner)
                 {
@@ -283,8 +281,8 @@ namespace Lodis
             }
             if (DamageVal >= 5)
             {
-                Vector3 direction = collision.contacts[0].point - transform.position;
-                collision.gameObject.GetComponent<KnockBackBehaviour>().KnockBack(direction, 100, 1);
+                Vector2 direction = collision.contacts[0].point - transform.position;
+                collision.gameObject.GetComponent<Lodis.Movement.GridPhysicsBehaviour>().AddForce(direction);
             }
             ResolveCollision(collision.gameObject);
         }

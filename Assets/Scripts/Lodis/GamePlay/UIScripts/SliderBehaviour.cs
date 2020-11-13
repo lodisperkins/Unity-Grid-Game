@@ -47,9 +47,9 @@ namespace Lodis
         {
 	        if (_healthbarImage != null)
 	        {
-		        lerpVal = Bar.value / 100;
+		        lerpVal = Bar.value / hp.HealthRef.Val;
 		        _healthbarImage.color=Vector4.Lerp(Color.red,Color.yellow , lerpVal);
-		        if (lerpVal == 1)
+		        if (lerpVal >= 1)
 		        {
 			        _healthbarImage.color = Color.green;
 		        }

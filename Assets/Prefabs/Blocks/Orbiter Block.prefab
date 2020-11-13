@@ -1129,7 +1129,7 @@ Transform:
   m_GameObject: {fileID: 1685822550087068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.45114288, y: 2, z: 0.45114288}
+  m_LocalScale: {x: 0.45114288, y: 4, z: 0.45114288}
   m_Children:
   - {fileID: 4637596664539274}
   - {fileID: 4438725302927978}
@@ -1446,7 +1446,7 @@ Transform:
   m_GameObject: {fileID: 1070183770053878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.45114288, y: 2, z: 0.45114288}
+  m_LocalScale: {x: 0.45114288, y: 4, z: 0.45114288}
   m_Children:
   - {fileID: 4384738668340968}
   - {fileID: 4909819502925950}
@@ -1722,7 +1722,7 @@ Transform:
   m_GameObject: {fileID: 1239360876383640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.45114, y: 2, z: 0.45114}
+  m_LocalScale: {x: 0.45114, y: 4, z: 0.45114}
   m_Children:
   - {fileID: 4625441474196818}
   - {fileID: 4318351446854380}
@@ -3634,6 +3634,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -3696,6 +3697,8 @@ MonoBehaviour:
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   stopsWhenHit: 1
   damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114317193002363672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3846,7 +3849,7 @@ MonoBehaviour:
   hp: {fileID: 114166816750216418}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  value: {fileID: 0}
+  _value: {fileID: 0}
   _healthbarImage: {fileID: 114833949336806034}
   isHealthBar: 1
   fillImage: {fileID: 0}

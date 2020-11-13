@@ -61,6 +61,7 @@ namespace Lodis.GamePlay
             copyScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter -= 1;
             _currentPanel.Occupied = true;
             BlockCopy.GetComponent<Collider>().isTrigger = true;
+            Destroy(gameObject);
         }
         public void DestroyDisplayBlock()
         {
@@ -92,15 +93,25 @@ namespace Lodis.GamePlay
             {
                 blockSeekScript.Init(BlackBoard.grid.GetPanelFromGlobalList(_currentPanel.Position).transform.position, blockDisplay.CurrentBlock.GetComponent<Rigidbody>().velocity, 10, 2, true);
                 blockSeekScript.onTargetReached.AddListener(_explodeOnImpact);
+                blockDisplay.GetComponent<Rigidbody>().isKinematic = false;
+
+                GameObject temp = gameObject;
+                Destroy(temp, .5f);
+                _blockDropped = true;
             }
             else
             {
-                blockSeekScript.Init(BlackBoard.grid.GetPanelFromGlobalList(_currentPanel.Position).transform.position, blockDisplay.CurrentBlock.GetComponent<Rigidbody>().velocity, 10, 2, true);
-                blockSeekScript.onTargetReached.AddListener(_spawnBlockOnImpact);
+                _currentPanel.Occupied = true;
+                PlaceBlock();
             }
-            GameObject temp = gameObject;
-            Destroy(temp,.5f);
-            _blockDropped = true;
+            
+        }
+
+        public void PlaceBlock()
+        {
+            seekScript.SetTarget(_currentPanel.transform.position, 5);
+            seekScript.enabled = true;
+            seekScript.onTargetReached.AddListener(_spawnBlockOnImpact);
         }
         void CheckPosition()
         {
@@ -125,7 +136,7 @@ namespace Lodis.GamePlay
                 blockDisplay.CurrentBlock.transform.position = blockDisplay.transform.position;
             }
             CheckPosition();
-            if(seekScript && ownerTransform)
+            if(seekScript && ownerTransform && !Deployed)
             {
                 seekScript.SetTarget(ownerTransform.position, 5);
             }
