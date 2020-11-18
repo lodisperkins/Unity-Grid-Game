@@ -357,7 +357,7 @@ namespace Lodis.GamePlay.BlockScripts
         {
             if(_blockTransporter.Deployed)
             {
-                _blockTransporter.DropBlock();
+                _blockTransporter.PlaceBlock();
             }
             else
             {
@@ -365,11 +365,6 @@ namespace Lodis.GamePlay.BlockScripts
                 _blockTransporter.moveDirection = playerAttackScript.transform.forward;
                 _blockTransporter.Deploy();
             }
-            //else
-            //{
-            //    _blockTransporter.moveDirection = playerAttackScript.transform.forward;
-            //    _blockTransporter.Deploy();
-            //}
         }
 
         public void DetachFromPlayer()

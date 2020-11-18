@@ -76,7 +76,7 @@ public class SeekBehaviour : MonoBehaviour
             }
         }
     }
-    public void Init(Vector3 targetVal, Vector3 velocityVal, int speedVal, float rangeVal = 0,bool temporary = false, bool destroyOnTemp = true, bool snap = false)
+    public void Init(Vector3 targetVal, Vector3 velocityVal, float speedVal, float rangeVal = 0,bool temporary = false, bool destroyOnTemp = true, bool snap = false)
     {
         target = targetVal;
         velocity = velocityVal;
