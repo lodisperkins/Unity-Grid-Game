@@ -43,7 +43,7 @@ namespace Lodis.GamePlay
         {
             seekScript.Init(ownerTransform.position, rigidbody.velocity, 5, 5);
             _explodeOnImpact += ExplodePanel;
-            _explodeOnImpact += DestroyDisplayBlock;
+            _explodeOnImpact += Destroy;
             _spawnBlockOnImpact += SpawnBlock;
             _spawnBlockOnImpact += DestroyDisplayBlock;
             _currentBlockIndex = _playerSpawnScript.CurrentIndex;
@@ -82,11 +82,24 @@ namespace Lodis.GamePlay
         {
             Destroy(blockDisplay.CurrentBlock,_spawnDelay);
         }
-        private void OnTriggerEnter(Collider other)
+
+        public void Destroy()
         {
-            if(other.CompareTag("Panel"))
+            Destroy(gameObject);
+            Destroy(blockDisplay.CurrentBlock);
+        }
+        public void Destroy(float time)
+        {
+            Destroy(gameObject, time);
+            Destroy(blockDisplay.CurrentBlock, time);
+        }
+        private void UpdateCurrentPanel()
+        {
+            RaycastHit hit = new RaycastHit();
+            int layerMask = 1 << 10;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 10,layerMask))
             {
-                _currentPanel = other.GetComponent<GridScripts.PanelBehaviour>();
+                _currentPanel = hit.collider.GetComponent<GridScripts.PanelBehaviour>();
             }
         }
         public void Deploy()
@@ -122,6 +135,7 @@ namespace Lodis.GamePlay
         // Update is called once per frame
         void Update()
         {
+            UpdateCurrentPanel();
             if(_currentBlockIndex != _playerSpawnScript.CurrentIndex && !Deployed)
             {
                 _currentBlockIndex = _playerSpawnScript.CurrentIndex;

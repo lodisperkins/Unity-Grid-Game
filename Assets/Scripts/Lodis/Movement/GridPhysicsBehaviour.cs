@@ -92,13 +92,17 @@ namespace Lodis.Movement
         }
         public void AddForce(Vector2 force)
         {
-            if (!IsMovable)
+            if (!IsMovable || !seekScript)
                 return;
 
             currentVelocity = force;
             Vector2 destination = currentPanel.Position + force;
             destination.Set(Mathf.Clamp(destination.x,0,9),Mathf.Clamp(destination.y,0,3));
             targetPanel = BlackBoard.grid.GetPanelFromGlobalList(destination);
+
+            if (!targetPanel)
+                return;
+
             seekScript.Init(targetPanel.transform.position + heightOffset, rigidbody.velocity, 20, _snapDistance, true, false,true);
             seekScript.SeekEnabled = true;
         

@@ -241,9 +241,17 @@ namespace Lodis
                     {
                         PlayHitParticleSystems(1);
                         ps.transform.position = other.transform.position;
-                        if (destroyOnHit)
+                        if (other.name != Owner)
                         {
-                            Destroy(TempObject);
+                            var health = other.GetComponent<HealthBehaviour>();
+                            if (health != null)
+                            {
+                                health.takeDamage(DamageVal);
+                            }
+                            if (destroyOnHit)
+                            {
+                                Destroy(TempObject);
+                            }
                         }
                         break;
                     }

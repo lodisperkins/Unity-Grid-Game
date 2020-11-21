@@ -355,7 +355,7 @@ namespace Lodis.GamePlay.GridScripts
         private void Update()
         {
             BlockCapacityReached = blockCounter == BlockLimit;
-            //Occupied = CheckIfOccupied();
+            Occupied = CheckIfOccupied();
             if(IsBroken)
             {
                 BlockCapacityReached = true;
