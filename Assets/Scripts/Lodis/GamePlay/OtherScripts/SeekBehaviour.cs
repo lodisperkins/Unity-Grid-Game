@@ -10,12 +10,32 @@ public class SeekBehaviour : MonoBehaviour
     [SerializeField]
     private Vector3 velocity;
     [SerializeField]
-    private int max_speed;
+    private float max_speed;
     private Rigidbody body;
     public bool isTemporary;
     public float captureRange;
     public UnityEvent onTargetReached;
-    public bool seekEnabled = true;
+    public UnityEvent onMove;
+    private bool seekEnabled = true;
+    public bool destroyOnCompletion = true;
+    public bool snapToDestination;
+    public bool SeekEnabled
+    {
+        get
+        {
+            return seekEnabled;
+        }
+
+        set
+        {
+            if(value)
+            {
+                onMove.Invoke();
+            }
+            seekEnabled = value;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -46,16 +66,25 @@ public class SeekBehaviour : MonoBehaviour
         if (distance <= captureRange && isTemporary)
         {
             onTargetReached.Invoke();
-            Destroy(GetComponent<SeekBehaviour>());
+            if(destroyOnCompletion)
+            {
+                Destroy(GetComponent<SeekBehaviour>());
+            }
+            else
+            {
+                SeekEnabled = false;
+            }
         }
     }
-    public void Init(Vector3 targetVal, Vector3 velocityVal, int speedVal, float rangeVal = 0,bool temporary = false)
+    public void Init(Vector3 targetVal, Vector3 velocityVal, float speedVal, float rangeVal = 0,bool temporary = false, bool destroyOnTemp = true, bool snap = false)
     {
         target = targetVal;
         velocity = velocityVal;
         max_speed = speedVal;
         captureRange = rangeVal;
         isTemporary = temporary;
+        destroyOnCompletion = destroyOnTemp;
+        snapToDestination = snap;
         if(onTargetReached == null)
         {
             onTargetReached = new UnityEvent();
@@ -68,15 +97,19 @@ public class SeekBehaviour : MonoBehaviour
         captureRange = rangeVal;
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(!seekEnabled)
+        if(!SeekEnabled)
         {
             return;
         }
         float distance = Vector3.Distance(transform.position, target);
         if (distance <= captureRange)
         {
+            if(snapToDestination)
+            {
+                transform.position = target;
+            }
             onTargetReached.Invoke();
         }
         if (!isTemporary)

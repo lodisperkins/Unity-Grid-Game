@@ -45,6 +45,10 @@ namespace Lodis
         [SerializeField]
         protected bool overrideGunForce;
         protected Rigidbody rigidbody;
+        [SerializeField]
+        private bool addsForceToTarget;
+        [SerializeField]
+        private int _knockbackForce = 1;
         public PanelBehaviour currentPanel
         {
             get { return _currentPanel; }
@@ -237,9 +241,17 @@ namespace Lodis
                     {
                         PlayHitParticleSystems(1);
                         ps.transform.position = other.transform.position;
-                        if (destroyOnHit)
+                        if (other.name != Owner)
                         {
-                            Destroy(TempObject);
+                            var health = other.GetComponent<HealthBehaviour>();
+                            if (health != null)
+                            {
+                                health.takeDamage(DamageVal);
+                            }
+                            if (destroyOnHit)
+                            {
+                                Destroy(TempObject);
+                            }
                         }
                         break;
                     }
@@ -253,13 +265,15 @@ namespace Lodis
                 Destroy();
                 return;
             }
-            if (DamageVal >= 5)
+            if (addsForceToTarget)
             {
-                Vector3 direction = other.transform.position - transform.position;
-                KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
-                if (knockBackScript != null)
+                Vector3 direction = rigidbody.velocity.normalized;
+                Movement.GridPhysicsBehaviour physicsBehaviour = other.GetComponent<Movement.GridPhysicsBehaviour>();
+                if (physicsBehaviour != null && other.name != Owner)
                 {
-                    knockBackScript.KnockBack(direction, 100, 1);
+                    //knockBackScript.KnockBack(direction, 100, 1);
+                    Vector2 direction2D = Movement.GridPhysicsBehaviour.ConvertToGridVector(direction);
+                    physicsBehaviour.AddForce(direction2D * _knockbackForce);
                 }
                 
             }
@@ -275,8 +289,8 @@ namespace Lodis
             }
             if (DamageVal >= 5)
             {
-                Vector3 direction = collision.contacts[0].point - transform.position;
-                collision.gameObject.GetComponent<KnockBackBehaviour>().KnockBack(direction, 100, 1);
+                Vector2 direction = collision.contacts[0].point - transform.position;
+                collision.gameObject.GetComponent<Lodis.Movement.GridPhysicsBehaviour>().AddForce(direction);
             }
             ResolveCollision(collision.gameObject);
         }

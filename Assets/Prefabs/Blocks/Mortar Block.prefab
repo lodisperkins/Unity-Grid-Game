@@ -314,6 +314,8 @@ GameObject:
   - component: {fileID: 114010637129876242}
   - component: {fileID: 114223565174130098}
   - component: {fileID: 114244164417712994}
+  - component: {fileID: 114988527893515248}
+  - component: {fileID: 114877901666275950}
   m_Layer: 9
   m_Name: Mortar Block
   m_TagString: Block
@@ -2343,6 +2345,8 @@ MonoBehaviour:
   _type: Special
   types: []
   canDelete: 0
+  inMotion: 0
+  _maxLevel: 3
 --- !u!114 &114223565174130098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2445,6 +2449,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -2480,6 +2485,16 @@ MonoBehaviour:
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
   ps2: {fileID: 0}
   healthFull: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onUnstunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114264581305483598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2625,6 +2640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockScript: {fileID: 0}
   MaterialAmount: 15
+  blackHole: {fileID: 0}
   materialUpgradeVal: 0
   regenTimeUpgradeVal: 0
   playerUseAmount: 0
@@ -2725,6 +2741,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114877901666275950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447780760735818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
+  _collisions: {fileID: 11400000, guid: 59edc83708d46214e834d54621768930, type: 2}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114907662371916106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2737,8 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 114804898863985258, guid: 3c61a511821b873468c4c066ef68dc65, type: 2}
-  _bulletEmitter: {fileID: 1734885017088298, guid: 5af92e9293549e74a9da26c51e5abfd4,
-    type: 2}
+  _bulletEmitter: {fileID: 1738925671840322}
   _bulletEmitterPosition: {x: 0, y: 20, z: 0}
   _gun: {fileID: 114913433600047622}
 --- !u!114 &114913433600047622
@@ -2752,12 +2786,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad493a305037c54083a758c8c2e81e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1534226416046904, guid: 00c032a6f81151e489907f221dfa6f50, type: 2}
+  bullet: {fileID: 1263534599806752, guid: 6ec6c2e2143efab4d8ca5d46450883da, type: 2}
   owner: 
   bulletForceScale: 1500
   _bulletForce: {x: 0, y: 0, z: 0}
-  bulletDelay: 0.5
-  bulletCount: 15
+  bulletDelay: 2
+  bulletCount: 1
   _hasLimitedAmmo: 1
   outOfAmmo:
     m_PersistentCalls:
@@ -2791,6 +2825,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 1447780760735818}
+--- !u!114 &114988527893515248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447780760735818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!136 &136061350807267322
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Lodis.GamePlay.BlockScripts
         private bool dontDeleteOrbs;
         [SerializeField]
         private bool _canBeHeld;
+        private bool _orbsOveridden;
         public BlockBehaviour block
         {
             get
@@ -75,6 +77,19 @@ namespace Lodis.GamePlay.BlockScripts
             get
             {
                 return _canBeHeld;
+            }
+        }
+
+        public GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
             }
         }
 
@@ -128,11 +143,14 @@ namespace Lodis.GamePlay.BlockScripts
                     component.block = block;
                     component.specialFeature.transform.SetParent(_orb1.transform,false);
                     component.specialFeature.transform.position = _orb1.transform.position;
+                    _orb1.transform.localScale *= 1.5f;
                     component.specialFeature.transform.localScale = _orb1.transform.localScale;
+                    _orb2.transform.localScale *= 1.5f;
                     GameObject componentClone =Instantiate(component.specialFeature, _orb2.transform, false);
                     componentClone.transform.position =_orb2.transform.position;
                     DisableOrbAttack();
                     DisableOrbMesh();
+                    _orbsOveridden = true;
                     return;
                 }
             }
@@ -223,7 +241,8 @@ namespace Lodis.GamePlay.BlockScripts
 
         public void Unstun()
         {
-            EnableOrbMesh();
+            if (!_orbsOveridden)
+                EnableOrbMesh();
         }
 
         public void DeactivatePowerUp()

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Lodis.GamePlay.GridScripts;
+using Lodis.Movement;
 using UnityEngine;
 namespace Lodis
 {
@@ -36,6 +37,9 @@ namespace Lodis
         public GamePlay.OtherScripts.ScreenShakeBehaviour shakeScript;
         [SerializeField] private FlashBehaviour _flashScript;
         private HealthBehaviour _health;
+        [SerializeField]
+        private List<MonoBehaviour> _inputScripts;
+
         public PanelBehaviour CurrentPanel
         {
             get
@@ -56,6 +60,7 @@ namespace Lodis
         public PanelList Panels;
 
         [SerializeField] private Event _onMove;
+        private GridPhysicsBehaviour physicsBehaviour;
         // Use this for initialization
         void Start()
         {
@@ -74,6 +79,7 @@ namespace Lodis
             {
                 BlackBoard.Player2 = gameObject;
             }
+            physicsBehaviour = GetComponent<GridPhysicsBehaviour>();
         }
 
         private void Stun()
@@ -255,6 +261,31 @@ namespace Lodis
             }
             UpdatePosition();
         }
+
+        public void DisableControls()
+        {
+            foreach(var script in _inputScripts)
+            {
+                script.enabled = false;
+            }
+        }
+
+        public void EnableControls()
+        {
+            foreach (var script in _inputScripts)
+            {
+                script.enabled = true;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag("Panel") && physicsBehaviour.IsMoving)
+            {
+                _currentPanel = other.GetComponent<PanelBehaviour>();
+                Position = _currentPanel.Position;
+            }
+        }
         // Update is called once per frame
         void Update()
         {
@@ -267,6 +298,7 @@ namespace Lodis
             {
                 BlackBoard.p2Position = _currentPanel;
             }
+            physicsBehaviour.currentPanel = CurrentPanel;
         }
     }
 }

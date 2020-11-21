@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +37,10 @@ namespace Lodis
         {
             get;
         }
-
+        GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get;set;
+        }
         //Upgrades whatever block this IUpgradable item has touched
         void UpgradeBlock(GameObject otherBlock);
         //Transfers ownership of this item to the block that this item is upgrading

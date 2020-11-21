@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Lodis.Movement;
+
 namespace Lodis.GamePlay.BlockScripts
 {
 	public class DefenseBarrierBehaviour : MonoBehaviour,IUpgradable
@@ -85,6 +87,19 @@ namespace Lodis.GamePlay.BlockScripts
             get
             {
                 return _canBeHeld;
+            }
+        }
+
+        public GridPhysicsBehaviour PhysicsBehaviour
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
             }
         }
 

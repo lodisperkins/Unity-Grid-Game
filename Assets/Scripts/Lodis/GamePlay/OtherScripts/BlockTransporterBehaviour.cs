@@ -22,6 +22,14 @@ namespace Lodis.GamePlay
         private int _currentBlockIndex;
         private GameObject displayBlock;
         private bool _blockDropped;
+        [SerializeField]
+        private float _decentSpeed;
+        [SerializeField]
+        private float _deployDistance;
+        private bool _placing;
+        [SerializeField]
+        private float _spawnDelay;
+        private GameObject _spawnedBlock;
         public bool Deployed
         {
             get
@@ -35,7 +43,7 @@ namespace Lodis.GamePlay
         {
             seekScript.Init(ownerTransform.position, rigidbody.velocity, 5, 5);
             _explodeOnImpact += ExplodePanel;
-            _explodeOnImpact += DestroyDisplayBlock;
+            _explodeOnImpact += Destroy;
             _spawnBlockOnImpact += SpawnBlock;
             _spawnBlockOnImpact += DestroyDisplayBlock;
             _currentBlockIndex = _playerSpawnScript.CurrentIndex;
@@ -44,63 +52,76 @@ namespace Lodis.GamePlay
         }
         public void Idle()
         {
-            seekScript.seekEnabled = false;
+            seekScript.SeekEnabled = false;
         }
         public void ExplodePanel()
         {
             BlackBoard.grid.ExplodePanel(_currentPanel,true,5);
         }
-        public void SpawnBlock()
+
+        private IEnumerator Spawn()
         {
+            yield return new WaitForSeconds(_spawnDelay);
+
             var position = new Vector3(_currentPanel.gameObject.transform.position.x, .6f, _currentPanel.transform.position.z);
-            GameObject BlockCopy = Instantiate(blockDisplay.Blocks[_currentBlockIndex], position, _playerSpawnScript.Block_rotation);
-            BlockBehaviour copyScript = BlockCopy.GetComponent<BlockBehaviour>();
+            _spawnedBlock = Instantiate(blockDisplay.Blocks[_currentBlockIndex], position, _playerSpawnScript.Block_rotation);
+            BlockBehaviour copyScript = _spawnedBlock.GetComponent<BlockBehaviour>();
             copyScript.currentPanel = _currentPanel.gameObject;
             copyScript.owner = _playerSpawnScript.gameObject;
             copyScript.InitializeBlock();
             copyScript.currentPanel.GetComponent<GridScripts.PanelBehaviour>().blockCounter -= 1;
-            _currentPanel.Occupied = true;
-            BlockCopy.GetComponent<Collider>().isTrigger = true;
+            _spawnedBlock.GetComponent<Collider>().isTrigger = true;
+            Destroy(gameObject);
+        }
+
+        public void SpawnBlock()
+        {
+            StartCoroutine(Spawn());
         }
         public void DestroyDisplayBlock()
         {
+            Destroy(blockDisplay.CurrentBlock,_spawnDelay);
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
             Destroy(blockDisplay.CurrentBlock);
         }
-        private void OnTriggerEnter(Collider other)
+        public void Destroy(float time)
         {
-            if(other.CompareTag("Panel"))
+            Destroy(gameObject, time);
+            Destroy(blockDisplay.CurrentBlock, time);
+        }
+        private void UpdateCurrentPanel()
+        {
+            RaycastHit hit = new RaycastHit();
+            int layerMask = 1 << 10;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 10,layerMask))
             {
-                _currentPanel = other.GetComponent<GridScripts.PanelBehaviour>();
+                _currentPanel = hit.collider.GetComponent<GridScripts.PanelBehaviour>();
             }
         }
         public void Deploy()
         {
-            seekScript.seekEnabled = false;
+            seekScript.SeekEnabled = false;
             transform.position = ownerTransform.position;
             rigidbody.AddForce(moveDirection * flyForce, ForceMode.Acceleration);
             _deployed = true;
         }
-        public void DropBlock()
+
+        public void PlaceBlock()
         {
-            if(!_currentPanel)
+            if (!_currentPanel)
             {
                 return;
             }
+            _placing = true;
             blockDisplay.CurrentBlock.AddComponent<SeekBehaviour>();
-            SeekBehaviour blockSeekScript = blockDisplay.CurrentBlock.GetComponent<SeekBehaviour>();
-            if (_currentPanel.BlockCapacityReached || _currentPanel.IsBroken)
-            {
-                blockSeekScript.Init(BlackBoard.grid.GetPanelFromGlobalList(_currentPanel.Position).transform.position, blockDisplay.CurrentBlock.GetComponent<Rigidbody>().velocity, 10, 2, true);
-                blockSeekScript.onTargetReached.AddListener(_explodeOnImpact);
-            }
-            else
-            {
-                blockSeekScript.Init(BlackBoard.grid.GetPanelFromGlobalList(_currentPanel.Position).transform.position, blockDisplay.CurrentBlock.GetComponent<Rigidbody>().velocity, 10, 2, true);
-                blockSeekScript.onTargetReached.AddListener(_spawnBlockOnImpact);
-            }
-            GameObject temp = gameObject;
-            Destroy(temp,.5f);
-            _blockDropped = true;
+            rigidbody.velocity = Vector3.zero;
+            seekScript.Init(_currentPanel.transform.position, rigidbody.velocity, _decentSpeed, _deployDistance);
+            seekScript.SeekEnabled = true;
+            seekScript.onTargetReached.AddListener(_spawnBlockOnImpact);
         }
         void CheckPosition()
         {
@@ -114,6 +135,7 @@ namespace Lodis.GamePlay
         // Update is called once per frame
         void Update()
         {
+            UpdateCurrentPanel();
             if(_currentBlockIndex != _playerSpawnScript.CurrentIndex && !Deployed)
             {
                 _currentBlockIndex = _playerSpawnScript.CurrentIndex;
@@ -125,10 +147,26 @@ namespace Lodis.GamePlay
                 blockDisplay.CurrentBlock.transform.position = blockDisplay.transform.position;
             }
             CheckPosition();
-            if(seekScript && ownerTransform)
+            if(seekScript && ownerTransform && !Deployed)
             {
                 seekScript.SetTarget(ownerTransform.position, 5);
             }
+
+            if (_placing)
+            {
+                if ((_currentPanel.Occupied || _currentPanel.IsBroken) && !_blockDropped && _currentPanel.Occupier != _spawnedBlock)
+                {
+                    SeekBehaviour blockSeekScript = blockDisplay.CurrentBlock.GetComponent<SeekBehaviour>();
+                    blockSeekScript.Init(BlackBoard.grid.GetPanelFromGlobalList(_currentPanel.Position).transform.position, blockDisplay.CurrentBlock.GetComponent<Rigidbody>().velocity, 10, 2, true);
+                    blockSeekScript.onTargetReached.AddListener(_explodeOnImpact);
+                    blockSeekScript.SeekEnabled = true;
+
+                    GameObject temp = gameObject;
+                    Destroy(temp, .5f);
+                    _blockDropped = true;
+                }
+            }
+
             
         }
     }

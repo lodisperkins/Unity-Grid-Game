@@ -189,6 +189,8 @@ GameObject:
   - component: {fileID: 114234282012569578}
   - component: {fileID: 114434985076502166}
   - component: {fileID: 114871701699628310}
+  - component: {fileID: 114332508873937146}
+  - component: {fileID: 114810165689966604}
   m_Layer: 9
   m_Name: Defense Block
   m_TagString: Block
@@ -2768,6 +2770,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -2803,6 +2806,16 @@ MonoBehaviour:
   ps: {fileID: 19842988, guid: 1625b0df15965450c86850dd6d345e87, type: 2}
   ps2: {fileID: 0}
   healthFull: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onUnstunned:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114121312166932442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2950,6 +2963,34 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Event: {fileID: 11400000, guid: 8c3166f4049543d408c230b95e4233f6, type: 2}
   intendedSender: {fileID: 1040305024799336}
+--- !u!114 &114332508873937146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!114 &114332631729984914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3313,6 +3354,25 @@ MonoBehaviour:
   _healthbarImage: {fileID: 114876307662976262}
   isHealthBar: 1
   fillImage: {fileID: 0}
+--- !u!114 &114810165689966604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172816898836844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
+  _collisions: {fileID: 11400000, guid: 59edc83708d46214e834d54621768930, type: 2}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 0
 --- !u!114 &114856796266379726
 MonoBehaviour:
   m_ObjectHideFlags: 1

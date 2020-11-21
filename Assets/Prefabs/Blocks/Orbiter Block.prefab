@@ -467,6 +467,8 @@ GameObject:
   - component: {fileID: 54454448824429282}
   - component: {fileID: 114602596542413318}
   - component: {fileID: 114745727958999610}
+  - component: {fileID: 114658794875252260}
+  - component: {fileID: 114188254399342938}
   m_Layer: 9
   m_Name: Orbiter Block
   m_TagString: Block
@@ -1127,7 +1129,7 @@ Transform:
   m_GameObject: {fileID: 1685822550087068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.45114288, y: 2, z: 0.45114288}
+  m_LocalScale: {x: 0.45114288, y: 4, z: 0.45114288}
   m_Children:
   - {fileID: 4637596664539274}
   - {fileID: 4438725302927978}
@@ -1444,7 +1446,7 @@ Transform:
   m_GameObject: {fileID: 1070183770053878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.45114288, y: 2, z: 0.45114288}
+  m_LocalScale: {x: 0.45114288, y: 4, z: 0.45114288}
   m_Children:
   - {fileID: 4384738668340968}
   - {fileID: 4909819502925950}
@@ -1720,7 +1722,7 @@ Transform:
   m_GameObject: {fileID: 1239360876383640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.45114, y: 2, z: 0.45114}
+  m_LocalScale: {x: 0.45114, y: 4, z: 0.45114}
   m_Children:
   - {fileID: 4625441474196818}
   - {fileID: 4318351446854380}
@@ -3632,6 +3634,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -3677,6 +3680,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114188254399342938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501351900966072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
+  _collisions: {fileID: 11400000, guid: 59edc83708d46214e834d54621768930, type: 2}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114317193002363672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3827,7 +3849,7 @@ MonoBehaviour:
   hp: {fileID: 114166816750216418}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  value: {fileID: 0}
+  _value: {fileID: 0}
   _healthbarImage: {fileID: 114833949336806034}
   isHealthBar: 1
   fillImage: {fileID: 0}
@@ -4046,6 +4068,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114658794875252260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501351900966072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 1
+  snapToDestination: 0
 --- !u!114 &114691148363016026
 MonoBehaviour:
   m_ObjectHideFlags: 1

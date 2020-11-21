@@ -35,6 +35,11 @@ namespace Lodis
 			return data;
 		}
 
+		public void Clear()
+        {
+			objects.Clear();
+        }
+
 		//Adds a panel to the list
 		public void Add(GameObject item)
 		{

@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Lodis
 {
+    [Obsolete("Class is deprecated. Use 'AddForce' in gridphysicsbehaviour instead")]
     public class KnockBackBehaviour : MonoBehaviour
     {
         Rigidbody objectRigidbody;

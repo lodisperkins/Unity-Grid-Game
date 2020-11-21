@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 namespace Lodis
 {
-    
+    [RequireComponent(typeof(Movement.GridPhysicsBehaviour))]
     public class BlockBehaviour : MonoBehaviour
     {
         public delegate void BlockAction(object[] arg = null);
@@ -97,10 +97,12 @@ namespace Lodis
             if(owner.name =="Player1" && name != "DeletionBlock(Clone)")
             {
                 BlackBoard.p1Blocks.Add(this);
+                GetComponent<Movement.GridPhysicsBehaviour>().currentPanel = currentPanel.GetComponent<PanelBehaviour>();
             }
             else if(name != "DeletionBlock(Clone)")
             {
                 BlackBoard.p2Blocks.Add(this);
+                GetComponent<Movement.GridPhysicsBehaviour>().currentPanel = currentPanel.GetComponent<PanelBehaviour>();
             }
             types.Add(_type);
             actionComponent = specialFeature as IUpgradable;
@@ -110,6 +112,7 @@ namespace Lodis
             componentList.Add(actionComponent);
             _health = GetComponent<HealthBehaviour>();
             shakeScript = GetComponent<GamePlay.OtherScripts.ScreenShakeBehaviour>();
+            
             canUpgrade = true;
             _currentLevel = 1;
             canDelete = true;

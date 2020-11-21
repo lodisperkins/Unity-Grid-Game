@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeByDefault: 1
-  damageVal: 5
+  damageVal: 10
   doesKnockback: 1
   stunsOpponent: 1
   stunTime: 1
@@ -216,7 +216,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onTriggerStay: 1
+  onTriggerStay: 0
 --- !u!135 &135706414091261230
 SphereCollider:
   m_ObjectHideFlags: 1

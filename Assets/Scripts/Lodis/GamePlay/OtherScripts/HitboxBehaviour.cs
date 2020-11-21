@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Lodis;
+using Lodis.Movement;
+
 public class HitboxBehaviour : MonoBehaviour {
     private Collider collider;
     [SerializeField]
@@ -63,11 +65,11 @@ public class HitboxBehaviour : MonoBehaviour {
             objectHealth.takeDamage(damageVal);
             if(doesKnockback)
             {
-                Vector3 direction = other.transform.position - transform.position;
-                KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
-                if (knockBackScript != null)
+                Vector2 direction = other.transform.position - transform.position;
+                GridPhysicsBehaviour physicsScript = other.gameObject.GetComponent<GridPhysicsBehaviour>();
+                if (physicsScript != null)
                 {
-                    knockBackScript.KnockBack(direction, 100, stunTime);
+                    physicsScript.AddForce(direction);
                 }
             }
             else if(stunsOpponent && other.gameObject.CompareTag("Player"))
@@ -89,11 +91,11 @@ public class HitboxBehaviour : MonoBehaviour {
             objectHealth.takeDamage(damageVal);
             if (doesKnockback)
             {
-                Vector3 direction = other.transform.position - transform.position;
-                KnockBackBehaviour knockBackScript = other.gameObject.GetComponent<KnockBackBehaviour>();
-                if (knockBackScript != null)
+                Vector2 direction = other.transform.position - transform.position;
+                GridPhysicsBehaviour physicsScript = other.gameObject.GetComponent<GridPhysicsBehaviour>();
+                if (physicsScript != null)
                 {
-                    knockBackScript.KnockBack(direction, 100, stunTime);
+                    physicsScript.AddForce(direction);
                 }
             }
             else if (stunsOpponent && other.gameObject.CompareTag("Player"))

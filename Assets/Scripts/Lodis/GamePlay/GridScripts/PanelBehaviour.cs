@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lodis.Movement;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -15,6 +16,7 @@ namespace Lodis.GamePlay.GridScripts
         public string Owner;
         //Is true if a gameobjects position has been set to be the same as the panels
         public bool Occupied;
+        private GameObject _occupier;
         //the color the panel is set to by default in the editor
         private Color DefaultColor;
         //the current color the panel is being set to
@@ -131,16 +133,25 @@ namespace Lodis.GamePlay.GridScripts
                 return currentBlock;
             }
         }
+
+        public GameObject Occupier
+        {
+            get
+            {
+                return _occupier;
+            }
+        }
+
         private bool CheckIfOccupied()
         {
             if (Physics.Raycast(transform.position, transform.up, out _detectionRay))
             {
-                GameObject objectDetected = _detectionRay.transform.gameObject;
-                switch (objectDetected.tag)
+                _occupier = _detectionRay.transform.gameObject;
+                switch (_occupier.tag)
                 {
                     case ("Block"):
                         {
-                            BlockBehaviour blockScript = objectDetected.GetComponent<BlockBehaviour>();
+                            BlockBehaviour blockScript = _occupier.GetComponent<BlockBehaviour>();
                             if(blockScript != null)
                             {
                                 currentBlock = blockScript;
@@ -155,6 +166,7 @@ namespace Lodis.GamePlay.GridScripts
             }
             else if(currentBlock == null)
             {
+                _occupier = null;
                 blockCounter = 0;
             }
             
@@ -168,7 +180,26 @@ namespace Lodis.GamePlay.GridScripts
                 _attackHighlight = true;
                 UpdateColor();
             }
-            
+            switch (other.tag)
+            {
+                case ("Block"):
+                    {
+                        BlockBehaviour blockScript = other.GetComponent<BlockBehaviour>();
+                        GridPhysicsBehaviour gridPhysicsScript = other.GetComponent<GridPhysicsBehaviour>();
+                        if (blockScript != null)
+                        {
+                            currentBlock = blockScript;
+                            blockCounter = currentBlock.CurrentLevel;
+                        }
+                        Occupied = true;
+                        break;
+                    }
+                case ("Player"):
+                    {
+                        Occupied = true;
+                        break;
+                    }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -222,6 +253,15 @@ namespace Lodis.GamePlay.GridScripts
                 TimerSet = false;
                 UpdateColor();
             }
+        }
+        private void FixedUpdate()
+        {
+            if (currentBlock == null)
+            {
+                blockCounter = 0;
+            }
+
+            Occupied = false;
         }
         //Updates the coor of the panel to be that of its current owner
         public void UpdateColor()

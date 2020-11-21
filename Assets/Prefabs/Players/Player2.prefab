@@ -1685,6 +1685,8 @@ GameObject:
   - component: {fileID: 114829782728649848}
   - component: {fileID: 114161965068694396}
   - component: {fileID: 114742611572843894}
+  - component: {fileID: 114436085678668900}
+  - component: {fileID: 114219878064433040}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -12146,7 +12148,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591e60ff1599d574995f55a83bc34518, type: 3}
   m_Name: 
@@ -12158,12 +12160,19 @@ MonoBehaviour:
   _blockHealthScore: 0
   _blockAmountScore: 0
   _totalScore: 0
+  _opponentCoreScore: 0
+  _opponentSupportScore: 0
+  _opponentSupportBlockScore: 0
+  _opponentSupportDefenseScore: 0
+  _opponentBlockHealthScore: 0
+  _opponentBlockAmountScore: 0
+  _opponentTotalScore: 0
   _shootDelay: 0.3
   healthScript: {fileID: 114357151229158148}
-  supportScorePass: 100
-  coreScorePass: 50
-  supportDefScorePass: 100
-  gridScorePass: 60
+  supportScorePass: 50
+  coreScorePass: 40
+  supportDefScorePass: 50
+  gridScorePass: 50
 --- !u!114 &114116989126093374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12345,7 +12354,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a96a1019f590148af1a42c01735ec4, type: 3}
   m_Name: 
@@ -12364,6 +12373,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 0}
+--- !u!114 &114219878064433040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ad14d5090844a8e2c88c24858fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  max_speed: 0
+  isTemporary: 0
+  captureRange: 0
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114649712960447932}
+        m_MethodName: EnableControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114649712960447932}
+        m_MethodName: DisableControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  destroyOnCompletion: 0
+  snapToDestination: 1
 --- !u!114 &114274406004224860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12488,6 +12547,7 @@ MonoBehaviour:
   health: {fileID: 11400000, guid: 977adafab67a2604d929b5ee8f3bf3ea, type: 2}
   isAlive: 1
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 10
   OnDeath:
@@ -12601,6 +12661,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 95752671759028198}
+--- !u!114 &114436085678668900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530351322543348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9479007f84b0c914a804c60bed65a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPanel: {fileID: 0}
+  _collisions: {fileID: 11400000, guid: edcc1c59493ee0b428200e179661358a, type: 2}
+  isMoving: 0
+  onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
+  stopsWhenHit: 1
+  damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114439626995738454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12674,7 +12753,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa08dcfe8a480d341b969ba20c0fe296, type: 3}
   m_Name: 
@@ -12727,7 +12806,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530351322543348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 432e5288d74349f4885ba05d2cf0c256, type: 3}
   m_Name: 
@@ -12903,6 +12982,10 @@ MonoBehaviour:
   _currentPanel: {fileID: 0}
   shakeScript: {fileID: 114828708535748142}
   _flashScript: {fileID: 114768356883981784}
+  _inputScripts:
+  - {fileID: 114928660566369492}
+  - {fileID: 114124990190854086}
+  - {fileID: 114840264315933764}
   startingPanels:
   - {fileID: 0}
   - {fileID: 0}
@@ -13069,8 +13152,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   newInput: {fileID: 0}
-  inputBuffer: 0.1
+  inputBuffer: 0
   inputRange: {x: -0.5, y: 0.5}
 --- !u!114 &114874611140919194
 MonoBehaviour:
@@ -13173,8 +13258,10 @@ MonoBehaviour:
   OnDeleteDisabled: {fileID: 11400000, guid: 3c921c183b437da4e92f02589f00a386, type: 2}
   _blockSpawnBuffer: 0
   _listOfTowerSelectionButtons:
-  - SelectBlock2(Y)
-  - SelectBlock2(X)
+  - SelectDefenseBlock2
+  - SelectAttackBlock2
+  - SelectSpecialBlock2
+  - SelectSupportBlock2
   overdriveEnabled: 0
   _materialsRegenVal: 5
   _materialCap: 60

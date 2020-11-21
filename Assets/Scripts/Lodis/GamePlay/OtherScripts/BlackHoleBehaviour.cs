@@ -1,32 +1,128 @@
-﻿using System.Collections;
+﻿using Lodis;
+using Lodis.GamePlay.GridScripts;
+using Lodis.Movement;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackHoleBehaviour : MonoBehaviour {
-    private Rigidbody _rigidbody;
+    [SerializeField]
+    private GridPhysicsBehaviour physicsBehaviour;
     private string _owner;
     private string _axis;
-	// Use this for initialization
-	void Start () {
-        _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.AddForce(transform.parent.forward);
-	}
-	private void InitializeAxis()
+    [SerializeField]
+    private float pullForceScale;
+    [SerializeField]
+    private float timeActive;
+    [SerializeField]
+    private GameObject _effects;
+    [SerializeField]
+    private GameObject _suctionCollider;
+    [SerializeField]
+    private float _travelDistance;
+    [SerializeField]
+    private SeekBehaviour _seekScript;
+    private HealthBehaviour _playerHealth;
+    public string Owner
     {
-        if(_owner == "Player1")
+        get
         {
-            _axis = "Special1";
+            return _owner;
+        }
+
+        set
+        {
+            _owner = value;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
+        
+	}
+
+    public void DestroySelf()
+    {
+        GameObject temp = gameObject;
+        Destroy(temp);
+    }
+
+	private void GetPosition()
+    {
+        if(Owner == "Player1")
+        {
+            Vector2 spawnOffset = GridPhysicsBehaviour.ConvertToGridVector(transform.parent.forward);
+            if(GridBehaviour.globalPanelList.FindPanel(BlackBoard.p1Position.Position + spawnOffset, out physicsBehaviour.currentPanel) == false)
+            {
+                Debug.Log("Blackhole can't find offset panel P1");
+            }
+        }
+        else if(Owner == "Player2")
+        {
+            Vector2 spawnOffset = GridPhysicsBehaviour.ConvertToGridVector(transform.parent.forward);
+            if (GridBehaviour.globalPanelList.FindPanel(BlackBoard.p2Position.Position + spawnOffset, out physicsBehaviour.currentPanel) == false)
+            {
+                Debug.Log("Blackhole can't find offset panel P2");
+            }
         }
         else
         {
-            _axis = "Special2";
+            Debug.Log("BlackHole owner not set or invalid");
         }
     }
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetButtonUp(_axis))
-        {
 
+    public void ActivateSuction()
+    {
+        _effects.SetActive(true);
+        _suctionCollider.SetActive(true);
+        _seekScript.SeekEnabled = false;
+        GameObject temp = gameObject;
+        Destroy(temp, timeActive);
+    }
+
+    public void AddForce(GridPhysicsBehaviour other)
+    {
+        if(other.IsMoving || other.name == Owner || Owner == "")
+        {
+            return;
         }
-	}
+        other.AddForce(pullForceScale, physicsBehaviour.currentPanel);
+    }
+
+    public void SetCurrentPanel(PanelBehaviour panel)
+    {
+        physicsBehaviour.currentPanel = panel;
+        physicsBehaviour.StopsWhenHit = false;
+        Vector3 reference = transform.forward * _travelDistance;
+        physicsBehaviour.AddForce(GridPhysicsBehaviour.ConvertToGridVector(reference));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name != _owner && other.CompareTag("Player") && !_suctionCollider.activeSelf)
+        {
+            _playerHealth = other.GetComponent<HealthBehaviour>();
+            _playerHealth.CanStun = false;
+            ActivateSuction();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        GridPhysicsBehaviour gridPhysics = other.GetComponent<GridPhysicsBehaviour>();
+        if(gridPhysics)
+        {
+            AddForce(gridPhysics);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (_playerHealth)
+        {
+            _playerHealth.CanStun = false;
+            _playerHealth.SendMessage("EnableControls");
+        }
+            
+    }
 }
