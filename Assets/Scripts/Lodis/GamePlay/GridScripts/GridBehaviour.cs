@@ -47,6 +47,10 @@ namespace Lodis.GamePlay.GridScripts
         private GameObject _explosion;
         [SerializeField]
         private Lodis.Event _onExplosion;
+        [SerializeField]
+        private int _panelStealCost;
+        [SerializeField]
+        private float _panelReturnDelay;
         // Use this for initialization
         void Start()
         {
@@ -265,6 +269,53 @@ namespace Lodis.GamePlay.GridScripts
                 
             }
         }
+
+        private IEnumerator ReturnPanel(int player, Vector2 panelPosition)
+        {
+            yield return new WaitForSeconds(_panelReturnDelay);
+            int index = 0;
+            if (player == 1)
+            {
+                if (p2PanelsRef.FindIndex(panelPosition, out index) && _originalP1Panels.Contains(panelPosition))
+                {
+                    p2PanelsRef.TransferPanel(p1PanelsRef, index);
+                    p1PanelsRef.updateOwners();
+                    p2PanelsRef.updateOwners();
+                    onPanelsSwapped.Raise();
+                }
+            }
+            else if (player == 2)
+            {
+                if (p1PanelsRef.FindIndex(panelPosition, out index) && _originalP2Panels.Contains(panelPosition))
+                {
+                    p1PanelsRef.TransferPanel(p2PanelsRef, index);
+                    p2PanelsRef.updateOwners();
+                    p1PanelsRef.updateOwners();
+                    onPanelsSwapped.Raise();
+                }
+            }
+        }
+
+        public bool TempStealPanelP1(PanelBehaviour panel)
+        {
+            int index = 0;
+            if (p2PanelsRef.FindIndex(panel.Position, out index))
+            {
+                if (p1Materials.Val < _panelStealCost || p2PanelsRef[index].GetComponent<PanelBehaviour>().Occupied)
+                {
+                    return false;
+                }
+                p1Materials.Val -= _panelStealCost;
+                p2PanelsRef.TransferPanel(p1PanelsRef, index);
+                p1PanelsRef.updateOwners();
+                p2PanelsRef.updateOwners();
+                onPanelsSwapped.Raise();
+
+            }
+            StartCoroutine(ReturnPanel(2, panel.Position));
+            return true;
+        }
+
         //takes one panel from player 1 and gives it to player two
         public void StealPanelP2()
         {
@@ -291,6 +342,27 @@ namespace Lodis.GamePlay.GridScripts
                 onPanelsSwapped.Raise();
             }
         }
+
+        public bool TempStealPanelP2(PanelBehaviour panel)
+        {
+            int index = 0;
+            if (p1PanelsRef.FindIndex(panel.Position, out index))
+            {
+                if (p2Materials.Val < _panelStealCost|| p1PanelsRef[index].GetComponent<PanelBehaviour>().Occupied)
+                {
+                    onPanelsSwapped.Raise();
+                    return false;
+                }
+                p2Materials.Val -= _panelStealCost;
+                p1PanelsRef.TransferPanel(p2PanelsRef, index);
+                p2PanelsRef.updateOwners();
+                p1PanelsRef.updateOwners();
+                onPanelsSwapped.Raise();
+            }
+            StartCoroutine(ReturnPanel(1, panel.Position));
+            return true;
+        }
+
         //finds and highlights all nearby panels in player 2's list for player1
         public void FindNeighborsP1()
         {
