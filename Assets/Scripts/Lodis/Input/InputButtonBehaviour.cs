@@ -73,7 +73,7 @@ public class InputButtonBehaviour : MonoBehaviour
                 input.ResetHoldTime();
             }
         }
-        else if (Input.GetAxisRaw(input.Axis) == -1 && input.canPress)
+        else if (Input.GetAxisRaw(input.Axis) == -1 && input.canPress && input.ButtonNegativeMessage != "")
         {
             if (input.CheckBufferTime() && input.CheckHoldTime())
             {
@@ -148,6 +148,16 @@ public class InputButtonBehaviour : MonoBehaviour
     {
         inputs.Clear();
     }
+
+    public void CleanList()
+    {
+        for (int i = 0; i < inputs.Count; i++)
+        {
+            if (inputs[i] == null)
+                inputs.RemoveAt(i);
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
         
@@ -194,7 +204,10 @@ public class InputButtonEditor : Editor
         {
             myscript.Clear();
         }
-
+        if (GUILayout.Button("CleanList"))
+        {
+            myscript.CleanList();
+        }
     }
     
 }

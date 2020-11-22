@@ -80,10 +80,25 @@ namespace Lodis.GamePlay.GridScripts
                 counter++;
             }
         }
+
         public bool Contains(PanelBehaviour panel)
         {
             return panels.Contains(panel);
         }
+
+        public bool Contains(Vector2 position)
+        {
+            for (int i = 0; i < panels.Count; i++)
+            {
+                var panel = panels[i].GetComponent<PanelBehaviour>();
+                if (panel.Position == position)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public bool FindNeighborsForPanel(PanelBehaviour panelInFocus,out Dictionary<string,PanelBehaviour> panelsInRange)
         {
             panelsInRange = new Dictionary<string, PanelBehaviour>();

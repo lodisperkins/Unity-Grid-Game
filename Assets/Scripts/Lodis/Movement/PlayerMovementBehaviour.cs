@@ -174,18 +174,25 @@ namespace Lodis
             }
             Destination = new Vector2(0, 0);
         }
-        //Checks to see if a panel is accessible
-        public bool CheckPanels(Vector2 PanelPosition, out PanelBehaviour ReturnPanel)
+
+        public bool TempStealPanel(PanelBehaviour panel)
         {
-            foreach (PanelBehaviour panel in Panels.Panels)
+            if (name == "Player1")
+                return BlackBoard.grid.TempStealPanelP1(panel);
+            else
+                return BlackBoard.grid.TempStealPanelP2(panel);
+        }
+        //Checks to see if a panel is accessible
+        public bool CheckPanels(Vector2 panelPosition, out PanelBehaviour ReturnPanel)
+        {
+            if (GridBehaviour.globalPanelList.FindPanel(Position + panelPosition, out ReturnPanel))
             {
-                PanelBehaviour potentialPanel = panel.GetComponent<PanelBehaviour>();
-                if (Position + PanelPosition == potentialPanel.Position)
-                {
-                    ReturnPanel = potentialPanel;
-                    return true;
-                }
-            } 
+                if (!Panels.Contains(ReturnPanel))
+                    return TempStealPanel(ReturnPanel);
+
+                return true;
+            }
+
             ReturnPanel = null;
             return false;
         }

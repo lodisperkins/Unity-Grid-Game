@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114962838391437810}
   - component: {fileID: 65201808408334626}
   - component: {fileID: 114029224472690016}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(1,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114366969946350036}
   - component: {fileID: 65250263672309060}
   - component: {fileID: 114450365093996778}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(4,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 64055038605869004}
   - component: {fileID: 114091944886694408}
   - component: {fileID: 65518655219990702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(7,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 114746284295954776}
   - component: {fileID: 65893739396393514}
   - component: {fileID: 114345670623010988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(1,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 114626149928866406}
   - component: {fileID: 65765732122856166}
   - component: {fileID: 114734172050831190}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(3,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 114869627902610712}
   - component: {fileID: 65930167414107418}
   - component: {fileID: 114346024779312390}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(2,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 114372133424591082}
   - component: {fileID: 65669957012522622}
   - component: {fileID: 114095195377705996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(3,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 64742679324926600}
   - component: {fileID: 114960198742371514}
   - component: {fileID: 65492868634591940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(9,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 64918697603885658}
   - component: {fileID: 114856998311804186}
   - component: {fileID: 65932596085014360}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(5,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 64167152039525690}
   - component: {fileID: 114350300029824694}
   - component: {fileID: 65463356743907034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(5,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 114554669431743380}
   - component: {fileID: 65123303668190520}
   - component: {fileID: 114417054716705862}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(3,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 114861274759775202}
   - component: {fileID: 65808383325778408}
   - component: {fileID: 114998993615725784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(4,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 114977296966125952}
   - component: {fileID: 65541151358685714}
   - component: {fileID: 114419524550437494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(2,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 64324045904280382}
   - component: {fileID: 114375370224892404}
   - component: {fileID: 65534349899616560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(6,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 64431825179617972}
   - component: {fileID: 114687373677836014}
   - component: {fileID: 65780861918845272}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(9,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 64769423752940432}
   - component: {fileID: 114744876720297658}
   - component: {fileID: 65156161388493000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(9,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 114553377463261980}
   - component: {fileID: 65608810494096444}
   - component: {fileID: 114454410982684838}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(4,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 114415655196724626}
   - component: {fileID: 65853524862014512}
   - component: {fileID: 114194769750199758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(0,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 114764545566110206}
   - component: {fileID: 65587206389439312}
   - component: {fileID: 114195766220314750}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(2,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 64693516546906102}
   - component: {fileID: 114846778569249766}
   - component: {fileID: 65434535950595828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(7,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 64401116090834710}
   - component: {fileID: 114215954273757724}
   - component: {fileID: 65905582356641920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(6,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 64769567582554614}
   - component: {fileID: 114617191661336792}
   - component: {fileID: 65707386288730740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(6,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 64339248271471958}
   - component: {fileID: 114443495328497766}
   - component: {fileID: 65003218421824048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(6,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 114215141322694814}
   - component: {fileID: 65711362560011942}
   - component: {fileID: 114551759458703598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(1,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 64499816520185834}
   - component: {fileID: 114640375394384632}
   - component: {fileID: 65252733530978876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(5,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 64578377082585978}
   - component: {fileID: 114574650796745408}
   - component: {fileID: 65247711257717712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(8,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 114193621394186124}
   - component: {fileID: 65878003474760380}
   - component: {fileID: 114579845010544388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(1,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 64118513670475010}
   - component: {fileID: 114861068218555690}
   - component: {fileID: 65759758650551996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(8,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 114716993378425706}
   - component: {fileID: 65406827753243212}
   - component: {fileID: 114240178519909634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(2,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: 64825198264183948}
   - component: {fileID: 114298824247450648}
   - component: {fileID: 65087830786390290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(9,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 64902296303282200}
   - component: {fileID: 114633674594662672}
   - component: {fileID: 65613729482099172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(8,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 114617260052393564}
   - component: {fileID: 65923868672694046}
   - component: {fileID: 114947151784159980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(0,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 64225405169870998}
   - component: {fileID: 114428209929248196}
   - component: {fileID: 65363562178450596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(8,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 64093556145330316}
   - component: {fileID: 114866234641435222}
   - component: {fileID: 65685279215132248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(7,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 114380285710408762}
   - component: {fileID: 65121384101818268}
   - component: {fileID: 114026088762907940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(3,0)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 64842729088888390}
   - component: {fileID: 114116889959799066}
   - component: {fileID: 65076585017384256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(7,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 114358812283973008}
   - component: {fileID: 65673886081738862}
   - component: {fileID: 114718381895755446}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(4,3)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 64861575888876710}
   - component: {fileID: 114106006083157292}
   - component: {fileID: 65529849741093608}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(5,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 114960782241690976}
   - component: {fileID: 65095376430830974}
   - component: {fileID: 114319431213881594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(0,1)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 114037383806436888}
   - component: {fileID: 65996964649939334}
   - component: {fileID: 114139897171856840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Panel(0,2)
   m_TagString: Panel
   m_Icon: {fileID: 0}
@@ -6320,6 +6320,8 @@ MonoBehaviour:
   onStopStun: {fileID: 11400000, guid: 88ca7b46678a69946bd07e6b5cd7658e, type: 2}
   _explosion: {fileID: 1939208866840938, guid: 71e3b5a5cc04559459ac1952dcd00a69, type: 2}
   _onExplosion: {fileID: 11400000, guid: 5926f3b626d7ce948b6cd6d4b480774e, type: 2}
+  _panelStealCost: 10
+  _panelReturnDelay: 2
 --- !u!114 &114810283271205268
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -323,18 +323,6 @@ namespace Lodis
             player.canMove = true;
         }
 
-        public void PanelSelectionButtonDown()
-        {
-//            Debug.Log("stick down");
-//            _panelSelectionInputDown = true;
-//            buildStateEnabled = true;
-//            PlaceBlock();
-        }
-        public void PanelSelectionButtonUp()
-        {
-           
-        }
-
         public void CheckTowerButtonDown()
         {
             foreach (var button in _listOfTowerSelectionButtons)

@@ -12881,7 +12881,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 0}
-  value: {fileID: 11400000, guid: 7bcd62530b49e6646bc7e4cdd3d2c814, type: 2}
+  _value: {fileID: 11400000, guid: 7bcd62530b49e6646bc7e4cdd3d2c814, type: 2}
   _healthbarImage: {fileID: 0}
   isHealthBar: 0
   fillImage: {fileID: 114375069438990016}
@@ -13133,10 +13133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasMultipleButtons: 0
   inputs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

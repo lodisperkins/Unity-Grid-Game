@@ -275,7 +275,7 @@ namespace Lodis
         //Gives the player a slight energy boost for destroying this block
         public void GiveMoneyForKill(string shooterName,int damageVal)
         {
-            if (HealthScript.health.Val - damageVal <= 0)
+            if (HealthScript.health.Val - damageVal <= 0 && owner != null)
             {
                 if (shooterName == "Player1" && shooterName != owner.name)
                 {
