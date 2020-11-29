@@ -26,6 +26,28 @@ namespace Lodis
             }
         }
 
+        public void DisplayBlock(GameObject block)
+        {
+            if (currentBlock != null)
+            {
+                GameObject temp = currentBlock;
+                Destroy(temp);
+            }
+            currentBlock = Instantiate(block);
+            currentBlock.transform.position = transform.position;
+            currentBlock.GetComponent<BlockBehaviour>().ActivateDisplayMode();
+            currentBlock.transform.localScale *= _blockScaleSize;
+        }
+
+        public void ClearDisplay()
+        {
+            if (currentBlock != null)
+            {
+                GameObject temp = currentBlock;
+                Destroy(temp);
+            }
+        }
+
 
         // Use this for initialization
         public void DisplayBlock(int index)

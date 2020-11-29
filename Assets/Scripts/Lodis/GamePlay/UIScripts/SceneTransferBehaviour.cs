@@ -15,23 +15,33 @@ namespace Lodis
         void Start () {
 		
 	    }
-	
+	    
+        public void ReadyUpP1()
+        {
+            onSelected.Raise(gameObject);
+            p1IsReady = true;
+        }
+
+        public void ReadyUpP2()
+        {
+            onSelectedP2.Raise(gameObject);
+            p2IsReady = true;
+        }
+
 	    // Update is called once per frame
 	    void Update () {
 		    if(Input.GetButtonDown("ReadyUp1"))
             {
-                onSelected.Raise(gameObject);
-                p1IsReady = true;
+                ReadyUpP1();
             }
-            else if(Input.GetButtonDown("Cancel"))
+            else if(Input.GetButtonDown("Cancel1"))
             {
                 onCancelP1.Raise(gameObject);
                 p1IsReady = false;
             }
             if(Input.GetButtonDown("ReadyUp2"))
             {
-                onSelectedP2.Raise(gameObject);
-                p2IsReady = true;
+                ReadyUpP2();
             }
             else if(Input.GetButtonDown("Cancel2"))
             {

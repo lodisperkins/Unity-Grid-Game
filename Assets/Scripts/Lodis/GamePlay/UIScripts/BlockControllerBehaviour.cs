@@ -30,6 +30,14 @@ namespace Lodis
             }
             
         }
+
+        public void SetDefaultLoadout()
+        {
+            _blockListP1.Objects[0] = _globalBlockList[0];
+            _blockListP1.Objects[1] = _globalBlockList[3];
+            _blockListP1.Objects[2] = _globalBlockList[6];
+            _blockListP1.Objects[3] = _globalBlockList[8];
+        }
     }
 }
 

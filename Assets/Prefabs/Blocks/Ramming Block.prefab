@@ -2722,7 +2722,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893602849636482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3e0d41960743a84f92b132567212c58, type: 3}
   m_Name: 
@@ -2916,6 +2916,7 @@ MonoBehaviour:
   canDelete: 0
   inMotion: 0
   _maxLevel: 3
+  _blockID: 2
 --- !u!114 &114366839666029644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2945,7 +2946,7 @@ MonoBehaviour:
   hp: {fileID: 114705115550392324}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  value: {fileID: 0}
+  _value: {fileID: 0}
   _healthbarImage: {fileID: 114588033832277480}
   isHealthBar: 1
   fillImage: {fileID: 0}
@@ -3270,6 +3271,8 @@ MonoBehaviour:
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   stopsWhenHit: 1
   damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114705115550392324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3285,6 +3288,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -3362,6 +3366,8 @@ MonoBehaviour:
   destroyOnHit: 1
   hitTrail: {fileID: 1046898937792080}
   overrideGunForce: 0
+  addsForceToTarget: 0
+  _knockbackForce: 1
 --- !u!114 &114829288299332026
 MonoBehaviour:
   m_ObjectHideFlags: 1

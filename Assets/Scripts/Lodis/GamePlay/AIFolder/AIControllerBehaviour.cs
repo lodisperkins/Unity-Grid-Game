@@ -72,12 +72,17 @@ namespace Lodis.GamePlay.AIFolder
 			_moveScript = GetComponent<AIMovementBehaviour>();
             _spawnScript = GetComponent<AISpawnBehaviour>();
             _attackScript = GetComponent<PlayerAttackBehaviour>();
-            
+
+            _decisionTree.enabled = true;
+            _moveScript.enabled = true;
+            _spawnScript.enabled = true;
+
             CoreDefenseCheckDelegate += GetPanelsOnBackRow;
             yCoords = new List<int>() { 0, 1, 2, 3 };
             StartCoroutine(Shoot());
             InitializeLists();
         }
+
         public void InitializeLists()
         {
             //I can use this to initialize all list values instead of checking for which player in each func

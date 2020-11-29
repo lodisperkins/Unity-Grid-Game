@@ -9147,6 +9147,7 @@ MonoBehaviour:
   canDelete: 0
   inMotion: 0
   _maxLevel: 3
+  _blockID: 6
 --- !u!114 &114858185130071156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9338,7 +9339,7 @@ MonoBehaviour:
   hp: {fileID: 114027786981853286}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  value: {fileID: 0}
+  _value: {fileID: 0}
   _healthbarImage: {fileID: 114474709762461342}
   isHealthBar: 1
   fillImage: {fileID: 0}

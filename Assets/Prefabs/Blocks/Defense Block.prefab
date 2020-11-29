@@ -3350,7 +3350,7 @@ MonoBehaviour:
   hp: {fileID: 114109388835544152}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  value: {fileID: 0}
+  _value: {fileID: 0}
   _healthbarImage: {fileID: 114876307662976262}
   isHealthBar: 1
   fillImage: {fileID: 0}
@@ -3529,6 +3529,7 @@ MonoBehaviour:
   canDelete: 0
   inMotion: 0
   _maxLevel: 3
+  _blockID: 3
 --- !u!114 &114891729799357068
 MonoBehaviour:
   m_ObjectHideFlags: 1

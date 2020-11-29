@@ -49,6 +49,18 @@ namespace Lodis
         public bool canDelete;
         public bool inMotion;
         [SerializeField] private int _maxLevel = 3;
+
+        [SerializeField]
+        private int _blockID;
+
+        public int BlockID
+        {
+            get
+            {
+                return _blockID;
+            }
+        }
+
         public HealthBehaviour HealthScript
         {
             get

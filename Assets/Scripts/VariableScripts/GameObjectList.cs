@@ -58,6 +58,22 @@ namespace Lodis
 			}
 			return false;
 		}
+
+		public bool FindItem(GameObject item)
+        {
+
+			foreach(var gameObject in objects)
+            {
+				if (gameObject == item)
+                {
+					return true;
+                }
+
+            }
+
+			return false;
+        }
+
 		public IEnumerator GetEnumerator()
 		{
 			return objects.GetEnumerator();

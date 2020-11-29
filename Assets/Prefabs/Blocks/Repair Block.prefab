@@ -2670,6 +2670,8 @@ MonoBehaviour:
   onHit: {fileID: 11400000, guid: 589c76049f0feb6488c9863bfc05ced4, type: 2}
   stopsWhenHit: 1
   damagesOnHit: 1
+  _snapDistance: 0.3
+  _isMovable: 1
 --- !u!114 &114062563736243362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2719,7 +2721,7 @@ MonoBehaviour:
   hp: {fileID: 114671122016015208}
   _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  value: {fileID: 11400000, guid: a68b5e7951c2e6b4f98c7cf405e18929, type: 2}
+  _value: {fileID: 0}
   _healthbarImage: {fileID: 114564118894904540}
   isHealthBar: 1
   fillImage: {fileID: 0}
@@ -3070,6 +3072,7 @@ MonoBehaviour:
   health: {fileID: 0}
   isAlive: 0
   isInvincible: 0
+  _canStun: 1
   _secondaryHealthSource: {fileID: 0}
   conversionRate: 0
   OnDeath:
@@ -3202,6 +3205,7 @@ MonoBehaviour:
   canDelete: 0
   inMotion: 0
   _maxLevel: 3
+  _blockID: 5
 --- !u!114 &114742853863204994
 MonoBehaviour:
   m_ObjectHideFlags: 1
